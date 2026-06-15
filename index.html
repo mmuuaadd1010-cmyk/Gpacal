@@ -140,7 +140,7 @@ cat > /mnt/user-data/outputs/gpa_calculator.html << 'HTMLEOF'
 <div id="specialtyScreen">
   <div class="logo-mark">🎓</div>
   <h1>حاسبة المعدل التراكمي</h1>
-  <p class="subtitle">جامعة طيبة — اختر تخصصك للبدء</p>
+  <p class="subtitle"> created by "chamber" جامعة طيبة — اختر تخصصك للبدء</p>
   <div class="specialty-grid" id="specGrid"></div>
 </div>
 
@@ -222,7 +222,7 @@ cat > /mnt/user-data/outputs/gpa_calculator.html << 'HTMLEOF'
 <script>
 const SPECIALTIES = [
   {
-    id:'engl', name:'اللغة الإنجليزية والترجمة', icon:'🌐',
+    id:'engl', name:'لغات وترجمه', icon:'🌐',
     levels:[
       {level:1,courses:[{id:'engl_l1_1',code:'ENGL 113',name:'استراتيجيات القراءة',hrs:3},{id:'engl_l1_2',code:'ENGL 115',name:'كتابة الفقرة',hrs:3},{id:'engl_l1_3',code:'ENGL 117',name:'مهارات المحادثة والاستماع',hrs:3},{id:'engl_l1_4',code:'ENGL 111',name:'مقدمة في القواعد',hrs:3},{id:'engl_l1_5',code:'GS 101',name:'دراسات إسلامية: العقيدة والعبادة',hrs:2},{id:'engl_l1_6',code:'ENGL 101',name:'مهارات اللغة الإنجليزية (1)',hrs:2}]},
       {level:2,courses:[{id:'engl_l2_1',code:'ENGL 102',name:'مهارات اللغة الإنجليزية (2)',hrs:2},{id:'engl_l2_2',code:'GS 104',name:'دراسات إسلامية: القيم والأخلاق',hrs:2},{id:'engl_l2_3',code:'ENGL 112',name:'استخدام القواعد',hrs:3},{id:'engl_l2_4',code:'QRRS 101',name:'القرآن الكريم',hrs:2},{id:'engl_l2_5',code:'ENGL 118',name:'كتابة المقال القصير',hrs:3},{id:'engl_l2_6',code:'ENGL 116',name:'استراتيجيات القراءة المطولة',hrs:3},{id:'engl_l2_7',code:'ENGL 114',name:'مهارات واستراتيجيات التواصل',hrs:3}]},
@@ -321,7 +321,7 @@ const SPECIALTIES = [
     ]
   },
   {
-    id:'is', name:'نظم المعلومات الحاسوبية', icon:'🗄️',
+    id:'is', name:'نظم المعلومات ', icon:'🗄️',
     levels:[
       {level:1,courses:[{id:'is_CS111',code:'CS 111',name:'أساسيات البرمجة',hrs:4},{id:'is_MATH105',code:'MATH 105',name:'تفاضل وتكامل (1)',hrs:3},{id:'is_GS101',code:'GS 101',name:'دراسات إسلامية: العقيدة والعبادة',hrs:2},{id:'is_ENG101',code:'ENG 101',name:'مهارات اللغة الإنجليزية (1)',hrs:4},{id:'is_PHYS103',code:'PHYS 103',name:'مقدمة في الفيزياء',hrs:3}]},
       {level:2,courses:[{id:'is_CS163',code:'CS 163',name:'تراكيب متقطعة',hrs:3},{id:'is_STAT103',code:'STAT 103',name:'مبادئ الاحتمالات والإحصاء',hrs:3},{id:'is_ENG102',code:'ENG 102',name:'مهارات اللغة الإنجليزية (2)',hrs:4},{id:'is_GS104',code:'GS 104',name:'دراسات إسلامية: القيم والأخلاق',hrs:2},{id:'is_CS112',code:'CS 112',name:'برمجة (1)',hrs:4}]},
