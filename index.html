@@ -9,614 +9,134 @@ cat > /mnt/user-data/outputs/gpa_calculator.html << 'HTMLEOF'
   @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --bg: #080b14;
-    --surface: #0f1320;
-    --surface2: #151a2e;
-    --surface3: #1c2240;
-    --border: #252d4a;
-    --border2: #2e3860;
-    --accent: #4f7ef5;
-    --accent2: #7b5bf5;
-    --accent3: #5bc8f5;
-    --green: #2ed47a;
-    --red: #f5504a;
-    --yellow: #f5c030;
-    --orange: #f5823a;
-    --text: #dde2f8;
-    --text2: #7a82a8;
-    --text3: #404870;
-    --radius: 14px;
-    --glow: 0 0 40px rgba(79,126,245,0.12);
+    --bg: #080b14; --surface: #0f1320; --surface2: #151a2e; --surface3: #1c2240;
+    --border: #252d4a; --border2: #2e3860; --accent: #4f7ef5; --accent2: #7b5bf5;
+    --accent3: #5bc8f5; --green: #2ed47a; --red: #f5504a; --yellow: #f5c030;
+    --orange: #f5823a; --text: #dde2f8; --text2: #7a82a8; --text3: #404870;
+    --radius: 14px; --glow: 0 0 40px rgba(79,126,245,0.12);
   }
-  body {
-    font-family: 'IBM Plex Sans Arabic', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  /* ── ANIMATED BG ── */
-  body::before {
-    content: '';
-    position: fixed;
-    top: -50%;
-    right: -20%;
-    width: 60vw;
-    height: 60vw;
-    background: radial-gradient(circle, rgba(79,126,245,0.06) 0%, transparent 65%);
-    pointer-events: none;
-    z-index: 0;
-    animation: drift 18s ease-in-out infinite;
-  }
-  body::after {
-    content: '';
-    position: fixed;
-    bottom: -30%;
-    left: -10%;
-    width: 50vw;
-    height: 50vw;
-    background: radial-gradient(circle, rgba(123,91,245,0.05) 0%, transparent 65%);
-    pointer-events: none;
-    z-index: 0;
-  }
-  @keyframes drift {
-    0%, 100% { transform: translate(0,0); }
-    50% { transform: translate(-3%, 5%); }
-  }
-
-  /* ── SPECIALTY PICKER ── */
-  #specialtyScreen {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 30px 16px;
-    position: relative;
-    z-index: 1;
-  }
-  .logo-mark {
-    width: 64px;
-    height: 64px;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    border-radius: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.8rem;
-    margin: 0 auto 20px;
-    box-shadow: 0 0 30px rgba(79,126,245,0.35);
-    animation: pulse-glow 3s ease-in-out infinite;
-  }
-  @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 30px rgba(79,126,245,0.35); }
-    50% { box-shadow: 0 0 50px rgba(79,126,245,0.55); }
-  }
-  #specialtyScreen h1 {
-    font-size: 2rem;
-    font-weight: 700;
-    text-align: center;
-    background: linear-gradient(135deg, #fff 30%, var(--accent));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 8px;
-    line-height: 1.2;
-  }
-  #specialtyScreen .subtitle {
-    color: var(--text2);
-    font-size: 0.83rem;
-    text-align: center;
-    margin-bottom: 36px;
-    letter-spacing: 0.02em;
-  }
-  .specialty-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 12px;
-    width: 100%;
-    max-width: 560px;
-  }
-  @media (max-width: 500px) {
-    .specialty-grid { grid-template-columns: 1fr 1fr; }
-  }
-  .spec-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 20px 12px;
-    cursor: pointer;
-    transition: all .28s cubic-bezier(.34,1.56,.64,1);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .spec-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(79,126,245,0.1), rgba(123,91,245,0.08));
-    opacity: 0;
-    transition: opacity .3s;
-  }
-  .spec-card:hover::before { opacity: 1; }
-  .spec-card:hover {
-    border-color: var(--accent);
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 8px 30px rgba(79,126,245,0.2);
-  }
-  .spec-icon {
-    font-size: 2.2rem;
-    margin-bottom: 10px;
-    display: block;
-    filter: drop-shadow(0 0 8px rgba(255,255,255,0.2));
-  }
-  .spec-name {
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--text);
-    line-height: 1.35;
-  }
-  .spec-tag {
-    display: inline-block;
-    margin-top: 8px;
-    background: var(--surface3);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 2px 8px;
-    font-size: 0.66rem;
-    color: var(--text3);
-  }
-
-  /* ── MAIN APP ── */
-  #appScreen { display: none; padding: 16px 14px 100px; position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
-
-  /* Header */
-  header { text-align: center; margin-bottom: 20px; }
-  .header-inner { display: inline-flex; flex-direction: column; align-items: center; gap: 4px; }
-  .spec-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 30px;
-    padding: 5px 14px;
-    font-size: 0.78rem;
-    color: var(--accent);
-    font-weight: 600;
-    cursor: pointer;
-    transition: all .2s;
-    margin-bottom: 6px;
-  }
-  .spec-pill:hover { background: var(--surface2); border-color: var(--accent); }
-  header h1 {
-    font-size: 1.55rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, #fff 20%, var(--accent));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  header p { color: var(--text2); font-size: 0.75rem; margin-top: 2px; }
-
-  /* Banner */
-  .gpa-banner {
-    background: linear-gradient(135deg, #0d1530 0%, #120f2e 100%);
-    border: 1px solid var(--border2);
-    border-radius: 22px;
-    padding: 26px 20px 20px;
-    text-align: center;
-    margin-bottom: 20px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: var(--glow);
-  }
-  .gpa-banner::before {
-    content: '';
-    position: absolute;
-    top: -60px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 260px;
-    height: 260px;
-    background: radial-gradient(circle, rgba(79,126,245,.18) 0%, transparent 65%);
-    pointer-events: none;
-  }
-  .banner-grid { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; }
-  .gpa-main {
-    font-size: 4.2rem;
-    font-weight: 700;
-    line-height: 1;
-    background: linear-gradient(135deg, #fff 10%, var(--accent), var(--accent2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    filter: drop-shadow(0 0 20px rgba(79,126,245,0.4));
-    transition: all .5s;
-  }
-  .gpa-label { color: var(--text2); font-size: 0.72rem; margin-top: 4px; }
-  .grade-badge {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    color: white;
-    border-radius: 10px;
-    padding: 5px 18px;
-    font-size: 1rem;
-    font-weight: 700;
-    margin-top: 8px;
-    box-shadow: 0 4px 15px rgba(79,126,245,0.35);
-    transition: all .4s;
-  }
-  .banner-stat { text-align: center; }
-  .banner-stat-val { font-size: 1.5rem; font-weight: 700; color: var(--text); }
-  .banner-stat-lbl { font-size: 0.65rem; color: var(--text3); margin-top: 2px; }
-  .banner-divider { width: 1px; height: 50px; background: var(--border); }
-  .progress-wrap { background: rgba(255,255,255,0.05); border-radius: 20px; height: 6px; overflow: hidden; margin-top: 16px; }
-  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3)); border-radius: 20px; transition: width .7s cubic-bezier(.34,1.2,.64,1); }
-  .progress-labels { display: flex; justify-content: space-between; font-size: 0.66rem; color: var(--text3); margin-top: 5px; }
-
-  /* Tabs */
-  .tabs {
-    display: flex;
-    gap: 6px;
-    margin-bottom: 18px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 5px;
-  }
-  .tab-btn {
-    background: transparent;
-    border: none;
-    color: var(--text2);
-    border-radius: 10px;
-    padding: 8px 0;
-    font-family: inherit;
-    font-size: 0.8rem;
-    cursor: pointer;
-    flex: 1;
-    transition: all .22s;
-    font-weight: 500;
-  }
-  .tab-btn.active {
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    color: white;
-    font-weight: 700;
-    box-shadow: 0 4px 12px rgba(79,126,245,0.3);
-  }
-  .tab-btn:hover:not(.active) { color: var(--text); background: var(--surface2); }
-  .section { display: none; }
-  .section.active { display: block; }
-
-  /* Level blocks */
-  .level-block { margin-bottom: 22px; }
-  .level-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    padding: 10px 14px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all .2s;
-  }
-  .level-header:hover { border-color: var(--border2); }
-  .level-title-left { display: flex; align-items: center; gap: 10px; }
-  .level-num {
-    width: 32px;
-    height: 32px;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: white;
-    flex-shrink: 0;
-    box-shadow: 0 3px 10px rgba(79,126,245,0.3);
-  }
-  .level-name { font-size: 0.9rem; font-weight: 600; }
-  .level-meta { font-size: 0.7rem; color: var(--text3); margin-top: 1px; }
-  .level-right { display: flex; align-items: center; gap: 8px; }
-  .level-gpa-mini {
-    background: var(--surface3);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 3px 10px;
-    font-size: 0.72rem;
-    color: var(--accent);
-    font-weight: 600;
-    transition: all .3s;
-  }
-  .level-gpa-mini.has-grade { border-color: var(--accent); box-shadow: 0 0 10px rgba(79,126,245,0.2); }
-  .chevron { color: var(--text3); font-size: 0.75rem; transition: transform .2s; }
-  .level-block.collapsed .chevron { transform: rotate(-90deg); }
-  .level-block.collapsed .courses-grid { display: none; }
-
-  /* Course rows */
-  .courses-grid { display: flex; flex-direction: column; gap: 6px; }
-  .course-row {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 11px 13px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: all .22s;
-  }
-  .course-row:hover { border-color: var(--border2); }
-  .course-row.done { border-color: rgba(46,212,122,0.25); background: rgba(46,212,122,0.04); }
-  .course-row.done .course-name { color: var(--text2); text-decoration: line-through; text-decoration-color: var(--text3); }
-  .course-info { flex: 1; min-width: 0; }
-  .course-name { font-size: 0.85rem; font-weight: 500; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .course-code-badge {
-    display: inline-block;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 5px;
-    padding: 1px 6px;
-    font-size: 0.65rem;
-    color: var(--text3);
-    font-family: monospace;
-  }
-  .course-hrs-input {
-    width: 52px;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 7px;
-    color: var(--text);
-    font-family: inherit;
-    font-size: 0.78rem;
-    padding: 5px 7px;
-    text-align: center;
-    outline: none;
-    transition: border-color .2s;
-  }
-  .course-hrs-input:focus { border-color: var(--accent); }
-  .hrs-label { font-size: 0.65rem; color: var(--text3); margin-top: 2px; text-align: center; }
-  .course-right { display: flex; align-items: center; gap: 7px; flex-shrink: 0; }
-  .grade-select {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--text);
-    font-family: inherit;
-    font-size: 0.78rem;
-    padding: 5px 8px;
-    cursor: pointer;
-    outline: none;
-    transition: border-color .2s;
-  }
-  .grade-select:focus { border-color: var(--accent); }
-  .grade-select option { background: var(--surface2); }
-  .btn-del {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text3);
-    border-radius: 7px;
-    padding: 5px 9px;
-    font-family: inherit;
-    font-size: 0.75rem;
-    cursor: pointer;
-    transition: all .2s;
-  }
-  .btn-del:hover { border-color: var(--red); color: var(--red); background: rgba(245,80,74,0.06); }
-  .btn-restore {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text3);
-    border-radius: 7px;
-    padding: 5px 9px;
-    font-family: inherit;
-    font-size: 0.75rem;
-    cursor: pointer;
-    transition: all .2s;
-  }
-  .btn-restore:hover { border-color: var(--green); color: var(--green); }
-
-  /* Add course */
-  .add-course-row {
-    display: flex;
-    gap: 6px;
-    margin-top: 8px;
-    flex-wrap: wrap;
-  }
-  .add-input {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--text);
-    font-family: inherit;
-    font-size: 0.78rem;
-    padding: 7px 10px;
-    outline: none;
-    transition: border-color .2s;
-    flex: 1;
-    min-width: 100px;
-  }
-  .add-input:focus { border-color: var(--accent); }
-  .btn-add {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    color: var(--text2);
-    border-radius: 8px;
-    padding: 7px 13px;
-    font-family: inherit;
-    font-size: 0.78rem;
-    cursor: pointer;
-    transition: all .2s;
-    white-space: nowrap;
-  }
-  .btn-add:hover { border-color: var(--accent); color: var(--accent); }
-
-  /* Save btn */
-  .save-btn-wrap { position: sticky; bottom: 16px; padding: 0 0 4px; }
-  .btn-save {
-    width: 100%;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    border: none;
-    border-radius: 12px;
-    color: white;
-    font-family: inherit;
-    font-size: 0.95rem;
-    font-weight: 700;
-    padding: 14px;
-    cursor: pointer;
-    transition: all .2s;
-    box-shadow: 0 6px 20px rgba(79,126,245,0.35);
-    letter-spacing: 0.02em;
-  }
-  .btn-save:hover { opacity: .9; transform: translateY(-1px); box-shadow: 0 8px 25px rgba(79,126,245,0.45); }
-
-  /* Report */
-  .sem-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 16px;
-    margin-bottom: 14px;
-    transition: box-shadow .2s;
-  }
-  .sem-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
-  .sem-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
-  .sem-title { font-size: 0.95rem; font-weight: 600; }
-  .sem-gpa-tag {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 3px 11px;
-    font-size: 0.75rem;
-    color: var(--accent);
-    font-weight: 600;
-  }
-  .t { width: 100%; border-collapse: collapse; }
-  .t th { font-size: .68rem; color: var(--text3); text-align: right; padding: 0 6px 7px; border-bottom: 1px solid var(--border); }
-  .t td { padding: 8px 6px; font-size: .82rem; border-bottom: 1px solid var(--border); vertical-align: middle; }
-  .t tr:last-child td { border-bottom: none; }
-  .chip { display: inline-block; border-radius: 6px; padding: 2px 8px; font-size: .73rem; font-weight: 700; }
-  .cAp { background: rgba(46,212,122,.15); color: var(--green); }
-  .cA  { background: rgba(46,212,122,.12); color: var(--green); }
-  .cBp { background: rgba(79,126,245,.15); color: var(--accent); }
-  .cB  { background: rgba(79,126,245,.12); color: var(--accent); }
-  .cCp { background: rgba(245,192,48,.15); color: var(--yellow); }
-  .cC  { background: rgba(245,192,48,.12); color: var(--yellow); }
-  .cDp { background: rgba(245,130,58,.15); color: var(--orange); }
-  .cD  { background: rgba(245,80,74,.15); color: var(--red); }
-  .cF  { background: rgba(245,80,74,.2); color: var(--red); }
-
-  /* Settings */
-  .form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
-  label { font-size: .76rem; color: var(--text2); font-weight: 500; }
-  .settings-input {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--text);
-    font-family: inherit;
-    font-size: .88rem;
-    padding: 9px 11px;
-    width: 100%;
-    outline: none;
-    transition: border-color .2s;
-  }
-  .settings-input:focus { border-color: var(--accent); }
-  .btn-danger-full {
-    background: transparent;
-    border: 1px solid var(--red);
-    color: var(--red);
-    border-radius: 10px;
-    padding: 10px;
-    font-family: inherit;
-    font-size: .88rem;
-    cursor: pointer;
-    width: 100%;
-    transition: all .2s;
-  }
-  .btn-danger-full:hover { background: var(--red); color: white; }
-
-  /* Cards */
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 18px;
-    margin-bottom: 14px;
-  }
-  .card h3 { font-size: 0.85rem; color: var(--text2); margin-bottom: 14px; font-weight: 500; }
-
-  /* Misc */
-  ::-webkit-scrollbar { width: 4px; height: 4px; }
-  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
-  .search-box {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    color: var(--text);
-    font-family: inherit;
-    font-size: .85rem;
-    padding: 9px 13px;
-    width: 100%;
-    outline: none;
-    margin-bottom: 14px;
-    transition: border-color .2s;
-  }
-  .search-box:focus { border-color: var(--accent); }
-  .filter-row { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
-  .filter-btn {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--text2);
-    border-radius: 20px;
-    padding: 4px 13px;
-    font-family: inherit;
-    font-size: 0.73rem;
-    cursor: pointer;
-    transition: all .2s;
-  }
-  .filter-btn.on { background: linear-gradient(135deg, var(--accent), var(--accent2)); border-color: transparent; color: white; font-weight: 600; }
-  .filter-btn:hover:not(.on) { border-color: var(--accent); color: var(--text); }
-
-  /* Empty state */
-  .empty-state { text-align: center; padding: 50px 20px; color: var(--text3); font-size: .85rem; line-height: 1.8; }
-  .empty-state .empty-icon { font-size: 2.5rem; display: block; margin-bottom: 10px; opacity: .6; }
-
-  /* Deleted row */
-  .course-row.deleted-row { opacity: .4; border-style: dashed; }
-
-  /* Notification */
-  .toast {
-    position: fixed;
-    bottom: 90px;
-    left: 50%;
-    transform: translateX(-50%) translateY(20px);
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    color: white;
-    border-radius: 12px;
-    padding: 10px 22px;
-    font-size: .85rem;
-    font-weight: 600;
-    box-shadow: 0 6px 25px rgba(79,126,245,0.4);
-    opacity: 0;
-    transition: all .3s;
-    z-index: 999;
-    pointer-events: none;
-    white-space: nowrap;
-  }
-  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  body { font-family: 'IBM Plex Sans Arabic', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+  body::before { content:''; position:fixed; top:-50%; right:-20%; width:60vw; height:60vw; background:radial-gradient(circle,rgba(79,126,245,0.06) 0%,transparent 65%); pointer-events:none; z-index:0; animation:drift 18s ease-in-out infinite; }
+  body::after { content:''; position:fixed; bottom:-30%; left:-10%; width:50vw; height:50vw; background:radial-gradient(circle,rgba(123,91,245,0.05) 0%,transparent 65%); pointer-events:none; z-index:0; }
+  @keyframes drift { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-3%,5%)} }
+  #specialtyScreen { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:30px 16px; position:relative; z-index:1; }
+  .logo-mark { width:64px; height:64px; background:linear-gradient(135deg,var(--accent),var(--accent2)); border-radius:18px; display:flex; align-items:center; justify-content:center; font-size:1.8rem; margin:0 auto 20px; box-shadow:0 0 30px rgba(79,126,245,0.35); animation:pulse-glow 3s ease-in-out infinite; }
+  @keyframes pulse-glow { 0%,100%{box-shadow:0 0 30px rgba(79,126,245,0.35)} 50%{box-shadow:0 0 50px rgba(79,126,245,0.55)} }
+  #specialtyScreen h1 { font-size:2rem; font-weight:700; text-align:center; background:linear-gradient(135deg,#fff 30%,var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:8px; line-height:1.2; }
+  #specialtyScreen .subtitle { color:var(--text2); font-size:0.83rem; text-align:center; margin-bottom:36px; }
+  .specialty-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; width:100%; max-width:700px; }
+  @media(max-width:600px){ .specialty-grid{grid-template-columns:1fr 1fr} }
+  .spec-card { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:20px 12px; cursor:pointer; transition:all .28s cubic-bezier(.34,1.56,.64,1); text-align:center; position:relative; overflow:hidden; }
+  .spec-card::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(79,126,245,0.1),rgba(123,91,245,0.08)); opacity:0; transition:opacity .3s; }
+  .spec-card:hover::before{opacity:1}
+  .spec-card:hover { border-color:var(--accent); transform:translateY(-4px) scale(1.02); box-shadow:0 8px 30px rgba(79,126,245,0.2); }
+  .spec-icon { font-size:2.2rem; margin-bottom:10px; display:block; }
+  .spec-name { font-size:0.82rem; font-weight:600; color:var(--text); line-height:1.35; }
+  .spec-tag { display:inline-block; margin-top:8px; background:var(--surface3); border:1px solid var(--border); border-radius:20px; padding:2px 8px; font-size:0.66rem; color:var(--text3); }
+  #appScreen { display:none; padding:16px 14px 100px; position:relative; z-index:1; max-width:680px; margin:0 auto; }
+  header { text-align:center; margin-bottom:20px; }
+  .header-inner { display:inline-flex; flex-direction:column; align-items:center; gap:4px; }
+  .spec-pill { display:inline-flex; align-items:center; gap:6px; background:var(--surface); border:1px solid var(--border); border-radius:30px; padding:5px 14px; font-size:0.78rem; color:var(--accent); font-weight:600; cursor:pointer; transition:all .2s; margin-bottom:6px; }
+  .spec-pill:hover { background:var(--surface2); border-color:var(--accent); }
+  header h1 { font-size:1.55rem; font-weight:700; background:linear-gradient(135deg,#fff 20%,var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  header p { color:var(--text2); font-size:0.75rem; margin-top:2px; }
+  .gpa-banner { background:linear-gradient(135deg,#0d1530 0%,#120f2e 100%); border:1px solid var(--border2); border-radius:22px; padding:26px 20px 20px; text-align:center; margin-bottom:20px; position:relative; overflow:hidden; box-shadow:var(--glow); }
+  .gpa-banner::before { content:''; position:absolute; top:-60px; left:50%; transform:translateX(-50%); width:260px; height:260px; background:radial-gradient(circle,rgba(79,126,245,.18) 0%,transparent 65%); pointer-events:none; }
+  .banner-grid { display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:16px; }
+  .gpa-main { font-size:4.2rem; font-weight:700; line-height:1; background:linear-gradient(135deg,#fff 10%,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; filter:drop-shadow(0 0 20px rgba(79,126,245,0.4)); transition:all .5s; }
+  .gpa-label { color:var(--text2); font-size:0.72rem; margin-top:4px; }
+  .grade-badge { display:inline-block; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:white; border-radius:10px; padding:5px 18px; font-size:1rem; font-weight:700; margin-top:8px; box-shadow:0 4px 15px rgba(79,126,245,0.35); transition:all .4s; }
+  .banner-stat { text-align:center; }
+  .banner-stat-val { font-size:1.5rem; font-weight:700; color:var(--text); }
+  .banner-stat-lbl { font-size:0.65rem; color:var(--text3); margin-top:2px; }
+  .progress-wrap { background:rgba(255,255,255,0.05); border-radius:20px; height:6px; overflow:hidden; margin-top:16px; }
+  .progress-fill { height:100%; background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3)); border-radius:20px; transition:width .7s cubic-bezier(.34,1.2,.64,1); }
+  .progress-labels { display:flex; justify-content:space-between; font-size:0.66rem; color:var(--text3); margin-top:5px; }
+  .tabs { display:flex; gap:6px; margin-bottom:18px; background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:5px; }
+  .tab-btn { background:transparent; border:none; color:var(--text2); border-radius:10px; padding:8px 0; font-family:inherit; font-size:0.8rem; cursor:pointer; flex:1; transition:all .22s; font-weight:500; }
+  .tab-btn.active { background:linear-gradient(135deg,var(--accent),var(--accent2)); color:white; font-weight:700; box-shadow:0 4px 12px rgba(79,126,245,0.3); }
+  .tab-btn:hover:not(.active){ color:var(--text); background:var(--surface2); }
+  .section{display:none} .section.active{display:block}
+  .level-block{margin-bottom:22px}
+  .level-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; padding:10px 14px; background:var(--surface); border:1px solid var(--border); border-radius:12px; cursor:pointer; transition:all .2s; }
+  .level-header:hover{border-color:var(--border2)}
+  .level-title-left{display:flex;align-items:center;gap:10px}
+  .level-num { width:32px; height:32px; background:linear-gradient(135deg,var(--accent),var(--accent2)); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; color:white; flex-shrink:0; box-shadow:0 3px 10px rgba(79,126,245,0.3); }
+  .level-name{font-size:0.9rem;font-weight:600}
+  .level-meta{font-size:0.7rem;color:var(--text3);margin-top:1px}
+  .level-right{display:flex;align-items:center;gap:8px}
+  .level-gpa-mini { background:var(--surface3); border:1px solid var(--border); border-radius:20px; padding:3px 10px; font-size:0.72rem; color:var(--accent); font-weight:600; transition:all .3s; }
+  .level-gpa-mini.has-grade{border-color:var(--accent);box-shadow:0 0 10px rgba(79,126,245,0.2)}
+  .chevron{color:var(--text3);font-size:0.75rem;transition:transform .2s}
+  .level-block.collapsed .chevron{transform:rotate(-90deg)}
+  .level-block.collapsed .courses-grid{display:none}
+  .courses-grid{display:flex;flex-direction:column;gap:6px}
+  .course-row { background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:11px 13px; display:flex; align-items:center; gap:10px; transition:all .22s; }
+  .course-row:hover{border-color:var(--border2)}
+  .course-row.done{border-color:rgba(46,212,122,0.25);background:rgba(46,212,122,0.04)}
+  .course-row.done .course-name{color:var(--text2);text-decoration:line-through;text-decoration-color:var(--text3)}
+  .course-info{flex:1;min-width:0}
+  .course-name{font-size:0.85rem;font-weight:500;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .course-code-badge { display:inline-block; background:var(--surface2); border:1px solid var(--border); border-radius:5px; padding:1px 6px; font-size:0.65rem; color:var(--text3); font-family:monospace; }
+  .course-hrs-input { width:52px; background:var(--bg); border:1px solid var(--border); border-radius:7px; color:var(--text); font-family:inherit; font-size:0.78rem; padding:5px 7px; text-align:center; outline:none; transition:border-color .2s; }
+  .course-hrs-input:focus{border-color:var(--accent)}
+  .hrs-label{font-size:0.65rem;color:var(--text3);margin-top:2px;text-align:center}
+  .course-right{display:flex;align-items:center;gap:7px;flex-shrink:0}
+  .grade-select { background:var(--bg); border:1px solid var(--border); border-radius:8px; color:var(--text); font-family:inherit; font-size:0.78rem; padding:5px 8px; cursor:pointer; outline:none; transition:border-color .2s; }
+  .grade-select:focus{border-color:var(--accent)}
+  .grade-select option{background:var(--surface2)}
+  .btn-del { background:transparent; border:1px solid var(--border); color:var(--text3); border-radius:7px; padding:5px 9px; font-family:inherit; font-size:0.75rem; cursor:pointer; transition:all .2s; }
+  .btn-del:hover{border-color:var(--red);color:var(--red);background:rgba(245,80,74,0.06)}
+  .btn-restore { background:transparent; border:1px solid var(--border); color:var(--text3); border-radius:7px; padding:5px 9px; font-family:inherit; font-size:0.75rem; cursor:pointer; transition:all .2s; }
+  .btn-restore:hover{border-color:var(--green);color:var(--green)}
+  .add-course-row{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+  .add-input { background:var(--bg); border:1px solid var(--border); border-radius:8px; color:var(--text); font-family:inherit; font-size:0.78rem; padding:7px 10px; outline:none; transition:border-color .2s; flex:1; min-width:100px; }
+  .add-input:focus{border-color:var(--accent)}
+  .btn-add { background:var(--surface2); border:1px solid var(--border); color:var(--text2); border-radius:8px; padding:7px 13px; font-family:inherit; font-size:0.78rem; cursor:pointer; transition:all .2s; white-space:nowrap; }
+  .btn-add:hover{border-color:var(--accent);color:var(--accent)}
+  .save-btn-wrap{position:sticky;bottom:16px;padding:0 0 4px}
+  .btn-save { width:100%; background:linear-gradient(135deg,var(--accent),var(--accent2)); border:none; border-radius:12px; color:white; font-family:inherit; font-size:0.95rem; font-weight:700; padding:14px; cursor:pointer; transition:all .2s; box-shadow:0 6px 20px rgba(79,126,245,0.35); }
+  .btn-save:hover{opacity:.9;transform:translateY(-1px);box-shadow:0 8px 25px rgba(79,126,245,0.45)}
+  .sem-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:16px; margin-bottom:14px; transition:box-shadow .2s; }
+  .sem-card:hover{box-shadow:0 4px 20px rgba(0,0,0,0.2)}
+  .sem-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+  .sem-title{font-size:0.95rem;font-weight:600}
+  .sem-gpa-tag { background:var(--surface2); border:1px solid var(--border); border-radius:20px; padding:3px 11px; font-size:0.75rem; color:var(--accent); font-weight:600; }
+  .t{width:100%;border-collapse:collapse}
+  .t th{font-size:.68rem;color:var(--text3);text-align:right;padding:0 6px 7px;border-bottom:1px solid var(--border)}
+  .t td{padding:8px 6px;font-size:.82rem;border-bottom:1px solid var(--border);vertical-align:middle}
+  .t tr:last-child td{border-bottom:none}
+  .chip{display:inline-block;border-radius:6px;padding:2px 8px;font-size:.73rem;font-weight:700}
+  .cAp{background:rgba(46,212,122,.15);color:var(--green)} .cA{background:rgba(46,212,122,.12);color:var(--green)}
+  .cBp{background:rgba(79,126,245,.15);color:var(--accent)} .cB{background:rgba(79,126,245,.12);color:var(--accent)}
+  .cCp{background:rgba(245,192,48,.15);color:var(--yellow)} .cC{background:rgba(245,192,48,.12);color:var(--yellow)}
+  .cDp{background:rgba(245,130,58,.15);color:var(--orange)} .cD{background:rgba(245,80,74,.15);color:var(--red)}
+  .cF{background:rgba(245,80,74,.2);color:var(--red)}
+  .form-group{display:flex;flex-direction:column;gap:5px;margin-bottom:14px}
+  label{font-size:.76rem;color:var(--text2);font-weight:500}
+  .settings-input { background:var(--bg); border:1px solid var(--border); border-radius:8px; color:var(--text); font-family:inherit; font-size:.88rem; padding:9px 11px; width:100%; outline:none; transition:border-color .2s; }
+  .settings-input:focus{border-color:var(--accent)}
+  .btn-danger-full { background:transparent; border:1px solid var(--red); color:var(--red); border-radius:10px; padding:10px; font-family:inherit; font-size:.88rem; cursor:pointer; width:100%; transition:all .2s; }
+  .btn-danger-full:hover{background:var(--red);color:white}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:14px}
+  .card h3{font-size:0.85rem;color:var(--text2);margin-bottom:14px;font-weight:500}
+  ::-webkit-scrollbar{width:4px;height:4px} ::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+  .search-box { background:var(--bg); border:1px solid var(--border); border-radius:10px; color:var(--text); font-family:inherit; font-size:.85rem; padding:9px 13px; width:100%; outline:none; margin-bottom:14px; transition:border-color .2s; }
+  .search-box:focus{border-color:var(--accent)}
+  .filter-row{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+  .filter-btn { background:var(--surface); border:1px solid var(--border); color:var(--text2); border-radius:20px; padding:4px 13px; font-family:inherit; font-size:0.73rem; cursor:pointer; transition:all .2s; }
+  .filter-btn.on{background:linear-gradient(135deg,var(--accent),var(--accent2));border-color:transparent;color:white;font-weight:600}
+  .filter-btn:hover:not(.on){border-color:var(--accent);color:var(--text)}
+  .empty-state{text-align:center;padding:50px 20px;color:var(--text3);font-size:.85rem;line-height:1.8}
+  .empty-state .empty-icon{font-size:2.5rem;display:block;margin-bottom:10px;opacity:.6}
+  .course-row.deleted-row{opacity:.4;border-style:dashed}
+  .toast { position:fixed; bottom:90px; left:50%; transform:translateX(-50%) translateY(20px); background:linear-gradient(135deg,var(--accent),var(--accent2)); color:white; border-radius:12px; padding:10px 22px; font-size:.85rem; font-weight:600; box-shadow:0 6px 25px rgba(79,126,245,0.4); opacity:0; transition:all .3s; z-index:999; pointer-events:none; white-space:nowrap; }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 </style>
 </head>
 <body>
-
-<!-- TOAST -->
 <div class="toast" id="toast"></div>
 
-<!-- ── Specialty Picker ── -->
 <div id="specialtyScreen">
   <div class="logo-mark">🎓</div>
   <h1>حاسبة المعدل التراكمي</h1>
@@ -624,7 +144,6 @@ cat > /mnt/user-data/outputs/gpa_calculator.html << 'HTMLEOF'
   <div class="specialty-grid" id="specGrid"></div>
 </div>
 
-<!-- ── Main App ── -->
 <div id="appScreen">
   <header>
     <div class="header-inner">
@@ -637,8 +156,6 @@ cat > /mnt/user-data/outputs/gpa_calculator.html << 'HTMLEOF'
       <p>جامعة طيبة</p>
     </div>
   </header>
-
-  <!-- GPA Banner -->
   <div class="gpa-banner">
     <div class="banner-grid">
       <div class="banner-stat">
@@ -664,15 +181,11 @@ cat > /mnt/user-data/outputs/gpa_calculator.html << 'HTMLEOF'
       <span id="totalHrsLabel">– ساعة</span>
     </div>
   </div>
-
-  <!-- Tabs -->
   <div class="tabs">
     <button class="tab-btn active" onclick="switchTab('plan',this)">📋 خطة الدراسة</button>
     <button class="tab-btn" onclick="switchTab('report',this)">📊 التقرير</button>
     <button class="tab-btn" onclick="switchTab('settings',this)">⚙️ الإعدادات</button>
   </div>
-
-  <!-- Plan Section -->
   <div class="section active" id="sec_plan">
     <input type="text" class="search-box" placeholder="🔍 ابحث عن مادة..." oninput="renderPlan(this.value)">
     <div class="filter-row">
@@ -686,13 +199,7 @@ cat > /mnt/user-data/outputs/gpa_calculator.html << 'HTMLEOF'
       <button class="btn-save" onclick="saveGrades()">💾 حفظ الدرجات</button>
     </div>
   </div>
-
-  <!-- Report Section -->
-  <div class="section" id="sec_report">
-    <div id="reportContainer"></div>
-  </div>
-
-  <!-- Settings Section -->
+  <div class="section" id="sec_report"><div id="reportContainer"></div></div>
   <div class="section" id="sec_settings">
     <div class="card">
       <h3>معلومات الطالب</h3>
@@ -713,607 +220,256 @@ cat > /mnt/user-data/outputs/gpa_calculator.html << 'HTMLEOF'
 </div>
 
 <script>
-// ── DATA ──────────────────────────────────────────────
 const SPECIALTIES = [
+  // ── تخصصات الكلية الأصلية ──
   {
-    id: 'engl',
-    name: 'اللغة الإنجليزية والترجمة',
-    icon: '🌐',
-    levels: [
-      { level: 1, courses: [
-        { id:'engl_l1_1', code:'ENGL 113', name:'استراتيجيات القراءة', hrs:3 },
-        { id:'engl_l1_2', code:'ENGL 115', name:'كتابة الفقرة', hrs:3 },
-        { id:'engl_l1_3', code:'ENGL 117', name:'مهارات المحادثة والاستماع', hrs:3 },
-        { id:'engl_l1_4', code:'ENGL 111', name:'مقدمة في القواعد', hrs:3 },
-        { id:'engl_l1_5', code:'GS 101',   name:'دراسات إسلامية: العقيدة والعبادة', hrs:2 },
-        { id:'engl_l1_6', code:'ENGL 101', name:'مهارات اللغة الإنجليزية (1)', hrs:2 },
-      ]},
-      { level: 2, courses: [
-        { id:'engl_l2_1', code:'ENGL 102', name:'مهارات اللغة الإنجليزية (2)', hrs:2 },
-        { id:'engl_l2_2', code:'GS 104',   name:'دراسات إسلامية: القيم والأخلاق', hrs:2 },
-        { id:'engl_l2_3', code:'ENGL 112', name:'استخدام القواعد', hrs:3 },
-        { id:'engl_l2_4', code:'QRRS 101', name:'القرآن الكريم', hrs:2 },
-        { id:'engl_l2_5', code:'ENGL 118', name:'كتابة المقال القصير', hrs:3 },
-        { id:'engl_l2_6', code:'ENGL 116', name:'استراتيجيات القراءة المطولة', hrs:3 },
-        { id:'engl_l2_7', code:'ENGL 114', name:'مهارات واستراتيجيات التواصل', hrs:3 },
-      ]},
-      { level: 3, courses: [
-        { id:'engl_l3_1', code:'GS 111',   name:'مهارات اللغة العربية (1)', hrs:2 },
-        { id:'engl_l3_2', code:'ENGL 213', name:'قواعد متقدمة', hrs:3 },
-        { id:'engl_l3_3', code:'ENGL 217', name:'كتابة المقال المطول', hrs:3 },
-        { id:'engl_l3_4', code:'ENGL 221', name:'مقدمة في اللغويات', hrs:3 },
-        { id:'engl_l3_5', code:'ENGL 231', name:'مقدمة في الأدب', hrs:3 },
-        { id:'engl_l3_6', code:'ENGL 211', name:'القراءة المتقدمة', hrs:3 },
-      ]},
-      { level: 4, courses: [
-        { id:'engl_l4_1', code:'ENGL 234', name:'المسرحية في العصر الإليزابيثي', hrs:2 },
-        { id:'engl_l4_2', code:'ENGL 232', name:'ظهور الرواية', hrs:2 },
-        { id:'engl_l4_3', code:'ENGL 222', name:'الصوتيات', hrs:3 },
-        { id:'engl_l4_4', code:'ENGL 242', name:'مقدمة في الترجمة', hrs:3 },
-        { id:'engl_l4_5', code:'ENGL 212', name:'مهارات التواصل المتقدمة', hrs:3 },
-        { id:'engl_l4_6', code:'GS 112',   name:'مهارات اللغة العربية (2)', hrs:2 },
-        { id:'engl_l4_7', code:'ENGL 236', name:'الشعر', hrs:2 },
-        { id:'engl_l4_8', code:'ENGL 224', name:'الصرف', hrs:2 },
-      ]},
-      { level: 5, courses: [
-        { id:'engl_l5_1', code:'FE 1',     name:'مقرر اختياري حر', hrs:2 },
-        { id:'engl_l5_2', code:'ISLM 335', name:'اتجاهات فكرية معاصرة', hrs:2 },
-        { id:'engl_l5_3', code:'GSE 1',    name:'مقرر متطلب جامعة اختياري (1)', hrs:2 },
-        { id:'engl_l5_4', code:'ENGL 1',   name:'مقرر اختياري برنامج (1)', hrs:2 },
-        { id:'engl_l5_5', code:'ENGL 331', name:'الرواية في العصر الفيكتوري', hrs:2 },
-        { id:'engl_l5_6', code:'ENGL 323', name:'النحو', hrs:3 },
-        { id:'engl_l5_7', code:'ENGL 321', name:'علم الأصوات', hrs:3 },
-        { id:'engl_l5_8', code:'ENGL 341', name:'الترجمة التطبيقية', hrs:3 },
-      ]},
-      { level: 6, courses: [
-        { id:'engl_l6_1', code:'ENGL 332', name:'النقد الأدبي', hrs:3 },
-        { id:'engl_l6_2', code:'ENGL 342', name:'الترجمة المتخصصة', hrs:3 },
-        { id:'engl_l6_3', code:'GSE 2',    name:'مقرر متطلب جامعة اختياري (2)', hrs:2 },
-        { id:'engl_l6_4', code:'ENGL 322', name:'علم المعاني', hrs:3 },
-        { id:'engl_l6_5', code:'ENGL 2',   name:'مقرر اختياري برنامج (2)', hrs:2 },
-        { id:'engl_l6_6', code:'ENGL 352', name:'طرق تدريس اللغة الإنجليزية', hrs:2 },
-        { id:'engl_l6_7', code:'ENGL 324', name:'اكتساب اللغة', hrs:3 },
-      ]},
-      { level: 7, courses: [
-        { id:'engl_l7_1', code:'GSE 3',    name:'مقرر متطلب جامعة اختياري (3)', hrs:2 },
-        { id:'engl_l7_2', code:'ENGL 3',   name:'مقرر اختياري برنامج (3)', hrs:2 },
-        { id:'engl_l7_3', code:'ENGL 453', name:'مهارات البحث', hrs:3 },
-        { id:'engl_l7_4', code:'ENGL 435', name:'الأدب المعاصر', hrs:2 },
-        { id:'engl_l7_5', code:'ENGL 433', name:'المسرحية المعاصرة', hrs:2 },
-        { id:'engl_l7_6', code:'ENGL 421', name:'تحليل النص', hrs:3 },
-        { id:'engl_l7_7', code:'ENGL 423', name:'علم اللغة الاجتماعي', hrs:2 },
-        { id:'engl_l7_8', code:'ENGL 431', name:'الأدب المقارن', hrs:2 },
-      ]},
-      { level: 8, courses: [
-        { id:'engl_l8_1', code:'ENGL 492', name:'التدريب التعاوني', hrs:4 },
-      ]},
+    id:'engl', name:'اللغة الإنجليزية والترجمة', icon:'🌐',
+    levels:[
+      {level:1,courses:[{id:'engl_l1_1',code:'ENGL 113',name:'استراتيجيات القراءة',hrs:3},{id:'engl_l1_2',code:'ENGL 115',name:'كتابة الفقرة',hrs:3},{id:'engl_l1_3',code:'ENGL 117',name:'مهارات المحادثة والاستماع',hrs:3},{id:'engl_l1_4',code:'ENGL 111',name:'مقدمة في القواعد',hrs:3},{id:'engl_l1_5',code:'GS 101',name:'دراسات إسلامية: العقيدة والعبادة',hrs:2},{id:'engl_l1_6',code:'ENGL 101',name:'مهارات اللغة الإنجليزية (1)',hrs:2}]},
+      {level:2,courses:[{id:'engl_l2_1',code:'ENGL 102',name:'مهارات اللغة الإنجليزية (2)',hrs:2},{id:'engl_l2_2',code:'GS 104',name:'دراسات إسلامية: القيم والأخلاق',hrs:2},{id:'engl_l2_3',code:'ENGL 112',name:'استخدام القواعد',hrs:3},{id:'engl_l2_4',code:'QRRS 101',name:'القرآن الكريم',hrs:2},{id:'engl_l2_5',code:'ENGL 118',name:'كتابة المقال القصير',hrs:3},{id:'engl_l2_6',code:'ENGL 116',name:'استراتيجيات القراءة المطولة',hrs:3},{id:'engl_l2_7',code:'ENGL 114',name:'مهارات واستراتيجيات التواصل',hrs:3}]},
+      {level:3,courses:[{id:'engl_l3_1',code:'GS 111',name:'مهارات اللغة العربية (1)',hrs:2},{id:'engl_l3_2',code:'ENGL 213',name:'قواعد متقدمة',hrs:3},{id:'engl_l3_3',code:'ENGL 217',name:'كتابة المقال المطول',hrs:3},{id:'engl_l3_4',code:'ENGL 221',name:'مقدمة في اللغويات',hrs:3},{id:'engl_l3_5',code:'ENGL 231',name:'مقدمة في الأدب',hrs:3},{id:'engl_l3_6',code:'ENGL 211',name:'القراءة المتقدمة',hrs:3}]},
+      {level:4,courses:[{id:'engl_l4_1',code:'ENGL 234',name:'المسرحية في العصر الإليزابيثي',hrs:2},{id:'engl_l4_2',code:'ENGL 232',name:'ظهور الرواية',hrs:2},{id:'engl_l4_3',code:'ENGL 222',name:'الصوتيات',hrs:3},{id:'engl_l4_4',code:'ENGL 242',name:'مقدمة في الترجمة',hrs:3},{id:'engl_l4_5',code:'ENGL 212',name:'مهارات التواصل المتقدمة',hrs:3},{id:'engl_l4_6',code:'GS 112',name:'مهارات اللغة العربية (2)',hrs:2},{id:'engl_l4_7',code:'ENGL 236',name:'الشعر',hrs:2},{id:'engl_l4_8',code:'ENGL 224',name:'الصرف',hrs:2}]},
+      {level:5,courses:[{id:'engl_l5_1',code:'FE 1',name:'مقرر اختياري حر',hrs:2},{id:'engl_l5_2',code:'ISLM 335',name:'اتجاهات فكرية معاصرة',hrs:2},{id:'engl_l5_3',code:'GSE 1',name:'مقرر متطلب جامعة اختياري (1)',hrs:2},{id:'engl_l5_4',code:'ENGL 1',name:'مقرر اختياري برنامج (1)',hrs:2},{id:'engl_l5_5',code:'ENGL 331',name:'الرواية في العصر الفيكتوري',hrs:2},{id:'engl_l5_6',code:'ENGL 323',name:'النحو',hrs:3},{id:'engl_l5_7',code:'ENGL 321',name:'علم الأصوات',hrs:3},{id:'engl_l5_8',code:'ENGL 341',name:'الترجمة التطبيقية',hrs:3}]},
+      {level:6,courses:[{id:'engl_l6_1',code:'ENGL 332',name:'النقد الأدبي',hrs:3},{id:'engl_l6_2',code:'ENGL 342',name:'الترجمة المتخصصة',hrs:3},{id:'engl_l6_3',code:'GSE 2',name:'مقرر متطلب جامعة اختياري (2)',hrs:2},{id:'engl_l6_4',code:'ENGL 322',name:'علم المعاني',hrs:3},{id:'engl_l6_5',code:'ENGL 2',name:'مقرر اختياري برنامج (2)',hrs:2},{id:'engl_l6_6',code:'ENGL 352',name:'طرق تدريس اللغة الإنجليزية',hrs:2},{id:'engl_l6_7',code:'ENGL 324',name:'اكتساب اللغة',hrs:3}]},
+      {level:7,courses:[{id:'engl_l7_1',code:'GSE 3',name:'مقرر متطلب جامعة اختياري (3)',hrs:2},{id:'engl_l7_2',code:'ENGL 3',name:'مقرر اختياري برنامج (3)',hrs:2},{id:'engl_l7_3',code:'ENGL 453',name:'مهارات البحث',hrs:3},{id:'engl_l7_4',code:'ENGL 435',name:'الأدب المعاصر',hrs:2},{id:'engl_l7_5',code:'ENGL 433',name:'المسرحية المعاصرة',hrs:2},{id:'engl_l7_6',code:'ENGL 421',name:'تحليل النص',hrs:3},{id:'engl_l7_7',code:'ENGL 423',name:'علم اللغة الاجتماعي',hrs:2},{id:'engl_l7_8',code:'ENGL 431',name:'الأدب المقارن',hrs:2}]},
+      {level:8,courses:[{id:'engl_l8_1',code:'ENGL 492',name:'التدريب التعاوني',hrs:4}]}
     ]
   },
   {
-    id: 'chem',
-    name: 'الكيمياء',
-    icon: '⚗️',
-    levels: [
-      { level: 1, courses: [
-        { id:'chem_l1_1', code:'CHEM 101', name:'كيمياء عامة (1)', hrs:3 },
-        { id:'chem_l1_2', code:'PHYS 105', name:'فيزياء عامة (1)', hrs:3 },
-        { id:'chem_l1_3', code:'GS 101',   name:'دراسات إسلامية: العقيدة والعبادة', hrs:2 },
-        { id:'chem_l1_4', code:'MATH 103', name:'تفاضل وتكامل (1)', hrs:3 },
-        { id:'chem_l1_5', code:'ENG 101',  name:'مهارات اللغة الإنجليزية (1)', hrs:4 },
-        { id:'chem_l1_6', code:'SCI 201',  name:'منهجيات وأخلاقيات العلوم', hrs:1 },
-      ]},
-      { level: 2, courses: [
-        { id:'chem_l2_1', code:'MATH 104', name:'تفاضل وتكامل (2)', hrs:3 },
-        { id:'chem_l2_2', code:'SCI 101',  name:'الأجهزة وسلامة المختبرات', hrs:1 },
-        { id:'chem_l2_3', code:'ENG 102',  name:'مهارات اللغة الإنجليزية (2)', hrs:4 },
-        { id:'chem_l2_4', code:'GS 104',   name:'دراسات إسلامية: القيم والأخلاق', hrs:2 },
-        { id:'chem_l2_5', code:'CHEM 102', name:'كيمياء عامة (2)', hrs:3 },
-        { id:'chem_l2_6', code:'PHYS 141', name:'فيزياء عامة (2)', hrs:3 },
-      ]},
-      { level: 3, courses: [
-        { id:'chem_l3_1', code:'GS 111',   name:'مهارات اللغة العربية (1)', hrs:2 },
-        { id:'chem_l3_2', code:'PHYS 283', name:'عملي فيزياء عامة', hrs:2 },
-        { id:'chem_l3_3', code:'CHEM 203', name:'عملي كيمياء عامة', hrs:2 },
-        { id:'chem_l3_4', code:'MATH 201', name:'تفاضل وتكامل (3)', hrs:3 },
-        { id:'chem_l3_5', code:'CHEM 221', name:'كيمياء غير عضوية (1)', hrs:3 },
-        { id:'chem_l3_6', code:'CHEM 211', name:'كيمياء عضوية (1)', hrs:3 },
-        { id:'chem_l3_7', code:'FE 1',     name:'مقرر اختياري حر', hrs:2 },
-      ]},
-      { level: 4, courses: [
-        { id:'chem_l4_1', code:'CHEM 212', name:'عملي كيمياء عضوية (1)', hrs:2 },
-        { id:'chem_l4_2', code:'MATH 208', name:'مقدمة في المعادلات التفاضلية', hrs:3 },
-        { id:'chem_l4_3', code:'CHEM 231', name:'أساسيات الكيمياء التحليلية', hrs:3 },
-        { id:'chem_l4_4', code:'CHEM 241', name:'كيمياء فيزيائية (1)', hrs:3 },
-        { id:'chem_l4_5', code:'GS 112',   name:'مهارات اللغة العربية (2)', hrs:2 },
-        { id:'chem_l4_6', code:'STAT 101', name:'مقدمة في الإحصاء', hrs:3 },
-        { id:'chem_l4_7', code:'ENGL 204', name:'الكتابة الأكاديمية ومهارات العرض', hrs:1 },
-      ]},
-      { level: 5, courses: [
-        { id:'chem_l5_1', code:'GSE 1',    name:'مقرر متطلب جامعة اختياري (1)', hrs:2 },
-        { id:'chem_l5_2', code:'CHEM 332', name:'عملي كيمياء تحليلية (1)', hrs:2 },
-        { id:'chem_l5_3', code:'CHEM 342', name:'كيمياء فيزيائية (2)', hrs:3 },
-        { id:'chem_l5_4', code:'CHEM 333', name:'تحليل آلي', hrs:4 },
-        { id:'chem_l5_5', code:'CHEM 322', name:'كيمياء غير عضوية (2)', hrs:3 },
-        { id:'chem_l5_6', code:'CHEM 313', name:'كيمياء عضوية (2)', hrs:3 },
-      ]},
-      { level: 6, courses: [
-        { id:'chem_l6_1', code:'CHEM 343', name:'كيمياء الكم', hrs:3 },
-        { id:'chem_l6_2', code:'CHEM 324', name:'كيمياء غير عضوية (3)', hrs:3 },
-        { id:'chem_l6_3', code:'CHEM 314', name:'أطياف المركبات العضوية', hrs:3 },
-        { id:'chem_l6_4', code:'GSE 2',    name:'مقرر متطلب جامعة اختياري (2)', hrs:2 },
-        { id:'chem_l6_5', code:'CHEM 323', name:'عملي كيمياء غير عضوية (1)', hrs:2 },
-        { id:'chem_l6_6', code:'CS 105',   name:'برمجة الحاسب للعلوم الطبيعية', hrs:3 },
-      ]},
-      { level: 7, courses: [
-        { id:'chem_l7_1', code:'CHEM 446', name:'كيمياء السطوح', hrs:2 },
-        { id:'chem_l7_2', code:'CHEM 434', name:'تقنيات الفصل والكروماتوغرافيا', hrs:2 },
-        { id:'chem_l7_3', code:'CHEM 1',   name:'مقرر اختياري برنامج (1)', hrs:2 },
-        { id:'chem_l7_4', code:'GSE 3',    name:'مقرر متطلب جامعة اختياري (3)', hrs:2 },
-        { id:'chem_l7_5', code:'CHEM 445', name:'كيمياء حاسوبية', hrs:2 },
-        { id:'chem_l7_6', code:'CHEM 2',   name:'مقرر اختياري برنامج (2)', hrs:2 },
-        { id:'chem_l7_7', code:'CHEM 444', name:'عملي كيمياء فيزيائية (1)', hrs:2 },
-        { id:'chem_l7_8', code:'CHEM 415', name:'عملي كيمياء عضوية (2)', hrs:2 },
-      ]},
-      { level: 8, courses: [
-        { id:'chem_l8_1', code:'CHEM 416', name:'كيمياء عضوية (3)', hrs:3 },
-        { id:'chem_l8_2', code:'CHEM 425', name:'عملي كيمياء غير عضوية (2)', hrs:2 },
-        { id:'chem_l8_3', code:'CHEM 492', name:'مشروع التخرج', hrs:3 },
-        { id:'chem_l8_4', code:'CHEM 4',   name:'مقرر اختياري برنامج (4)', hrs:2 },
-        { id:'chem_l8_5', code:'CHEM 435', name:'عملي كيمياء تحليلية (2)', hrs:2 },
-        { id:'chem_l8_6', code:'CHEM 447', name:'عملي كيمياء فيزيائية (2)', hrs:2 },
-        { id:'chem_l8_7', code:'CHEM 3',   name:'مقرر اختياري برنامج (3)', hrs:2 },
-      ]},
-      { level: 9, courses: [
-        { id:'chem_l9_1', code:'CHEM 495', name:'التدريب التعاوني', hrs:3 },
-      ]},
+    id:'chem', name:'الكيمياء', icon:'⚗️',
+    levels:[
+      {level:1,courses:[{id:'chem_l1_1',code:'CHEM 101',name:'كيمياء عامة (1)',hrs:3},{id:'chem_l1_2',code:'PHYS 105',name:'فيزياء عامة (1)',hrs:3},{id:'chem_l1_3',code:'GS 101',name:'دراسات إسلامية: العقيدة والعبادة',hrs:2},{id:'chem_l1_4',code:'MATH 103',name:'تفاضل وتكامل (1)',hrs:3},{id:'chem_l1_5',code:'ENG 101',name:'مهارات اللغة الإنجليزية (1)',hrs:4},{id:'chem_l1_6',code:'SCI 201',name:'منهجيات وأخلاقيات العلوم',hrs:1}]},
+      {level:2,courses:[{id:'chem_l2_1',code:'MATH 104',name:'تفاضل وتكامل (2)',hrs:3},{id:'chem_l2_2',code:'SCI 101',name:'الأجهزة وسلامة المختبرات',hrs:1},{id:'chem_l2_3',code:'ENG 102',name:'مهارات اللغة الإنجليزية (2)',hrs:4},{id:'chem_l2_4',code:'GS 104',name:'دراسات إسلامية: القيم والأخلاق',hrs:2},{id:'chem_l2_5',code:'CHEM 102',name:'كيمياء عامة (2)',hrs:3},{id:'chem_l2_6',code:'PHYS 141',name:'فيزياء عامة (2)',hrs:3}]},
+      {level:3,courses:[{id:'chem_l3_1',code:'GS 111',name:'مهارات اللغة العربية (1)',hrs:2},{id:'chem_l3_2',code:'PHYS 283',name:'عملي فيزياء عامة',hrs:2},{id:'chem_l3_3',code:'CHEM 203',name:'عملي كيمياء عامة',hrs:2},{id:'chem_l3_4',code:'MATH 201',name:'تفاضل وتكامل (3)',hrs:3},{id:'chem_l3_5',code:'CHEM 221',name:'كيمياء غير عضوية (1)',hrs:3},{id:'chem_l3_6',code:'CHEM 211',name:'كيمياء عضوية (1)',hrs:3},{id:'chem_l3_7',code:'FE 1',name:'مقرر اختياري حر',hrs:2}]},
+      {level:4,courses:[{id:'chem_l4_1',code:'CHEM 212',name:'عملي كيمياء عضوية (1)',hrs:2},{id:'chem_l4_2',code:'MATH 208',name:'مقدمة في المعادلات التفاضلية',hrs:3},{id:'chem_l4_3',code:'CHEM 231',name:'أساسيات الكيمياء التحليلية',hrs:3},{id:'chem_l4_4',code:'CHEM 241',name:'كيمياء فيزيائية (1)',hrs:3},{id:'chem_l4_5',code:'GS 112',name:'مهارات اللغة العربية (2)',hrs:2},{id:'chem_l4_6',code:'STAT 101',name:'مقدمة في الإحصاء',hrs:3},{id:'chem_l4_7',code:'ENGL 204',name:'الكتابة الأكاديمية ومهارات العرض',hrs:1}]},
+      {level:5,courses:[{id:'chem_l5_1',code:'GSE 1',name:'مقرر متطلب جامعة اختياري (1)',hrs:2},{id:'chem_l5_2',code:'CHEM 332',name:'عملي كيمياء تحليلية (1)',hrs:2},{id:'chem_l5_3',code:'CHEM 342',name:'كيمياء فيزيائية (2)',hrs:3},{id:'chem_l5_4',code:'CHEM 333',name:'تحليل آلي',hrs:4},{id:'chem_l5_5',code:'CHEM 322',name:'كيمياء غير عضوية (2)',hrs:3},{id:'chem_l5_6',code:'CHEM 313',name:'كيمياء عضوية (2)',hrs:3}]},
+      {level:6,courses:[{id:'chem_l6_1',code:'CHEM 343',name:'كيمياء الكم',hrs:3},{id:'chem_l6_2',code:'CHEM 324',name:'كيمياء غير عضوية (3)',hrs:3},{id:'chem_l6_3',code:'CHEM 314',name:'أطياف المركبات العضوية',hrs:3},{id:'chem_l6_4',code:'GSE 2',name:'مقرر متطلب جامعة اختياري (2)',hrs:2},{id:'chem_l6_5',code:'CHEM 323',name:'عملي كيمياء غير عضوية (1)',hrs:2},{id:'chem_l6_6',code:'CS 105',name:'برمجة الحاسب للعلوم الطبيعية',hrs:3}]},
+      {level:7,courses:[{id:'chem_l7_1',code:'CHEM 446',name:'كيمياء السطوح',hrs:2},{id:'chem_l7_2',code:'CHEM 434',name:'تقنيات الفصل والكروماتوغرافيا',hrs:2},{id:'chem_l7_3',code:'CHEM 1',name:'مقرر اختياري برنامج (1)',hrs:2},{id:'chem_l7_4',code:'GSE 3',name:'مقرر متطلب جامعة اختياري (3)',hrs:2},{id:'chem_l7_5',code:'CHEM 445',name:'كيمياء حاسوبية',hrs:2},{id:'chem_l7_6',code:'CHEM 2',name:'مقرر اختياري برنامج (2)',hrs:2},{id:'chem_l7_7',code:'CHEM 444',name:'عملي كيمياء فيزيائية (1)',hrs:2},{id:'chem_l7_8',code:'CHEM 415',name:'عملي كيمياء عضوية (2)',hrs:2}]},
+      {level:8,courses:[{id:'chem_l8_1',code:'CHEM 416',name:'كيمياء عضوية (3)',hrs:3},{id:'chem_l8_2',code:'CHEM 425',name:'عملي كيمياء غير عضوية (2)',hrs:2},{id:'chem_l8_3',code:'CHEM 492',name:'مشروع التخرج',hrs:3},{id:'chem_l8_4',code:'CHEM 4',name:'مقرر اختياري برنامج (4)',hrs:2},{id:'chem_l8_5',code:'CHEM 435',name:'عملي كيمياء تحليلية (2)',hrs:2},{id:'chem_l8_6',code:'CHEM 447',name:'عملي كيمياء فيزيائية (2)',hrs:2},{id:'chem_l8_7',code:'CHEM 3',name:'مقرر اختياري برنامج (3)',hrs:2}]},
+      {level:9,courses:[{id:'chem_l9_1',code:'CHEM 495',name:'التدريب التعاوني',hrs:3}]}
     ]
   },
   {
-    id: 'phys',
-    name: 'الفيزياء وتقنيات الطاقة',
-    icon: '⚡',
-    levels: [
-      { level: 1, courses: [
-        { id:'phys_l1_1', code:'STAT 101', name:'مقدمة في الإحصاء', hrs:3 },
-        { id:'phys_l1_2', code:'ENG 101',  name:'مهارات اللغة الإنجليزية (1)', hrs:4 },
-        { id:'phys_l1_3', code:'GS 101',   name:'دراسات إسلامية: العقيدة والعبادة', hrs:2 },
-        { id:'phys_l1_4', code:'MATH 111', name:'رياضيات (1)', hrs:3 },
-        { id:'phys_l1_5', code:'PHYS 109', name:'فيزياء عامة', hrs:3 },
-      ]},
-      { level: 2, courses: [
-        { id:'phys_l2_1', code:'ENG 102',  name:'مهارات اللغة الإنجليزية (2)', hrs:4 },
-        { id:'phys_l2_2', code:'GS 104',   name:'دراسات إسلامية: القيم والأخلاق', hrs:2 },
-        { id:'phys_l2_3', code:'MATH 112', name:'رياضيات (2)', hrs:3 },
-        { id:'phys_l2_4', code:'MATH 142', name:'أسس الرياضيات', hrs:3 },
-        { id:'phys_l2_5', code:'MATH 144', name:'التوافقيات', hrs:2 },
-      ]},
-      { level: 3, courses: [
-        { id:'phys_l3_1', code:'GS 111',   name:'مهارات اللغة العربية (1)', hrs:2 },
-        { id:'phys_l3_2', code:'SCI 101',  name:'الأجهزة وسلامة المختبرات', hrs:1 },
-        { id:'phys_l3_3', code:'MATH 271', name:'هندسة تحليلية', hrs:3 },
-        { id:'phys_l3_4', code:'MATH 243', name:'نظرية الإعداد', hrs:3 },
-        { id:'phys_l3_5', code:'MATH 241', name:'جبر خطي (1)', hrs:3 },
-        { id:'phys_l3_6', code:'MATH 221', name:'حساب التفاضل', hrs:3 },
-        { id:'phys_l3_7', code:'SCI 201',  name:'منهجيات وأخلاقيات العلوم', hrs:1 },
-      ]},
-      { level: 4, courses: [
-        { id:'phys_l4_1', code:'GS 112',   name:'مهارات اللغة العربية (2)', hrs:2 },
-        { id:'phys_l4_2', code:'MATH 303', name:'مقدمة في المعادلات التفاضلية', hrs:2 },
-        { id:'phys_l4_3', code:'PHTE 212', name:'الفيزياء الرياضية', hrs:2 },
-        { id:'phys_l4_4', code:'PHTE 252', name:'علم المواد (1)', hrs:3 },
-        { id:'phys_l4_5', code:'CHEM 243', name:'الكيمياء الكهربائية', hrs:2 },
-        { id:'phys_l4_6', code:'PHTE 284', name:'معمل الكهرباء والمغناطيسية', hrs:1 },
-        { id:'phys_l4_7', code:'PHTE 282', name:'معمل الموجات والبصريات', hrs:1 },
-        { id:'phys_l4_8', code:'PHTE 272', name:'مقدمة في الطاقة المتجددة', hrs:2 },
-        { id:'phys_l4_9', code:'PHTE 222', name:'الديناميكا الحرارية لأنظمة تحويل الطاقة', hrs:2 },
-      ]},
-      { level: 5, courses: [
-        { id:'phys_l5_1', code:'PHTE 343', name:'فيزياء الدوائر الكهربائية', hrs:3 },
-        { id:'phys_l5_2', code:'GSE 1',    name:'مقرر متطلب جامعة اختياري (1)', hrs:2 },
-        { id:'phys_l5_3', code:'PHTE 353', name:'فيزياء أشباه الموصلات والخلايا الشمسية', hrs:3 },
-        { id:'phys_l5_4', code:'PHTE 1',   name:'مقرر اختياري برنامج (1)', hrs:2 },
-        { id:'phys_l5_5', code:'CHEM 348', name:'تقنيات تخزين الطاقة والبطاريات', hrs:3 },
-        { id:'phys_l5_6', code:'CHEM 347', name:'خلية الوقود وإنتاج الهيدروجين', hrs:3 },
-        { id:'phys_l5_7', code:'PHTE 385', name:'معمل علم المواد', hrs:1 },
-        { id:'phys_l5_8', code:'PHTE 383', name:'معمل فيزياء أشباه الموصلات والخلايا الشمسية', hrs:1 },
-      ]},
-      { level: 6, courses: [
-        { id:'phys_l6_1', code:'PHTE 345', name:'مقدمة في الديناميكا الكهربائية', hrs:2 },
-        { id:'phys_l6_2', code:'PHTE 316', name:'مقدمة في الفيزياء الإحصائية', hrs:2 },
-        { id:'phys_l6_3', code:'PHTE 314', name:'ميكانيكا الكم', hrs:3 },
-        { id:'phys_l6_4', code:'GSE 2',    name:'مقرر متطلب جامعة اختياري (2)', hrs:2 },
-        { id:'phys_l6_5', code:'PHTE 374', name:'الطاقة الحرارية الأرضية', hrs:2 },
-        { id:'phys_l6_6', code:'BIOL 305', name:'مقدمة في الطاقة الحيوية', hrs:2 },
-        { id:'phys_l6_7', code:'CS 311',   name:'البرمجة للفيزيائيين', hrs:3 },
-        { id:'phys_l6_8', code:'PHTE 2',   name:'مقرر اختياري برنامج (2)', hrs:2 },
-      ]},
-      { level: 7, courses: [
-        { id:'phys_l7_1', code:'PHTE 453', name:'علم المواد (2)', hrs:3 },
-        { id:'phys_l7_2', code:'PHTE 443', name:'الكترونيات (1)', hrs:3 },
-        { id:'phys_l7_3', code:'SCI 201',  name:'منهجيات وأخلاقيات العلوم', hrs:1 },
-        { id:'phys_l7_4', code:'GSE 3',    name:'مقرر متطلب جامعة اختياري (3)', hrs:2 },
-        { id:'phys_l7_5', code:'PHTE 455', name:'تقنيات صناعة الخلايا الشمسية', hrs:3 },
-        { id:'phys_l7_6', code:'PHTE 4',   name:'مقرر اختياري برنامج (4)', hrs:2 },
-        { id:'phys_l7_7', code:'PHTE 3',   name:'مقرر اختياري برنامج (3)', hrs:2 },
-        { id:'phys_l7_8', code:'PHTE 487', name:'معمل محاكاة المواد', hrs:1 },
-      ]},
-      { level: 8, courses: [
-        { id:'phys_l8_1', code:'FE 2',     name:'مقرر اختياري حر (2)', hrs:2 },
-        { id:'phys_l8_2', code:'PHTE 432', name:'فيزياء نووية', hrs:2 },
-        { id:'phys_l8_3', code:'PHTE 402', name:'قوانين وأصول أسواق الطاقة', hrs:1 },
-        { id:'phys_l8_4', code:'PHTE 492', name:'مشروع التخرج', hrs:3 },
-        { id:'phys_l8_5', code:'PHTE 488', name:'معمل الإلكترونيات', hrs:1 },
-        { id:'phys_l8_6', code:'PHTE 474', name:'فيزياء الطاقة الحرارية الشمسية', hrs:3 },
-        { id:'phys_l8_7', code:'PHTE 476', name:'الطاقة الكهروضوئية وتطبيقاتها', hrs:2 },
-        { id:'phys_l8_8', code:'PHTE 478', name:'فيزياء وتقنية طاقة الرياح', hrs:2 },
-      ]},
-      { level: 9, courses: [
-        { id:'phys_l9_1', code:'PHTE 493', name:'تدريب تعاوني', hrs:3 },
-      ]},
+    id:'phys', name:'الفيزياء وتقنيات الطاقة', icon:'⚡',
+    levels:[
+      {level:1,courses:[{id:'phys_l1_1',code:'STAT 101',name:'مقدمة في الإحصاء',hrs:3},{id:'phys_l1_2',code:'ENG 101',name:'مهارات اللغة الإنجليزية (1)',hrs:4},{id:'phys_l1_3',code:'GS 101',name:'دراسات إسلامية: العقيدة والعبادة',hrs:2},{id:'phys_l1_4',code:'MATH 111',name:'رياضيات (1)',hrs:3},{id:'phys_l1_5',code:'PHYS 109',name:'فيزياء عامة',hrs:3}]},
+      {level:2,courses:[{id:'phys_l2_1',code:'ENG 102',name:'مهارات اللغة الإنجليزية (2)',hrs:4},{id:'phys_l2_2',code:'GS 104',name:'دراسات إسلامية: القيم والأخلاق',hrs:2},{id:'phys_l2_3',code:'MATH 112',name:'رياضيات (2)',hrs:3},{id:'phys_l2_4',code:'MATH 142',name:'أسس الرياضيات',hrs:3},{id:'phys_l2_5',code:'MATH 144',name:'التوافقيات',hrs:2}]},
+      {level:3,courses:[{id:'phys_l3_1',code:'GS 111',name:'مهارات اللغة العربية (1)',hrs:2},{id:'phys_l3_2',code:'SCI 101',name:'الأجهزة وسلامة المختبرات',hrs:1},{id:'phys_l3_3',code:'MATH 271',name:'هندسة تحليلية',hrs:3},{id:'phys_l3_4',code:'MATH 243',name:'نظرية الإعداد',hrs:3},{id:'phys_l3_5',code:'MATH 241',name:'جبر خطي (1)',hrs:3},{id:'phys_l3_6',code:'MATH 221',name:'حساب التفاضل',hrs:3},{id:'phys_l3_7',code:'SCI 201',name:'منهجيات وأخلاقيات العلوم',hrs:1}]},
+      {level:4,courses:[{id:'phys_l4_1',code:'GS 112',name:'مهارات اللغة العربية (2)',hrs:2},{id:'phys_l4_2',code:'MATH 303',name:'مقدمة في المعادلات التفاضلية',hrs:2},{id:'phys_l4_3',code:'PHTE 212',name:'الفيزياء الرياضية',hrs:2},{id:'phys_l4_4',code:'PHTE 252',name:'علم المواد (1)',hrs:3},{id:'phys_l4_5',code:'CHEM 243',name:'الكيمياء الكهربائية',hrs:2},{id:'phys_l4_6',code:'PHTE 284',name:'معمل الكهرباء والمغناطيسية',hrs:1},{id:'phys_l4_7',code:'PHTE 282',name:'معمل الموجات والبصريات',hrs:1},{id:'phys_l4_8',code:'PHTE 272',name:'مقدمة في الطاقة المتجددة',hrs:2},{id:'phys_l4_9',code:'PHTE 222',name:'الديناميكا الحرارية لأنظمة تحويل الطاقة',hrs:2}]},
+      {level:5,courses:[{id:'phys_l5_1',code:'PHTE 343',name:'فيزياء الدوائر الكهربائية',hrs:3},{id:'phys_l5_2',code:'GSE 1',name:'مقرر متطلب جامعة اختياري (1)',hrs:2},{id:'phys_l5_3',code:'PHTE 353',name:'فيزياء أشباه الموصلات والخلايا الشمسية',hrs:3},{id:'phys_l5_4',code:'PHTE 1',name:'مقرر اختياري برنامج (1)',hrs:2},{id:'phys_l5_5',code:'CHEM 348',name:'تقنيات تخزين الطاقة والبطاريات',hrs:3},{id:'phys_l5_6',code:'CHEM 347',name:'خلية الوقود وإنتاج الهيدروجين',hrs:3},{id:'phys_l5_7',code:'PHTE 385',name:'معمل علم المواد',hrs:1},{id:'phys_l5_8',code:'PHTE 383',name:'معمل فيزياء أشباه الموصلات والخلايا الشمسية',hrs:1}]},
+      {level:6,courses:[{id:'phys_l6_1',code:'PHTE 345',name:'مقدمة في الديناميكا الكهربائية',hrs:2},{id:'phys_l6_2',code:'PHTE 316',name:'مقدمة في الفيزياء الإحصائية',hrs:2},{id:'phys_l6_3',code:'PHTE 314',name:'ميكانيكا الكم',hrs:3},{id:'phys_l6_4',code:'GSE 2',name:'مقرر متطلب جامعة اختياري (2)',hrs:2},{id:'phys_l6_5',code:'PHTE 374',name:'الطاقة الحرارية الأرضية',hrs:2},{id:'phys_l6_6',code:'BIOL 305',name:'مقدمة في الطاقة الحيوية',hrs:2},{id:'phys_l6_7',code:'CS 311',name:'البرمجة للفيزيائيين',hrs:3},{id:'phys_l6_8',code:'PHTE 2',name:'مقرر اختياري برنامج (2)',hrs:2}]},
+      {level:7,courses:[{id:'phys_l7_1',code:'PHTE 453',name:'علم المواد (2)',hrs:3},{id:'phys_l7_2',code:'PHTE 443',name:'الكترونيات (1)',hrs:3},{id:'phys_l7_3',code:'SCI 201',name:'منهجيات وأخلاقيات العلوم',hrs:1},{id:'phys_l7_4',code:'GSE 3',name:'مقرر متطلب جامعة اختياري (3)',hrs:2},{id:'phys_l7_5',code:'PHTE 455',name:'تقنيات صناعة الخلايا الشمسية',hrs:3},{id:'phys_l7_6',code:'PHTE 4',name:'مقرر اختياري برنامج (4)',hrs:2},{id:'phys_l7_7',code:'PHTE 3',name:'مقرر اختياري برنامج (3)',hrs:2},{id:'phys_l7_8',code:'PHTE 487',name:'معمل محاكاة المواد',hrs:1}]},
+      {level:8,courses:[{id:'phys_l8_1',code:'FE 2',name:'مقرر اختياري حر (2)',hrs:2},{id:'phys_l8_2',code:'PHTE 432',name:'فيزياء نووية',hrs:2},{id:'phys_l8_3',code:'PHTE 402',name:'قوانين وأصول أسواق الطاقة',hrs:1},{id:'phys_l8_4',code:'PHTE 492',name:'مشروع التخرج',hrs:3},{id:'phys_l8_5',code:'PHTE 488',name:'معمل الإلكترونيات',hrs:1},{id:'phys_l8_6',code:'PHTE 474',name:'فيزياء الطاقة الحرارية الشمسية',hrs:3},{id:'phys_l8_7',code:'PHTE 476',name:'الطاقة الكهروضوئية وتطبيقاتها',hrs:2},{id:'phys_l8_8',code:'PHTE 478',name:'فيزياء وتقنية طاقة الرياح',hrs:2}]},
+      {level:9,courses:[{id:'phys_l9_1',code:'PHTE 493',name:'تدريب تعاوني',hrs:3}]}
     ]
   },
   {
-    id: 'biol',
-    name: 'الأحياء',
-    icon: '🧬',
-    levels: [
-      { level: 1, courses: [
-        { id:'biol_l1_1', code:'BIOL 101', name:'مقدمة في الأحياء', hrs:3 },
-        { id:'biol_l1_2', code:'MATH 101', name:'مقدمة في علم الرياضيات', hrs:3 },
-        { id:'biol_l1_3', code:'CHEM 101', name:'مقدمة في علم الكيمياء', hrs:3 },
-        { id:'biol_l1_4', code:'GS 111',   name:'مهارات اللغة العربية (1)', hrs:2 },
-        { id:'biol_l1_5', code:'GS 101',   name:'دراسات إسلامية: العقيدة والعبادة', hrs:2 },
-        { id:'biol_l1_6', code:'ENG 101',  name:'مهارات اللغة الإنجليزية (1)', hrs:4 },
-      ]},
-      { level: 2, courses: [
-        { id:'biol_l2_1', code:'BIOL 110', name:'الأحياء العامة (2)', hrs:3 },
-        { id:'biol_l2_2', code:'BIOL 111', name:'الأحياء العامة العملي', hrs:1 },
-        { id:'biol_l2_3', code:'PHYS 101', name:'مقدمة في الفيزياء', hrs:3 },
-        { id:'biol_l2_4', code:'GS 102',   name:'دراسات إسلامية: ملامح من السيرة النبوية', hrs:2 },
-        { id:'biol_l2_5', code:'GS 112',   name:'مهارات اللغة العربية (2)', hrs:2 },
-        { id:'biol_l2_6', code:'ENG 102',  name:'مهارات اللغة الإنجليزية (2)', hrs:4 },
-      ]},
-      { level: 3, courses: [
-        { id:'biol_l3_1', code:'ENGL 210', name:'مصطلحات علمية في اللغة الإنجليزية', hrs:1 },
-        { id:'biol_l3_2', code:'BIOM 221', name:'أحياء دقيقة عامة', hrs:3 },
-        { id:'biol_l3_3', code:'BIOB 231', name:'نبات عام', hrs:3 },
-        { id:'biol_l3_4', code:'BIOZ 241', name:'حيوان عام', hrs:3 },
-        { id:'biol_l3_5', code:'CHEM 210', name:'كيمياء عضوية', hrs:3 },
-        { id:'biol_l3_6', code:'PHYS 107', name:'فيزياء حيوية', hrs:3 },
-        { id:'biol_l3_7', code:'FE 1',     name:'مقرر اختياري حر', hrs:2 },
-      ]},
-      { level: 4, courses: [
-        { id:'biol_l4_1', code:'BIOM 224', name:'فطريات', hrs:2 },
-        { id:'biol_l4_2', code:'BIOL 212', name:'بيولوجيا الخلية', hrs:2 },
-        { id:'biol_l4_3', code:'BIOL 214', name:'أنظمة حيوية', hrs:3 },
-        { id:'biol_l4_4', code:'CHEM 250', name:'كيمياء حيوية', hrs:3 },
-        { id:'biol_l4_5', code:'STAT 101', name:'مقدمة في الإحصاء', hrs:3 },
-        { id:'biol_l4_6', code:'SCI 101',  name:'أجهزة وسلامة مختبرات', hrs:1 },
-        { id:'biol_l4_7', code:'GSE 1',    name:'متطلب جامعة اختياري', hrs:2 },
-      ]},
-      { level: 5, courses: [
-        { id:'biol_l5_1', code:'BIOL 311', name:'أساسيات الوراثة', hrs:2 },
-        { id:'biol_l5_2', code:'BIOL 315', name:'مقدمة في العلوم البيئية', hrs:3 },
-        { id:'biol_l5_3', code:'BIOM 321', name:'علم البكتريا', hrs:3 },
-        { id:'biol_l5_4', code:'BIOB 333', name:'علم الطحالب', hrs:2 },
-        { id:'biol_l5_5', code:'BIOZ 342', name:'فسيولوجيا الحيوان', hrs:3 },
-        { id:'biol_l5_6', code:'SCI 210',  name:'منهجيات واخلاقيات العلوم', hrs:1 },
-        { id:'biol_l5_7', code:'GSE 2',    name:'متطلب جامعة اختياري 2', hrs:2 },
-      ]},
-      { level: 6, courses: [
-        { id:'biol_l6_1', code:'BIOL 312', name:'بيولوجيا جزيئية', hrs:3 },
-        { id:'biol_l6_2', code:'BIOL 314', name:'احصاء حيوي وتصميم تجارب', hrs:3 },
-        { id:'biol_l6_3', code:'BIOZ 343', name:'سلوك حيوان', hrs:2 },
-        { id:'biol_l6_4', code:'BIOZ 344', name:'حبليات', hrs:2 },
-        { id:'biol_l6_5', code:'BIOZ 316', name:'بيئة بحرية', hrs:2 },
-        { id:'biol_l6_6', code:'BIOL 318', name:'تنوع حيوي', hrs:2 },
-      ]},
-      { level: 7, courses: [
-        { id:'biol_l7_1', code:'BIOM 421', name:'فيروسات', hrs:2 },
-        { id:'biol_l7_2', code:'BIOB 431', name:'تصنيف نباتات زهرية', hrs:3 },
-        { id:'biol_l7_3', code:'BIOL 411', name:'علم الجينوم', hrs:2 },
-        { id:'biol_l7_4', code:'BIOL 412', name:'علم الجينات الجزيئية', hrs:3 },
-        { id:'biol_l7_5', code:'BIOM 445', name:'علم المناعة', hrs:3 },
-        { id:'biol_l7_6', code:'BIOM 446', name:'علم المناعة العملي', hrs:1 },
-        { id:'biol_l7_7', code:'BIOZ 448', name:'لافقاريات', hrs:2 },
-      ]},
-      { level: 8, courses: [
-        { id:'biol_l8_1', code:'BIOB 434', name:'أيض نبات', hrs:2 },
-        { id:'biol_l8_2', code:'BIOB 435', name:'الاجهاد النباتي البيئي', hrs:2 },
-        { id:'biol_l8_3', code:'BIOB 438', name:'التقنية الحيوية النباتية', hrs:3 },
-        { id:'biol_l8_4', code:'BIOB 432', name:'فلورا المملكة العربية السعودية', hrs:2 },
-        { id:'biol_l8_5', code:'BIOL 1',   name:'اختياري برنامج (1)', hrs:1 },
-        { id:'biol_l8_6', code:'BIOZ 414', name:'التطور الحيوي', hrs:2 },
-        { id:'biol_l8_7', code:'BIOL 492', name:'مشروع التخرج', hrs:3 },
-        { id:'biol_l8_8', code:'GSE 3',    name:'اختياري جامعة (3)', hrs:2 },
-      ]},
-      { level: 9, courses: [
-        { id:'biol_l9_1', code:'BIOL 499', name:'التدريب التعاوني', hrs:6 },
-      ]},
+    id:'biol', name:'الأحياء', icon:'🧬',
+    levels:[
+      {level:1,courses:[{id:'biol_l1_1',code:'BIOL 101',name:'مقدمة في الأحياء',hrs:3},{id:'biol_l1_2',code:'MATH 101',name:'مقدمة في علم الرياضيات',hrs:3},{id:'biol_l1_3',code:'CHEM 101',name:'مقدمة في علم الكيمياء',hrs:3},{id:'biol_l1_4',code:'GS 111',name:'مهارات اللغة العربية (1)',hrs:2},{id:'biol_l1_5',code:'GS 101',name:'دراسات إسلامية: العقيدة والعبادة',hrs:2},{id:'biol_l1_6',code:'ENG 101',name:'مهارات اللغة الإنجليزية (1)',hrs:4}]},
+      {level:2,courses:[{id:'biol_l2_1',code:'BIOL 110',name:'الأحياء العامة (2)',hrs:3},{id:'biol_l2_2',code:'BIOL 111',name:'الأحياء العامة العملي',hrs:1},{id:'biol_l2_3',code:'PHYS 101',name:'مقدمة في الفيزياء',hrs:3},{id:'biol_l2_4',code:'GS 102',name:'دراسات إسلامية: ملامح من السيرة النبوية',hrs:2},{id:'biol_l2_5',code:'GS 112',name:'مهارات اللغة العربية (2)',hrs:2},{id:'biol_l2_6',code:'ENG 102',name:'مهارات اللغة الإنجليزية (2)',hrs:4}]},
+      {level:3,courses:[{id:'biol_l3_1',code:'ENGL 210',name:'مصطلحات علمية في اللغة الإنجليزية',hrs:1},{id:'biol_l3_2',code:'BIOM 221',name:'أحياء دقيقة عامة',hrs:3},{id:'biol_l3_3',code:'BIOB 231',name:'نبات عام',hrs:3},{id:'biol_l3_4',code:'BIOZ 241',name:'حيوان عام',hrs:3},{id:'biol_l3_5',code:'CHEM 210',name:'كيمياء عضوية',hrs:3},{id:'biol_l3_6',code:'PHYS 107',name:'فيزياء حيوية',hrs:3},{id:'biol_l3_7',code:'FE 1',name:'مقرر اختياري حر',hrs:2}]},
+      {level:4,courses:[{id:'biol_l4_1',code:'BIOM 224',name:'فطريات',hrs:2},{id:'biol_l4_2',code:'BIOL 212',name:'بيولوجيا الخلية',hrs:2},{id:'biol_l4_3',code:'BIOL 214',name:'أنظمة حيوية',hrs:3},{id:'biol_l4_4',code:'CHEM 250',name:'كيمياء حيوية',hrs:3},{id:'biol_l4_5',code:'STAT 101',name:'مقدمة في الإحصاء',hrs:3},{id:'biol_l4_6',code:'SCI 101',name:'أجهزة وسلامة مختبرات',hrs:1},{id:'biol_l4_7',code:'GSE 1',name:'متطلب جامعة اختياري',hrs:2}]},
+      {level:5,courses:[{id:'biol_l5_1',code:'BIOL 311',name:'أساسيات الوراثة',hrs:2},{id:'biol_l5_2',code:'BIOL 315',name:'مقدمة في العلوم البيئية',hrs:3},{id:'biol_l5_3',code:'BIOM 321',name:'علم البكتريا',hrs:3},{id:'biol_l5_4',code:'BIOB 333',name:'علم الطحالب',hrs:2},{id:'biol_l5_5',code:'BIOZ 342',name:'فسيولوجيا الحيوان',hrs:3},{id:'biol_l5_6',code:'SCI 210',name:'منهجيات واخلاقيات العلوم',hrs:1},{id:'biol_l5_7',code:'GSE 2',name:'متطلب جامعة اختياري 2',hrs:2}]},
+      {level:6,courses:[{id:'biol_l6_1',code:'BIOL 312',name:'بيولوجيا جزيئية',hrs:3},{id:'biol_l6_2',code:'BIOL 314',name:'احصاء حيوي وتصميم تجارب',hrs:3},{id:'biol_l6_3',code:'BIOZ 343',name:'سلوك حيوان',hrs:2},{id:'biol_l6_4',code:'BIOZ 344',name:'حبليات',hrs:2},{id:'biol_l6_5',code:'BIOZ 316',name:'بيئة بحرية',hrs:2},{id:'biol_l6_6',code:'BIOL 318',name:'تنوع حيوي',hrs:2}]},
+      {level:7,courses:[{id:'biol_l7_1',code:'BIOM 421',name:'فيروسات',hrs:2},{id:'biol_l7_2',code:'BIOB 431',name:'تصنيف نباتات زهرية',hrs:3},{id:'biol_l7_3',code:'BIOL 411',name:'علم الجينوم',hrs:2},{id:'biol_l7_4',code:'BIOL 412',name:'علم الجينات الجزيئية',hrs:3},{id:'biol_l7_5',code:'BIOM 445',name:'علم المناعة',hrs:3},{id:'biol_l7_6',code:'BIOM 446',name:'علم المناعة العملي',hrs:1},{id:'biol_l7_7',code:'BIOZ 448',name:'لافقاريات',hrs:2}]},
+      {level:8,courses:[{id:'biol_l8_1',code:'BIOB 434',name:'أيض نبات',hrs:2},{id:'biol_l8_2',code:'BIOB 435',name:'الاجهاد النباتي البيئي',hrs:2},{id:'biol_l8_3',code:'BIOB 438',name:'التقنية الحيوية النباتية',hrs:3},{id:'biol_l8_4',code:'BIOB 432',name:'فلورا المملكة العربية السعودية',hrs:2},{id:'biol_l8_5',code:'BIOL 1',name:'اختياري برنامج (1)',hrs:1},{id:'biol_l8_6',code:'BIOZ 414',name:'التطور الحيوي',hrs:2},{id:'biol_l8_7',code:'BIOL 492',name:'مشروع التخرج',hrs:3},{id:'biol_l8_8',code:'GSE 3',name:'اختياري جامعة (3)',hrs:2}]},
+      {level:9,courses:[{id:'biol_l9_1',code:'BIOL 499',name:'التدريب التعاوني',hrs:6}]}
     ]
   },
   {
-    id: 'math',
-    name: 'الرياضيات',
-    icon: '📐',
-    levels: [
-      { level: 1, courses: [
-        { id:'math_l1_1', code:'STAT 101', name:'مقدمة في الإحصاء', hrs:3 },
-        { id:'math_l1_2', code:'ENG 101',  name:'مهارات اللغة الإنجليزية (1)', hrs:4 },
-        { id:'math_l1_3', code:'GS 101',   name:'دراسات إسلامية: العقيدة والعبادة', hrs:2 },
-        { id:'math_l1_4', code:'MATH 111', name:'رياضيات (1)', hrs:3 },
-        { id:'math_l1_5', code:'PHYS 109', name:'فيزياء عامة', hrs:3 },
-      ]},
-      { level: 2, courses: [
-        { id:'math_l2_1', code:'ENG 102',  name:'مهارات اللغة الإنجليزية (2)', hrs:4 },
-        { id:'math_l2_2', code:'GS 104',   name:'دراسات إسلامية: القيم والأخلاق', hrs:2 },
-        { id:'math_l2_3', code:'MATH 112', name:'رياضيات (2)', hrs:3 },
-        { id:'math_l2_4', code:'MATH 142', name:'أسس الرياضيات', hrs:3 },
-        { id:'math_l2_5', code:'MATH 144', name:'التوافقيات', hrs:2 },
-      ]},
-      { level: 3, courses: [
-        { id:'math_l3_1', code:'GS 111',   name:'مهارات اللغة العربية (1)', hrs:2 },
-        { id:'math_l3_2', code:'SCI 101',  name:'الأجهزة وسلامة المختبرات', hrs:1 },
-        { id:'math_l3_3', code:'MATH 271', name:'هندسة تحليلية', hrs:3 },
-        { id:'math_l3_4', code:'MATH 243', name:'نظرية الإعداد', hrs:3 },
-        { id:'math_l3_5', code:'MATH 241', name:'جبر خطي (1)', hrs:3 },
-        { id:'math_l3_6', code:'MATH 221', name:'حساب التفاضل', hrs:3 },
-        { id:'math_l3_7', code:'SCI 201',  name:'منهجيات وأخلاقيات العلوم', hrs:1 },
-      ]},
-      { level: 4, courses: [
-        { id:'math_l4_1', code:'MATH 252', name:'البرمجة والبرمجيات', hrs:3 },
-        { id:'math_l4_2', code:'MATH 246', name:'جبر مجرد (1)', hrs:3 },
-        { id:'math_l4_3', code:'MATH 222', name:'حساب التكامل', hrs:3 },
-        { id:'math_l4_4', code:'FE 1',     name:'مقرر اختياري حر', hrs:2 },
-        { id:'math_l4_5', code:'GS 112',   name:'مهارات اللغة العربية (2)', hrs:2 },
-        { id:'math_l4_6', code:'MATH 272', name:'نظرية الرسوميات', hrs:3 },
-      ]},
-      { level: 5, courses: [
-        { id:'math_l5_1', code:'GSE 1',    name:'مقرر متطلب جامعة اختياري (1)', hrs:2 },
-        { id:'math_l5_2', code:'MATH 323', name:'معادلات تفاضلية (1)', hrs:3 },
-        { id:'math_l5_3', code:'MATH 353', name:'برمجة خطية', hrs:3 },
-        { id:'math_l5_4', code:'MATH 351', name:'تحليل عددي (1)', hrs:3 },
-        { id:'math_l5_5', code:'MATH 345', name:'جبر خطي (2)', hrs:3 },
-        { id:'math_l5_6', code:'MATH 325', name:'التفاضل والتكامل المتعدد', hrs:3 },
-      ]},
-      { level: 6, courses: [
-        { id:'math_l6_1', code:'MATH 332', name:'تحليل حقيقي (1)', hrs:3 },
-        { id:'math_l6_2', code:'MATH 324', name:'معادلات تفاضلية (2)', hrs:3 },
-        { id:'math_l6_3', code:'GSE 2',    name:'مقرر متطلب جامعة اختياري (2)', hrs:2 },
-        { id:'math_l6_4', code:'MATH 354', name:'تحليل عددي (2)', hrs:3 },
-        { id:'math_l6_5', code:'MATH 1',   name:'مقرر اختياري برنامج (1)', hrs:3 },
-        { id:'math_l6_6', code:'STAT 362', name:'نظرية الاحتمالات', hrs:3 },
-      ]},
-      { level: 7, courses: [
-        { id:'math_l7_1', code:'MATH 431', name:'تحليل حقيقي (2)', hrs:2 },
-        { id:'math_l7_2', code:'MATH 425', name:'دوال خاصة', hrs:2 },
-        { id:'math_l7_3', code:'GSE 3',    name:'مقرر متطلب جامعة اختياري (3)', hrs:2 },
-        { id:'math_l7_4', code:'MATH 447', name:'جبر مجرد (2)', hrs:3 },
-        { id:'math_l7_5', code:'STAT 461', name:'احصاء رياضي', hrs:3 },
-        { id:'math_l7_6', code:'MATH 2',   name:'مقرر اختياري برنامج (2)', hrs:3 },
-        { id:'math_l7_7', code:'MATH 473', name:'توبيولوجي', hrs:3 },
-      ]},
-      { level: 8, courses: [
-        { id:'math_l8_1', code:'MATH 426', name:'معادلات تفاضلية جزئية', hrs:3 },
-        { id:'math_l8_2', code:'MATH 434', name:'تحليل مركب', hrs:3 },
-        { id:'math_l8_3', code:'MATH 3',   name:'مقرر اختياري برنامج (3)', hrs:3 },
-        { id:'math_l8_4', code:'MATH 474', name:'هندسة تفاضلية', hrs:3 },
-        { id:'math_l8_5', code:'MATH 492', name:'مشروع التخرج', hrs:3 },
-        { id:'math_l8_6', code:'MGT 428',  name:'القيادة الريادية', hrs:2 },
-      ]},
-      { level: 9, courses: [
-        { id:'math_l9_1', code:'MATH 493', name:'التدريب التعاوني', hrs:3 },
-      ]},
+    id:'math', name:'الرياضيات', icon:'📐',
+    levels:[
+      {level:1,courses:[{id:'math_l1_1',code:'STAT 101',name:'مقدمة في الإحصاء',hrs:3},{id:'math_l1_2',code:'ENG 101',name:'مهارات اللغة الإنجليزية (1)',hrs:4},{id:'math_l1_3',code:'GS 101',name:'دراسات إسلامية: العقيدة والعبادة',hrs:2},{id:'math_l1_4',code:'MATH 111',name:'رياضيات (1)',hrs:3},{id:'math_l1_5',code:'PHYS 109',name:'فيزياء عامة',hrs:3}]},
+      {level:2,courses:[{id:'math_l2_1',code:'ENG 102',name:'مهارات اللغة الإنجليزية (2)',hrs:4},{id:'math_l2_2',code:'GS 104',name:'دراسات إسلامية: القيم والأخلاق',hrs:2},{id:'math_l2_3',code:'MATH 112',name:'رياضيات (2)',hrs:3},{id:'math_l2_4',code:'MATH 142',name:'أسس الرياضيات',hrs:3},{id:'math_l2_5',code:'MATH 144',name:'التوافقيات',hrs:2}]},
+      {level:3,courses:[{id:'math_l3_1',code:'GS 111',name:'مهارات اللغة العربية (1)',hrs:2},{id:'math_l3_2',code:'SCI 101',name:'الأجهزة وسلامة المختبرات',hrs:1},{id:'math_l3_3',code:'MATH 271',name:'هندسة تحليلية',hrs:3},{id:'math_l3_4',code:'MATH 243',name:'نظرية الإعداد',hrs:3},{id:'math_l3_5',code:'MATH 241',name:'جبر خطي (1)',hrs:3},{id:'math_l3_6',code:'MATH 221',name:'حساب التفاضل',hrs:3},{id:'math_l3_7',code:'SCI 201',name:'منهجيات وأخلاقيات العلوم',hrs:1}]},
+      {level:4,courses:[{id:'math_l4_1',code:'MATH 252',name:'البرمجة والبرمجيات',hrs:3},{id:'math_l4_2',code:'MATH 246',name:'جبر مجرد (1)',hrs:3},{id:'math_l4_3',code:'MATH 222',name:'حساب التكامل',hrs:3},{id:'math_l4_4',code:'FE 1',name:'مقرر اختياري حر',hrs:2},{id:'math_l4_5',code:'GS 112',name:'مهارات اللغة العربية (2)',hrs:2},{id:'math_l4_6',code:'MATH 272',name:'نظرية الرسوميات',hrs:3}]},
+      {level:5,courses:[{id:'math_l5_1',code:'GSE 1',name:'مقرر متطلب جامعة اختياري (1)',hrs:2},{id:'math_l5_2',code:'MATH 323',name:'معادلات تفاضلية (1)',hrs:3},{id:'math_l5_3',code:'MATH 353',name:'برمجة خطية',hrs:3},{id:'math_l5_4',code:'MATH 351',name:'تحليل عددي (1)',hrs:3},{id:'math_l5_5',code:'MATH 345',name:'جبر خطي (2)',hrs:3},{id:'math_l5_6',code:'MATH 325',name:'التفاضل والتكامل المتعدد',hrs:3}]},
+      {level:6,courses:[{id:'math_l6_1',code:'MATH 332',name:'تحليل حقيقي (1)',hrs:3},{id:'math_l6_2',code:'MATH 324',name:'معادلات تفاضلية (2)',hrs:3},{id:'math_l6_3',code:'GSE 2',name:'مقرر متطلب جامعة اختياري (2)',hrs:2},{id:'math_l6_4',code:'MATH 354',name:'تحليل عددي (2)',hrs:3},{id:'math_l6_5',code:'MATH 1',name:'مقرر اختياري برنامج (1)',hrs:3},{id:'math_l6_6',code:'STAT 362',name:'نظرية الاحتمالات',hrs:3}]},
+      {level:7,courses:[{id:'math_l7_1',code:'MATH 431',name:'تحليل حقيقي (2)',hrs:2},{id:'math_l7_2',code:'MATH 425',name:'دوال خاصة',hrs:2},{id:'math_l7_3',code:'GSE 3',name:'مقرر متطلب جامعة اختياري (3)',hrs:2},{id:'math_l7_4',code:'MATH 447',name:'جبر مجرد (2)',hrs:3},{id:'math_l7_5',code:'STAT 461',name:'احصاء رياضي',hrs:3},{id:'math_l7_6',code:'MATH 2',name:'مقرر اختياري برنامج (2)',hrs:3},{id:'math_l7_7',code:'MATH 473',name:'توبيولوجي',hrs:3}]},
+      {level:8,courses:[{id:'math_l8_1',code:'MATH 426',name:'معادلات تفاضلية جزئية',hrs:3},{id:'math_l8_2',code:'MATH 434',name:'تحليل مركب',hrs:3},{id:'math_l8_3',code:'MATH 3',name:'مقرر اختياري برنامج (3)',hrs:3},{id:'math_l8_4',code:'MATH 474',name:'هندسة تفاضلية',hrs:3},{id:'math_l8_5',code:'MATH 492',name:'مشروع التخرج',hrs:3},{id:'math_l8_6',code:'MGT 428',name:'القيادة الريادية',hrs:2}]},
+      {level:9,courses:[{id:'math_l9_1',code:'MATH 493',name:'التدريب التعاوني',hrs:3}]}
     ]
   },
-];
-
-// ── GRADE CONFIG ──────────────────────────────────────
-const GRADE_OPTIONS = [
-  { val:'', label:'–', pts:null },
-  { val:'5.0', label:'A+', pts:5.0 },
-  { val:'4.75', label:'A', pts:4.75 },
-  { val:'4.5', label:'B+', pts:4.5 },
-  { val:'4.0', label:'B', pts:4.0 },
-  { val:'3.5', label:'C+', pts:3.5 },
-  { val:'3.0', label:'C', pts:3.0 },
-  { val:'2.5', label:'D+', pts:2.5 },
-  { val:'2.0', label:'D', pts:2.0 },
-  { val:'1.0', label:'F', pts:1.0 },
-  { val:'W', label:'محذوف (W)', pts:null },
-  { val:'IC', label:'غير مكتمل (IC)', pts:null },
-];
-
-// ── STATE ──────────────────────────────────────────────
-let state = { grades:{}, deleted:{}, customHrs:{} };
-let currentSpec = null;
-let planFilter = 'all';
-let customCourses = {};
-
-// ── INIT ──────────────────────────────────────────────
-window.onload = () => {
-  renderSpecGrid();
-  const saved = localStorage.getItem('gpa_state_v3');
-  const savedSpec = localStorage.getItem('gpa_spec_v3');
-  if (saved) try { state = JSON.parse(saved); } catch(e){}
-  if (savedSpec) {
-    currentSpec = SPECIALTIES.find(s => s.id === savedSpec);
-    if (currentSpec) {
-      const cc = localStorage.getItem('gpa_custom_' + currentSpec.id);
-      if (cc) try { customCourses = JSON.parse(cc); } catch(e){}
-      launchApp();
-    }
+  // ── تخصصات الحاسب ──
+  {
+    id:'cs', name:'علوم الحاسب', icon:'💻',
+    levels:[
+      {level:1,courses:[{id:'CS111',code:'CS 111',name:'أساسيات البرمجة',hrs:4},{id:'MATH105',code:'MATH 105',name:'تفاضل وتكامل (1)',hrs:3},{id:'GS101',code:'GS 101',name:'دراسات إسلامية: العقيدة والعبادة',hrs:2},{id:'ENG101',code:'ENG 101',name:'مهارات اللغة الإنجليزية (1)',hrs:4},{id:'PHYS103',code:'PHYS 103',name:'الفيزياء (1)',hrs:4}]},
+      {level:2,courses:[{id:'STAT103',code:'STAT 103',name:'مبادئ الاحتمالات والإحصاء',hrs:3},{id:'ENV101',code:'ENV 101',name:'مقدمة في العلوم البيئية',hrs:3},{id:'ENG102',code:'ENG 102',name:'مهارات اللغة الإنجليزية (2)',hrs:4},{id:'GS104',code:'GS 104',name:'دراسات إسلامية: القيم والأخلاق',hrs:2},{id:'CS112',code:'CS 112',name:'برمجة (1)',hrs:4}]},
+      {level:3,courses:[{id:'CS113',code:'CS 113',name:'برمجة (2)',hrs:4},{id:'CS163',code:'CS 163',name:'تراكيب متقطعة',hrs:3},{id:'MATH106',code:'MATH 106',name:'تفاضل وتكامل (2)',hrs:3},{id:'ENGL103',code:'ENGL 103',name:'مهارات الكتابة',hrs:3},{id:'GS111',code:'GS 111',name:'مهارات اللغة العربية (1)',hrs:2}]},
+      {level:4,courses:[{id:'COE113',code:'COE 113',name:'تصميم المنطق الرقمي',hrs:4},{id:'CS114',code:'CS 114',name:'الخوارزميات وتراكيب البيانات',hrs:4},{id:'MATH243',code:'MATH 243',name:'جبر خطي (1)',hrs:3},{id:'ENGL104',code:'ENGL 104',name:'مهارات الاتصال',hrs:3},{id:'GS112',code:'GS 112',name:'مهارات اللغة العربية (2)',hrs:2}]},
+      {level:5,courses:[{id:'CS285',code:'CS 285',name:'هندسة البرمجيات',hrs:4},{id:'CS205',code:'CS 205',name:'نظرية الحوسبة',hrs:3},{id:'COE124',code:'COE 124',name:'تنظيم وبناء الحاسب الآلي (1)',hrs:4},{id:'ENGL214',code:'ENGL 214',name:'مهارات الكتابة الفنية',hrs:3},{id:'GSE1',code:'GSE 1',name:'مقرر متطلب جامعة اختياري (1)',hrs:2},{id:'FE1',code:'FE 1',name:'مقرر اختياري حر',hrs:2}]},
+      {level:6,courses:[{id:'AI226',code:'AI 226',name:'نظم ذكية',hrs:4},{id:'IS377_cs',code:'IS 377',name:'الابتكار وريادة الأعمال في الحوسبة',hrs:2},{id:'CS276',code:'CS 276',name:'نظم قواعد البيانات',hrs:4},{id:'CS226',code:'CS 226',name:'نظم التشغيل',hrs:4},{id:'GSE2',code:'GSE 2',name:'مقرر متطلب جامعة اختياري (2)',hrs:2}]},
+      {level:7,courses:[{id:'COE236_cs',code:'COE 236',name:'شبكات الحاسب',hrs:4},{id:'IS275_cs',code:'IS 275',name:'الحوسبة وأخلاقيات المهنة والمجتمع',hrs:2},{id:'STAT307_cs',code:'STAT 307',name:'الاحتمالات والإحصاء التطبيقي',hrs:3},{id:'CS387',code:'CS 387',name:'تطوير مواقع الويب',hrs:4},{id:'CS307',code:'CS 307',name:'بناء المترجمات',hrs:3},{id:'GSE3',code:'GSE 3',name:'مقرر متطلب جامعة اختياري (3)',hrs:2}]},
+      {level:8,courses:[{id:'CS398',code:'CS 398',name:'مشروع التخرج (1)',hrs:2},{id:'CS1e',code:'CS 1',name:'مقرر اختياري برنامج (1)',hrs:3},{id:'CS318',code:'CS 318',name:'تطوير تطبيقات الهاتف المتنقلة',hrs:4},{id:'CS358',code:'CS 358',name:'الرسم بالحاسب',hrs:4},{id:'CS2e',code:'CS 2',name:'مقرر اختياري برنامج (2)',hrs:3}]},
+      {level:9,courses:[{id:'CS499',code:'CS 499',name:'مشروع التخرج (2)',hrs:3},{id:'CYB435',code:'CYB 435',name:'أمن الحاسب',hrs:4},{id:'CS429',code:'CS 429',name:'مقدمة في الحوسبة المتوازية',hrs:4},{id:'CS3e',code:'CS 3',name:'مقرر اختياري برنامج (3)',hrs:3}]},
+      {level:10,courses:[{id:'CS498',code:'CS 498',name:'التدريب التعاوني',hrs:6}]}
+    ]
+  },
+  {
+    id:'ai', name:'الذكاء الاصطناعي', icon:'🤖',
+    levels:[
+      {level:1,courses:[{id:'ai_CS111',code:'CS 111',name:'أساسيات البرمجة',hrs:4},{id:'ai_MATH105',code:'MATH 105',name:'تفاضل وتكامل (1)',hrs:3},{id:'ai_GS101',code:'GS 101',name:'دراسات إسلامية: العقيدة والعبادة',hrs:2},{id:'ai_ENG101',code:'ENG 101',name:'مهارات اللغة الإنجليزية (1)',hrs:4},{id:'ai_PHYS103',code:'PHYS 103',name:'الفيزياء (1)',hrs:4}]},
+      {level:2,courses:[{id:'ai_CS163',code:'CS 163',name:'تراكيب متقطعة',hrs:3},{id:'ai_ENG102',code:'ENG 102',name:'مهارات اللغة الإنجليزية (2)',hrs:4},{id:'ai_GS104',code:'GS 104',name:'دراسات إسلامية: القيم والأخلاق',hrs:2},{id:'ai_CS112',code:'CS 112',name:'برمجة (1)',hrs:4},{id:'ai_STAT103',code:'STAT 103',name:'مبادئ الاحتمالات والإحصاء',hrs:3}]},
+      {level:3,courses:[{id:'AI113',code:'AI 113',name:'أساسيات الذكاء الاصطناعي',hrs:3},{id:'ai_CS113',code:'CS 113',name:'برمجة (2)',hrs:4},{id:'ai_MATH106',code:'MATH 106',name:'تفاضل وتكامل (2)',hrs:3},{id:'ai_ENGL103',code:'ENGL 103',name:'مهارات الكتابة',hrs:3},{id:'ai_GS111',code:'GS 111',name:'مهارات اللغة العربية (1)',hrs:2}]},
+      {level:4,courses:[{id:'AI124',code:'AI 124',name:'برمجة الذكاء الاصطناعي',hrs:4},{id:'ai_CS114',code:'CS 114',name:'الخوارزميات وتراكيب البيانات',hrs:4},{id:'ai_ENGL104',code:'ENGL 104',name:'مهارات الاتصال',hrs:3},{id:'ai_GS112',code:'GS 112',name:'مهارات اللغة العربية (2)',hrs:2},{id:'ai_MATH243',code:'MATH 243',name:'جبر خطي (1)',hrs:3}]},
+      {level:5,courses:[{id:'AI225',code:'AI 225',name:'تمثيل المعرفة والاستدلال',hrs:3},{id:'COE215',code:'COE 215',name:'تصميم المنطق الرقمي',hrs:3},{id:'ai_CS285',code:'CS 285',name:'هندسة البرمجيات',hrs:4},{id:'ai_GSE1',code:'GSE 1',name:'مقرر متطلب جامعة اختياري (1)',hrs:2},{id:'ai_FE1',code:'FE 1',name:'مقرر اختياري حر',hrs:2},{id:'ai_STAT307',code:'STAT 307',name:'الاحتمالات والإحصاء التطبيقي',hrs:3}]},
+      {level:6,courses:[{id:'AI236',code:'AI 236',name:'تعلم الآلة',hrs:4},{id:'ai_IS124',code:'IS 124',name:'إدارة أنظمة قواعد البيانات (1)',hrs:4},{id:'ai_ENGL214',code:'ENGL 214',name:'مهارات الكتابة الفنية',hrs:3},{id:'ai_GSE2',code:'GSE 2',name:'مقرر متطلب جامعة اختياري (2)',hrs:2},{id:'COE226',code:'COE 226',name:'بناء وتنظيم الحاسب الآلي',hrs:3}]},
+      {level:7,courses:[{id:'AI397',code:'AI 397',name:'الابتكار وريادة الأعمال في علم البيانات والذكاء الاصطناعي',hrs:2},{id:'AI337',code:'AI 337',name:'الشبكات العصبية والتعلم العميق',hrs:3},{id:'AI347',code:'AI 347',name:'معالجة الصور والتعرف على الأنماط',hrs:4},{id:'ai_CS226',code:'CS 226',name:'نظم التشغيل',hrs:4},{id:'ai_GSE3',code:'GSE 3',name:'مقرر متطلب جامعة اختياري (3)',hrs:2}]},
+      {level:8,courses:[{id:'AI358',code:'AI 358',name:'معالجة اللغات الطبيعية',hrs:3},{id:'COE338',code:'COE 338',name:'شبكات الحاسب والأمن',hrs:4},{id:'AI348',code:'AI 348',name:'الرؤية بالحاسب',hrs:3},{id:'AI1e',code:'AI 1',name:'مقرر اختياري برنامج (1)',hrs:3},{id:'AI398',code:'AI 398',name:'مشروع التخرج (1)',hrs:2}]},
+      {level:9,courses:[{id:'AI479',code:'AI 479',name:'الروبوتات الادراكية',hrs:3},{id:'DS419',code:'DS 419',name:'علم البيانات وتحليلها',hrs:3},{id:'AI2e',code:'AI 2',name:'مقرر اختياري برنامج (2)',hrs:3},{id:'AI3e',code:'AI 3',name:'مقرر اختياري برنامج (3)',hrs:3},{id:'AI499',code:'AI 499',name:'مشروع التخرج (2)',hrs:3}]},
+      {level:10,courses:[{id:'AI492',code:'AI 492',name:'التدريب التعاوني',hrs:6}]}
+    ]
+  },
+  {
+    id:'is', name:'نظم المعلومات الحاسوبية', icon:'🗄️',
+    levels:[
+      {level:1,courses:[{id:'is_CS111',code:'CS 111',name:'أساسيات البرمجة',hrs:4},{id:'is_MATH105',code:'MATH 105',name:'تفاضل وتكامل (1)',hrs:3},{id:'is_GS101',code:'GS 101',name:'دراسات إسلامية: العقيدة والعبادة',hrs:2},{id:'is_ENG101',code:'ENG 101',name:'مهارات اللغة الإنجليزية (1)',hrs:4},{id:'is_PHYS103',code:'PHYS 103',name:'مقدمة في الفيزياء',hrs:3}]},
+      {level:2,courses:[{id:'is_CS163',code:'CS 163',name:'تراكيب متقطعة',hrs:3},{id:'is_STAT103',code:'STAT 103',name:'مبادئ الاحتمالات والإحصاء',hrs:3},{id:'is_ENG102',code:'ENG 102',name:'مهارات اللغة الإنجليزية (2)',hrs:4},{id:'is_GS104',code:'GS 104',name:'دراسات إسلامية: القيم والأخلاق',hrs:2},{id:'is_CS112',code:'CS 112',name:'برمجة (1)',hrs:4}]},
+      {level:3,courses:[{id:'is_GS111',code:'GS 111',name:'مهارات اللغة العربية (1)',hrs:2},{id:'MGT201',code:'MGT 201',name:'مبادئ الادارة',hrs:3},{id:'is_MATH106',code:'MATH 106',name:'تفاضل وتكامل (2)',hrs:3},{id:'IS113',code:'IS 113',name:'مبادئ نظم المعلومات',hrs:3},{id:'is_CS113',code:'CS 113',name:'برمجة (2)',hrs:4},{id:'is_ENGL103',code:'ENGL 103',name:'مهارات الكتابة',hrs:3}]},
+      {level:4,courses:[{id:'IS144',code:'IS 144',name:'البنية التحتية لتقنية المعلومات',hrs:3},{id:'is_GS112',code:'GS 112',name:'مهارات اللغة العربية (2)',hrs:2},{id:'is_ENGL104',code:'ENGL 104',name:'مهارات الاتصال',hrs:3},{id:'is_FE1',code:'FE 1',name:'مقرر اختياري حر',hrs:2},{id:'is_CS114',code:'CS 114',name:'الخوارزميات وتراكيب البيانات',hrs:4},{id:'IS124',code:'IS 124',name:'إدارة قواعد البيانات (1)',hrs:4}]},
+      {level:5,courses:[{id:'COE235',code:'COE 235',name:'شبكة البيانات التجارية',hrs:3},{id:'IS235',code:'IS 235',name:'إدارة قواعد البيانات (2)',hrs:4},{id:'IS255',code:'IS 255',name:'اعداد واستخدام نظم التشغيل',hrs:3},{id:'IS275',code:'IS 275',name:'الحوسبة وأخلاقيات المهنة والمجتمع',hrs:2},{id:'IS215',code:'IS 215',name:'تطوير تطبيقات الويب (1)',hrs:4},{id:'is_GSE1',code:'GSE 1',name:'مقرر متطلب جامعة اختياري (1)',hrs:2}]},
+      {level:6,courses:[{id:'IS246',code:'IS 246',name:'تحليل وتصميم نظم المعلومات',hrs:4},{id:'is_ENGL214',code:'ENGL 214',name:'مهارات الكتابة الفنية',hrs:3},{id:'is_GSE2',code:'GSE 2',name:'مقرر متطلب جامعة اختياري (2)',hrs:2},{id:'IS226',code:'IS 226',name:'تطوير تطبيقات الويب (2)',hrs:4},{id:'STAT307_is',code:'STAT 307',name:'الاحتمالات والإحصاء التطبيقي',hrs:3}]},
+      {level:7,courses:[{id:'IS377',code:'IS 377',name:'الابتكار وريادة الأعمال في الحوسبة',hrs:2},{id:'is_GSE3',code:'GSE 3',name:'مقرر متطلب جامعة اختياري (3)',hrs:2},{id:'IS317',code:'IS 317',name:'مستودعات البيانات والتنقيب',hrs:4},{id:'IS357',code:'IS 357',name:'إدارة مشاريع نظم المعلومات',hrs:3},{id:'IS337',code:'IS 337',name:'أمن المعلومات',hrs:4}]},
+      {level:8,courses:[{id:'IS318',code:'IS 318',name:'مشروع التخرج (1)',hrs:2},{id:'IS1e',code:'IS 1',name:'مقرر اختياري برنامج (1)',hrs:3},{id:'IS328',code:'IS 328',name:'التجارة الإلكترونية',hrs:4},{id:'IS368',code:'IS 368',name:'هيكلة المؤسسات',hrs:3},{id:'IS2e',code:'IS 2',name:'مقرر اختياري برنامج (2)',hrs:3}]},
+      {level:9,courses:[{id:'IS429',code:'IS 429',name:'مشروع التخرج (2)',hrs:3},{id:'IS3e',code:'IS 3',name:'مقرر اختياري برنامج (3)',hrs:3},{id:'ACCT201',code:'ACCT 201',name:'مبادئ المحاسبة المالية',hrs:3},{id:'MGT324',code:'MGT 324',name:'ريادة الأعمال وإدارة الأعمال الصغيرة',hrs:3}]},
+      {level:10,courses:[{id:'IS400',code:'IS 400',name:'التدريب التعاوني',hrs:6}]}
+    ]
+  },
+  {
+    id:'coe', name:'هندسة الحاسب', icon:'⚙️',
+    levels:[
+      {level:1,courses:[{id:'coe_CS163',code:'CS 163',name:'تراكيب متقطعة',hrs:3},{id:'coe_PHYS103',code:'PHYS 103',name:'الفيزياء (1)',hrs:4},{id:'coe_GS101',code:'GS 101',name:'دراسات إسلامية: العقيدة والعبادة',hrs:2},{id:'coe_ENG101',code:'ENG 101',name:'مهارات اللغة الإنجليزية (1)',hrs:4},{id:'coe_MATH105',code:'MATH 105',name:'تفاضل وتكامل (1)',hrs:3}]},
+      {level:2,courses:[{id:'coe_CS112',code:'CS 112',name:'برمجة (1)',hrs:4},{id:'PHYS104',code:'PHYS 104',name:'فيزياء (2)',hrs:4},{id:'coe_MATH106',code:'MATH 106',name:'تفاضل وتكامل (2)',hrs:3},{id:'coe_GS104',code:'GS 104',name:'دراسات إسلامية: القيم والأخلاق',hrs:2},{id:'coe_ENG102',code:'ENG 102',name:'مهارات اللغة الإنجليزية (2)',hrs:4}]},
+      {level:3,courses:[{id:'coe_MATH243',code:'MATH 243',name:'جبر خطي (1)',hrs:3},{id:'coe_ENGL103',code:'ENGL 103',name:'مهارات الكتابة',hrs:3},{id:'coe_FE1',code:'FE 1',name:'مقرر اختياري حر',hrs:2},{id:'coe_CS113',code:'CS 113',name:'برمجة (2)',hrs:4},{id:'COE113_coe',code:'COE 113',name:'تصميم المنطق الرقمي',hrs:4},{id:'coe_GS111',code:'GS 111',name:'مهارات اللغة العربية (1)',hrs:2}]},
+      {level:4,courses:[{id:'coe_ENGL214',code:'ENGL 214',name:'مهارات الكتابة الفنية',hrs:3},{id:'coe_GS112',code:'GS 112',name:'مهارات اللغة العربية (2)',hrs:2},{id:'MATH320',code:'MATH 320',name:'معادلات تفاضلية',hrs:3},{id:'coe_CS114',code:'CS 114',name:'الخوارزميات وتراكيب البيانات',hrs:4},{id:'COE124_coe',code:'COE 124',name:'تنظيم وبناء الحاسب الآلي (1)',hrs:4}]},
+      {level:5,courses:[{id:'COE295',code:'COE 295',name:'قواعد البيانات للمهندسين',hrs:2},{id:'EE201',code:'EE 201',name:'دوائر كهربائية (1)',hrs:4},{id:'COE225',code:'COE 225',name:'تنظيم وبناء الحاسب الآلي (2)',hrs:3},{id:'coe_GSE1',code:'GSE 1',name:'مقرر متطلب جامعة اختياري (1)',hrs:2},{id:'coe_CS226',code:'CS 226',name:'نظم التشغيل',hrs:4},{id:'STAT301',code:'STAT 301',name:'الاحتمالات والإحصاء للمهندسين',hrs:3}]},
+      {level:6,courses:[{id:'COE246',code:'COE 246',name:'النظم المضمنة (1)',hrs:4},{id:'COE286',code:'COE 286',name:'التصميم الهندسي',hrs:3},{id:'EE222',code:'EE 222',name:'إلكترونيات (1)',hrs:4},{id:'COE236',code:'COE 236',name:'شبكات الحاسب',hrs:4},{id:'coe_GSE2',code:'GSE 2',name:'مقرر متطلب جامعة اختياري (2)',hrs:2}]},
+      {level:7,courses:[{id:'COE377',code:'COE 377',name:'الطرق العددية في هندسة الحاسب',hrs:3},{id:'COE317',code:'COE 317',name:'تصميم النظم الرقمية',hrs:4},{id:'COE337',code:'COE 337',name:'اساسيات انترنت الاشياء',hrs:4},{id:'COE347',code:'COE 347',name:'النظم المضمنة (2)',hrs:4},{id:'coe_GSE3',code:'GSE 3',name:'مقرر متطلب جامعة اختياري (3)',hrs:2}]},
+      {level:8,courses:[{id:'COE398',code:'COE 398',name:'مشروع التخرج (1)',hrs:2},{id:'COE358',code:'COE 358',name:'معالجة الإشارات الرقمية',hrs:4},{id:'COE368',code:'COE 368',name:'أمن الحاسب والشبكات',hrs:4},{id:'COE1e',code:'COE 1',name:'مقرر اختياري برنامج (1)',hrs:3},{id:'PHYS246',code:'PHYS 246',name:'البصريات',hrs:3}]},
+      {level:9,courses:[{id:'COE499',code:'COE 499',name:'مشروع التخرج (2)',hrs:3},{id:'COE2e',code:'COE 2',name:'مقرر اختياري برنامج (2)',hrs:3},{id:'COE3e',code:'COE 3',name:'مقرر اختياري برنامج (3)',hrs:3},{id:'COE439',code:'COE 439',name:'الشبكات المعرفة بالبرمجيات',hrs:3},{id:'coe_IS377',code:'IS 377',name:'الابتكار وريادة الأعمال في الحوسبة',hrs:2},{id:'coe_IS275',code:'IS 275',name:'الحوسبة وأخلاقيات المهنة والمجتمع',hrs:2}]},
+      {level:10,courses:[{id:'COE490',code:'COE 490',name:'التدريب التعاوني',hrs:6}]}
+    ]
+  },
+  {
+    id:'cyb', name:'الأمن السيبراني', icon:'🔐',
+    levels:[
+      {level:1,courses:[{id:'cyb_GS101',code:'GS 101',name:'دراسات إسلامية: العقيدة والعبادة',hrs:2},{id:'cyb_ENG101',code:'ENG 101',name:'مهارات اللغة الإنجليزية (1)',hrs:4},{id:'cyb_MATH105',code:'MATH 105',name:'تفاضل وتكامل (1)',hrs:3},{id:'cyb_PHYS103',code:'PHYS 103',name:'الفيزياء (1)',hrs:4},{id:'cyb_CS111',code:'CS 111',name:'أساسيات البرمجة',hrs:4}]},
+      {level:2,courses:[{id:'cyb_ENG102',code:'ENG 102',name:'مهارات اللغة الإنجليزية (2)',hrs:4},{id:'cyb_GS104',code:'GS 104',name:'دراسات إسلامية: القيم والأخلاق',hrs:2},{id:'cyb_MATH106',code:'MATH 106',name:'تفاضل وتكامل (2)',hrs:3},{id:'cyb_CS112',code:'CS 112',name:'برمجة (1)',hrs:4},{id:'cyb_STAT103',code:'STAT 103',name:'مبادئ الاحتمالات والإحصاء',hrs:3}]},
+      {level:3,courses:[{id:'cyb_GS111',code:'GS 111',name:'مهارات اللغة العربية (1)',hrs:2},{id:'CYB151',code:'CYB 151',name:'مكونات أنظمة تكنولوجيا المعلومات',hrs:3},{id:'cyb_IS275',code:'IS 275',name:'الحوسبة وأخلاقيات المهنة والمجتمع',hrs:2},{id:'cyb_CS113',code:'CS 113',name:'برمجة (2)',hrs:4},{id:'cyb_CS163',code:'CS 163',name:'تراكيب متقطعة',hrs:3},{id:'cyb_ENGL103',code:'ENGL 103',name:'مهارات الكتابة',hrs:3}]},
+      {level:4,courses:[{id:'cyb_CS114',code:'CS 114',name:'الخوارزميات وتراكيب البيانات',hrs:4},{id:'cyb_IS113',code:'IS 113',name:'مبادئ نظم المعلومات',hrs:3},{id:'cyb_ENGL104',code:'ENGL 104',name:'مهارات الاتصال',hrs:3},{id:'cyb_FE1',code:'FE 1',name:'مقرر اختياري حر (1)',hrs:2},{id:'cyb_GS112',code:'GS 112',name:'مهارات اللغة العربية (2)',hrs:2},{id:'CYB182',code:'CYB 182',name:'أساسيات الأمن السيبراني',hrs:3}]},
+      {level:5,courses:[{id:'cyb_CS276',code:'CS 276',name:'نظم قواعد البيانات',hrs:4},{id:'cyb_GSE1',code:'GSE 1',name:'مقرر متطلب جامعة اختياري (1)',hrs:2},{id:'CYB215',code:'CYB 215',name:'نظم التشغيل',hrs:3},{id:'CYB271',code:'CYB 271',name:'التشفير',hrs:3},{id:'CYB253',code:'CYB 253',name:'شبكات وبروتوكولات الحاسوب',hrs:4}]},
+      {level:6,courses:[{id:'CS258',code:'CS 258',name:'هندسة البرمجيات',hrs:4},{id:'CYB228',code:'CYB 228',name:'التهديدات السيبرانية',hrs:3},{id:'CYB226',code:'CYB 226',name:'تطوير تطبيقات الويب',hrs:4},{id:'cyb_GSE2',code:'GSE 2',name:'مقرر متطلب جامعة اختياري (2)',hrs:2},{id:'cyb_ENGL214',code:'ENGL 214',name:'مهارات الكتابة الفنية',hrs:3}]},
+      {level:7,courses:[{id:'CYB359',code:'CYB 359',name:'سياسات الأمن السيبراني والأخلاقيات والامتثال',hrs:2},{id:'CYB375',code:'CYB 375',name:'أمن الشبكات',hrs:3},{id:'CYB351',code:'CYB 351',name:'مبادئ تصميم الأمن السيبراني',hrs:3},{id:'CYB353',code:'CYB 353',name:'أمن البرمجيات',hrs:3},{id:'cyb_MATH243',code:'MATH 243',name:'الجبر الخطي',hrs:3},{id:'cyb_GSE3',code:'GSE 3',name:'مقرر متطلب جامعة اختياري (3)',hrs:2}]},
+      {level:8,courses:[{id:'CYB388',code:'CYB 388',name:'مشروع التخرج (1)',hrs:2},{id:'CYB2e',code:'CYB 2',name:'مقرر اختياري برنامج (2)',hrs:3},{id:'CYB1e',code:'CYB 1',name:'مقرر اختياري برنامج (1)',hrs:3},{id:'CYB384',code:'CYB 384',name:'إدارة المخاطر الأمنية',hrs:3},{id:'CYB382',code:'CYB 382',name:'أمن أنظمة التشغيل',hrs:3},{id:'CYB386',code:'CYB 386',name:'التعلم الآلي في الأمن السيبراني',hrs:3}]},
+      {level:9,courses:[{id:'CYB3e',code:'CYB 3',name:'مقرر اختياري برنامج (3)',hrs:3},{id:'CYB4e',code:'CYB 4',name:'مقرر اختياري برنامج (4)',hrs:3},{id:'cyb_IS377',code:'IS 377',name:'الابتكار وريادة الأعمال في مجال الحوسبة',hrs:2},{id:'CYB431',code:'CYB 431',name:'تحليل الجرائم السيبرانية',hrs:3},{id:'CYB479',code:'CYB 479',name:'مشروع التخرج (2)',hrs:3}]},
+      {level:10,courses:[{id:'CYB486',code:'CYB 486',name:'التدريب الميداني',hrs:6}]}
+    ]
+  },
+  {
+    id:'ds', name:'علم البيانات وتحليلها', icon:'📊',
+    levels:[
+      {level:1,courses:[{id:'ds_CS111',code:'CS 111',name:'أساسيات البرمجة',hrs:4},{id:'ds_MATH105',code:'MATH 105',name:'تفاضل وتكامل (1)',hrs:3},{id:'ds_GS101',code:'GS 101',name:'دراسات إسلامية: العقيدة والعبادة',hrs:2},{id:'ds_ENG101',code:'ENG 101',name:'مهارات اللغة الإنجليزية (1)',hrs:4},{id:'ds_PHYS103',code:'PHYS 103',name:'الفيزياء (1)',hrs:4}]},
+      {level:2,courses:[{id:'ds_STAT103',code:'STAT 103',name:'مبادئ الاحتمالات والإحصاء',hrs:3},{id:'ds_ENV101',code:'ENV 101',name:'مقدمة في العلوم البيئية',hrs:3},{id:'ds_ENG102',code:'ENG 102',name:'مهارات اللغة الإنجليزية (2)',hrs:4},{id:'ds_GS104',code:'GS 104',name:'دراسات إسلامية: القيم والأخلاق',hrs:2},{id:'ds_CS112',code:'CS 112',name:'برمجة (1)',hrs:4},{id:'ds_CS163',code:'CS 163',name:'تراكيب متقطعة',hrs:3}]},
+      {level:3,courses:[{id:'ds_GS111',code:'GS 111',name:'مهارات اللغة العربية (1)',hrs:2},{id:'ds_ENGL103',code:'ENGL 103',name:'مهارات الكتابة',hrs:3},{id:'ds_MATH106',code:'MATH 106',name:'تفاضل وتكامل (2)',hrs:3},{id:'ds_CS113',code:'CS 113',name:'برمجة (2)',hrs:4},{id:'DS113',code:'DS 113',name:'مقدمة في علوم البيانات',hrs:3}]},
+      {level:4,courses:[{id:'ds_MATH243',code:'MATH 243',name:'جبر خطي (1)',hrs:3},{id:'ds_GS112',code:'GS 112',name:'مهارات اللغة العربية (2)',hrs:2},{id:'ds_ENGL104',code:'ENGL 104',name:'مهارات الاتصال',hrs:3},{id:'ds_CS114',code:'CS 114',name:'الخوارزميات وتراكيب البيانات',hrs:4},{id:'ds_AI124',code:'AI 124',name:'برمجة الذكاء الاصطناعي',hrs:4}]},
+      {level:5,courses:[{id:'ds_AI113',code:'AI 113',name:'أساسيات الذكاء الاصطناعي',hrs:3},{id:'ds_CS285',code:'CS 285',name:'هندسة البرمجيات',hrs:4},{id:'ds_STAT307',code:'STAT 307',name:'الاحتمالات والإحصاء التطبيقي',hrs:3},{id:'ds_GSE1',code:'GSE 1',name:'مقرر متطلب جامعة اختياري (1)',hrs:2},{id:'DS225',code:'DS 225',name:'تنقيب البيانات وتحليلها',hrs:4}]},
+      {level:6,courses:[{id:'ds_AI236',code:'AI 236',name:'تعلم الآلة',hrs:4},{id:'ds_IS124',code:'IS 124',name:'إدارة أنظمة قواعد البيانات (1)',hrs:4},{id:'ds_CYB215',code:'CYB 215',name:'نظم التشغيل',hrs:3},{id:'ds_GSE2',code:'GSE 2',name:'مقرر متطلب جامعة اختياري (2)',hrs:2},{id:'ds_ENGL214',code:'ENGL 214',name:'مهارات الكتابة الفنية',hrs:3}]},
+      {level:7,courses:[{id:'DS327',code:'DS 327',name:'تحليل البيانات الضخمة',hrs:4},{id:'ds_COE338',code:'COE 338',name:'شبكات الحاسب والأمن',hrs:4},{id:'ds_AI397',code:'AI 397',name:'الابتكار وريادة الأعمال في علم البيانات والذكاء الاصطناعي',hrs:2},{id:'ds_IS275',code:'IS 275',name:'الحوسبة وأخلاقيات المهنة والمجتمع',hrs:2},{id:'ds_IS357',code:'IS 357',name:'إدارة مشاريع نظم المعلومات',hrs:3},{id:'ds_GSE3',code:'GSE 3',name:'مقرر متطلب جامعة اختياري (3)',hrs:2}]},
+      {level:8,courses:[{id:'MATH471',code:'MATH 471',name:'التحسين والنمذجة للحوسبة',hrs:3},{id:'DS348',code:'DS 348',name:'الاستكشاف والتحليل المرئي للبيانات',hrs:3},{id:'DS398',code:'DS 398',name:'مشروع التخرج (1)',hrs:2},{id:'DS358',code:'DS 358',name:'تطوير الويب لعلوم البيانات',hrs:3},{id:'DS338',code:'DS 338',name:'خصوصية البيانات والحوكمة والإشراف',hrs:3},{id:'DS1e',code:'DS 1',name:'مقرر اختياري برنامج (1)',hrs:3}]},
+      {level:9,courses:[{id:'ds_FE1',code:'FE 1',name:'مقرر اختياري حر',hrs:2},{id:'DS499',code:'DS 499',name:'مشروع التخرج (2)',hrs:3},{id:'DS459',code:'DS 459',name:'استرجاع البيانات',hrs:3},{id:'DS429',code:'DS 429',name:'مستودع البيانات',hrs:3},{id:'DS3e',code:'DS 3',name:'مقرر اختياري برنامج (3)',hrs:3},{id:'DS2e',code:'DS 2',name:'مقرر اختياري برنامج (2)',hrs:3}]},
+      {level:10,courses:[{id:'DS498',code:'DS 498',name:'التدريب التعاوني',hrs:6}]}
+    ]
   }
-  const si = document.getElementById('studentName');
-  const sid = document.getElementById('studentId');
-  si.value = localStorage.getItem('gpa_student_name') || '';
-  sid.value = localStorage.getItem('gpa_student_id') || '';
+];
+
+const GRADE_OPTIONS = [
+  {val:'',label:'–',pts:null},{val:'5.0',label:'A+',pts:5.0},{val:'4.75',label:'A',pts:4.75},
+  {val:'4.5',label:'B+',pts:4.5},{val:'4.0',label:'B',pts:4.0},{val:'3.5',label:'C+',pts:3.5},
+  {val:'3.0',label:'C',pts:3.0},{val:'2.5',label:'D+',pts:2.5},{val:'2.0',label:'D',pts:2.0},
+  {val:'1.0',label:'F',pts:1.0},{val:'W',label:'محذوف (W)',pts:null},{val:'IC',label:'غير مكتمل (IC)',pts:null},
+];
+
+let state={grades:{},deleted:{},customHrs:{}};
+let currentSpec=null,planFilter='all',customCourses={};
+
+window.onload=()=>{
+  renderSpecGrid();
+  const saved=localStorage.getItem('gpa_state_v3');
+  const savedSpec=localStorage.getItem('gpa_spec_v3');
+  if(saved)try{state=JSON.parse(saved)}catch(e){}
+  if(savedSpec){currentSpec=SPECIALTIES.find(s=>s.id===savedSpec);if(currentSpec){const cc=localStorage.getItem('gpa_custom_'+currentSpec.id);if(cc)try{customCourses=JSON.parse(cc)}catch(e){};launchApp()}}
+  document.getElementById('studentName').value=localStorage.getItem('gpa_student_name')||'';
+  document.getElementById('studentId').value=localStorage.getItem('gpa_student_id')||'';
 };
 
-function renderSpecGrid() {
-  const grid = document.getElementById('specGrid');
-  grid.innerHTML = SPECIALTIES.map(s => `
-    <div class="spec-card" onclick="selectSpec('${s.id}')">
-      <span class="spec-icon">${s.icon}</span>
-      <div class="spec-name">${s.name}</div>
-      <span class="spec-tag">${s.id.toUpperCase()}</span>
-    </div>
-  `).join('');
+function renderSpecGrid(){
+  document.getElementById('specGrid').innerHTML=SPECIALTIES.map(s=>`<div class="spec-card" onclick="selectSpec('${s.id}')"><span class="spec-icon">${s.icon}</span><div class="spec-name">${s.name}</div><span class="spec-tag">${s.id.toUpperCase()}</span></div>`).join('');
 }
-
-function selectSpec(id) {
-  currentSpec = SPECIALTIES.find(s => s.id === id);
-  if (!currentSpec) return;
-  const cc = localStorage.getItem('gpa_custom_' + currentSpec.id);
-  customCourses = cc ? JSON.parse(cc) : {};
-  localStorage.setItem('gpa_spec_v3', id);
-  launchApp();
+function selectSpec(id){
+  currentSpec=SPECIALTIES.find(s=>s.id===id);if(!currentSpec)return;
+  const cc=localStorage.getItem('gpa_custom_'+currentSpec.id);
+  customCourses=cc?JSON.parse(cc):{};
+  localStorage.setItem('gpa_spec_v3',id);launchApp();
 }
-
-function launchApp() {
-  document.getElementById('specialtyScreen').style.display = 'none';
-  document.getElementById('appScreen').style.display = 'block';
-  document.getElementById('headerIcon').textContent = currentSpec.icon;
-  document.getElementById('headerSpecName').textContent = currentSpec.name;
-  updateBanner();
-  renderPlan();
+function launchApp(){
+  document.getElementById('specialtyScreen').style.display='none';
+  document.getElementById('appScreen').style.display='block';
+  document.getElementById('headerIcon').textContent=currentSpec.icon;
+  document.getElementById('headerSpecName').textContent=currentSpec.name;
+  updateBanner();renderPlan();
 }
-
-function goBack() {
-  document.getElementById('appScreen').style.display = 'none';
-  document.getElementById('specialtyScreen').style.display = 'flex';
+function goBack(){
+  document.getElementById('appScreen').style.display='none';
+  document.getElementById('specialtyScreen').style.display='flex';
 }
-
-// ── GPA CALC ──────────────────────────────────────────
-function getHrs(c) {
-  if (state.customHrs && state.customHrs[c.id] != null) return state.customHrs[c.id];
-  return c.hrs;
+function getHrs(c){return(state.customHrs&&state.customHrs[c.id]!=null)?state.customHrs[c.id]:c.hrs}
+function calcGPA(courses){let p=0,h=0;courses.forEach(c=>{const g=parseFloat(state.grades[c.id]);if(isNaN(g))return;const hr=getHrs(c);p+=g*hr;h+=hr});return h>0?p/h:0}
+function getGradeLabel(val){if(!val||val==='W'||val==='IC')return val||'–';const g=parseFloat(val);if(g>=5.0)return'A+';if(g>=4.75)return'A';if(g>=4.5)return'B+';if(g>=4.0)return'B';if(g>=3.5)return'C+';if(g>=3.0)return'C';if(g>=2.5)return'D+';if(g>=2.0)return'D';return'F'}
+function gradeClass(g){if(g>=5.0)return'cAp';if(g>=4.75)return'cA';if(g>=4.5)return'cBp';if(g>=4.0)return'cB';if(g>=3.5)return'cCp';if(g>=3.0)return'cC';if(g>=2.5)return'cDp';if(g>=2.0)return'cD';return'cF'}
+function getLetterGrade(gpa){if(!gpa)return'–';if(gpa>=4.75)return'ممتاز';if(gpa>=4.0)return'جيد جداً';if(gpa>=3.0)return'جيد';if(gpa>=2.0)return'مقبول';return'ضعيف'}
+function getAllCourses(){if(!currentSpec)return[];const r=[];currentSpec.levels.forEach(lv=>{r.push(...lv.courses);if(customCourses[lv.level])r.push(...customCourses[lv.level])});return r}
+function updateBanner(){
+  const all=getAllCourses().filter(c=>!state.deleted[c.id]);
+  const done=all.filter(c=>state.grades[c.id]&&state.grades[c.id]!=='W'&&state.grades[c.id]!=='IC');
+  const totalHrs=all.reduce((s,c)=>s+getHrs(c),0);
+  const doneHrs=done.reduce((s,c)=>s+getHrs(c),0);
+  const gpa=calcGPA(done);
+  document.getElementById('gpaMain').textContent=done.length?gpa.toFixed(2):'–';
+  document.getElementById('gradeBadge').textContent=done.length?getLetterGrade(gpa):'–';
+  document.getElementById('statHrs').textContent=doneHrs;
+  document.getElementById('statCourses').textContent=done.length;
+  const pct=totalHrs>0?(doneHrs/totalHrs*100):0;
+  document.getElementById('progressFill').style.width=pct.toFixed(1)+'%';
+  document.getElementById('progressLabel').textContent=pct.toFixed(0)+'% من الخطة';
+  document.getElementById('totalHrsLabel').textContent=totalHrs+' ساعة';
 }
-
-function calcGPA(courses) {
-  let totalPts = 0, totalHrs = 0;
-  courses.forEach(c => {
-    const g = parseFloat(state.grades[c.id]);
-    if (isNaN(g)) return;
-    const h = getHrs(c);
-    totalPts += g * h;
-    totalHrs += h;
-  });
-  return totalHrs > 0 ? totalPts / totalHrs : 0;
-}
-
-function getGradeLabel(val) {
-  if (!val || val==='W' || val==='IC') return val || '–';
-  const g = parseFloat(val);
-  if (g>=5.0) return 'A+';
-  if (g>=4.75) return 'A';
-  if (g>=4.5) return 'B+';
-  if (g>=4.0) return 'B';
-  if (g>=3.5) return 'C+';
-  if (g>=3.0) return 'C';
-  if (g>=2.5) return 'D+';
-  if (g>=2.0) return 'D';
-  return 'F';
-}
-
-function gradeClass(g) {
-  if (g>=5.0) return 'cAp';
-  if (g>=4.75) return 'cA';
-  if (g>=4.5) return 'cBp';
-  if (g>=4.0) return 'cB';
-  if (g>=3.5) return 'cCp';
-  if (g>=3.0) return 'cC';
-  if (g>=2.5) return 'cDp';
-  if (g>=2.0) return 'cD';
-  return 'cF';
-}
-
-function getLetterGrade(gpa) {
-  if (!gpa) return '–';
-  if (gpa>=4.75) return 'ممتاز';
-  if (gpa>=4.0) return 'جيد جداً';
-  if (gpa>=3.0) return 'جيد';
-  if (gpa>=2.0) return 'مقبول';
-  return 'ضعيف';
-}
-
-function getAllCourses() {
-  if (!currentSpec) return [];
-  const result = [];
-  currentSpec.levels.forEach(lv => {
-    result.push(...lv.courses);
-    if (customCourses[lv.level]) result.push(...customCourses[lv.level]);
-  });
-  return result;
-}
-
-function updateBanner() {
-  const all = getAllCourses().filter(c => !state.deleted[c.id]);
-  const done = all.filter(c => state.grades[c.id] && state.grades[c.id]!=='W' && state.grades[c.id]!=='IC');
-  const totalHrs = all.reduce((s,c) => s+getHrs(c), 0);
-  const doneHrs = done.reduce((s,c) => s+getHrs(c), 0);
-  const gpa = calcGPA(done);
-
-  document.getElementById('gpaMain').textContent = done.length ? gpa.toFixed(2) : '–';
-  document.getElementById('gradeBadge').textContent = done.length ? getLetterGrade(gpa) : '–';
-  document.getElementById('statHrs').textContent = doneHrs;
-  document.getElementById('statCourses').textContent = done.length;
-  const pct = totalHrs > 0 ? (doneHrs/totalHrs*100) : 0;
-  document.getElementById('progressFill').style.width = pct.toFixed(1)+'%';
-  document.getElementById('progressLabel').textContent = pct.toFixed(0)+'% من الخطة';
-  document.getElementById('totalHrsLabel').textContent = totalHrs+' ساعة';
-}
-
-// ── PLAN RENDER ──────────────────────────────────────
-function setFilter(f, btn) {
-  planFilter = f;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('on'));
-  btn.classList.add('on');
-  renderPlan();
-}
-
-function renderPlan(search='') {
-  const container = document.getElementById('planContainer');
-  if (!currentSpec) return;
-  let html = '';
-
-  currentSpec.levels.forEach(lv => {
-    const baseCourses = lv.courses;
-    const extra = customCourses[lv.level] || [];
-    const allCourses = [...baseCourses, ...extra];
-
-    let filtered = allCourses;
-    if (search) {
-      const q = search.trim().toLowerCase();
-      filtered = filtered.filter(c => c.name.toLowerCase().includes(q) || c.code.toLowerCase().includes(q));
-    }
-    if (planFilter === 'done') filtered = filtered.filter(c => !state.deleted[c.id] && state.grades[c.id] && state.grades[c.id]!=='W' && state.grades[c.id]!=='IC');
-    if (planFilter === 'pending') filtered = filtered.filter(c => !state.deleted[c.id] && !state.grades[c.id]);
-    if (planFilter === 'deleted') filtered = filtered.filter(c => state.deleted[c.id]);
-    else filtered = filtered.filter(c => planFilter==='done' || planFilter==='pending' ? true : !state.deleted[c.id] || planFilter==='all');
-
-    // reapply for 'all'
-    if (planFilter === 'all') {
-      filtered = allCourses.filter(c => !search || c.name.toLowerCase().includes(search.trim().toLowerCase()) || c.code.toLowerCase().includes(search.trim().toLowerCase()));
-    }
-
-    if (!filtered.length) return;
-
-    // level GPA
-    const activeDone = allCourses.filter(c => !state.deleted[c.id] && state.grades[c.id] && state.grades[c.id]!=='W' && state.grades[c.id]!=='IC');
-    const lvGpa = calcGPA(activeDone);
-    const hasGrade = activeDone.length > 0;
-    const doneCount = activeDone.length;
-    const totalCount = allCourses.filter(c=>!state.deleted[c.id]).length;
-
-    html += `<div class="level-block" id="lb_${lv.level}">
+function setFilter(f,btn){planFilter=f;document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');renderPlan()}
+function renderPlan(search=''){
+  const container=document.getElementById('planContainer');
+  if(!currentSpec)return;
+  let html='';
+  currentSpec.levels.forEach(lv=>{
+    const extra=customCourses[lv.level]||[];
+    const allC=[...lv.courses,...extra];
+    let filtered=allC;
+    if(search){const q=search.trim().toLowerCase();filtered=filtered.filter(c=>c.name.toLowerCase().includes(q)||c.code.toLowerCase().includes(q))}
+    if(planFilter==='done')filtered=filtered.filter(c=>!state.deleted[c.id]&&state.grades[c.id]&&state.grades[c.id]!=='W'&&state.grades[c.id]!=='IC');
+    else if(planFilter==='pending')filtered=filtered.filter(c=>!state.deleted[c.id]&&!state.grades[c.id]);
+    else if(planFilter==='deleted')filtered=filtered.filter(c=>state.deleted[c.id]);
+    else filtered=filtered.filter(c=>!search||c.name.toLowerCase().includes(search.trim().toLowerCase())||c.code.toLowerCase().includes(search.trim().toLowerCase()));
+    if(!filtered.length)return;
+    const activeDone=allC.filter(c=>!state.deleted[c.id]&&state.grades[c.id]&&state.grades[c.id]!=='W'&&state.grades[c.id]!=='IC');
+    const lvGpa=calcGPA(activeDone);
+    const hasGrade=activeDone.length>0;
+    const doneCount=activeDone.length;
+    const totalCount=allC.filter(c=>!state.deleted[c.id]).length;
+    html+=`<div class="level-block" id="lb_${lv.level}">
       <div class="level-header" onclick="toggleLevel(${lv.level})">
         <div class="level-title-left">
           <div class="level-num">${lv.level}</div>
-          <div>
-            <div class="level-name">المستوى ${lv.level}</div>
-            <div class="level-meta">${doneCount}/${totalCount} مادة • ${allCourses.filter(c=>!state.deleted[c.id]).reduce((s,c)=>s+getHrs(c),0)} ساعة</div>
-          </div>
+          <div><div class="level-name">المستوى ${lv.level}</div><div class="level-meta">${doneCount}/${totalCount} مادة • ${allC.filter(c=>!state.deleted[c.id]).reduce((s,c)=>s+getHrs(c),0)} ساعة</div></div>
         </div>
         <div class="level-right">
           <span class="level-gpa-mini ${hasGrade?'has-grade':''}" id="lvgpa_${lv.level}">${hasGrade?lvGpa.toFixed(2):'لم تبدأ'}</span>
@@ -1321,10 +477,7 @@ function renderPlan(search='') {
         </div>
       </div>
       <div class="courses-grid">
-        ${filtered.map(c => {
-          if (state.deleted[c.id]) return deletedRow(c);
-          return courseRow(c);
-        }).join('')}
+        ${filtered.map(c=>state.deleted[c.id]?deletedRow(c):courseRow(c)).join('')}
         <div class="add-course-row">
           <input type="text" class="add-input" id="add_name_${lv.level}" placeholder="اسم المادة الجديدة">
           <input type="text" class="add-input" id="add_code_${lv.level}" placeholder="الرمز" style="max-width:80px">
@@ -1333,236 +486,85 @@ function renderPlan(search='') {
       </div>
     </div>`;
   });
-
-  container.innerHTML = html || '<div class="empty-state"><span class="empty-icon">🔍</span>لا توجد نتائج</div>';
+  container.innerHTML=html||'<div class="empty-state"><span class="empty-icon">🔍</span>لا توجد نتائج</div>';
 }
-
-function toggleLevel(lvl) {
-  const lb = document.getElementById('lb_'+lvl);
-  if (lb) lb.classList.toggle('collapsed');
+function toggleLevel(lvl){const lb=document.getElementById('lb_'+lvl);if(lb)lb.classList.toggle('collapsed')}
+function courseRow(c){
+  const done=!!state.grades[c.id]&&state.grades[c.id]!=='W'&&state.grades[c.id]!=='IC';
+  const h=getHrs(c);
+  return`<div class="course-row ${done?'done':''}" id="row_${c.id}"><div class="course-info"><div class="course-name">${c.name}</div><span class="course-code-badge">${c.code}</span></div><div style="text-align:center;flex-shrink:0"><input type="number" class="course-hrs-input" id="hrs_${c.id}" value="${h}" min="1" max="9" onchange="setHrs('${c.id}',this.value)" title="الساعات المعتمدة"><div class="hrs-label">ساعات</div></div><div class="course-right">${gradeSelectHTML(c.id)}<button class="btn-del" onclick="deleteCourse('${c.id}')" title="حذف">✕</button></div></div>`;
 }
-
-function courseRow(c) {
-  const done = !!state.grades[c.id] && state.grades[c.id]!=='W' && state.grades[c.id]!=='IC';
-  const h = getHrs(c);
-  return `
-    <div class="course-row ${done?'done':''}" id="row_${c.id}">
-      <div class="course-info">
-        <div class="course-name">${c.name}</div>
-        <span class="course-code-badge">${c.code}</span>
-      </div>
-      <div style="text-align:center;flex-shrink:0">
-        <input type="number" class="course-hrs-input" id="hrs_${c.id}" value="${h}" min="1" max="9" onchange="setHrs('${c.id}',this.value)" title="الساعات المعتمدة">
-        <div class="hrs-label">ساعات</div>
-      </div>
-      <div class="course-right">
-        ${gradeSelectHTML(c.id)}
-        <button class="btn-del" onclick="deleteCourse('${c.id}')" title="حذف">✕</button>
-      </div>
-    </div>`;
+function deletedRow(c){return`<div class="course-row deleted-row" id="row_${c.id}"><div class="course-info"><div class="course-name" style="text-decoration:line-through;color:var(--text3)">${c.name}</div><span class="course-code-badge">${c.code}</span></div><div class="course-right"><button class="btn-restore" onclick="restoreCourse('${c.id}')">↩ استعادة</button></div></div>`}
+function gradeSelectHTML(id){return`<select class="grade-select" id="sel_${id}" onchange="onGradeChange('${id}')">${GRADE_OPTIONS.map(o=>`<option value="${o.val}" ${state.grades[id]===o.val?'selected':''}>${o.label}</option>`).join('')}</select>`}
+function setHrs(id,val){const v=parseInt(val);if(isNaN(v)||v<1)return;if(!state.customHrs)state.customHrs={};state.customHrs[id]=v;saveState();updateBanner();updateLevelGpa()}
+function onGradeChange(id){
+  const val=document.getElementById('sel_'+id)?.value;
+  if(val==='')delete state.grades[id];else state.grades[id]=val;
+  const row=document.getElementById('row_'+id);
+  if(row){const done=val&&val!=='W'&&val!=='IC';if(done)row.classList.add('done');else row.classList.remove('done')}
+  updateBanner();updateLevelGpa();
 }
-
-function deletedRow(c) {
-  return `
-    <div class="course-row deleted-row" id="row_${c.id}">
-      <div class="course-info">
-        <div class="course-name" style="text-decoration:line-through;color:var(--text3)">${c.name}</div>
-        <span class="course-code-badge">${c.code}</span>
-      </div>
-      <div class="course-right">
-        <button class="btn-restore" onclick="restoreCourse('${c.id}')">↩ استعادة</button>
-      </div>
-    </div>`;
-}
-
-function gradeSelectHTML(id) {
-  return `<select class="grade-select" id="sel_${id}" onchange="onGradeChange('${id}')">
-    ${GRADE_OPTIONS.map(o=>`<option value="${o.val}" ${state.grades[id]===o.val?'selected':''}>${o.label}</option>`).join('')}
-  </select>`;
-}
-
-function setHrs(id, val) {
-  const v = parseInt(val);
-  if (isNaN(v) || v < 1) return;
-  if (!state.customHrs) state.customHrs = {};
-  state.customHrs[id] = v;
-  saveState();
-  updateBanner();
-  updateLevelGpa();
-}
-
-function onGradeChange(id) {
-  const val = document.getElementById('sel_'+id)?.value;
-  if (val === '') delete state.grades[id];
-  else state.grades[id] = val;
-  const row = document.getElementById('row_'+id);
-  if (row) {
-    const done = val && val!=='W' && val!=='IC';
-    if (done) row.classList.add('done'); else row.classList.remove('done');
-  }
-  updateBanner();
-  updateLevelGpa();
-}
-
-function updateLevelGpa() {
-  if (!currentSpec) return;
-  currentSpec.levels.forEach(lv => {
-    const el = document.getElementById('lvgpa_'+lv.level);
-    if (!el) return;
-    const allC = [...lv.courses, ...(customCourses[lv.level]||[])];
-    const done = allC.filter(c=>!state.deleted[c.id]&&state.grades[c.id]&&state.grades[c.id]!=='W'&&state.grades[c.id]!=='IC');
-    if (done.length) {
-      el.textContent = calcGPA(done).toFixed(2);
-      el.classList.add('has-grade');
-    } else {
-      el.textContent = 'لم تبدأ';
-      el.classList.remove('has-grade');
-    }
+function updateLevelGpa(){
+  if(!currentSpec)return;
+  currentSpec.levels.forEach(lv=>{
+    const el=document.getElementById('lvgpa_'+lv.level);if(!el)return;
+    const allC=[...lv.courses,...(customCourses[lv.level]||[])];
+    const done=allC.filter(c=>!state.deleted[c.id]&&state.grades[c.id]&&state.grades[c.id]!=='W'&&state.grades[c.id]!=='IC');
+    if(done.length){el.textContent=calcGPA(done).toFixed(2);el.classList.add('has-grade')}
+    else{el.textContent='لم تبدأ';el.classList.remove('has-grade')}
   });
 }
-
-function deleteCourse(id) {
-  state.deleted[id] = true;
-  delete state.grades[id];
-  saveState(); updateBanner(); renderPlan();
+function deleteCourse(id){state.deleted[id]=true;delete state.grades[id];saveState();updateBanner();renderPlan()}
+function restoreCourse(id){delete state.deleted[id];saveState();updateBanner();renderPlan()}
+function addCourse(level){
+  const nameEl=document.getElementById('add_name_'+level);
+  const codeEl=document.getElementById('add_code_'+level);
+  const name=nameEl.value.trim();const code=codeEl.value.trim()||'CUSTOM';
+  if(!name){showToast('أدخل اسم المادة أولاً');return}
+  const id='custom_'+level+'_'+Date.now();
+  if(!customCourses[level])customCourses[level]=[];
+  customCourses[level].push({id,code,name,hrs:3});
+  localStorage.setItem('gpa_custom_'+currentSpec.id,JSON.stringify(customCourses));
+  nameEl.value='';codeEl.value='';renderPlan();updateBanner();showToast('✅ تمت إضافة المادة');
 }
-
-function restoreCourse(id) {
-  delete state.deleted[id];
-  saveState(); updateBanner(); renderPlan();
-}
-
-function addCourse(level) {
-  const nameEl = document.getElementById('add_name_'+level);
-  const codeEl = document.getElementById('add_code_'+level);
-  const name = nameEl.value.trim();
-  const code = codeEl.value.trim() || 'CUSTOM';
-  if (!name) { showToast('أدخل اسم المادة أولاً'); return; }
-  const id = 'custom_'+level+'_'+Date.now();
-  if (!customCourses[level]) customCourses[level] = [];
-  customCourses[level].push({ id, code, name, hrs:3 });
-  localStorage.setItem('gpa_custom_'+currentSpec.id, JSON.stringify(customCourses));
-  nameEl.value=''; codeEl.value='';
-  renderPlan(); updateBanner();
-  showToast('✅ تمت إضافة المادة');
-}
-
-function saveGrades() {
-  const all = getAllCourses();
-  all.forEach(c => {
-    const sel = document.getElementById('sel_'+c.id);
-    if (!sel) return;
-    if (sel.value) state.grades[c.id] = sel.value;
-    else delete state.grades[c.id];
-    const hrsEl = document.getElementById('hrs_'+c.id);
-    if (hrsEl) {
-      const v = parseInt(hrsEl.value);
-      if (!isNaN(v) && v>0) {
-        if (!state.customHrs) state.customHrs = {};
-        state.customHrs[c.id] = v;
-      }
-    }
+function saveGrades(){
+  getAllCourses().forEach(c=>{
+    const sel=document.getElementById('sel_'+c.id);if(!sel)return;
+    if(sel.value)state.grades[c.id]=sel.value;else delete state.grades[c.id];
+    const hrsEl=document.getElementById('hrs_'+c.id);
+    if(hrsEl){const v=parseInt(hrsEl.value);if(!isNaN(v)&&v>0){if(!state.customHrs)state.customHrs={};state.customHrs[c.id]=v}}
   });
-  saveState();
-  updateBanner();
-  showToast('💾 تم الحفظ بنجاح!');
+  saveState();updateBanner();showToast('💾 تم الحفظ بنجاح!');
 }
-
-// ── REPORT ────────────────────────────────────────────
-function renderReport() {
-  const container = document.getElementById('reportContainer');
-  if (!currentSpec) return;
-  const allDone = getAllCourses().filter(c=>!state.deleted[c.id]&&state.grades[c.id]&&state.grades[c.id]!=='W'&&state.grades[c.id]!=='IC');
-  let html = '';
-
-  currentSpec.levels.forEach(lv => {
-    const allC = [...lv.courses,...(customCourses[lv.level]||[])];
-    const done = allC.filter(c=>!state.deleted[c.id]&&state.grades[c.id]&&state.grades[c.id]!=='W'&&state.grades[c.id]!=='IC');
-    if (!done.length) return;
-    const lvGpa = calcGPA(done);
-    const lvHrs = done.reduce((s,c)=>s+getHrs(c),0);
-    const rows = done.map(c=>{
-      const g = parseFloat(state.grades[c.id]);
-      const lbl = getGradeLabel(state.grades[c.id]);
-      return `<tr>
-        <td>${c.name}<br><span style="font-size:.66rem;color:var(--text3)">${c.code}</span></td>
-        <td style="text-align:center">${getHrs(c)}</td>
-        <td style="text-align:center"><span class="chip ${gradeClass(g)}">${lbl}</span></td>
-        <td style="text-align:center;font-size:.78rem;color:var(--text2)">${(g*getHrs(c)).toFixed(2)}</td>
-      </tr>`;
-    }).join('');
-    html += `
-      <div class="sem-card">
-        <div class="sem-header">
-          <div class="sem-title">المستوى ${lv.level}</div>
-          <span class="sem-gpa-tag">GPA: ${lvGpa.toFixed(2)}</span>
-        </div>
-        <table class="t">
-          <thead><tr><th>المادة</th><th style="text-align:center">ساعات</th><th style="text-align:center">الدرجة</th><th style="text-align:center">النقاط</th></tr></thead>
-          <tbody>${rows}</tbody>
-        </table>
-        <div style="margin-top:10px;font-size:.72rem;color:var(--text3)">
-          ساعات المستوى: <strong style="color:var(--text)">${lvHrs}</strong> &nbsp;•&nbsp; معدل المستوى: <strong style="color:var(--accent)">${lvGpa.toFixed(2)}</strong> &nbsp;•&nbsp; ${getLetterGrade(lvGpa)}
-        </div>
-      </div>`;
+function renderReport(){
+  const container=document.getElementById('reportContainer');
+  if(!currentSpec)return;
+  const allDone=getAllCourses().filter(c=>!state.deleted[c.id]&&state.grades[c.id]&&state.grades[c.id]!=='W'&&state.grades[c.id]!=='IC');
+  let html='';
+  currentSpec.levels.forEach(lv=>{
+    const allC=[...lv.courses,...(customCourses[lv.level]||[])];
+    const done=allC.filter(c=>!state.deleted[c.id]&&state.grades[c.id]&&state.grades[c.id]!=='W'&&state.grades[c.id]!=='IC');
+    if(!done.length)return;
+    const lvGpa=calcGPA(done);const lvHrs=done.reduce((s,c)=>s+getHrs(c),0);
+    const rows=done.map(c=>{const g=parseFloat(state.grades[c.id]);const lbl=getGradeLabel(state.grades[c.id]);return`<tr><td>${c.name}<br><span style="font-size:.66rem;color:var(--text3)">${c.code}</span></td><td style="text-align:center">${getHrs(c)}</td><td style="text-align:center"><span class="chip ${gradeClass(g)}">${lbl}</span></td><td style="text-align:center;font-size:.78rem;color:var(--text2)">${(g*getHrs(c)).toFixed(2)}</td></tr>`}).join('');
+    html+=`<div class="sem-card"><div class="sem-header"><div class="sem-title">المستوى ${lv.level}</div><span class="sem-gpa-tag">GPA: ${lvGpa.toFixed(2)}</span></div><table class="t"><thead><tr><th>المادة</th><th style="text-align:center">ساعات</th><th style="text-align:center">الدرجة</th><th style="text-align:center">النقاط</th></tr></thead><tbody>${rows}</tbody></table><div style="margin-top:10px;font-size:.72rem;color:var(--text3)">ساعات المستوى: <strong style="color:var(--text)">${lvHrs}</strong> &nbsp;•&nbsp; معدل المستوى: <strong style="color:var(--accent)">${lvGpa.toFixed(2)}</strong> &nbsp;•&nbsp; ${getLetterGrade(lvGpa)}</div></div>`;
   });
-
-  if (!html) {
-    container.innerHTML = '<div class="empty-state"><span class="empty-icon">☁️</span>لم تُدخل أي درجات بعد<br><small>أدخل درجاتك من تبويب خطة الدراسة</small></div>';
-    return;
-  }
-
-  const cumGpa = calcGPA(allDone);
-  const cumHrs = allDone.reduce((s,c)=>s+getHrs(c),0);
-  const cumCard = `<div class="sem-card" style="background:linear-gradient(135deg,#0d1530,#120f2e);border-color:var(--border2);margin-bottom:18px">
-    <div style="text-align:center;padding:8px 0">
-      <div style="font-size:2.6rem;font-weight:700;background:linear-gradient(135deg,#fff 20%,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1">${cumGpa.toFixed(2)}</div>
-      <div style="font-size:.78rem;color:var(--text2);margin-top:6px">المعدل التراكمي الكلي</div>
-      <div style="display:inline-block;margin-top:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:white;border-radius:8px;padding:4px 18px;font-size:.88rem;font-weight:700">${getLetterGrade(cumGpa)}</div>
-      <div style="font-size:.72rem;color:var(--text3);margin-top:8px">${cumHrs} ساعة مكتملة</div>
-    </div>
-  </div>`;
-  container.innerHTML = cumCard + html;
+  if(!html){container.innerHTML='<div class="empty-state"><span class="empty-icon">☁️</span>لم تُدخل أي درجات بعد<br><small>أدخل درجاتك من تبويب خطة الدراسة</small></div>';return}
+  const cumGpa=calcGPA(allDone);const cumHrs=allDone.reduce((s,c)=>s+getHrs(c),0);
+  container.innerHTML=`<div class="sem-card" style="background:linear-gradient(135deg,#0d1530,#120f2e);border-color:var(--border2);margin-bottom:18px"><div style="text-align:center;padding:8px 0"><div style="font-size:2.6rem;font-weight:700;background:linear-gradient(135deg,#fff 20%,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1">${cumGpa.toFixed(2)}</div><div style="font-size:.78rem;color:var(--text2);margin-top:6px">المعدل التراكمي الكلي</div><div style="display:inline-block;margin-top:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:white;border-radius:8px;padding:4px 18px;font-size:.88rem;font-weight:700">${getLetterGrade(cumGpa)}</div><div style="font-size:.72rem;color:var(--text3);margin-top:8px">${cumHrs} ساعة مكتملة</div></div></div>`+html;
 }
-
-// ── TABS ──────────────────────────────────────────────
-function switchTab(name, btn) {
+function switchTab(name,btn){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('sec_'+name).classList.add('active');
-  btn.classList.add('active');
-  if (name==='report') renderReport();
+  document.getElementById('sec_'+name).classList.add('active');btn.classList.add('active');
+  if(name==='report')renderReport();
 }
-
-// ── PERSIST ───────────────────────────────────────────
-function saveState() {
-  localStorage.setItem('gpa_state_v3', JSON.stringify(state));
-}
-
-function saveSettings() {
-  localStorage.setItem('gpa_student_name', document.getElementById('studentName').value);
-  localStorage.setItem('gpa_student_id', document.getElementById('studentId').value);
-}
-
-function resetAll() {
-  if (confirm('هل أنت متأكد؟ سيتم مسح جميع الدرجات والتعديلات.')) {
-    state = { grades:{}, deleted:{}, customHrs:{} };
-    saveState();
-    updateBanner();
-    renderPlan();
-    showToast('🗑 تم المسح');
-  }
-}
-
-// ── TOAST ─────────────────────────────────────────────
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'), 2200);
-}
+function saveState(){localStorage.setItem('gpa_state_v3',JSON.stringify(state))}
+function saveSettings(){localStorage.setItem('gpa_student_name',document.getElementById('studentName').value);localStorage.setItem('gpa_student_id',document.getElementById('studentId').value)}
+function resetAll(){if(confirm('هل أنت متأكد؟ سيتم مسح جميع الدرجات والتعديلات.')){state={grades:{},deleted:{},customHrs:{}};saveState();updateBanner();renderPlan();showToast('🗑 تم المسح')}}
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
 </script>
 </body>
 </html>
 HTMLEOF
-echo "Done
+echo "Done"
