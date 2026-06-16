@@ -166,15 +166,6 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
 .cDp{background:rgba(245,130,58,.15);color:var(--o)}.cD{background:rgba(245,80,74,.15);color:var(--r)}
 .cF{background:rgba(245,80,74,.2);color:var(--r)}
 
-.rep-card{background:var(--s2);border:1px solid var(--bor);border-radius:12px;padding:14px;margin-bottom:10px}
-.rep-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.rep-title{font-size:.85rem;font-weight:600}
-.rep-tag{background:var(--s3);border:1px solid var(--bor);border-radius:20px;padding:2px 10px;font-size:.7rem;color:var(--a1);font-weight:600}
-.t{width:100%;border-collapse:collapse}
-.t th{font-size:.62rem;color:var(--t3);text-align:right;padding:0 6px 6px;border-bottom:1px solid var(--bor)}
-.t td{padding:7px 6px;font-size:.78rem;border-bottom:1px solid var(--bor);vertical-align:middle}
-.t tr:last-child td{border-bottom:none}
-
 .chart-box{background:var(--s2);border:1px solid var(--bor);border-radius:12px;padding:14px;margin-bottom:12px}
 .chart-box canvas{max-height:200px}
 .cmp-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
@@ -195,15 +186,6 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
 .pomo-btn{border:1px solid var(--bor);border-radius:10px;background:var(--s2);color:var(--t2);font-family:inherit;font-size:.8rem;padding:9px 18px;cursor:pointer;transition:all .2s}
 .pomo-btn:hover{border-color:var(--a1);color:var(--a1)}
 .pomo-btn.prim{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:#fff;font-weight:700;box-shadow:0 4px 16px rgba(79,126,245,.3)}
-.pomo-link{display:inline-flex;align-items:center;gap:6px;background:var(--s3);border:1px solid var(--bor);border-radius:10px;padding:9px 16px;font-size:.78rem;color:var(--t2);text-decoration:none;transition:all .2s;margin-top:8px}
-.pomo-link:hover{border-color:var(--a1);color:var(--a1)}
-.pomo-sessions{display:flex;gap:6px;justify-content:center;margin-bottom:14px}
-.pomo-dot{width:12px;height:12px;border-radius:50%;background:var(--bor2);transition:all .3s}
-.pomo-dot.done{background:var(--a1);box-shadow:0 0 8px rgba(79,126,245,.5)}
-.pomo-stats-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px}
-.pomo-stat{background:var(--s2);border:1px solid var(--bor);border-radius:10px;padding:10px;text-align:center}
-.pomo-stat-v{font-size:1.2rem;font-weight:700;color:var(--a1)}
-.pomo-stat-l{font-size:.62rem;color:var(--t3);margin-top:2px}
 
 .goal-form{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
 .goal-inp{flex:1;min-width:120px;background:var(--bg);border:1px solid var(--bor);border-radius:8px;color:var(--t);font-family:inherit;font-size:.8rem;padding:8px 11px;outline:none;transition:border-color .2s}
@@ -248,9 +230,6 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
 .t-result{background:linear-gradient(135deg,rgba(79,126,245,.08),rgba(123,91,245,.06));border:1px solid rgba(79,126,245,.2);border-radius:14px;padding:20px;text-align:center;margin-top:12px}
 .t-num{font-size:3rem;font-weight:700;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
 .t-lbl{font-size:.75rem;color:var(--t2);margin-top:6px}
-.t-note{font-size:.68rem;color:var(--t3);margin-top:4px}
-.proj-row{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bor);font-size:.78rem}
-.proj-row:last-child{border-bottom:none}
 
 .achievements-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .ach-card{background:var(--s2);border:1px solid var(--bor);border-radius:12px;padding:14px;text-align:center;transition:all .3s}
@@ -274,7 +253,6 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
 
 .toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(10px);background:linear-gradient(135deg,var(--a1),var(--a2));color:#fff;border-radius:10px;padding:9px 20px;font-size:.82rem;font-weight:600;box-shadow:0 6px 24px rgba(79,126,245,.4);opacity:0;transition:all .3s;z-index:999;pointer-events:none;white-space:nowrap}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-.btn-prim{background:linear-gradient(135deg,var(--a1),var(--a2));border:none;border-radius:10px;color:#fff;font-family:inherit;font-size:.82rem;font-weight:600;padding:10px 18px;cursor:pointer;transition:all .2s;width:100%}
 .btn-danger{background:transparent;border:1px solid var(--r);color:var(--r);border-radius:10px;padding:10px;font-family:inherit;font-size:.82rem;cursor:pointer;width:100%;transition:all .2s}
 .btn-danger:hover{background:var(--r);color:#fff}
 ::-webkit-scrollbar{width:4px;height:4px}
@@ -286,7 +264,6 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
 <div class="ambient"><div class="amb-blob"></div><div class="amb-blob"></div><div class="amb-blob"></div></div>
 <div class="toast" id="toast"></div>
 
-<!-- ══════════════ SCREEN 1: STUDENT INFO ══════════════ -->
 <div class="screen active" id="s-info" style="display:flex;align-items:center;justify-content:center;padding:30px 16px">
   <div class="info-card">
     <div class="logo-wrap">
@@ -303,7 +280,6 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
   </div>
 </div>
 
-<!-- ══════════════ SCREEN 2: SPECIALTY ══════════════ -->
 <div class="screen" id="s-spec" style="padding:30px 16px 60px;max-width:700px;margin:0 auto">
   <div class="spec-header">
     <div class="logo-mark" style="width:48px;height:48px;font-size:1.4rem;margin-bottom:12px">🎓</div>
@@ -313,7 +289,6 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
   <div id="spec-content"></div>
 </div>
 
-<!-- ══════════════ SCREEN 3: APP ══════════════ -->
 <div class="screen" id="s-app">
   <div class="app-nav">
     <div class="nav-left">
@@ -340,30 +315,25 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
   </div>
 
   <div class="tab-body">
-
-    <!-- ── HOME ── -->
     <div class="tab-pane on" id="p-home">
       <div class="profile-header-card">
         <div class="profile-avatar" id="home-avatar">ج</div>
         <div class="profile-info">
           <div class="profile-name" id="home-name">الطالب</div>
           <div class="profile-stats">
-            <span><strong id="home-crs-done">0</span> مقيمة</span>
+            <span><strong id="home-crs-done">0</strong> مقيمة</span>
             <span><strong id="home-gpa-val">0.00</strong> المعدل</span>
           </div>
         </div>
       </div>
-      
       <div class="reco-box">
         <div class="reco-title">⭐ أفضل التوصيات</div>
         <div class="reco-text" id="home-reco">ركز على المواد الأساسية لضمان معدل عالي. توصي المنصة بالبدء بالمواد ذات الساعات الأعلى وتجنب تأجيلها.</div>
       </div>
-
       <div class="card">
         <div class="card-h">📊 توزيع التقديرات</div>
         <canvas id="ch-home-dist" style="max-height:160px"></canvas>
       </div>
-
       <div class="gpa-ring-section">
         <div class="ring-wrap">
           <svg viewBox="0 0 150 150">
@@ -374,19 +344,16 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
           <div class="ring-inner"><div class="ring-gpa" id="ring-gpa">–</div><div class="ring-lbl">GPA</div><div id="ring-badge" style="margin-top:4px"></div></div>
         </div>
       </div>
-
       <div class="stats-grid">
         <div class="stat-box"><div class="stat-val" id="s-hrs" style="color:var(--a1)">0</div><div class="stat-lbl">ساعة مكتملة</div></div>
         <div class="stat-box"><div class="stat-val" id="s-crs">0</div><div class="stat-lbl">مادة مكتملة</div></div>
         <div class="stat-box"><div class="stat-val" id="s-rem" style="color:var(--t2)">–</div><div class="stat-lbl">ساعة متبقية</div></div>
       </div>
-      
       <div class="prog-bar-wrap">
         <div class="prog-hdr"><span>التقدم نحو التخرج</span><span id="prog-pct" style="color:var(--a1);font-weight:600">0%</span></div>
         <div class="prog-track"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
         <div style="display:flex;justify-content:space-between;font-size:.6rem;color:var(--t3);margin-top:5px"><span>0</span><span id="prog-total">–</span></div>
       </div>
-
       <div class="card">
         <div class="card-h">📊 جدول التقديرات</div>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px">
@@ -403,7 +370,6 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
       </div>
     </div>
 
-    <!-- ── PLAN ── -->
     <div class="tab-pane" id="p-plan">
       <input class="srch" type="text" id="srch-box" placeholder="🔍 ابحث عن مادة أو رمز..." oninput="renderPlan()">
       <div class="filter-row">
@@ -416,14 +382,12 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
       <button class="fab" onclick="saveGrades()">💾 حفظ الدرجات</button>
     </div>
 
-    <!-- ── CHART ── -->
     <div class="tab-pane" id="p-chart">
       <div class="chart-box"><div class="card-h">📈 تطور المعدل بالمستويات</div><canvas id="ch-gpa"></canvas></div>
       <div class="chart-box"><div class="card-h">📊 الساعات المكتملة بالمستويات</div><canvas id="ch-hrs"></canvas></div>
       <div class="chart-box"><div class="card-h">🥧 توزيع التقديرات</div><canvas id="ch-pie" style="max-height:180px"></canvas></div>
     </div>
 
-    <!-- ── POMODORO ── -->
     <div class="tab-pane" id="p-pomo">
       <div class="card">
         <div class="card-h">🍅 مؤقت بومودورو</div>
@@ -451,7 +415,6 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
       </div>
     </div>
 
-    <!-- ── TARGET GPA ── -->
     <div class="tab-pane" id="p-target">
       <div class="card">
         <div class="card-h">🎯 احسب المعدل المطلوب لهدفك</div>
@@ -468,7 +431,6 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
       </div>
     </div>
 
-    <!-- ── GOALS ── -->
     <div class="tab-pane" id="p-goals">
       <div class="card">
         <div class="card-h">✅ أهدافي الأكاديمية</div>
@@ -480,7 +442,6 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
       </div>
     </div>
 
-    <!-- ── SCHEDULE ── -->
     <div class="tab-pane" id="p-schedule">
       <div class="card">
         <div class="card-h">📅 جدولي الأسبوعي (الأحد - الخميس | ٨ ص - ٨ م)</div>
@@ -489,7 +450,6 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
       </div>
     </div>
 
-    <!-- ── ACHIEVEMENTS ── -->
     <div class="tab-pane" id="p-ach">
       <div class="card" style="text-align:center;margin-bottom:14px">
         <div style="font-size:2rem;font-weight:700;color:var(--y)" id="ach-count">0</div>
@@ -498,7 +458,6 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
       <div class="achievements-grid" id="ach-grid"></div>
     </div>
 
-    <!-- ── COUNTDOWN ── -->
     <div class="tab-pane" id="p-countdown">
       <div class="card">
         <div class="card-h">⏳ العد التنازلي للتخرج</div>
@@ -517,7 +476,6 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
       </div>
     </div>
 
-    <!-- ── SETTINGS ── -->
     <div class="tab-pane" id="p-settings">
       <div class="set-card">
         <h3>👤 معلومات الطالب</h3>
@@ -539,11 +497,9 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
         <button class="btn-danger" onclick="resetAll()">🗑 مسح جميع الدرجات والبيانات</button>
       </div>
     </div>
-
   </div>
 </div>
 
-<!-- SCHEDULE MODAL -->
 <div class="sch-modal" id="sch-modal">
   <div class="sch-modal-box">
     <div class="sch-modal-title">📅 إضافة / تعديل حصة</div>
@@ -572,118 +528,118 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
 const SPECS = [
   {college:'كلية العلوم', entries:[
     {id:'phy', name:'الفيزياء وتقنيات الطاقة', icon:'⚡', levels:[
-      {level:1,courses:[{code:'PHYS 101',name:'فيزياء عامة 1',hrs:3},{code:'MATH 101',name:'رياضيات عامة 1',hrs:3},{code:'CHEM 101',name:'كيمياء عامة 1',hrs:3},{code:'GS 101',name:'مهارات جامعية',hrs:2}]},
-      {level:2,courses:[{code:'PHYS 102',name:'فيزياء عامة 2',hrs:3},{code:'MATH 102',name:'رياضيات عامة 2',hrs:3},{code:'PHYS 104',name:'مختبر فيزياء 1',hrs:1},{code:'ENG 101',name:'لغة انجليزية',hrs:3}]},
-      {level:3,courses:[{code:'PHYS 201',name:'ميكانيكا',hrs:3},{code:'MATH 201',name:'معادلات تفاضلية',hrs:3},{code:'PHYS 203',name:'كهرباء ومغناطيسية',hrs:3}]},
-      {level:4,courses:[{code:'PHYS 204',name:'فيزياء حرارية',hrs:3},{code:'PHYS 211',name:'فيزياء ذرية',hrs:3},{code:'ENRE 201',name:'مصادر الطاقة',hrs:3}]},
-      {level:5,courses:[{code:'ENRE 301',name:'تقنيات الطاقة المتجددة',hrs:3},{code:'PHYS 301',name:'فيزياء الحالة الصلبة',hrs:3},{code:'PHYS 303',name:'بصريات',hrs:3}]},
-      {level:6,courses:[{code:'ENRE 302',name:'طاقة شمسية',hrs:3},{code:'PHYS 304',name:'موجات',hrs:3},{code:'PHYS 311',name:'فيزياء نووية',hrs:3}]},
-      {level:7,courses:[{code:'ENRE 401',name:'طاقة رياح',hrs:3},{code:'PHYS 401',name:'ميكانيكا كمية',hrs:3},{code:'PHYS 490',name:'بحث تخرج 1',hrs:2}]},
-      {level:8,courses:[{code:'ENRE 402',name:'ادارة وتخزين الطاقة',hrs:3},{code:'PHYS 491',name:'بحث تخرج 2',hrs:3},{code:'PHYS 4e1',name:'اختياري 1',hrs:3}]}
+      {level:1,courses:[{code:'PHYS 101',name:'فيزياء عامة 1',hrs:3},{code:'MATH 101',name:'رياضيات عامة 1',hrs:3},{code:'CHEM 101',name:'كيمياء عامة 1',hrs:3},{code:'GS 101',name:'مهارات جامعية',hrs:2},{code:'ENG 101',name:'لغة انجليزية',hrs:4}]},
+      {level:2,courses:[{code:'PHYS 102',name:'فيزياء عامة 2',hrs:3},{code:'MATH 102',name:'رياضيات عامة 2',hrs:3},{code:'PHYS 104',name:'مختبر فيزياء 1',hrs:1},{code:'ENG 102',name:'لغة انجليزية 2',hrs:4},{code:'GS 104',name:'قيم وأخلاق',hrs:2}]},
+      {level:3,courses:[{code:'PHYS 201',name:'ميكانيكا',hrs:3},{code:'MATH 201',name:'معادلات تفاضلية',hrs:3},{code:'PHYS 203',name:'كهرباء ومغناطيسية',hrs:3},{code:'PHYS 205',name:'مختبر فيزياء 2',hrs:1}]},
+      {level:4,courses:[{code:'PHYS 204',name:'فيزياء حرارية',hrs:3},{code:'PHYS 211',name:'فيزياء ذرية',hrs:3},{code:'ENRE 201',name:'مصادر الطاقة',hrs:3},{code:'STAT 101',name:'احتمالات وإحصاء',hrs:3}]},
+      {level:5,courses:[{code:'ENRE 301',name:'تقنيات الطاقة المتجددة',hrs:3},{code:'PHYS 301',name:'فيزياء الحالة الصلبة',hrs:3},{code:'PHYS 303',name:'بصريات',hrs:3},{code:'ENRE 302',name:'طاقة شمسية',hrs:3}]},
+      {level:6,courses:[{code:'PHYS 304',name:'موجات',hrs:3},{code:'PHYS 311',name:'فيزياء نووية',hrs:3},{code:'ENRE 305',name:'طاقة رياح',hrs:3},{code:'PHYS 305',name:'مختبر متقدم',hrs:1}]},
+      {level:7,courses:[{code:'ENRE 401',name:'ادارة وتخزين الطاقة',hrs:3},{code:'PHYS 401',name:'ميكانيكا كمية',hrs:3},{code:'PHYS 490',name:'بحث تخرج 1',hrs:2},{code:'PHYS 4e1',name:'اختياري 1',hrs:3}]},
+      {level:8,courses:[{code:'ENRE 402',name:'طاقة مستدامة',hrs:3},{code:'PHYS 491',name:'بحث تخرج 2',hrs:3},{code:'PHYS 498',name:'تدريب تعاوني',hrs:6}]}
     ]},
     {id:'lt', name:'اللغات والترجمة', icon:'🗣️', levels:[
-      {level:1,courses:[{code:'ENG 101',name:'لغة انجليزية 1',hrs:3},{code:'AR 101',name:'مهارات لغوية',hrs:3},{code:'LT 101',name:'مدخل للترجمة',hrs:3},{code:'GS 101',name:'مهارات جامعية',hrs:2}]},
-      {level:2,courses:[{code:'ENG 102',name:'لغة انجليزية 2',hrs:3},{code:'LT 102',name:'ترجمة نصوص',hrs:3},{code:'LING 101',name:'مبادئ لغويات',hrs:3}]},
-      {level:3,courses:[{code:'ENG 201',name:'قراءة وكتابة',hrs:3},{code:'LT 201',name:'ترجمة تجارية',hrs:3},{code:'LING 201',name:'صوتيات ونحو',hrs:3}]},
-      {level:4,courses:[{code:'LT 202',name:'ترجمة إعلامية',hrs:3},{code:'ENG 202',name:'محادثة',hrs:3},{code:'LT 203',name:'ترجمة قانونية',hrs:3}]},
-      {level:5,courses:[{code:'LT 301',name:'ترجمة أدبية',hrs:3},{code:'LT 302',name:'ترجمة علمية',hrs:3},{code:'LING 301',name:'علم الدلالة',hrs:3}]},
-      {level:6,courses:[{code:'LT 303',name:'ترجمة فورية',hrs:3},{code:'LT 304',name:'ترجمة تكنولوجيا',hrs:3},{code:'LT 390',name:'بحث تخرج 1',hrs:2}]},
-      {level:7,courses:[{code:'LT 401',name:'توطين برمجيات',hrs:3},{code:'LT 402',name:'ترجمة طبية',hrs:3},{code:'LT 4e1',name:'اختياري 1',hrs:3}]},
-      {level:8,courses:[{code:'LT 491',name:'بحث تخرج 2',hrs:3},{code:'LT 4e2',name:'اختياري 2',hrs:3}]}
+      {level:1,courses:[{code:'ENG 101',name:'لغة انجليزية 1',hrs:3},{code:'AR 101',name:'مهارات لغوية',hrs:3},{code:'LT 101',name:'مدخل للترجمة',hrs:3},{code:'GS 101',name:'مهارات جامعية',hrs:2},{code:'ENG 102',name:'لغة انجليزية 2',hrs:3}]},
+      {level:2,courses:[{code:'LING 101',name:'مبادئ لغويات',hrs:3},{code:'LT 102',name:'ترجمة نصوص',hrs:3},{code:'ENG 201',name:'قراءة وكتابة',hrs:3},{code:'GS 104',name:'قيم وأخلاق',hrs:2},{code:'AR 102',name:'مهارات لغوية 2',hrs:3}]},
+      {level:3,courses:[{code:'LING 201',name:'صوتيات ونحو',hrs:3},{code:'LT 201',name:'ترجمة تجارية',hrs:3},{code:'ENG 202',name:'محادثة',hrs:3},{code:'LT 203',name:'ترجمة قانونية',hrs:3},{code:'AR 201',name:'لغة عربية',hrs:2}]},
+      {level:4,courses:[{code:'LT 202',name:'ترجمة إعلامية',hrs:3},{code:'LING 301',name:'علم الدلالة',hrs:3},{code:'LT 204',name:'ترجمة أدبية',hrs:3},{code:'ENG 301',name:'مقال وكتابة',hrs:3},{code:'AR 202',name:'لغة عربية 2',hrs:2}]},
+      {level:5,courses:[{code:'LT 301',name:'ترجمة علمية',hrs:3},{code:'LT 302',name:'ترجمة فورية',hrs:3},{code:'LING 302',name:'تحليل خطاب',hrs:3},{code:'LT 303',name:'ترجمة تكنولوجيا',hrs:3}]},
+      {level:6,courses:[{code:'LT 304',name:'توطين برمجيات',hrs:3},{code:'LT 305',name:'ترجمة طبية',hrs:3},{code:'LT 306',name:'مشروع ترجمة',hrs:3},{code:'LT 390',name:'بحث تخرج 1',hrs:2}]},
+      {level:7,courses:[{code:'LT 401',name:'ترجمة متقدمة',hrs:3},{code:'LT 402',name:'أخلاقيات المهنة',hrs:3},{code:'LT 403',name:'ترجمة حاسوبية',hrs:3},{code:'LT 4e1',name:'اختياري 1',hrs:3}]},
+      {level:8,courses:[{code:'LT 491',name:'بحث تخرج 2',hrs:3},{code:'LT 498',name:'تدريب تعاوني',hrs:6},{code:'LT 4e2',name:'اختياري 2',hrs:3}]}
     ]},
     {id:'bio', name:'الأحياء', icon:'🧬', levels:[
-      {level:1,courses:[{code:'BIO 101',name:'أحياء عامة 1',hrs:3},{code:'CHEM 101',name:'كيمياء عامة 1',hrs:3},{code:'MATH 101',name:'رياضيات عامة 1',hrs:3},{code:'GS 101',name:'مهارات جامعية',hrs:2}]},
-      {level:2,courses:[{code:'BIO 102',name:'أحياء عامة 2',hrs:3},{code:'BIO 103',name:'مختبر أحياء',hrs:1},{code:'CHEM 102',name:'كيمياء عامة 2',hrs:3}]},
-      {level:3,courses:[{code:'BIO 201',name:'بيولوجيا الخلية',hrs:3},{code:'BIO 202',name:'وراثة عامة',hrs:3},{code:'BIO 203',name:'كائنات دقيقة',hrs:3}]},
-      {level:4,courses:[{code:'BIO 204',name:'نبات عام',hrs:3},{code:'BIO 205',name:'حيوان عام',hrs:3},{code:'BIO 206',name:'أنسجة',hrs:3}]},
-      {level:5,courses:[{code:'BIO 301',name:'بيولوجيا جزيئية',hrs:3},{code:'BIO 302',name:'تطور',hrs:3},{code:'BIO 303',name:'مناعة',hrs:3}]},
-      {level:6,courses:[{code:'BIO 304',name:'بيئة عامة',hrs:3},{code:'BIO 305',name:'أجنة',hrs:3},{code:'BIO 390',name:'بحث تخرج 1',hrs:2}]},
-      {level:7,courses:[{code:'BIO 401',name:'فيروسات',hrs:3},{code:'BIO 402',name:'غدد صماء',hrs:3},{code:'BIO 4e1',name:'اختياري 1',hrs:3}]},
-      {level:8,courses:[{code:'BIO 491',name:'بحث تخرج 2',hrs:3},{code:'BIO 4e2',name:'اختياري 2',hrs:3}]}
+      {level:1,courses:[{code:'BIO 101',name:'أحياء عامة 1',hrs:3},{code:'CHEM 101',name:'كيمياء عامة 1',hrs:3},{code:'MATH 101',name:'رياضيات عامة 1',hrs:3},{code:'GS 101',name:'مهارات جامعية',hrs:2},{code:'ENG 101',name:'لغة انجليزية',hrs:4}]},
+      {level:2,courses:[{code:'BIO 102',name:'أحياء عامة 2',hrs:3},{code:'BIO 103',name:'مختبر أحياء',hrs:1},{code:'CHEM 102',name:'كيمياء عامة 2',hrs:3},{code:'GS 104',name:'قيم وأخلاق',hrs:2},{code:'ENG 102',name:'لغة انجليزية 2',hrs:4}]},
+      {level:3,courses:[{code:'BIO 201',name:'بيولوجيا الخلية',hrs:3},{code:'BIO 202',name:'وراثة عامة',hrs:3},{code:'BIO 203',name:'كائنات دقيقة',hrs:3},{code:'BIO 204',name:'مختبر خلية',hrs:1}]},
+      {level:4,courses:[{code:'BIO 205',name:'نبات عام',hrs:3},{code:'BIO 206',name:'حيوان عام',hrs:3},{code:'BIO 207',name:'أنسجة',hrs:3},{code:'BIO 208',name:'مختبر أنسجة',hrs:1}]},
+      {level:5,courses:[{code:'BIO 301',name:'بيولوجيا جزيئية',hrs:3},{code:'BIO 302',name:'تطور',hrs:3},{code:'BIO 303',name:'مناعة',hrs:3},{code:'BIO 304',name:'بيئة عامة',hrs:3}]},
+      {level:6,courses:[{code:'BIO 305',name:'أجنة',hrs:3},{code:'BIO 306',name:'فسيولوجي',hrs:3},{code:'BIO 307',name:'تقنيات حيوية',hrs:3},{code:'BIO 390',name:'بحث تخرج 1',hrs:2}]},
+      {level:7,courses:[{code:'BIO 401',name:'فيروسات',hrs:3},{code:'BIO 402',name:'غدد صماء',hrs:3},{code:'BIO 403',name:'طفيليات',hrs:3},{code:'BIO 4e1',name:'اختياري 1',hrs:3}]},
+      {level:8,courses:[{code:'BIO 491',name:'بحث تخرج 2',hrs:3},{code:'BIO 498',name:'تدريب تعاوني',hrs:6},{code:'BIO 4e2',name:'اختياري 2',hrs:3}]}
     ]},
     {id:'math', name:'الرياضيات', icon:'📐', levels:[
-      {level:1,courses:[{code:'MATH 101',name:'رياضيات عامة 1',hrs:3},{code:'MATH 102',name:'رياضيات عامة 2',hrs:3},{code:'PHYS 101',name:'فيزياء عامة 1',hrs:3},{code:'GS 101',name:'مهارات جامعية',hrs:2}]},
-      {level:2,courses:[{code:'MATH 201',name:'معادلات تفاضلية',hrs:3},{code:'MATH 202',name:'جبر خطي',hrs:3},{code:'STAT 101',name:'احتمالات وإحصاء',hrs:3}]},
-      {level:3,courses:[{code:'MATH 301',name:'تحليل حقيقي 1',hrs:3},{code:'MATH 302',name:'جبر مجرد 1',hrs:3},{code:'MATH 303',name:'تصميم تجارب',hrs:3}]},
-      {level:4,courses:[{code:'MATH 304',name:'تحليل حقيقي 2',hrs:3},{code:'MATH 305',name:'جبر مجرد 2',hrs:3},{code:'MATH 306',name:'تحليل عددي',hrs:3}]},
-      {level:5,courses:[{code:'MATH 307',name:'تحليل مركب',hrs:3},{code:'MATH 401',name:'طوبولوجيا',hrs:3},{code:'MATH 402',name:'نظرية الأعداد',hrs:3}]},
-      {level:6,courses:[{code:'MATH 403',name:'معادلات تفاضلية جزئية',hrs:3},{code:'MATH 404',name:'برمجة خطية',hrs:3},{code:'MATH 390',name:'بحث تخرج 1',hrs:2}]},
-      {level:7,courses:[{code:'MATH 405',name:'رياضيات تطبيقية',hrs:3},{code:'MATH 406',name:'نظرية القياس',hrs:3},{code:'MATH 4e1',name:'اختياري 1',hrs:3}]},
-      {level:8,courses:[{code:'MATH 491',name:'بحث تخرج 2',hrs:3},{code:'MATH 4e2',name:'اختياري 2',hrs:3}]}
+      {level:1,courses:[{code:'MATH 101',name:'رياضيات عامة 1',hrs:3},{code:'MATH 102',name:'رياضيات عامة 2',hrs:3},{code:'PHYS 101',name:'فيزياء عامة 1',hrs:3},{code:'GS 101',name:'مهارات جامعية',hrs:2},{code:'ENG 101',name:'لغة انجليزية',hrs:4}]},
+      {level:2,courses:[{code:'MATH 201',name:'معادلات تفاضلية',hrs:3},{code:'MATH 202',name:'جبر خطي',hrs:3},{code:'STAT 101',name:'احتمالات وإحصاء',hrs:3},{code:'GS 104',name:'قيم وأخلاق',hrs:2},{code:'ENG 102',name:'لغة انجليزية 2',hrs:4}]},
+      {level:3,courses:[{code:'MATH 301',name:'تحليل حقيقي 1',hrs:3},{code:'MATH 302',name:'جبر مجرد 1',hrs:3},{code:'MATH 303',name:'تصميم تجارب',hrs:3},{code:'MATH 304',name:'هندسة تحليلية',hrs:3}]},
+      {level:4,courses:[{code:'MATH 305',name:'تحليل حقيقي 2',hrs:3},{code:'MATH 306',name:'جبر مجرد 2',hrs:3},{code:'MATH 307',name:'تحليل عددي',hrs:3},{code:'MATH 308',name:'برمجة للحاسب',hrs:3}]},
+      {level:5,courses:[{code:'MATH 401',name:'تحليل مركب',hrs:3},{code:'MATH 402',name:'طوبولوجيا',hrs:3},{code:'MATH 403',name:'نظرية الأعداد',hrs:3},{code:'MATH 404',name:'منطق رياضي',hrs:3}]},
+      {level:6,courses:[{code:'MATH 405',name:'معادلات تفاضلية جزئية',hrs:3},{code:'MATH 406',name:'برمجة خطية',hrs:3},{code:'MATH 407',name:'رياضيات تطبيقية',hrs:3},{code:'MATH 390',name:'بحث تخرج 1',hrs:2}]},
+      {level:7,courses:[{code:'MATH 408',name:'نظرية القياس',hrs:3},{code:'MATH 4e1',name:'اختياري 1',hrs:3},{code:'MATH 4e2',name:'اختياري 2',hrs:3},{code:'MATH 4e3',name:'اختياري 3',hrs:3}]},
+      {level:8,courses:[{code:'MATH 491',name:'بحث تخرج 2',hrs:3},{code:'MATH 498',name:'تدريب تعاوني',hrs:6},{code:'MATH 4e4',name:'اختياري 4',hrs:3}]}
     ]},
     {id:'chem', name:'الكيمياء', icon:'🧪', levels:[
-      {level:1,courses:[{code:'CHEM 101',name:'كيمياء عامة 1',hrs:3},{code:'MATH 101',name:'رياضيات عامة 1',hrs:3},{code:'PHYS 101',name:'فيزياء عامة 1',hrs:3},{code:'GS 101',name:'مهارات جامعية',hrs:2}]},
-      {level:2,courses:[{code:'CHEM 102',name:'كيمياء عامة 2',hrs:3},{code:'CHEM 103',name:'مختبر كيمياء',hrs:1},{code:'MATH 102',name:'رياضيات عامة 2',hrs:3}]},
-      {level:3,courses:[{code:'CHEM 201',name:'كيمياء عضوية 1',hrs:3},{code:'CHEM 202',name:'كيمياء فيزيائية 1',hrs:3},{code:'CHEM 203',name:'كيمياء تحليلية',hrs:3}]},
-      {level:4,courses:[{code:'CHEM 204',name:'كيمياء غير عضوية 1',hrs:3},{code:'CHEM 205',name:'كيمياء عضوية 2',hrs:3},{code:'CHEM 206',name:'مختبر عضوي',hrs:1}]},
-      {level:5,courses:[{code:'CHEM 301',name:'كيمياء فيزيائية 2',hrs:3},{code:'CHEM 302',name:'كيمياء غير عضوية 2',hrs:3},{code:'CHEM 303',name:'طرق طيفية',hrs:3}]},
-      {level:6,courses:[{code:'CHEM 304',name:'كيمياء صناعية',hrs:3},{code:'CHEM 305',name:'كيمياء بيئية',hrs:3},{code:'CHEM 390',name:'بحث تخرج 1',hrs:2}]},
-      {level:7,courses:[{code:'CHEM 401',name:'كيمياء حيوية',hrs:3},{code:'CHEM 402',name:'كيمياء بوليمرات',hrs:3},{code:'CHEM 4e1',name:'اختياري 1',hrs:3}]},
-      {level:8,courses:[{code:'CHEM 491',name:'بحث تخرج 2',hrs:3},{code:'CHEM 4e2',name:'اختياري 2',hrs:3}]}
+      {level:1,courses:[{code:'CHEM 101',name:'كيمياء عامة 1',hrs:3},{code:'MATH 101',name:'رياضيات عامة 1',hrs:3},{code:'PHYS 101',name:'فيزياء عامة 1',hrs:3},{code:'GS 101',name:'مهارات جامعية',hrs:2},{code:'ENG 101',name:'لغة انجليزية',hrs:4}]},
+      {level:2,courses:[{code:'CHEM 102',name:'كيمياء عامة 2',hrs:3},{code:'CHEM 103',name:'مختبر كيمياء',hrs:1},{code:'MATH 102',name:'رياضيات عامة 2',hrs:3},{code:'GS 104',name:'قيم وأخلاق',hrs:2},{code:'ENG 102',name:'لغة انجليزية 2',hrs:4}]},
+      {level:3,courses:[{code:'CHEM 201',name:'كيمياء عضوية 1',hrs:3},{code:'CHEM 202',name:'كيمياء فيزيائية 1',hrs:3},{code:'CHEM 203',name:'كيمياء تحليلية',hrs:3},{code:'CHEM 204',name:'مختبر عضوي',hrs:1}]},
+      {level:4,courses:[{code:'CHEM 205',name:'كيمياء غير عضوية 1',hrs:3},{code:'CHEM 206',name:'كيمياء عضوية 2',hrs:3},{code:'CHEM 207',name:'كيمياء فيزيائية 2',hrs:3},{code:'CHEM 208',name:'مختبر تحليلي',hrs:1}]},
+      {level:5,courses:[{code:'CHEM 301',name:'كيمياء غير عضوية 2',hrs:3},{code:'CHEM 302',name:'كيمياء صناعية',hrs:3},{code:'CHEM 303',name:'طرق طيفية',hrs:3},{code:'CHEM 304',name:'كيمياء بيئية',hrs:3}]},
+      {level:6,courses:[{code:'CHEM 305',name:'كيمياء حيوية',hrs:3},{code:'CHEM 306',name:'كيمياء بوليمرات',hrs:3},{code:'CHEM 307',name:'كيمياء نووية',hrs:3},{code:'CHEM 390',name:'بحث تخرج 1',hrs:2}]},
+      {level:7,courses:[{code:'CHEM 401',name:'كيمياء عضوية متقدمة',hrs:3},{code:'CHEM 402',name:'كيمياء فيزيائية متقدمة',hrs:3},{code:'CHEM 403',name:'مختبر متقدم',hrs:2},{code:'CHEM 4e1',name:'اختياري 1',hrs:3}]},
+      {level:8,courses:[{code:'CHEM 491',name:'بحث تخرج 2',hrs:3},{code:'CHEM 498',name:'تدريب تعاوني',hrs:6},{code:'CHEM 4e2',name:'اختياري 2',hrs:3}]}
     ]}
   ]},
   {college:'كلية علوم وهندسة الحاسب الآلي', entries:[
     {id:'cs', name:'علوم الحاسب', icon:'💻', levels:[
-      {level:1,courses:[{id:'CS111',code:'CS 111',name:'أساسيات البرمجة',hrs:4},{id:'MATH105',code:'MATH 105',name:'تفاضل وتكامل (1)',hrs:3},{id:'GS101',code:'GS 101',name:'دراسات إسلامية',hrs:2},{id:'ENG101',code:'ENG 101',name:'لغة انجليزية',hrs:4}]},
-      {level:2,courses:[{id:'CS112',code:'CS 112',name:'برمجة (1)',hrs:4},{id:'STAT103',code:'STAT 103',name:'احتمالات وإحصاء',hrs:3},{id:'ENG102',code:'ENG 102',name:'لغة انجليزية 2',hrs:4},{id:'GS104',code:'GS 104',name:'قيم وأخلاق',hrs:2}]},
-      {level:3,courses:[{id:'CS113',code:'CS 113',name:'برمجة (2)',hrs:4},{id:'CS163',code:'CS 163',name:'تراكيب متقطعة',hrs:3},{id:'MATH106',code:'MATH 106',name:'تفاضل وتكامل (2)',hrs:3},{id:'GS111',code:'GS 111',name:'لغة عربية',hrs:2}]},
-      {level:4,courses:[{id:'COE113',code:'COE 113',name:'تصميم المنطق الرقمي',hrs:4},{id:'CS114',code:'CS 114',name:'خوارزميات وهياكل بيانات',hrs:4},{id:'MATH243',code:'MATH 243',name:'جبر خطي',hrs:3}]},
-      {level:5,courses:[{id:'CS285',code:'CS 285',name:'هندسة البرمجيات',hrs:4},{id:'CS205',code:'CS 205',name:'نظرية الحوسبة',hrs:3},{id:'COE124',code:'COE 124',name:'تنظيم وبناء الحاسب',hrs:4}]},
-      {level:6,courses:[{id:'AI226',code:'AI 226',name:'نظم ذكية',hrs:4},{id:'CS276',code:'CS 276',name:'نظم قواعد البيانات',hrs:4},{id:'CS226',code:'CS 226',name:'نظم التشغيل',hrs:4}]},
-      {level:7,courses:[{id:'COE236',code:'COE 236',name:'شبكات الحاسب',hrs:4},{id:'CS387',code:'CS 387',name:'تطوير مواقع الويب',hrs:4},{id:'CS307',code:'CS 307',name:'بناء المترجمات',hrs:3}]},
-      {level:8,courses:[{id:'CS398',code:'CS 398',name:'مشروع التخرج (1)',hrs:2},{id:'CS318',code:'CS 318',name:'تطوير تطبيقات الجوال',hrs:4},{id:'CS358',code:'CS 358',name:'رسم بالحاسب',hrs:4}]},
-      {level:9,courses:[{id:'CS499',code:'CS 499',name:'مشروع التخرج (2)',hrs:3},{id:'CYB435',code:'CYB 435',name:'أمن الحاسب',hrs:4},{id:'CS429',code:'CS 429',name:'حوسبة متوازية',hrs:4}]},
+      {level:1,courses:[{id:'CS111',code:'CS 111',name:'أساسيات البرمجة',hrs:4},{id:'MATH105',code:'MATH 105',name:'تفاضل وتكامل (1)',hrs:3},{id:'GS101',code:'GS 101',name:'دراسات إسلامية',hrs:2},{id:'ENG101',code:'ENG 101',name:'لغة انجليزية',hrs:4},{id:'PHYS103',code:'PHYS 103',name:'فيزياء عامة',hrs:4}]},
+      {level:2,courses:[{id:'CS112',code:'CS 112',name:'برمجة (1)',hrs:4},{id:'STAT103',code:'STAT 103',name:'احتمالات وإحصاء',hrs:3},{id:'ENG102',code:'ENG 102',name:'لغة انجليزية 2',hrs:4},{id:'GS104',code:'GS 104',name:'قيم وأخلاق',hrs:2},{id:'CS163',code:'CS 163',name:'تراكيب متقطعة',hrs:3}]},
+      {level:3,courses:[{id:'CS113',code:'CS 113',name:'برمجة (2)',hrs:4},{id:'MATH106',code:'MATH 106',name:'تفاضل وتكامل (2)',hrs:3},{id:'ENGL103',code:'ENGL 103',name:'مهارات الكتابة',hrs:3},{id:'GS111',code:'GS 111',name:'لغة عربية',hrs:2},{id:'PHYS104',code:'PHYS 104',name:'فيزياء عامة 2',hrs:4}]},
+      {level:4,courses:[{id:'COE113',code:'COE 113',name:'تصميم المنطق الرقمي',hrs:4},{id:'CS114',code:'CS 114',name:'خوارزميات وهياكل بيانات',hrs:4},{id:'MATH243',code:'MATH 243',name:'جبر خطي',hrs:3},{id:'ENGL104',code:'ENGL 104',name:'مهارات الاتصال',hrs:3},{id:'GS112',code:'GS 112',name:'لغة عربية 2',hrs:2}]},
+      {level:5,courses:[{id:'CS285',code:'CS 285',name:'هندسة البرمجيات',hrs:4},{id:'CS205',code:'CS 205',name:'نظرية الحوسبة',hrs:3},{id:'COE124',code:'COE 124',name:'تنظيم وبناء الحاسب',hrs:4},{id:'ENGL214',code:'ENGL 214',name:'كتابة فنية',hrs:3},{id:'GSE1',code:'GSE 1',name:'اختياري جامعة 1',hrs:2}]},
+      {level:6,courses:[{id:'AI226',code:'AI 226',name:'نظم ذكية',hrs:4},{id:'CS276',code:'CS 276',name:'نظم قواعد البيانات',hrs:4},{id:'CS226',code:'CS 226',name:'نظم التشغيل',hrs:4},{id:'IS377',code:'IS 377',name:'ريادة أعمال',hrs:2},{id:'GSE2',code:'GSE 2',name:'اختياري جامعة 2',hrs:2}]},
+      {level:7,courses:[{id:'COE236',code:'COE 236',name:'شبكات الحاسب',hrs:4},{id:'CS387',code:'CS 387',name:'تطوير مواقع الويب',hrs:4},{id:'CS307',code:'CS 307',name:'بناء المترجمات',hrs:3},{id:'STAT307',code:'STAT 307',name:'إحصاء تطبيقي',hrs:3},{id:'IS275',code:'IS 275',name:'أخلاقيات المهنة',hrs:2},{id:'GSE3',code:'GSE 3',name:'اختياري جامعة 3',hrs:2}]},
+      {level:8,courses:[{id:'CS398',code:'CS 398',name:'مشروع التخرج (1)',hrs:2},{id:'CS318',code:'CS 318',name:'تطوير تطبيقات الجوال',hrs:4},{id:'CS358',code:'CS 358',name:'رسم بالحاسب',hrs:4},{id:'CS1e',code:'CS 1e',name:'اختياري تخصص 1',hrs:3},{id:'CS2e',code:'CS 2e',name:'اختياري تخصص 2',hrs:3}]},
+      {level:9,courses:[{id:'CS499',code:'CS 499',name:'مشروع التخرج (2)',hrs:3},{id:'CYB435',code:'CYB 435',name:'أمن الحاسب',hrs:4},{id:'CS429',code:'CS 429',name:'حوسبة متوازية',hrs:4},{id:'CS3e',code:'CS 3e',name:'اختياري تخصص 3',hrs:3}]},
       {level:10,courses:[{id:'CS498',code:'CS 498',name:'التدريب التعاوني',hrs:6}]}
     ]},
     {id:'ai', name:'الذكاء الاصطناعي', icon:'🤖', levels:[
-      {level:1,courses:[{code:'CS 111',name:'أساسيات البرمجة',hrs:4},{code:'MATH 105',name:'تفاضل وتكامل (1)',hrs:3},{code:'GS 101',name:'دراسات إسلامية',hrs:2},{code:'ENG 101',name:'لغة انجليزية',hrs:4}]},
-      {level:2,courses:[{code:'CS 112',name:'برمجة (1)',hrs:4},{code:'CS 163',name:'تراكيب متقطعة',hrs:3},{code:'STAT 103',name:'احتمالات وإحصاء',hrs:3},{code:'GS 104',name:'قيم وأخلاق',hrs:2}]},
-      {level:3,courses:[{code:'AI 113',name:'أساسيات الذكاء الاصطناعي',hrs:3},{code:'CS 113',name:'برمجة (2)',hrs:4},{code:'MATH 106',name:'تفاضل وتكامل (2)',hrs:3},{code:'GS 111',name:'لغة عربية',hrs:2}]},
-      {level:4,courses:[{code:'AI 124',name:'برمجة الذكاء الاصطناعي',hrs:4},{code:'CS 114',name:'خوارزميات وهياكل بيانات',hrs:4},{code:'MATH 243',name:'جبر خطي',hrs:3}]},
-      {level:5,courses:[{code:'AI 225',name:'تمثيل المعرفة والاستدلال',hrs:3},{code:'CS 285',name:'هندسة البرمجيات',hrs:4},{code:'STAT 307',name:'إحصاء تطبيقي',hrs:3}]},
-      {level:6,courses:[{code:'AI 236',name:'تعلم الآلة',hrs:4},{code:'IS 124',name:'إدارة قواعد البيانات',hrs:4},{code:'COE 226',name:'بناء وتنظيم الحاسب',hrs:3}]},
-      {level:7,courses:[{code:'AI 321',name:'معالجة اللغات الطبيعية',hrs:3},{code:'AI 335',name:'رؤية الحاسب',hrs:3},{code:'AI 340',name:'تعلم عميق',hrs:3},{code:'AI 390',name:'مشروع تخرج 1',hrs:2}]},
-      {level:8,courses:[{code:'AI 499',name:'مشروع تخرج 2',hrs:3},{code:'AI 4e1',name:'اختياري تخصص 1',hrs:3},{code:'AI 4e2',name:'اختياري تخصص 2',hrs:3}]}
+      {level:1,courses:[{code:'CS 111',name:'أساسيات البرمجة',hrs:4},{code:'MATH 105',name:'تفاضل وتكامل (1)',hrs:3},{code:'GS 101',name:'دراسات إسلامية',hrs:2},{code:'ENG 101',name:'لغة انجليزية',hrs:4},{code:'PHYS 103',name:'فيزياء عامة',hrs:4}]},
+      {level:2,courses:[{code:'CS 112',name:'برمجة (1)',hrs:4},{code:'CS 163',name:'تراكيب متقطعة',hrs:3},{code:'STAT 103',name:'احتمالات وإحصاء',hrs:3},{code:'ENG 102',name:'لغة انجليزية 2',hrs:4},{code:'GS 104',name:'قيم وأخلاق',hrs:2}]},
+      {level:3,courses:[{code:'AI 113',name:'أساسيات الذكاء الاصطناعي',hrs:3},{code:'CS 113',name:'برمجة (2)',hrs:4},{code:'MATH 106',name:'تفاضل وتكامل (2)',hrs:3},{code:'ENGL 103',name:'مهارات الكتابة',hrs:3},{code:'GS 111',name:'لغة عربية',hrs:2}]},
+      {level:4,courses:[{code:'AI 124',name:'برمجة الذكاء الاصطناعي',hrs:4},{code:'CS 114',name:'خوارزميات وهياكل بيانات',hrs:4},{code:'MATH 243',name:'جبر خطي',hrs:3},{code:'ENGL 104',name:'مهارات الاتصال',hrs:3},{code:'GS 112',name:'لغة عربية 2',hrs:2}]},
+      {level:5,courses:[{code:'AI 225',name:'تمثيل المعرفة والاستدلال',hrs:3},{code:'CS 285',name:'هندسة البرمجيات',hrs:4},{code:'STAT 307',name:'إحصاء تطبيقي',hrs:3},{code:'GSE 1',name:'اختياري جامعة 1',hrs:2},{code:'FE 1',name:'اختياري حر 1',hrs:2}]},
+      {level:6,courses:[{code:'AI 236',name:'تعلم الآلة',hrs:4},{code:'IS 124',name:'إدارة قواعد البيانات',hrs:4},{code:'COE 226',name:'بناء وتنظيم الحاسب',hrs:3},{code:'ENGL 214',name:'كتابة فنية',hrs:3},{code:'GSE 2',name:'اختياري جامعة 2',hrs:2}]},
+      {level:7,courses:[{code:'AI 321',name:'معالجة اللغات الطبيعية',hrs:3},{code:'AI 335',name:'رؤية الحاسب',hrs:3},{code:'AI 340',name:'تعلم عميق',hrs:3},{code:'COE 236',name:'شبكات الحاسب',hrs:4},{code:'IS 275',name:'أخلاقيات المهنة',hrs:2},{code:'AI 390',name:'مشروع تخرج 1',hrs:2}]},
+      {level:8,courses:[{code:'AI 499',name:'مشروع تخرج 2',hrs:3},{code:'AI 498',name:'تدريب تعاوني',hrs:6},{code:'AI 4e1',name:'اختياري تخصص 1',hrs:3},{code:'AI 4e2',name:'اختياري تخصص 2',hrs:3}]}
     ]},
     {id:'cyb', name:'الأمن السيبراني', icon:'🛡️', levels:[
-      {level:1,courses:[{code:'CS 111',name:'أساسيات البرمجة',hrs:4},{code:'MATH 105',name:'تفاضل وتكامل (1)',hrs:3},{code:'GS 101',name:'دراسات إسلامية',hrs:2},{code:'ENG 101',name:'لغة انجليزية',hrs:4}]},
-      {level:2,courses:[{code:'CS 112',name:'برمجة (1)',hrs:4},{code:'CS 163',name:'تراكيب متقطعة',hrs:3},{code:'STAT 103',name:'احتمالات وإحصاء',hrs:3},{code:'GS 104',name:'قيم وأخلاق',hrs:2}]},
-      {level:3,courses:[{code:'CYB 113',name:'مبادئ الأمن السيبراني',hrs:3},{code:'CS 113',name:'برمجة (2)',hrs:4},{code:'MATH 106',name:'تفاضل وتكامل (2)',hrs:3},{code:'GS 111',name:'لغة عربية',hrs:2}]},
-      {level:4,courses:[{code:'CYB 124',name:'أمن أنظمة التشغيل',hrs:3},{code:'CS 114',name:'خوارزميات وهياكل بيانات',hrs:4},{code:'COE 113',name:'تصميم المنطق الرقمي',hrs:4}]},
-      {level:5,courses:[{code:'COE 236',name:'شبكات الحاسب',hrs:4},{code:'CYB 225',name:'أمن الشبكات',hrs:3},{code:'CYB 226',name:'تشفير وترميز',hrs:3}]},
-      {level:6,courses:[{code:'CYB 236',name:'اختراق أخلاقي',hrs:3},{code:'CYB 237',name:'تحليل البرمجيات الخبيثة',hrs:3},{code:'CS 276',name:'نظم قواعد البيانات',hrs:4}]},
-      {level:7,courses:[{code:'CYB 321',name:'الطب الشرعي الرقمي',hrs:3},{code:'CYB 335',name:'أمن التطبيقات',hrs:3},{code:'CYB 390',name:'مشروع تخرج 1',hrs:2}]},
-      {level:8,courses:[{code:'CYB 499',name:'مشروع تخرج 2',hrs:3},{code:'CYB 4e1',name:'اختياري تخصص 1',hrs:3},{code:'CYB 4e2',name:'اختياري تخصص 2',hrs:3}]}
+      {level:1,courses:[{code:'CS 111',name:'أساسيات البرمجة',hrs:4},{code:'MATH 105',name:'تفاضل وتكامل (1)',hrs:3},{code:'GS 101',name:'دراسات إسلامية',hrs:2},{code:'ENG 101',name:'لغة انجليزية',hrs:4},{code:'PHYS 103',name:'فيزياء عامة',hrs:4}]},
+      {level:2,courses:[{code:'CS 112',name:'برمجة (1)',hrs:4},{code:'CS 163',name:'تراكيب متقطعة',hrs:3},{code:'STAT 103',name:'احتمالات وإحصاء',hrs:3},{code:'ENG 102',name:'لغة انجليزية 2',hrs:4},{code:'GS 104',name:'قيم وأخلاق',hrs:2}]},
+      {level:3,courses:[{code:'CYB 113',name:'مبادئ الأمن السيبراني',hrs:3},{code:'CS 113',name:'برمجة (2)',hrs:4},{code:'MATH 106',name:'تفاضل وتكامل (2)',hrs:3},{code:'ENGL 103',name:'مهارات الكتابة',hrs:3},{code:'GS 111',name:'لغة عربية',hrs:2}]},
+      {level:4,courses:[{code:'CYB 124',name:'أمن أنظمة التشغيل',hrs:3},{code:'CS 114',name:'خوارزميات وهياكل بيانات',hrs:4},{code:'COE 113',name:'تصميم المنطق الرقمي',hrs:4},{code:'ENGL 104',name:'مهارات الاتصال',hrs:3},{code:'GS 112',name:'لغة عربية 2',hrs:2}]},
+      {level:5,courses:[{code:'COE 236',name:'شبكات الحاسب',hrs:4},{code:'CYB 225',name:'أمن الشبكات',hrs:3},{code:'CYB 226',name:'تشفير وترميز',hrs:3},{code:'CS 285',name:'هندسة البرمجيات',hrs:4},{code:'GSE 1',name:'اختياري جامعة 1',hrs:2}]},
+      {level:6,courses:[{code:'CYB 236',name:'اختراق أخلاقي',hrs:3},{code:'CYB 237',name:'تحليل البرمجيات الخبيثة',hrs:3},{code:'CS 276',name:'نظم قواعد البيانات',hrs:4},{code:'CS 226',name:'نظم التشغيل',hrs:4},{code:'GSE 2',name:'اختياري جامعة 2',hrs:2}]},
+      {level:7,courses:[{code:'CYB 321',name:'الطب الشرعي الرقمي',hrs:3},{code:'CYB 335',name:'أمن التطبيقات',hrs:3},{code:'STAT 307',name:'إحصاء تطبيقي',hrs:3},{code:'IS 275',name:'أخلاقيات المهنة',hrs:2},{code:'CYB 390',name:'مشروع تخرج 1',hrs:2}]},
+      {level:8,courses:[{code:'CYB 499',name:'مشروع تخرج 2',hrs:3},{code:'CYB 498',name:'تدريب تعاوني',hrs:6},{code:'CYB 4e1',name:'اختياري تخصص 1',hrs:3},{code:'CYB 4e2',name:'اختياري تخصص 2',hrs:3}]}
     ]},
     {id:'ds', name:'علم البيانات', icon:'📊', levels:[
-      {level:1,courses:[{code:'CS 111',name:'أساسيات البرمجة',hrs:4},{code:'MATH 105',name:'تفاضل وتكامل (1)',hrs:3},{code:'GS 101',name:'دراسات إسلامية',hrs:2},{code:'ENG 101',name:'لغة انجليزية',hrs:4}]},
-      {level:2,courses:[{code:'CS 112',name:'برمجة (1)',hrs:4},{code:'STAT 103',name:'احتمالات وإحصاء',hrs:3},{code:'CS 163',name:'تراكيب متقطعة',hrs:3},{code:'GS 104',name:'قيم وأخلاق',hrs:2}]},
-      {level:3,courses:[{code:'DS 113',name:'مبادئ علم البيانات',hrs:3},{code:'CS 113',name:'برمجة (2)',hrs:4},{code:'MATH 243',name:'جبر خطي',hrs:3},{code:'GS 111',name:'لغة عربية',hrs:2}]},
-      {level:4,courses:[{code:'DS 124',name:'تحليل واستكشاف البيانات',hrs:3},{code:'CS 114',name:'خوارزميات وهياكل بيانات',hrs:4},{code:'STAT 307',name:'إحصاء تطبيقي',hrs:3}]},
-      {level:5,courses:[{code:'DS 225',name:'تعلم الآلة لعلم البيانات',hrs:3},{code:'DS 226',name:'تنقيب البيانات',hrs:3},{code:'CS 276',name:'نظم قواعد البيانات',hrs:4}]},
-      {level:6,courses:[{code:'DS 236',name:'تصور البيانات',hrs:3},{code:'DS 237',name:'بيانات ضخمة',hrs:3},{code:'DS 238',name:'معالجة اللغات الطبيعية',hrs:3}]},
-      {level:7,courses:[{code:'DS 321',name:'تعلم عميق',hrs:3},{code:'DS 335',name:'سلاسل زمنية',hrs:3},{code:'DS 390',name:'مشروع تخرج 1',hrs:2}]},
-      {level:8,courses:[{code:'DS 499',name:'مشروع تخرج 2',hrs:3},{code:'DS 4e1',name:'اختياري تخصص 1',hrs:3},{code:'DS 4e2',name:'اختياري تخصص 2',hrs:3}]}
+      {level:1,courses:[{code:'CS 111',name:'أساسيات البرمجة',hrs:4},{code:'MATH 105',name:'تفاضل وتكامل (1)',hrs:3},{code:'GS 101',name:'دراسات إسلامية',hrs:2},{code:'ENG 101',name:'لغة انجليزية',hrs:4},{code:'PHYS 103',name:'فيزياء عامة',hrs:4}]},
+      {level:2,courses:[{code:'CS 112',name:'برمجة (1)',hrs:4},{code:'STAT 103',name:'احتمالات وإحصاء',hrs:3},{code:'CS 163',name:'تراكيب متقطعة',hrs:3},{code:'ENG 102',name:'لغة انجليزية 2',hrs:4},{code:'GS 104',name:'قيم وأخلاق',hrs:2}]},
+      {level:3,courses:[{code:'DS 113',name:'مبادئ علم البيانات',hrs:3},{code:'CS 113',name:'برمجة (2)',hrs:4},{code:'MATH 243',name:'جبر خطي',hrs:3},{code:'ENGL 103',name:'مهارات الكتابة',hrs:3},{code:'GS 111',name:'لغة عربية',hrs:2}]},
+      {level:4,courses:[{code:'DS 124',name:'تحليل واستكشاف البيانات',hrs:3},{code:'CS 114',name:'خوارزميات وهياكل بيانات',hrs:4},{code:'STAT 307',name:'إحصاء تطبيقي',hrs:3},{code:'ENGL 104',name:'مهارات الاتصال',hrs:3},{code:'GS 112',name:'لغة عربية 2',hrs:2}]},
+      {level:5,courses:[{code:'DS 225',name:'تعلم الآلة لعلم البيانات',hrs:3},{code:'DS 226',name:'تنقيب البيانات',hrs:3},{code:'CS 276',name:'نظم قواعد البيانات',hrs:4},{code:'CS 285',name:'هندسة البرمجيات',hrs:4},{code:'GSE 1',name:'اختياري جامعة 1',hrs:2}]},
+      {level:6,courses:[{code:'DS 236',name:'تصور البيانات',hrs:3},{code:'DS 237',name:'بيانات ضخمة',hrs:3},{code:'DS 238',name:'معالجة اللغات الطبيعية',hrs:3},{code:'COE 226',name:'بناء وتنظيم الحاسب',hrs:3},{code:'GSE 2',name:'اختياري جامعة 2',hrs:2}]},
+      {level:7,courses:[{code:'DS 321',name:'تعلم عميق',hrs:3},{code:'DS 335',name:'سلاسل زمنية',hrs:3},{code:'DS 340',name:'حوسبة سحابية للبيانات',hrs:3},{code:'IS 275',name:'أخلاقيات المهنة',hrs:2},{code:'DS 390',name:'مشروع تخرج 1',hrs:2}]},
+      {level:8,courses:[{code:'DS 498',name:'التدريب التعاوني',hrs:6},{code:'DS 4e1',name:'اختياري تخصص 1',hrs:3},{code:'DS 4e2',name:'اختياري تخصص 2',hrs:3}]}
     ]},
     {id:'coe', name:'هندسة الحاسب', icon:'🔌', levels:[
-      {level:1,courses:[{code:'CS 111',name:'أساسيات البرمجة',hrs:4},{code:'MATH 105',name:'تفاضل وتكامل (1)',hrs:3},{code:'GS 101',name:'دراسات إسلامية',hrs:2},{code:'ENG 101',name:'لغة انجليزية',hrs:4}]},
-      {level:2,courses:[{code:'CS 112',name:'برمجة (1)',hrs:4},{code:'MATH 106',name:'تفاضل وتكامل (2)',hrs:3},{code:'PHYS 103',name:'فيزياء 1',hrs:4},{code:'GS 104',name:'قيم وأخلاق',hrs:2}]},
-      {level:3,courses:[{code:'COE 113',name:'تصميم المنطق الرقمي',hrs:4},{code:'CS 113',name:'برمجة (2)',hrs:4},{code:'MATH 243',name:'جبر خطي',hrs:3},{code:'GS 111',name:'لغة عربية',hrs:2}]},
-      {level:4,courses:[{code:'COE 124',name:'تنظيم وبناء الحاسب',hrs:4},{code:'CS 114',name:'خوارزميات وهياكل بيانات',hrs:4},{code:'COE 205',name:'الدارات الكهربائية',hrs:3}]},
-      {level:5,courses:[{code:'COE 225',name:'تصميم أنظمة رقمية',hrs:4},{code:'COE 226',name:'معالجات دقيقة',hrs:4},{code:'COE 236',name:'شبكات الحاسب',hrs:4}]},
-      {level:6,courses:[{code:'COE 306',name:'أنظمة مضمنة',hrs:3},{code:'COE 307',name:'هندسة واجهات',hrs:3},{code:'CS 226',name:'نظم التشغيل',hrs:4}]},
-      {level:7,courses:[{code:'COE 401',name:'أنظمة VLSI',hrs:3},{code:'COE 402',name:'حوسبة سحابية',hrs:3},{code:'COE 390',name:'مشروع تخرج 1',hrs:2}]},
-      {level:8,courses:[{code:'COE 499',name:'مشروع تخرج 2',hrs:3},{code:'COE 4e1',name:'اختياري تخصص 1',hrs:3},{code:'COE 4e2',name:'اختياري تخصص 2',hrs:3}]}
+      {level:1,courses:[{code:'CS 111',name:'أساسيات البرمجة',hrs:4},{code:'MATH 105',name:'تفاضل وتكامل (1)',hrs:3},{code:'GS 101',name:'دراسات إسلامية',hrs:2},{code:'ENG 101',name:'لغة انجليزية',hrs:4},{code:'PHYS 103',name:'فيزياء عامة',hrs:4}]},
+      {level:2,courses:[{code:'CS 112',name:'برمجة (1)',hrs:4},{code:'MATH 106',name:'تفاضل وتكامل (2)',hrs:3},{code:'PHYS 104',name:'فيزياء عامة 2',hrs:4},{code:'ENG 102',name:'لغة انجليزية 2',hrs:4},{code:'GS 104',name:'قيم وأخلاق',hrs:2}]},
+      {level:3,courses:[{code:'COE 113',name:'تصميم المنطق الرقمي',hrs:4},{code:'CS 113',name:'برمجة (2)',hrs:4},{code:'MATH 243',name:'جبر خطي',hrs:3},{code:'ENGL 103',name:'مهارات الكتابة',hrs:3},{code:'GS 111',name:'لغة عربية',hrs:2}]},
+      {level:4,courses:[{code:'COE 124',name:'تنظيم وبناء الحاسب',hrs:4},{code:'CS 114',name:'خوارزميات وهياكل بيانات',hrs:4},{code:'COE 205',name:'الدارات الكهربائية',hrs:3},{code:'ENGL 104',name:'مهارات الاتصال',hrs:3},{code:'GS 112',name:'لغة عربية 2',hrs:2}]},
+      {level:5,courses:[{code:'COE 225',name:'تصميم أنظمة رقمية',hrs:4},{code:'COE 226',name:'معالجات دقيقة',hrs:4},{code:'COE 236',name:'شبكات الحاسب',hrs:4},{code:'CS 285',name:'هندسة البرمجيات',hrs:4},{code:'GSE 1',name:'اختياري جامعة 1',hrs:2}]},
+      {level:6,courses:[{code:'COE 306',name:'أنظمة مضمنة',hrs:3},{code:'COE 307',name:'هندسة واجهات',hrs:3},{code:'CS 226',name:'نظم التشغيل',hrs:4},{code:'CS 276',name:'نظم قواعد البيانات',hrs:4},{code:'GSE 2',name:'اختياري جامعة 2',hrs:2}]},
+      {level:7,courses:[{code:'COE 401',name:'أنظمة VLSI',hrs:3},{code:'COE 402',name:'حوسبة سحابية',hrs:3},{code:'COE 405',name:'روبوتات',hrs:3},{code:'IS 275',name:'أخلاقيات المهنة',hrs:2},{code:'COE 390',name:'مشروع تخرج 1',hrs:2}]},
+      {level:8,courses:[{code:'COE 499',name:'مشروع تخرج 2',hrs:3},{code:'COE 498',name:'تدريب تعاوني',hrs:6},{code:'COE 4e1',name:'اختياري تخصص 1',hrs:3},{code:'COE 4e2',name:'اختياري تخصص 2',hrs:3}]}
     ]},
     {id:'is', name:'نظم المعلومات', icon:'🗄️', levels:[
-      {level:1,courses:[{code:'CS 111',name:'أساسيات البرمجة',hrs:4},{code:'MATH 105',name:'تفاضل وتكامل (1)',hrs:3},{code:'GS 101',name:'دراسات إسلامية',hrs:2},{code:'ENG 101',name:'لغة انجليزية',hrs:4}]},
-      {level:2,courses:[{code:'IS 112',name:'مبادئ نظم المعلومات',hrs:3},{code:'STAT 103',name:'احتمالات وإحصاء',hrs:3},{code:'CS 163',name:'تراكيب متقطعة',hrs:3},{code:'GS 104',name:'قيم وأخلاق',hrs:2}]},
-      {level:3,courses:[{code:'IS 124',name:'إدارة قواعد البيانات',hrs:4},{code:'CS 113',name:'برمجة (2)',hrs:4},{code:'MATH 243',name:'جبر خطي',hrs:3},{code:'GS 111',name:'لغة عربية',hrs:2}]},
-      {level:4,courses:[{code:'IS 213',name:'تحليل وتصميم النظم',hrs:4},{code:'CS 114',name:'خوارزميات وهياكل بيانات',hrs:4},{code:'IS 215',name:'نظم تشغيل',hrs:3}]},
-      {level:5,courses:[{code:'IS 325',name:'نظم إدارة الموارد',hrs:3},{code:'IS 326',name:'أمن المعلومات',hrs:3},{code:'IS 327',name:'تجارة إلكترونية',hrs:3}]},
-      {level:6,courses:[{code:'IS 336',name:'ذكاء الأعمال',hrs:3},{code:'IS 337',name:'إدارة مشاريع تقنية',hrs:3},{code:'COE 236',name:'شبكات الحاسب',hrs:4}]},
-      {level:7,courses:[{code:'IS 421',name:'حوكمة تقنية المعلومات',hrs:3},{code:'IS 422',name:'ابتكار وريادة أعمال',hrs:3},{code:'IS 390',name:'مشروع تخرج 1',hrs:2}]},
-      {level:8,courses:[{code:'IS 499',name:'مشروع تخرج 2',hrs:3},{code:'IS 4e1',name:'اختياري تخصص 1',hrs:3},{code:'IS 4e2',name:'اختياري تخصص 2',hrs:3}]}
+      {level:1,courses:[{code:'CS 111',name:'أساسيات البرمجة',hrs:4},{code:'MATH 105',name:'تفاضل وتكامل (1)',hrs:3},{code:'GS 101',name:'دراسات إسلامية',hrs:2},{code:'ENG 101',name:'لغة انجليزية',hrs:4},{code:'PHYS 103',name:'فيزياء عامة',hrs:4}]},
+      {level:2,courses:[{code:'IS 112',name:'مبادئ نظم المعلومات',hrs:3},{code:'STAT 103',name:'احتمالات وإحصاء',hrs:3},{code:'CS 163',name:'تراكيب متقطعة',hrs:3},{code:'ENG 102',name:'لغة انجليزية 2',hrs:4},{code:'GS 104',name:'قيم وأخلاق',hrs:2}]},
+      {level:3,courses:[{code:'IS 124',name:'إدارة قواعد البيانات',hrs:4},{code:'CS 113',name:'برمجة (2)',hrs:4},{code:'MATH 243',name:'جبر خطي',hrs:3},{code:'ENGL 103',name:'مهارات الكتابة',hrs:3},{code:'GS 111',name:'لغة عربية',hrs:2}]},
+      {level:4,courses:[{code:'IS 213',name:'تحليل وتصميم النظم',hrs:4},{code:'CS 114',name:'خوارزميات وهياكل بيانات',hrs:4},{code:'IS 215',name:'نظم تشغيل',hrs:3},{code:'ENGL 104',name:'مهارات الاتصال',hrs:3},{code:'GS 112',name:'لغة عربية 2',hrs:2}]},
+      {level:5,courses:[{code:'IS 325',name:'نظم إدارة الموارد',hrs:3},{code:'IS 326',name:'أمن المعلومات',hrs:3},{code:'IS 327',name:'تجارة إلكترونية',hrs:3},{code:'CS 276',name:'نظم قواعد البيانات',hrs:4},{code:'GSE 1',name:'اختياري جامعة 1',hrs:2}]},
+      {level:6,courses:[{code:'IS 336',name:'ذكاء الأعمال',hrs:3},{code:'IS 337',name:'إدارة مشاريع تقنية',hrs:3},{code:'COE 236',name:'شبكات الحاسب',hrs:4},{code:'CS 285',name:'هندسة البرمجيات',hrs:4},{code:'GSE 2',name:'اختياري جامعة 2',hrs:2}]},
+      {level:7,courses:[{code:'IS 421',name:'حوكمة تقنية المعلومات',hrs:3},{code:'IS 422',name:'ابتكار وريادة أعمال',hrs:3},{code:'IS 423',name:'تخطيط استراتيجي',hrs:3},{code:'IS 275',name:'أخلاقيات المهنة',hrs:2},{code:'IS 390',name:'مشروع تخرج 1',hrs:2}]},
+      {level:8,courses:[{code:'IS 499',name:'مشروع تخرج 2',hrs:3},{code:'IS 498',name:'تدريب تعاوني',hrs:6},{code:'IS 4e1',name:'اختياري تخصص 1',hrs:3},{code:'IS 4e2',name:'اختياري تخصص 2',hrs:3}]}
     ]}
   ]}
 ];
@@ -696,7 +652,7 @@ let currentSpec = null;
 let currentPlan = null;
 let filter = 'all';
 let charts = {};
-let pomoInterval = null, pomoTime = 25*60, pomoRunning = false, pomoMode = 'وقت المذاكرة';
+let pomoInterval = null, pomoTime = 25*60, pomoRunning = false;
 let homeDistChart = null;
 
 const DAYS = ['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس'];
@@ -704,9 +660,8 @@ const TIMES = [];
 for(let h=8; h<=20; h++) TIMES.push(h < 12 ? (h===0?'12':h)+':00 ص' : (h===12?'12':h-12)+':00 م');
 
 window.onload = () => {
-  if(student.name && student.spec) {
-    loadApp();
-  } else if(student.name) {
+  if(student.name && student.spec) loadApp();
+  else if(student.name) {
     document.getElementById('s-info').style.display='none';
     document.getElementById('s-spec').classList.add('active');
     document.getElementById('s-spec').style.display='block';
@@ -804,7 +759,6 @@ function goTab(id, btn) {
   if(id==='countdown') updateCountdown();
 }
 
-// ═══ HOME ═══
 function renderHome() {
   document.getElementById('home-name').textContent = student.name || 'الطالب';
   document.getElementById('home-avatar').textContent = (student.name||'ج')[0];
@@ -847,7 +801,6 @@ function renderHome() {
   let b = gpa>=4.5?'ممتاز':gpa>=3.5?'جيد جداً':gpa>=2.5?'جيد':gpa>=2?'مقبول':'ضعيف';
   document.getElementById('ring-badge').innerHTML = `<span class="grade-pill">${b}</span>`;
 
-  // Home Chart
   const ctx = document.getElementById('ch-home-dist').getContext('2d');
   if(homeDistChart) homeDistChart.destroy();
   homeDistChart = new Chart(ctx, {
@@ -860,7 +813,6 @@ function renderHome() {
   });
 }
 
-// ═══ PLAN ═══
 function renderPlan() {
   let q = (document.getElementById('srch-box')?.value||'').toLowerCase();
   let h = '';
@@ -937,7 +889,6 @@ function addC(lv) {
 }
 function findC(lv, id) { return currentPlan.levels.find(l=>l.level===lv)?.courses.find(c=>(c.id||c.code)===id); }
 
-// ═══ GPA ═══
 function gradePoints(g) { return {'A+':5,'A':4.75,'B+':4.5,'B':4,'C+':3.5,'C':3,'D+':2.5,'D':2,'F':1}[g]||0; }
 function calcTotalGPA() {
   let pts=0, hrs=0;
@@ -947,7 +898,6 @@ function calcTotalGPA() {
   return hrs>0?pts/hrs:0;
 }
 
-// ═══ CHARTS ═══
 function renderCharts() {
   let labels=[], gpaD=[], hrsD=[];
   currentPlan.levels.forEach(lv=>{
@@ -964,16 +914,14 @@ function renderCharts() {
   charts.pie=new Chart(document.getElementById('ch-pie'),{type:'doughnut',data:{labels:['A','B','C','D','F'],datasets:[{data:[dist.A,dist.B,dist.C,dist.D,dist.F],backgroundColor:['#2ed47a','#4f7ef5','#f5c030','#f5823a','#f5504a']}]},options:{plugins:{legend:{position:'bottom',labels:{color:'#7a82a8'}}}}});
 }
 
-// ═══ POMODORO ═══
 function pomoToggle() { pomoRunning ? pausePomo() : startPomo(); }
 function startPomo() { pomoRunning=true; document.getElementById('pm-playbtn').textContent='⏸ إيقاف'; runPomo(); }
 function pausePomo() { pomoRunning=false; document.getElementById('pm-playbtn').textContent='▶ استمرار'; clearTimeout(pomoInterval); }
 function runPomo() { if(!pomoRunning)return; if(pomoTime<=0){toast('انتهى الوقت!');pomoReset();return;} pomoTime--; updPomoUI(); pomoInterval=setTimeout(runPomo,1000); }
 function pomoReset() { pomoRunning=false; clearTimeout(pomoInterval); pomoTime=25*60; document.getElementById('pm-playbtn').textContent='▶ ابدأ'; updPomoUI(); }
-function setPomoMode(m,l) { pomoTime=m*60; pomoMode=l; pomoReset(); document.getElementById('pm-phase').textContent=l; }
+function setPomoMode(m,l) { pomoTime=m*60; pomoReset(); document.getElementById('pm-phase').textContent=l; }
 function updPomoUI() { let m=Math.floor(pomoTime/60), s=pomoTime%60; document.getElementById('pm-time').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`; let off=502.65-(502.65*(pomoTime/(25*60))); document.getElementById('pm-ring').style.strokeDashoffset=off; }
 
-// ═══ TARGET GPA ═══
 function calcTarget() {
   let cur=parseFloat(document.getElementById('t-cur').value), ch=parseFloat(document.getElementById('t-hrs').value), goal=parseFloat(document.getElementById('t-goal').value), rem=parseFloat(document.getElementById('t-rem').value);
   if(isNaN(cur)||isNaN(ch)||isNaN(goal)||isNaN(rem)||ch===0) return;
@@ -983,7 +931,6 @@ function calcTarget() {
   document.getElementById('t-lbl').textContent=req>5?'المعدل المطلوب أعلى من 5':'المعدل المطلوب في الساعات المتبقية';
 }
 
-// ═══ GOALS ═══
 function addGoal() { let t=document.getElementById('goal-inp').value.trim(); if(!t)return; goalsData.push({text:t,done:false}); document.getElementById('goal-inp').value=''; saveGoals(); renderGoals(); }
 function toggleGoal(i) { goalsData[i].done=!goalsData[i].done; saveGoals(); renderGoals(); }
 function delGoal(i) { goalsData.splice(i,1); saveGoals(); renderGoals(); }
@@ -992,7 +939,6 @@ function renderGoals() {
   document.getElementById('goals-list').innerHTML=h||'<div style="text-align:center;color:var(--t3);font-size:.8rem">لا توجد أهداف بعد</div>';
 }
 
-// ═══ SCHEDULE ═══
 function renderSchedule() {
   let h='<div class="schedule-grid">';
   h+=`<div class="sch-header"></div>`;
@@ -1038,7 +984,6 @@ function deleteSchCell() {
   delete scheduleData[`${d}-${t}`]; saveSch(); renderSchedule(); closeSchModal();
 }
 
-// ═══ ACHIEVEMENTS ═══
 function renderAchievements() {
   let gpa=calcTotalGPA(), totH=0, doneC=0;
   currentPlan.levels.forEach(l=>l.courses.forEach(c=>{if(!c.deleted){totH+=c.hrs; if(c.grade&&c.grade!=='none')doneC++;}}));
@@ -1059,7 +1004,6 @@ function renderAchievements() {
   document.getElementById('ach-grid').innerHTML=h;
 }
 
-// ═══ COUNTDOWN ═══
 function updateCountdown() {
   let d=document.getElementById('grad-date-inp').value;
   if(!d) return;
@@ -1072,14 +1016,11 @@ function updateCountdown() {
   document.getElementById('cd-secs').textContent=secs;
 }
 
-// ═══ SETTINGS ═══
 function saveSettings() { student.name=document.getElementById('set-name').value.trim(); saveSt(); renderHome(); }
 function resetAll() { if(confirm('هل أنت متأكد؟')){localStorage.clear();location.reload();} }
 
-// ═══ FILTER ═══
 function setF(f,btn) { filter=f; document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on')); btn.classList.add('on'); renderPlan(); }
 
-// ═══ SAVE / LOAD ═══
 function saveSt() { localStorage.setItem('tu_pro_st', JSON.stringify(student)); }
 function savePlan() { localStorage.setItem('tu_pro_plan', JSON.stringify(planData)); }
 function saveGoals() { localStorage.setItem('tu_pro_goals', JSON.stringify(goalsData)); }
@@ -1090,6 +1031,13 @@ function toast(msg) {
   let t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show');
   setTimeout(()=>t.classList.remove('show'),2000);
 }
+
+// Update countdown every second
+setInterval(() => {
+  if(document.getElementById('p-countdown').classList.contains('on')) {
+    updateCountdown();
+  }
+}, 1000);
 </script>
 </body>
 </html>
