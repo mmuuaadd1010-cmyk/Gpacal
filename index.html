@@ -15,7 +15,6 @@
   --g:#2ed47a;--r:#f5504a;--y:#f5c030;--o:#f5823a;--pk:#f55bb5;
   --t:#dde2f8;--t2:#7a82a8;--t3:#3a4060;
   --ra:14px;
-  --glow1:rgba(79,126,245,0.15);--glow2:rgba(123,91,245,0.12);
 }
 html{scroll-behavior:smooth}
 body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:var(--t);min-height:100vh;overflow-x:hidden}
@@ -44,23 +43,18 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
 .field-group label{display:block;font-size:.75rem;color:var(--t2);font-weight:500;margin-bottom:7px}
 .field-inp{width:100%;background:var(--bg);border:1px solid var(--bor);border-radius:10px;color:var(--t);font-family:inherit;font-size:.9rem;padding:11px 14px;outline:none;transition:all .2s}
 .field-inp:focus{border-color:var(--a1);box-shadow:0 0 0 3px rgba(79,126,245,.12)}
-.field-inp::placeholder{color:var(--t3)}
 .btn-next{width:100%;background:linear-gradient(135deg,var(--a1),var(--a2));border:none;border-radius:12px;color:#fff;font-family:inherit;font-size:.95rem;font-weight:700;padding:13px;cursor:pointer;box-shadow:0 6px 24px rgba(79,126,245,.35);transition:all .2s;margin-top:8px}
-.btn-next:hover{opacity:.88;transform:translateY(-1px)}
 
-#s-spec{padding:30px 16px 50px}
+#s-spec{padding:30px 16px 50px;max-width:700px;margin:0 auto}
 .spec-header{text-align:center;margin-bottom:28px}
-.spec-header h2{font-size:1.5rem;font-weight:700;background:linear-gradient(135deg,#fff 30%,var(--a1));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px}
-.spec-header p{color:var(--t2);font-size:.8rem}
+.spec-header h2{font-size:1.5rem;font-weight:700;background:linear-gradient(135deg,#fff 30%,var(--a1));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .college-section{margin-bottom:24px}
 .college-label{font-size:.72rem;color:var(--t3);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;padding:0 4px;display:flex;align-items:center;gap:8px}
 .college-label::after{content:'';flex:1;height:1px;background:var(--bor)}
 .spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 @media(max-width:500px){.spec-grid{grid-template-columns:1fr 1fr}}
-.spec-card{background:var(--s2);border:1px solid var(--bor);border-radius:16px;padding:18px 12px;cursor:pointer;transition:all .25s cubic-bezier(.34,1.56,.64,1);text-align:center;position:relative;overflow:hidden}
-.spec-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(79,126,245,.1),rgba(123,91,245,.07));opacity:0;transition:.3s}
-.spec-card:hover::before{opacity:1}
-.spec-card:hover{border-color:var(--a1);transform:translateY(-4px) scale(1.02);box-shadow:0 10px 30px rgba(79,126,245,.2)}
+.spec-card{background:var(--s2);border:1px solid var(--bor);border-radius:16px;padding:18px 12px;cursor:pointer;transition:all .25s;text-align:center}
+.spec-card:hover{border-color:var(--a1);transform:translateY(-4px) scale(1.02)}
 .spec-icon{font-size:2rem;margin-bottom:8px;display:block}
 .spec-name{font-size:.78rem;font-weight:600;line-height:1.3}
 .spec-hrs{font-size:.62rem;color:var(--t3);margin-top:5px;background:var(--s3);border-radius:10px;padding:2px 8px;display:inline-block}
@@ -69,11 +63,9 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
 .app-nav{position:sticky;top:0;z-index:100;background:rgba(5,6,13,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--bor);padding:10px 16px;display:flex;align-items:center;justify-content:space-between}
 .nav-left{display:flex;align-items:center;gap:10px}
 .nav-logo{font-size:.9rem;font-weight:700;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.nav-spec-pill{background:var(--s2);border:1px solid var(--bor);border-radius:20px;padding:3px 12px;font-size:.7rem;color:var(--a1);cursor:pointer;transition:all .2s}
-.nav-spec-pill:hover{border-color:var(--a1)}
+.nav-spec-pill{background:var(--s2);border:1px solid var(--bor);border-radius:20px;padding:3px 12px;font-size:.7rem;color:var(--a1);cursor:pointer}
 .nav-gpa{text-align:left}
 .nav-gpa-val{font-size:1.1rem;font-weight:700;color:var(--a1)}
-.nav-gpa-lbl{font-size:.58rem;color:var(--t3)}
 
 .hero{padding:20px 16px 16px}
 .profile-header-card{display:flex;align-items:center;gap:16px;background:var(--s2);border:1px solid var(--bor);border-radius:16px;padding:16px;margin-bottom:16px}
@@ -84,7 +76,6 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
 .profile-stats strong{color:var(--t);margin-left:4px}
 .reco-box{background:rgba(46,212,122,.06);border:1px solid rgba(46,212,122,.2);border-radius:14px;padding:14px;margin-bottom:16px}
 .reco-title{font-size:.85rem;font-weight:700;color:var(--g);margin-bottom:6px}
-.reco-text{font-size:.78rem;color:var(--t2);line-height:1.6}
 
 .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
 .stat-box{background:var(--s2);border:1px solid var(--bor);border-radius:12px;padding:12px 8px;text-align:center}
@@ -96,168 +87,103 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
 .ring-bg-c{fill:none;stroke:var(--bor2);stroke-width:10}
 .ring-fg{fill:none;stroke:url(#rg);stroke-width:10;stroke-linecap:round;transition:stroke-dashoffset .9s cubic-bezier(.4,0,.2,1)}
 .ring-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.ring-gpa{font-size:2.4rem;font-weight:700;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
-.ring-lbl{font-size:.6rem;color:var(--t3);margin-top:2px}
+.ring-gpa{font-size:2.4rem;font-weight:700;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .grade-pill{display:inline-block;background:linear-gradient(135deg,var(--a1),var(--a2));color:#fff;border-radius:20px;padding:4px 14px;font-size:.78rem;font-weight:700}
-.prog-bar-wrap{background:var(--s2);border:1px solid var(--bor);border-radius:12px;padding:14px;margin-bottom:14px}
-.prog-hdr{display:flex;justify-content:space-between;font-size:.72rem;color:var(--t2);margin-bottom:8px}
-.prog-track{background:var(--bg);border-radius:20px;height:8px;overflow:hidden}
-.prog-fill{height:100%;background:linear-gradient(90deg,var(--a1),var(--a2),var(--a3));border-radius:20px;transition:width .8s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
-.prog-fill::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);animation:shimmer 2.2s infinite}
-@keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
 
 .tab-rail{display:flex;gap:0;background:var(--s1);border-bottom:1px solid var(--bor);overflow-x:auto;scrollbar-width:none;position:sticky;top:57px;z-index:90}
-.tab-rail::-webkit-scrollbar{display:none}
-.tab-item{background:none;border:none;color:var(--t3);font-family:inherit;font-size:.72rem;padding:11px 16px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s;flex-shrink:0}
+.tab-item{background:none;border:none;color:var(--t3);font-family:inherit;font-size:.72rem;padding:11px 16px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent}
 .tab-item.on{color:var(--a1);border-bottom-color:var(--a1);font-weight:600}
-.tab-item:hover:not(.on){color:var(--t2)}
 .tab-body{padding:14px 16px}
-.tab-pane{display:none}
-.tab-pane.on{display:block}
-
+.tab-pane{display:none}.tab-pane.on{display:block}
 .card{background:var(--s2);border:1px solid var(--bor);border-radius:var(--ra);padding:16px;margin-bottom:12px}
-.card-h{font-size:.8rem;color:var(--t2);font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:7px}
+.card-h{font-size:.8rem;color:var(--t2);font-weight:600;margin-bottom:12px}
 
-.srch{width:100%;background:var(--bg);border:1px solid var(--bor);border-radius:10px;color:var(--t);font-family:inherit;font-size:.83rem;padding:9px 13px;outline:none;margin-bottom:10px;transition:border-color .2s}
-.srch:focus{border-color:var(--a1)}
-.filter-row{display:flex;gap:6px;margin-bottom:12px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
-.filter-row::-webkit-scrollbar{display:none}
-.fbtn{background:var(--s2);border:1px solid var(--bor);color:var(--t2);border-radius:20px;padding:4px 12px;font-family:inherit;font-size:.7rem;cursor:pointer;white-space:nowrap;transition:all .2s;flex-shrink:0}
-.fbtn.on{background:var(--a1);border-color:var(--a1);color:#fff;font-weight:600}
+.srch{width:100%;background:var(--bg);border:1px solid var(--bor);border-radius:10px;color:var(--t);font-family:inherit;font-size:.83rem;padding:9px 13px;outline:none;margin-bottom:10px}
+.filter-row{display:flex;gap:6px;margin-bottom:12px;overflow-x:auto}
+.fbtn{background:var(--s2);border:1px solid var(--bor);color:var(--t2);border-radius:20px;padding:4px 12px;font-family:inherit;font-size:.7rem;cursor:pointer;white-space:nowrap}
+.fbtn.on{background:var(--a1);border-color:var(--a1);color:#fff}
 .lv-block{margin-bottom:16px}
-.lv-hdr{display:flex;align-items:center;justify-content:space-between;background:var(--s2);border:1px solid var(--bor);border-radius:10px;padding:10px 14px;cursor:pointer;margin-bottom:8px;transition:border-color .2s}
-.lv-hdr:hover{border-color:var(--bor2)}
+.lv-hdr{display:flex;align-items:center;justify-content:space-between;background:var(--s2);border:1px solid var(--bor);border-radius:10px;padding:10px 14px;cursor:pointer;margin-bottom:8px}
 .lv-left{display:flex;align-items:center;gap:10px}
-.lv-num{width:30px;height:30px;background:linear-gradient(135deg,var(--a1),var(--a2));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:#fff;flex-shrink:0}
+.lv-num{width:30px;height:30px;background:linear-gradient(135deg,var(--a1),var(--a2));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:#fff}
 .lv-title{font-size:.85rem;font-weight:600}
-.lv-meta{font-size:.65rem;color:var(--t3)}
-.lv-gpa-badge{background:var(--s3);border:1px solid var(--bor);border-radius:20px;padding:2px 10px;font-size:.7rem;color:var(--t2);transition:all .3s}
-.lv-gpa-badge.has{border-color:var(--a1);color:var(--a1);box-shadow:0 0 8px rgba(79,126,245,.2)}
-.c-row{background:var(--s1);border:1px solid var(--bor);border-radius:9px;padding:10px 12px;display:flex;align-items:center;gap:8px;margin-bottom:6px;transition:all .2s}
-.c-row:hover{border-color:var(--bor2)}
+.lv-gpa-badge{background:var(--s3);border:1px solid var(--bor);border-radius:20px;padding:2px 10px;font-size:.7rem;color:var(--t2)}
+.lv-gpa-badge.has{border-color:var(--a1);color:var(--a1)}
+.c-row{background:var(--s1);border:1px solid var(--bor);border-radius:9px;padding:10px 12px;display:flex;align-items:center;gap:8px;margin-bottom:6px}
 .c-row.done{border-color:rgba(46,212,122,.2);background:rgba(46,212,122,.03)}
-.c-row.done .c-name{color:var(--t2);text-decoration:line-through;text-decoration-color:var(--t3)}
 .c-info{flex:1;min-width:0}
-.c-name{font-size:.83rem;font-weight:500;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.c-code{font-size:.62rem;color:var(--t3);background:var(--s3);border:1px solid var(--bor);border-radius:4px;padding:1px 5px;font-family:monospace}
+.c-name{font-size:.83rem;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.c-code{font-size:.62rem;color:var(--t3);background:var(--s3);border-radius:4px;padding:1px 5px;font-family:monospace}
 .c-hrs-inp{width:46px;background:var(--bg);border:1px solid var(--bor);border-radius:6px;color:var(--t);font-family:inherit;font-size:.75rem;padding:4px 6px;text-align:center;outline:none}
-.c-hrs-inp:focus{border-color:var(--a1)}
-.c-right{display:flex;align-items:center;gap:6px;flex-shrink:0}
-.g-sel{background:var(--bg);border:1px solid var(--bor);border-radius:7px;color:var(--t);font-family:inherit;font-size:.73rem;padding:5px 6px;cursor:pointer;outline:none;transition:border-color .2s}
-.g-sel:focus{border-color:var(--a1)}
-.g-sel option{background:var(--s2)}
-.btn-del{background:transparent;border:1px solid var(--bor);color:var(--t3);border-radius:6px;padding:4px 8px;font-size:.7rem;cursor:pointer;transition:all .2s}
-.btn-del:hover{border-color:var(--r);color:var(--r);background:rgba(245,80,74,.06)}
-.btn-restore{background:transparent;border:1px solid var(--bor);color:var(--t3);border-radius:6px;padding:4px 8px;font-size:.7rem;cursor:pointer;transition:all .2s}
-.btn-restore:hover{border-color:var(--g);color:var(--g)}
-.del-row{opacity:.4;border-style:dashed}
+.g-sel{background:var(--bg);border:1px solid var(--bor);border-radius:7px;color:var(--t);font-family:inherit;font-size:.73rem;padding:5px 6px;cursor:pointer;outline:none}
+.btn-del{background:transparent;border:1px solid var(--bor);color:var(--t3);border-radius:6px;padding:4px 8px;font-size:.7rem;cursor:pointer}
+.btn-restore{background:transparent;border:1px solid var(--bor);color:var(--t3);border-radius:6px;padding:4px 8px;font-size:.7rem;cursor:pointer}
 .add-row{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
-.add-inp{background:var(--bg);border:1px solid var(--bor);border-radius:8px;color:var(--t);font-family:inherit;font-size:.75rem;padding:7px 9px;outline:none;flex:1;min-width:80px;transition:border-color .2s}
-.add-inp:focus{border-color:var(--a1)}
-.btn-add-c{background:var(--s3);border:1px solid var(--bor);color:var(--t2);border-radius:8px;padding:7px 12px;font-family:inherit;font-size:.73rem;cursor:pointer;transition:all .2s;white-space:nowrap}
-.btn-add-c:hover{border-color:var(--a1);color:var(--a1)}
-.fab{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);width:calc(100% - 32px);max-width:420px;z-index:99;background:linear-gradient(135deg,var(--a1),var(--a2));color:#fff;border:none;border-radius:14px;padding:14px;font-family:inherit;font-size:.88rem;font-weight:700;cursor:pointer;box-shadow:0 8px 30px rgba(79,126,245,.4);transition:all .2s}
-.fab:hover{transform:translateX(-50%) translateY(-2px)}
-
-.chip{display:inline-block;border-radius:6px;padding:2px 8px;font-size:.7rem;font-weight:700}
-.cAp{background:rgba(46,212,122,.15);color:var(--g)}.cA{background:rgba(46,212,122,.1);color:var(--g)}
-.cBp{background:rgba(79,126,245,.15);color:var(--a1)}.cB{background:rgba(79,126,245,.1);color:var(--a1)}
-.cCp{background:rgba(245,192,48,.15);color:var(--y)}.cC{background:rgba(245,192,48,.1);color:var(--y)}
-.cDp{background:rgba(245,130,58,.15);color:var(--o)}.cD{background:rgba(245,80,74,.15);color:var(--r)}
-.cF{background:rgba(245,80,74,.2);color:var(--r)}
+.add-inp{background:var(--bg);border:1px solid var(--bor);border-radius:8px;color:var(--t);font-family:inherit;font-size:.75rem;padding:7px 9px;outline:none;flex:1;min-width:80px}
+.btn-add-c{background:var(--s3);border:1px solid var(--bor);color:var(--t2);border-radius:8px;padding:7px 12px;font-family:inherit;font-size:.73rem;cursor:pointer}
+.fab{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);width:calc(100% - 32px);max-width:420px;z-index:99;background:linear-gradient(135deg,var(--a1),var(--a2));color:#fff;border:none;border-radius:14px;padding:14px;font-family:inherit;font-size:.88rem;font-weight:700;cursor:pointer;box-shadow:0 8px 30px rgba(79,126,245,.4)}
 
 .chart-box{background:var(--s2);border:1px solid var(--bor);border-radius:12px;padding:14px;margin-bottom:12px}
-.chart-box canvas{max-height:200px}
-.cmp-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-.cmp-lbl{font-size:.7rem;color:var(--t2);width:90px;flex-shrink:0}
-.cmp-track{flex:1;background:var(--bg);border-radius:20px;height:8px;overflow:hidden}
-.cmp-bar{height:100%;border-radius:20px;transition:width .8s ease}
-.cmp-val{font-size:.72rem;font-weight:700;width:36px;flex-shrink:0;text-align:left}
-
 .pomo-wrap{text-align:center;padding:10px 0}
 .pomo-ring{position:relative;width:180px;height:180px;margin:0 auto 20px}
 .pomo-ring svg{position:absolute;top:0;left:0;width:100%;height:100%;transform:rotate(-90deg)}
 .pomo-bg{fill:none;stroke:var(--bor2);stroke-width:8}
-.pomo-fg{fill:none;stroke:var(--a1);stroke-width:8;stroke-linecap:round;transition:stroke-dashoffset .9s linear}
+.pomo-fg{fill:none;stroke:var(--a1);stroke-width:8;stroke-linecap:round}
 .pomo-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.pomo-time{font-size:2.8rem;font-weight:700;font-family:'Space Grotesk',sans-serif;color:var(--t)}
-.pomo-phase{font-size:.72rem;color:var(--t2);margin-top:4px}
+.pomo-time{font-size:2.8rem;font-weight:700;font-family:'Space Grotesk',sans-serif}
 .pomo-btns{display:flex;gap:10px;justify-content:center;margin-bottom:16px;flex-wrap:wrap}
-.pomo-btn{border:1px solid var(--bor);border-radius:10px;background:var(--s2);color:var(--t2);font-family:inherit;font-size:.8rem;padding:9px 18px;cursor:pointer;transition:all .2s}
-.pomo-btn:hover{border-color:var(--a1);color:var(--a1)}
-.pomo-btn.prim{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:#fff;font-weight:700;box-shadow:0 4px 16px rgba(79,126,245,.3)}
+.pomo-btn{border:1px solid var(--bor);border-radius:10px;background:var(--s2);color:var(--t2);font-family:inherit;font-size:.8rem;padding:9px 18px;cursor:pointer}
+.pomo-btn.prim{background:linear-gradient(135deg,var(--a1),var(--a2));border-color:transparent;color:#fff;font-weight:700}
+
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.t-field{display:flex;flex-direction:column;gap:5px}
+.t-field label{font-size:.7rem;color:var(--t2)}
+.t-inp{background:var(--bg);border:1px solid var(--bor);border-radius:8px;color:var(--t);font-family:inherit;font-size:.88rem;padding:9px 11px;outline:none;width:100%}
+.t-result{background:linear-gradient(135deg,rgba(79,126,245,.08),rgba(123,91,245,.06));border:1px solid rgba(79,126,245,.2);border-radius:14px;padding:20px;text-align:center;margin-top:12px}
+.t-num{font-size:3rem;font-weight:700;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
 .goal-form{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
-.goal-inp{flex:1;min-width:120px;background:var(--bg);border:1px solid var(--bor);border-radius:8px;color:var(--t);font-family:inherit;font-size:.8rem;padding:8px 11px;outline:none;transition:border-color .2s}
-.goal-inp:focus{border-color:var(--a1)}
-.btn-add-goal{background:linear-gradient(135deg,var(--a1),var(--a2));border:none;border-radius:8px;color:#fff;font-family:inherit;font-size:.8rem;padding:8px 14px;cursor:pointer;white-space:nowrap}
-.goal-item{background:var(--s2);border:1px solid var(--bor);border-radius:10px;padding:11px 13px;display:flex;align-items:center;gap:10px;margin-bottom:7px;transition:all .2s}
-.goal-item.done-goal{border-color:rgba(46,212,122,.25);background:rgba(46,212,122,.04)}
-.goal-check{width:20px;height:20px;border:2px solid var(--bor2);border-radius:6px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.goal-inp{flex:1;min-width:120px;background:var(--bg);border:1px solid var(--bor);border-radius:8px;color:var(--t);font-family:inherit;font-size:.8rem;padding:8px 11px;outline:none}
+.btn-add-goal{background:linear-gradient(135deg,var(--a1),var(--a2));border:none;border-radius:8px;color:#fff;font-family:inherit;font-size:.8rem;padding:8px 14px;cursor:pointer}
+.goal-item{background:var(--s2);border:1px solid var(--bor);border-radius:10px;padding:11px 13px;display:flex;align-items:center;gap:10px;margin-bottom:7px}
+.goal-check{width:20px;height:20px;border:2px solid var(--bor2);border-radius:6px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center}
 .goal-check.checked{background:var(--g);border-color:var(--g);color:#fff;font-size:.7rem}
 .goal-text{flex:1;font-size:.82rem;color:var(--t)}
-.goal-item.done-goal .goal-text{text-decoration:line-through;color:var(--t3)}
-.btn-del-goal{background:none;border:none;color:var(--t3);cursor:pointer;font-size:.8rem;padding:2px 6px;transition:color .2s}
-.btn-del-goal:hover{color:var(--r)}
+.btn-del-goal{background:none;border:none;color:var(--t3);cursor:pointer;font-size:.8rem}
 
 .schedule-grid{display:grid;grid-template-columns:60px repeat(5,1fr);gap:4px;margin-bottom:12px;overflow-x:auto}
 .sch-header{font-size:.6rem;color:var(--t3);font-weight:600;padding:4px;text-align:center;white-space:nowrap}
 .sch-time{font-size:.58rem;color:var(--t3);padding:4px 2px;text-align:center;align-self:center}
-.sch-cell{background:var(--s2);border:1px solid var(--bor);border-radius:6px;min-height:42px;padding:3px;cursor:pointer;transition:all .2s;font-size:.6rem;color:var(--t2);position:relative;overflow:hidden}
-.sch-cell:hover{border-color:var(--a1)}
+.sch-cell{background:var(--s2);border:1px solid var(--bor);border-radius:6px;min-height:42px;padding:3px;cursor:pointer;font-size:.6rem;color:var(--t2)}
 .sch-cell.has-class{color:#fff;font-weight:600}
 .sch-modal{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px}
 .sch-modal.open{display:flex}
 .sch-modal-box{background:var(--s2);border:1px solid var(--bor);border-radius:16px;padding:22px;width:100%;max-width:340px}
-.sch-modal-title{font-size:.9rem;font-weight:600;margin-bottom:16px}
 .modal-field{margin-bottom:12px}
 .modal-field label{display:block;font-size:.72rem;color:var(--t2);margin-bottom:5px}
-.modal-inp{width:100%;background:var(--bg);border:1px solid var(--bor);border-radius:8px;color:var(--t);font-family:inherit;font-size:.82rem;padding:8px 11px;outline:none;transition:border-color .2s}
-.modal-inp:focus{border-color:var(--a1)}
+.modal-inp{width:100%;background:var(--bg);border:1px solid var(--bor);border-radius:8px;color:var(--t);font-family:inherit;font-size:.82rem;padding:8px 11px;outline:none}
 .color-row{display:flex;gap:8px;flex-wrap:wrap}
-.color-opt{width:26px;height:26px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:all .2s}
+.color-opt{width:26px;height:26px;border-radius:50%;cursor:pointer;border:2px solid transparent}
 .color-opt.sel{border-color:#fff;transform:scale(1.15)}
 .modal-btns{display:flex;gap:8px;margin-top:14px}
 .btn-modal-save{flex:1;background:linear-gradient(135deg,var(--a1),var(--a2));border:none;border-radius:8px;color:#fff;font-family:inherit;font-size:.82rem;font-weight:600;padding:9px;cursor:pointer}
 .btn-modal-cancel{flex:1;background:var(--s3);border:1px solid var(--bor);border-radius:8px;color:var(--t2);font-family:inherit;font-size:.82rem;padding:9px;cursor:pointer}
 .btn-modal-del{background:rgba(245,80,74,.1);border:1px solid rgba(245,80,74,.3);border-radius:8px;color:var(--r);font-family:inherit;font-size:.82rem;padding:9px 13px;cursor:pointer}
 
-.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
-.t-field{display:flex;flex-direction:column;gap:5px}
-.t-field label{font-size:.7rem;color:var(--t2);font-weight:500}
-.t-inp{background:var(--bg);border:1px solid var(--bor);border-radius:8px;color:var(--t);font-family:inherit;font-size:.88rem;padding:9px 11px;outline:none;transition:border-color .2s;width:100%}
-.t-inp:focus{border-color:var(--a1)}
-.t-result{background:linear-gradient(135deg,rgba(79,126,245,.08),rgba(123,91,245,.06));border:1px solid rgba(79,126,245,.2);border-radius:14px;padding:20px;text-align:center;margin-top:12px}
-.t-num{font-size:3rem;font-weight:700;background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
-.t-lbl{font-size:.75rem;color:var(--t2);margin-top:6px}
-
 .achievements-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.ach-card{background:var(--s2);border:1px solid var(--bor);border-radius:12px;padding:14px;text-align:center;transition:all .3s}
+.ach-card{background:var(--s2);border:1px solid var(--bor);border-radius:12px;padding:14px;text-align:center}
 .ach-card.unlocked{border-color:rgba(245,192,48,.4);background:rgba(245,192,48,.05)}
-.ach-icon{font-size:2rem;margin-bottom:8px;display:block;filter:grayscale(1);transition:filter .3s}
-.ach-card.unlocked .ach-icon{filter:none}
-.ach-name{font-size:.75rem;font-weight:600;margin-bottom:4px}
-.ach-desc{font-size:.62rem;color:var(--t3);line-height:1.4}
-.ach-card.unlocked .ach-name{color:var(--y)}
-.ach-locked-tag{font-size:.6rem;color:var(--t3);background:var(--s3);border-radius:4px;padding:1px 5px;margin-top:4px;display:inline-block}
-.ach-unlocked-tag{font-size:.6rem;color:var(--y);background:rgba(245,192,48,.1);border-radius:4px;padding:1px 5px;margin-top:4px;display:inline-block}
 
-.countdown-wrap{text-align:center;padding:20px 0}
 .countdown-units{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0}
 .cd-unit{background:var(--s2);border:1px solid var(--bor);border-radius:10px;padding:12px 6px;text-align:center}
 .cd-val{font-size:1.6rem;font-weight:700;color:var(--a1);font-family:'Space Grotesk',sans-serif}
-.cd-lbl{font-size:.6rem;color:var(--t3);margin-top:2px}
 
 .set-card{background:var(--s2);border:1px solid var(--bor);border-radius:12px;padding:14px;margin-bottom:10px}
-.set-card h3{font-size:.78rem;color:var(--t2);font-weight:600;margin-bottom:12px}
-
-.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(10px);background:linear-gradient(135deg,var(--a1),var(--a2));color:#fff;border-radius:10px;padding:9px 20px;font-size:.82rem;font-weight:600;box-shadow:0 6px 24px rgba(79,126,245,.4);opacity:0;transition:all .3s;z-index:999;pointer-events:none;white-space:nowrap}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-.btn-danger{background:transparent;border:1px solid var(--r);color:var(--r);border-radius:10px;padding:10px;font-family:inherit;font-size:.82rem;cursor:pointer;width:100%;transition:all .2s}
-.btn-danger:hover{background:var(--r);color:#fff}
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--a1),var(--a2));color:#fff;border-radius:10px;padding:9px 20px;font-size:.82rem;font-weight:600;z-index:999;opacity:0;transition:all .3s;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%)}
+.btn-danger{background:transparent;border:1px solid var(--r);color:var(--r);border-radius:10px;padding:10px;font-family:inherit;font-size:.82rem;cursor:pointer;width:100%}
 ::-webkit-scrollbar{width:4px;height:4px}
 ::-webkit-scrollbar-thumb{background:var(--bor2);border-radius:4px}
-@media(max-width:480px){.stats-grid{grid-template-columns:1fr 1fr 1fr}.achievements-grid{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -297,7 +223,7 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
     </div>
     <div class="nav-gpa">
       <div class="nav-gpa-val" id="nav-gpa">–</div>
-      <div class="nav-gpa-lbl">معدلك</div>
+      <div class="nav-gpa-lbl" style="font-size:.58rem;color:var(--t3)">معدلك</div>
     </div>
   </div>
 
@@ -328,7 +254,7 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
       </div>
       <div class="reco-box">
         <div class="reco-title">⭐ أفضل التوصيات</div>
-        <div class="reco-text" id="home-reco">ركز على المواد الأساسية لضمان معدل عالي. توصي المنصة بالبدء بالمواد ذات الساعات الأعلى وتجنب تأجيلها.</div>
+        <div class="reco-text" style="font-size:.78rem;color:var(--t2);line-height:1.6">ركز على المواد الأساسية لضمان معدل عالي. توصي المنصة بالبدء بالمواد ذات الساعات الأعلى وتجنب تأجيلها.</div>
       </div>
       <div class="card">
         <div class="card-h">📊 توزيع التقديرات</div>
@@ -341,18 +267,13 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
             <circle class="ring-bg-c" cx="75" cy="75" r="65"/>
             <circle class="ring-fg" id="ring-fg" cx="75" cy="75" r="65" stroke-dasharray="408.41" stroke-dashoffset="408.41"/>
           </svg>
-          <div class="ring-inner"><div class="ring-gpa" id="ring-gpa">–</div><div class="ring-lbl">GPA</div><div id="ring-badge" style="margin-top:4px"></div></div>
+          <div class="ring-inner"><div class="ring-gpa" id="ring-gpa">–</div><div style="font-size:.6rem;color:var(--t3)">GPA</div><div id="ring-badge" style="margin-top:4px"></div></div>
         </div>
       </div>
       <div class="stats-grid">
         <div class="stat-box"><div class="stat-val" id="s-hrs" style="color:var(--a1)">0</div><div class="stat-lbl">ساعة مكتملة</div></div>
         <div class="stat-box"><div class="stat-val" id="s-crs">0</div><div class="stat-lbl">مادة مكتملة</div></div>
         <div class="stat-box"><div class="stat-val" id="s-rem" style="color:var(--t2)">–</div><div class="stat-lbl">ساعة متبقية</div></div>
-      </div>
-      <div class="prog-bar-wrap">
-        <div class="prog-hdr"><span>التقدم نحو التخرج</span><span id="prog-pct" style="color:var(--a1);font-weight:600">0%</span></div>
-        <div class="prog-track"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
-        <div style="display:flex;justify-content:space-between;font-size:.6rem;color:var(--t3);margin-top:5px"><span>0</span><span id="prog-total">–</span></div>
       </div>
       <div class="card">
         <div class="card-h">📊 جدول التقديرات</div>
@@ -399,7 +320,7 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
             </svg>
             <div class="pomo-inner">
               <div class="pomo-time" id="pm-time">25:00</div>
-              <div class="pomo-phase" id="pm-phase">وقت المذاكرة</div>
+              <div style="font-size:.72rem;color:var(--t2)" id="pm-phase">وقت المذاكرة</div>
             </div>
           </div>
           <div class="pomo-btns">
@@ -426,7 +347,7 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
         </div>
         <div id="t-result" style="display:none" class="t-result">
           <div class="t-num" id="t-num">–</div>
-          <div class="t-lbl" id="t-lbl"></div>
+          <div style="font-size:.75rem;color:var(--t2);margin-top:6px" id="t-lbl"></div>
         </div>
       </div>
     </div>
@@ -461,16 +382,16 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
     <div class="tab-pane" id="p-countdown">
       <div class="card">
         <div class="card-h">⏳ العد التنازلي للتخرج</div>
-        <div class="grad-date-field" style="margin-bottom:14px">
+        <div style="margin-bottom:14px">
           <label style="font-size:.73rem;color:var(--t2)">تاريخ تخرجك المتوقع</label>
           <input class="t-inp" type="date" id="grad-date-inp" oninput="updateCountdown()">
         </div>
-        <div class="countdown-wrap">
+        <div style="text-align:center;padding:20px 0">
           <div class="countdown-units" id="cd-units">
-            <div class="cd-unit"><div class="cd-val" id="cd-days">–</div><div class="cd-lbl">يوم</div></div>
-            <div class="cd-unit"><div class="cd-val" id="cd-hrs">–</div><div class="cd-lbl">ساعة</div></div>
-            <div class="cd-unit"><div class="cd-val" id="cd-mins">–</div><div class="cd-lbl">دقيقة</div></div>
-            <div class="cd-unit"><div class="cd-val" id="cd-secs">–</div><div class="cd-lbl">ثانية</div></div>
+            <div class="cd-unit"><div class="cd-val" id="cd-days">–</div><div style="font-size:.6rem;color:var(--t3)">يوم</div></div>
+            <div class="cd-unit"><div class="cd-val" id="cd-hrs">–</div><div style="font-size:.6rem;color:var(--t3)">ساعة</div></div>
+            <div class="cd-unit"><div class="cd-val" id="cd-mins">–</div><div style="font-size:.6rem;color:var(--t3)">دقيقة</div></div>
+            <div class="cd-unit"><div class="cd-val" id="cd-secs">–</div><div style="font-size:.6rem;color:var(--t3)">ثانية</div></div>
           </div>
         </div>
       </div>
@@ -478,11 +399,11 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
 
     <div class="tab-pane" id="p-settings">
       <div class="set-card">
-        <h3>👤 معلومات الطالب</h3>
+        <h3 style="font-size:.78rem;color:var(--t2);margin-bottom:12px">👤 معلومات الطالب</h3>
         <div class="field-group"><label>الاسم</label><input class="t-inp" type="text" id="set-name" oninput="saveSettings()"></div>
       </div>
       <div class="set-card">
-        <h3>ℹ️ عن البرنامج</h3>
+        <h3 style="font-size:.78rem;color:var(--t2);margin-bottom:12px">ℹ️ عن البرنامج</h3>
         <div style="font-size:.78rem;color:var(--t2);line-height:1.8">
           <strong style="color:var(--t)">TU Academic Pro</strong><br>
           منصة أكاديمية متكاملة لطلاب جامعة طيبة.<br><br>
@@ -493,7 +414,7 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
         </div>
       </div>
       <div class="set-card">
-        <h3>🔄 إعادة الضبط</h3>
+        <h3 style="font-size:.78rem;color:var(--t2);margin-bottom:12px">🔄 إعادة الضبط</h3>
         <button class="btn-danger" onclick="resetAll()">🗑 مسح جميع الدرجات والبيانات</button>
       </div>
     </div>
@@ -502,7 +423,7 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
 
 <div class="sch-modal" id="sch-modal">
   <div class="sch-modal-box">
-    <div class="sch-modal-title">📅 إضافة / تعديل حصة</div>
+    <div style="font-size:.9rem;font-weight:600;margin-bottom:16px">📅 إضافة / تعديل حصة</div>
     <div class="modal-field"><label>اسم المادة أو النشاط</label><input class="modal-inp" type="text" id="sch-m-name"></div>
     <div class="modal-field"><label>المكان (اختياري)</label><input class="modal-inp" type="text" id="sch-m-place"></div>
     <div class="modal-field">
@@ -525,10 +446,12 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
 </div>
 
 <script>
+// ══════════════════════════════════════════════════════════
+//  STUDY PLANS DATA (PROVIDED BY USER)
+// ══════════════════════════════════════════════════════════
 const SPECS = [
   {college:'كلية العلوم', entries:[
-        id:'engl', name:'لغات وترجمه', icon:'🌐',
-    levels:[
+    {id:'engl', name:'لغات وترجمه', icon:'🌐', levels:[
       {level:1,courses:[{id:'engl_l1_1',code:'ENGL 113',name:'استراتيجيات القراءة',hrs:3},{id:'engl_l1_2',code:'ENGL 115',name:'كتابة الفقرة',hrs:3},{id:'engl_l1_3',code:'ENGL 117',name:'مهارات المحادثة والاستماع',hrs:3},{id:'engl_l1_4',code:'ENGL 111',name:'مقدمة في القواعد',hrs:3},{id:'engl_l1_5',code:'GS 101',name:'دراسات إسلامية: العقيدة والعبادة',hrs:2},{id:'engl_l1_6',code:'ENGL 101',name:'مهارات اللغة الإنجليزية (1)',hrs:2}]},
       {level:2,courses:[{id:'engl_l2_1',code:'ENGL 102',name:'مهارات اللغة الإنجليزية (2)',hrs:2},{id:'engl_l2_2',code:'GS 104',name:'دراسات إسلامية: القيم والأخلاق',hrs:2},{id:'engl_l2_3',code:'ENGL 112',name:'استخدام القواعد',hrs:3},{id:'engl_l2_4',code:'QRRS 101',name:'القرآن الكريم',hrs:2},{id:'engl_l2_5',code:'ENGL 118',name:'كتابة المقال القصير',hrs:3},{id:'engl_l2_6',code:'ENGL 116',name:'استراتيجيات القراءة المطولة',hrs:3},{id:'engl_l2_7',code:'ENGL 114',name:'مهارات واستراتيجيات التواصل',hrs:3}]},
       {level:3,courses:[{id:'engl_l3_1',code:'GS 111',name:'مهارات اللغة العربية (1)',hrs:2},{id:'engl_l3_2',code:'ENGL 213',name:'قواعد متقدمة',hrs:3},{id:'engl_l3_3',code:'ENGL 217',name:'كتابة المقال المطول',hrs:3},{id:'engl_l3_4',code:'ENGL 221',name:'مقدمة في اللغويات',hrs:3},{id:'engl_l3_5',code:'ENGL 231',name:'مقدمة في الأدب',hrs:3},{id:'engl_l3_6',code:'ENGL 211',name:'القراءة المتقدمة',hrs:3}]},
@@ -537,11 +460,8 @@ const SPECS = [
       {level:6,courses:[{id:'engl_l6_1',code:'ENGL 332',name:'النقد الأدبي',hrs:3},{id:'engl_l6_2',code:'ENGL 342',name:'الترجمة المتخصصة',hrs:3},{id:'engl_l6_3',code:'GSE 2',name:'مقرر متطلب جامعة اختياري (2)',hrs:2},{id:'engl_l6_4',code:'ENGL 322',name:'علم المعاني',hrs:3},{id:'engl_l6_5',code:'ENGL 2',name:'مقرر اختياري برنامج (2)',hrs:2},{id:'engl_l6_6',code:'ENGL 352',name:'طرق تدريس اللغة الإنجليزية',hrs:2},{id:'engl_l6_7',code:'ENGL 324',name:'اكتساب اللغة',hrs:3}]},
       {level:7,courses:[{id:'engl_l7_1',code:'GSE 3',name:'مقرر متطلب جامعة اختياري (3)',hrs:2},{id:'engl_l7_2',code:'ENGL 3',name:'مقرر اختياري برنامج (3)',hrs:2},{id:'engl_l7_3',code:'ENGL 453',name:'مهارات البحث',hrs:3},{id:'engl_l7_4',code:'ENGL 435',name:'الأدب المعاصر',hrs:2},{id:'engl_l7_5',code:'ENGL 433',name:'المسرحية المعاصرة',hrs:2},{id:'engl_l7_6',code:'ENGL 421',name:'تحليل النص',hrs:3},{id:'engl_l7_7',code:'ENGL 423',name:'علم اللغة الاجتماعي',hrs:2},{id:'engl_l7_8',code:'ENGL 431',name:'الأدب المقارن',hrs:2}]},
       {level:8,courses:[{id:'engl_l8_1',code:'ENGL 492',name:'التدريب التعاوني',hrs:4}]}
-    ]
-  },
-  {
-    id:'chem', name:'الكيمياء', icon:'⚗️',
-    levels:[
+    ]},
+    {id:'chem', name:'الكيمياء', icon:'⚗️', levels:[
       {level:1,courses:[{id:'chem_l1_1',code:'CHEM 101',name:'كيمياء عامة (1)',hrs:3},{id:'chem_l1_2',code:'PHYS 105',name:'فيزياء عامة (1)',hrs:3},{id:'chem_l1_3',code:'GS 101',name:'دراسات إسلامية: العقيدة والعبادة',hrs:2},{id:'chem_l1_4',code:'MATH 103',name:'تفاضل وتكامل (1)',hrs:3},{id:'chem_l1_5',code:'ENG 101',name:'مهارات اللغة الإنجليزية (1)',hrs:4},{id:'chem_l1_6',code:'SCI 201',name:'منهجيات وأخلاقيات العلوم',hrs:1}]},
       {level:2,courses:[{id:'chem_l2_1',code:'MATH 104',name:'تفاضل وتكامل (2)',hrs:3},{id:'chem_l2_2',code:'SCI 101',name:'الأجهزة وسلامة المختبرات',hrs:1},{id:'chem_l2_3',code:'ENG 102',name:'مهارات اللغة الإنجليزية (2)',hrs:4},{id:'chem_l2_4',code:'GS 104',name:'دراسات إسلامية: القيم والأخلاق',hrs:2},{id:'chem_l2_5',code:'CHEM 102',name:'كيمياء عامة (2)',hrs:3},{id:'chem_l2_6',code:'PHYS 141',name:'فيزياء عامة (2)',hrs:3}]},
       {level:3,courses:[{id:'chem_l3_1',code:'GS 111',name:'مهارات اللغة العربية (1)',hrs:2},{id:'chem_l3_2',code:'PHYS 283',name:'عملي فيزياء عامة',hrs:2},{id:'chem_l3_3',code:'CHEM 203',name:'عملي كيمياء عامة',hrs:2},{id:'chem_l3_4',code:'MATH 201',name:'تفاضل وتكامل (3)',hrs:3},{id:'chem_l3_5',code:'CHEM 221',name:'كيمياء غير عضوية (1)',hrs:3},{id:'chem_l3_6',code:'CHEM 211',name:'كيمياء عضوية (1)',hrs:3},{id:'chem_l3_7',code:'FE 1',name:'مقرر اختياري حر',hrs:2}]},
@@ -551,11 +471,8 @@ const SPECS = [
       {level:7,courses:[{id:'chem_l7_1',code:'CHEM 446',name:'كيمياء السطوح',hrs:2},{id:'chem_l7_2',code:'CHEM 434',name:'تقنيات الفصل والكروماتوغرافيا',hrs:2},{id:'chem_l7_3',code:'CHEM 1',name:'مقرر اختياري برنامج (1)',hrs:2},{id:'chem_l7_4',code:'GSE 3',name:'مقرر متطلب جامعة اختياري (3)',hrs:2},{id:'chem_l7_5',code:'CHEM 445',name:'كيمياء حاسوبية',hrs:2},{id:'chem_l7_6',code:'CHEM 2',name:'مقرر اختياري برنامج (2)',hrs:2},{id:'chem_l7_7',code:'CHEM 444',name:'عملي كيمياء فيزيائية (1)',hrs:2},{id:'chem_l7_8',code:'CHEM 415',name:'عملي كيمياء عضوية (2)',hrs:2}]},
       {level:8,courses:[{id:'chem_l8_1',code:'CHEM 416',name:'كيمياء عضوية (3)',hrs:3},{id:'chem_l8_2',code:'CHEM 425',name:'عملي كيمياء غير عضوية (2)',hrs:2},{id:'chem_l8_3',code:'CHEM 492',name:'مشروع التخرج',hrs:3},{id:'chem_l8_4',code:'CHEM 4',name:'مقرر اختياري برنامج (4)',hrs:2},{id:'chem_l8_5',code:'CHEM 435',name:'عملي كيمياء تحليلية (2)',hrs:2},{id:'chem_l8_6',code:'CHEM 447',name:'عملي كيمياء فيزيائية (2)',hrs:2},{id:'chem_l8_7',code:'CHEM 3',name:'مقرر اختياري برنامج (3)',hrs:2}]},
       {level:9,courses:[{id:'chem_l9_1',code:'CHEM 495',name:'التدريب التعاوني',hrs:3}]}
-    ]
-  },
-  {
-    id:'phys', name:'الفيزياء وتقنيات الطاقة', icon:'⚡',
-    levels:[
+    ]},
+    {id:'phys', name:'الفيزياء وتقنيات الطاقة', icon:'⚡', levels:[
       {level:1,courses:[{id:'phys_l1_1',code:'STAT 101',name:'مقدمة في الإحصاء',hrs:3},{id:'phys_l1_2',code:'ENG 101',name:'مهارات اللغة الإنجليزية (1)',hrs:4},{id:'phys_l1_3',code:'GS 101',name:'دراسات إسلامية: العقيدة والعبادة',hrs:2},{id:'phys_l1_4',code:'MATH 111',name:'رياضيات (1)',hrs:3},{id:'phys_l1_5',code:'PHYS 109',name:'فيزياء عامة',hrs:3}]},
       {level:2,courses:[{id:'phys_l2_1',code:'ENG 102',name:'مهارات اللغة الإنجليزية (2)',hrs:4},{id:'phys_l2_2',code:'GS 104',name:'دراسات إسلامية: القيم والأخلاق',hrs:2},{id:'phys_l2_3',code:'MATH 112',name:'رياضيات (2)',hrs:3},{id:'phys_l2_4',code:'MATH 142',name:'أسس الرياضيات',hrs:3},{id:'phys_l2_5',code:'MATH 144',name:'التوافقيات',hrs:2}]},
       {level:3,courses:[{id:'phys_l3_1',code:'GS 111',name:'مهارات اللغة العربية (1)',hrs:2},{id:'phys_l3_2',code:'SCI 101',name:'الأجهزة وسلامة المختبرات',hrs:1},{id:'phys_l3_3',code:'MATH 271',name:'هندسة تحليلية',hrs:3},{id:'phys_l3_4',code:'MATH 243',name:'نظرية الإعداد',hrs:3},{id:'phys_l3_5',code:'MATH 241',name:'جبر خطي (1)',hrs:3},{id:'phys_l3_6',code:'MATH 221',name:'حساب التفاضل',hrs:3},{id:'phys_l3_7',code:'SCI 201',name:'منهجيات وأخلاقيات العلوم',hrs:1}]},
@@ -565,11 +482,8 @@ const SPECS = [
       {level:7,courses:[{id:'phys_l7_1',code:'PHTE 453',name:'علم المواد (2)',hrs:3},{id:'phys_l7_2',code:'PHTE 443',name:'الكترونيات (1)',hrs:3},{id:'phys_l7_3',code:'SCI 201',name:'منهجيات وأخلاقيات العلوم',hrs:1},{id:'phys_l7_4',code:'GSE 3',name:'مقرر متطلب جامعة اختياري (3)',hrs:2},{id:'phys_l7_5',code:'PHTE 455',name:'تقنيات صناعة الخلايا الشمسية',hrs:3},{id:'phys_l7_6',code:'PHTE 4',name:'مقرر اختياري برنامج (4)',hrs:2},{id:'phys_l7_7',code:'PHTE 3',name:'مقرر اختياري برنامج (3)',hrs:2},{id:'phys_l7_8',code:'PHTE 487',name:'معمل محاكاة المواد',hrs:1}]},
       {level:8,courses:[{id:'phys_l8_1',code:'FE 2',name:'مقرر اختياري حر (2)',hrs:2},{id:'phys_l8_2',code:'PHTE 432',name:'فيزياء نووية',hrs:2},{id:'phys_l8_3',code:'PHTE 402',name:'قوانين وأصول أسواق الطاقة',hrs:1},{id:'phys_l8_4',code:'PHTE 492',name:'مشروع التخرج',hrs:3},{id:'phys_l8_5',code:'PHTE 488',name:'معمل الإلكترونيات',hrs:1},{id:'phys_l8_6',code:'PHTE 474',name:'فيزياء الطاقة الحرارية الشمسية',hrs:3},{id:'phys_l8_7',code:'PHTE 476',name:'الطاقة الكهروضوئية وتطبيقاتها',hrs:2},{id:'phys_l8_8',code:'PHTE 478',name:'فيزياء وتقنية طاقة الرياح',hrs:2}]},
       {level:9,courses:[{id:'phys_l9_1',code:'PHTE 493',name:'تدريب تعاوني',hrs:3}]}
-    ]
-  },
-  {
-    id:'biol', name:'الأحياء', icon:'🧬',
-    levels:[
+    ]},
+    {id:'biol', name:'الأحياء', icon:'🧬', levels:[
       {level:1,courses:[{id:'biol_l1_1',code:'BIOL 101',name:'مقدمة في الأحياء',hrs:3},{id:'biol_l1_2',code:'MATH 101',name:'مقدمة في علم الرياضيات',hrs:3},{id:'biol_l1_3',code:'CHEM 101',name:'مقدمة في علم الكيمياء',hrs:3},{id:'biol_l1_4',code:'GS 111',name:'مهارات اللغة العربية (1)',hrs:2},{id:'biol_l1_5',code:'GS 101',name:'دراسات إسلامية: العقيدة والعبادة',hrs:2},{id:'biol_l1_6',code:'ENG 101',name:'مهارات اللغة الإنجليزية (1)',hrs:4}]},
       {level:2,courses:[{id:'biol_l2_1',code:'BIOL 110',name:'الأحياء العامة (2)',hrs:3},{id:'biol_l2_2',code:'BIOL 111',name:'الأحياء العامة العملي',hrs:1},{id:'biol_l2_3',code:'PHYS 101',name:'مقدمة في الفيزياء',hrs:3},{id:'biol_l2_4',code:'GS 102',name:'دراسات إسلامية: ملامح من السيرة النبوية',hrs:2},{id:'biol_l2_5',code:'GS 112',name:'مهارات اللغة العربية (2)',hrs:2},{id:'biol_l2_6',code:'ENG 102',name:'مهارات اللغة الإنجليزية (2)',hrs:4}]},
       {level:3,courses:[{id:'biol_l3_1',code:'ENGL 210',name:'مصطلحات علمية في اللغة الإنجليزية',hrs:1},{id:'biol_l3_2',code:'BIOM 221',name:'أحياء دقيقة عامة',hrs:3},{id:'biol_l3_3',code:'BIOB 231',name:'نبات عام',hrs:3},{id:'biol_l3_4',code:'BIOZ 241',name:'حيوان عام',hrs:3},{id:'biol_l3_5',code:'CHEM 210',name:'كيمياء عضوية',hrs:3},{id:'biol_l3_6',code:'PHYS 107',name:'فيزياء حيوية',hrs:3},{id:'biol_l3_7',code:'FE 1',name:'مقرر اختياري حر',hrs:2}]},
@@ -579,11 +493,8 @@ const SPECS = [
       {level:7,courses:[{id:'biol_l7_1',code:'BIOM 421',name:'فيروسات',hrs:2},{id:'biol_l7_2',code:'BIOB 431',name:'تصنيف نباتات زهرية',hrs:3},{id:'biol_l7_3',code:'BIOL 411',name:'علم الجينوم',hrs:2},{id:'biol_l7_4',code:'BIOL 412',name:'علم الجينات الجزيئية',hrs:3},{id:'biol_l7_5',code:'BIOM 445',name:'علم المناعة',hrs:3},{id:'biol_l7_6',code:'BIOM 446',name:'علم المناعة العملي',hrs:1},{id:'biol_l7_7',code:'BIOZ 448',name:'لافقاريات',hrs:2}]},
       {level:8,courses:[{id:'biol_l8_1',code:'BIOB 434',name:'أيض نبات',hrs:2},{id:'biol_l8_2',code:'BIOB 435',name:'الاجهاد النباتي البيئي',hrs:2},{id:'biol_l8_3',code:'BIOB 438',name:'التقنية الحيوية النباتية',hrs:3},{id:'biol_l8_4',code:'BIOB 432',name:'فلورا المملكة العربية السعودية',hrs:2},{id:'biol_l8_5',code:'BIOL 1',name:'اختياري برنامج (1)',hrs:1},{id:'biol_l8_6',code:'BIOZ 414',name:'التطور الحيوي',hrs:2},{id:'biol_l8_7',code:'BIOL 492',name:'مشروع التخرج',hrs:3},{id:'biol_l8_8',code:'GSE 3',name:'اختياري جامعة (3)',hrs:2}]},
       {level:9,courses:[{id:'biol_l9_1',code:'BIOL 499',name:'التدريب التعاوني',hrs:6}]}
-    ]
-  },
-  {
-    id:'math', name:'الرياضيات', icon:'📐',
-    levels:[
+    ]},
+    {id:'math', name:'الرياضيات', icon:'📐', levels:[
       {level:1,courses:[{id:'math_l1_1',code:'STAT 101',name:'مقدمة في الإحصاء',hrs:3},{id:'math_l1_2',code:'ENG 101',name:'مهارات اللغة الإنجليزية (1)',hrs:4},{id:'math_l1_3',code:'GS 101',name:'دراسات إسلامية: العقيدة والعبادة',hrs:2},{id:'math_l1_4',code:'MATH 111',name:'رياضيات (1)',hrs:3},{id:'math_l1_5',code:'PHYS 109',name:'فيزياء عامة',hrs:3}]},
       {level:2,courses:[{id:'math_l2_1',code:'ENG 102',name:'مهارات اللغة الإنجليزية (2)',hrs:4},{id:'math_l2_2',code:'GS 104',name:'دراسات إسلامية: القيم والأخلاق',hrs:2},{id:'math_l2_3',code:'MATH 112',name:'رياضيات (2)',hrs:3},{id:'math_l2_4',code:'MATH 142',name:'أسس الرياضيات',hrs:3},{id:'math_l2_5',code:'MATH 144',name:'التوافقيات',hrs:2}]},
       {level:3,courses:[{id:'math_l3_1',code:'GS 111',name:'مهارات اللغة العربية (1)',hrs:2},{id:'math_l3_2',code:'SCI 101',name:'الأجهزة وسلامة المختبرات',hrs:1},{id:'math_l3_3',code:'MATH 271',name:'هندسة تحليلية',hrs:3},{id:'math_l3_4',code:'MATH 243',name:'نظرية الإعداد',hrs:3},{id:'math_l3_5',code:'MATH 241',name:'جبر خطي (1)',hrs:3},{id:'math_l3_6',code:'MATH 221',name:'حساب التفاضل',hrs:3},{id:'math_l3_7',code:'SCI 201',name:'منهجيات وأخلاقيات العلوم',hrs:1}]},
@@ -593,11 +504,10 @@ const SPECS = [
       {level:7,courses:[{id:'math_l7_1',code:'MATH 431',name:'تحليل حقيقي (2)',hrs:2},{id:'math_l7_2',code:'MATH 425',name:'دوال خاصة',hrs:2},{id:'math_l7_3',code:'GSE 3',name:'مقرر متطلب جامعة اختياري (3)',hrs:2},{id:'math_l7_4',code:'MATH 447',name:'جبر مجرد (2)',hrs:3},{id:'math_l7_5',code:'STAT 461',name:'احصاء رياضي',hrs:3},{id:'math_l7_6',code:'MATH 2',name:'مقرر اختياري برنامج (2)',hrs:3},{id:'math_l7_7',code:'MATH 473',name:'توبيولوجي',hrs:3}]},
       {level:8,courses:[{id:'math_l8_1',code:'MATH 426',name:'معادلات تفاضلية جزئية',hrs:3},{id:'math_l8_2',code:'MATH 434',name:'تحليل مركب',hrs:3},{id:'math_l8_3',code:'MATH 3',name:'مقرر اختياري برنامج (3)',hrs:3},{id:'math_l8_4',code:'MATH 474',name:'هندسة تفاضلية',hrs:3},{id:'math_l8_5',code:'MATH 492',name:'مشروع التخرج',hrs:3},{id:'math_l8_6',code:'MGT 428',name:'القيادة الريادية',hrs:2}]},
       {level:9,courses:[{id:'math_l9_1',code:'MATH 493',name:'التدريب التعاوني',hrs:3}]}
-    ]
-  },
-  {
-    id:'cs', name:'علوم الحاسب', icon:'💻',
-    levels:[
+    ]}
+  ]},
+  {college:'كلية علوم وهندسة الحاسب الآلي', entries:[
+    {id:'cs', name:'علوم الحاسب', icon:'💻', levels:[
       {level:1,courses:[{id:'CS111',code:'CS 111',name:'أساسيات البرمجة',hrs:4},{id:'MATH105',code:'MATH 105',name:'تفاضل وتكامل (1)',hrs:3},{id:'GS101',code:'GS 101',name:'دراسات إسلامية: العقيدة والعبادة',hrs:2},{id:'ENG101',code:'ENG 101',name:'مهارات اللغة الإنجليزية (1)',hrs:4},{id:'PHYS103',code:'PHYS 103',name:'الفيزياء (1)',hrs:4}]},
       {level:2,courses:[{id:'STAT103',code:'STAT 103',name:'مبادئ الاحتمالات والإحصاء',hrs:3},{id:'ENV101',code:'ENV 101',name:'مقدمة في العلوم البيئية',hrs:3},{id:'ENG102',code:'ENG 102',name:'مهارات اللغة الإنجليزية (2)',hrs:4},{id:'GS104',code:'GS 104',name:'دراسات إسلامية: القيم والأخلاق',hrs:2},{id:'CS112',code:'CS 112',name:'برمجة (1)',hrs:4}]},
       {level:3,courses:[{id:'CS113',code:'CS 113',name:'برمجة (2)',hrs:4},{id:'CS163',code:'CS 163',name:'تراكيب متقطعة',hrs:3},{id:'MATH106',code:'MATH 106',name:'تفاضل وتكامل (2)',hrs:3},{id:'ENGL103',code:'ENGL 103',name:'مهارات الكتابة',hrs:3},{id:'GS111',code:'GS 111',name:'مهارات اللغة العربية (1)',hrs:2}]},
@@ -608,11 +518,8 @@ const SPECS = [
       {level:8,courses:[{id:'CS398',code:'CS 398',name:'مشروع التخرج (1)',hrs:2},{id:'CS1e',code:'CS 1',name:'مقرر اختياري برنامج (1)',hrs:3},{id:'CS318',code:'CS 318',name:'تطوير تطبيقات الهاتف المتنقلة',hrs:4},{id:'CS358',code:'CS 358',name:'الرسم بالحاسب',hrs:4},{id:'CS2e',code:'CS 2',name:'مقرر اختياري برنامج (2)',hrs:3}]},
       {level:9,courses:[{id:'CS499',code:'CS 499',name:'مشروع التخرج (2)',hrs:3},{id:'CYB435',code:'CYB 435',name:'أمن الحاسب',hrs:4},{id:'CS429',code:'CS 429',name:'مقدمة في الحوسبة المتوازية',hrs:4},{id:'CS3e',code:'CS 3',name:'مقرر اختياري برنامج (3)',hrs:3}]},
       {level:10,courses:[{id:'CS498',code:'CS 498',name:'التدريب التعاوني',hrs:6}]}
-    ]
-  },
-  {
-    id:'ai', name:'الذكاء الاصطناعي', icon:'🤖',
-    levels:[
+    ]},
+    {id:'ai', name:'الذكاء الاصطناعي', icon:'🤖', levels:[
       {level:1,courses:[{id:'ai_CS111',code:'CS 111',name:'أساسيات البرمجة',hrs:4},{id:'ai_MATH105',code:'MATH 105',name:'تفاضل وتكامل (1)',hrs:3},{id:'ai_GS101',code:'GS 101',name:'دراسات إسلامية: العقيدة والعبادة',hrs:2},{id:'ai_ENG101',code:'ENG 101',name:'مهارات اللغة الإنجليزية (1)',hrs:4},{id:'ai_PHYS103',code:'PHYS 103',name:'الفيزياء (1)',hrs:4}]},
       {level:2,courses:[{id:'ai_CS163',code:'CS 163',name:'تراكيب متقطعة',hrs:3},{id:'ai_ENG102',code:'ENG 102',name:'مهارات اللغة الإنجليزية (2)',hrs:4},{id:'ai_GS104',code:'GS 104',name:'دراسات إسلامية: القيم والأخلاق',hrs:2},{id:'ai_CS112',code:'CS 112',name:'برمجة (1)',hrs:4},{id:'ai_STAT103',code:'STAT 103',name:'مبادئ الاحتمالات والإحصاء',hrs:3}]},
       {level:3,courses:[{id:'AI113',code:'AI 113',name:'أساسيات الذكاء الاصطناعي',hrs:3},{id:'ai_CS113',code:'CS 113',name:'برمجة (2)',hrs:4},{id:'ai_MATH106',code:'MATH 106',name:'تفاضل وتكامل (2)',hrs:3},{id:'ai_ENGL103',code:'ENGL 103',name:'مهارات الكتابة',hrs:3},{id:'ai_GS111',code:'GS 111',name:'مهارات اللغة العربية (1)',hrs:2}]},
@@ -623,11 +530,8 @@ const SPECS = [
       {level:8,courses:[{id:'AI358',code:'AI 358',name:'معالجة اللغات الطبيعية',hrs:3},{id:'COE338',code:'COE 338',name:'شبكات الحاسب والأمن',hrs:4},{id:'AI348',code:'AI 348',name:'الرؤية بالحاسب',hrs:3},{id:'AI1e',code:'AI 1',name:'مقرر اختياري برنامج (1)',hrs:3},{id:'AI398',code:'AI 398',name:'مشروع التخرج (1)',hrs:2}]},
       {level:9,courses:[{id:'AI479',code:'AI 479',name:'الروبوتات الادراكية',hrs:3},{id:'DS419',code:'DS 419',name:'علم البيانات وتحليلها',hrs:3},{id:'AI2e',code:'AI 2',name:'مقرر اختياري برنامج (2)',hrs:3},{id:'AI3e',code:'AI 3',name:'مقرر اختياري برنامج (3)',hrs:3},{id:'AI499',code:'AI 499',name:'مشروع التخرج (2)',hrs:3}]},
       {level:10,courses:[{id:'AI492',code:'AI 492',name:'التدريب التعاوني',hrs:6}]}
-    ]
-  },
-  {
-    id:'is', name:'نظم المعلومات ', icon:'🗄️',
-    levels:[
+    ]},
+    {id:'is', name:'نظم المعلومات', icon:'🗄️', levels:[
       {level:1,courses:[{id:'is_CS111',code:'CS 111',name:'أساسيات البرمجة',hrs:4},{id:'is_MATH105',code:'MATH 105',name:'تفاضل وتكامل (1)',hrs:3},{id:'is_GS101',code:'GS 101',name:'دراسات إسلامية: العقيدة والعبادة',hrs:2},{id:'is_ENG101',code:'ENG 101',name:'مهارات اللغة الإنجليزية (1)',hrs:4},{id:'is_PHYS103',code:'PHYS 103',name:'مقدمة في الفيزياء',hrs:3}]},
       {level:2,courses:[{id:'is_CS163',code:'CS 163',name:'تراكيب متقطعة',hrs:3},{id:'is_STAT103',code:'STAT 103',name:'مبادئ الاحتمالات والإحصاء',hrs:3},{id:'is_ENG102',code:'ENG 102',name:'مهارات اللغة الإنجليزية (2)',hrs:4},{id:'is_GS104',code:'GS 104',name:'دراسات إسلامية: القيم والأخلاق',hrs:2},{id:'is_CS112',code:'CS 112',name:'برمجة (1)',hrs:4}]},
       {level:3,courses:[{id:'is_GS111',code:'GS 111',name:'مهارات اللغة العربية (1)',hrs:2},{id:'MGT201',code:'MGT 201',name:'مبادئ الادارة',hrs:3},{id:'is_MATH106',code:'MATH 106',name:'تفاضل وتكامل (2)',hrs:3},{id:'IS113',code:'IS 113',name:'مبادئ نظم المعلومات',hrs:3},{id:'is_CS113',code:'CS 113',name:'برمجة (2)',hrs:4},{id:'is_ENGL103',code:'ENGL 103',name:'مهارات الكتابة',hrs:3}]},
@@ -638,11 +542,8 @@ const SPECS = [
       {level:8,courses:[{id:'IS318',code:'IS 318',name:'مشروع التخرج (1)',hrs:2},{id:'IS1e',code:'IS 1',name:'مقرر اختياري برنامج (1)',hrs:3},{id:'IS328',code:'IS 328',name:'التجارة الإلكترونية',hrs:4},{id:'IS368',code:'IS 368',name:'هيكلة المؤسسات',hrs:3},{id:'IS2e',code:'IS 2',name:'مقرر اختياري برنامج (2)',hrs:3}]},
       {level:9,courses:[{id:'IS429',code:'IS 429',name:'مشروع التخرج (2)',hrs:3},{id:'IS3e',code:'IS 3',name:'مقرر اختياري برنامج (3)',hrs:3},{id:'ACCT201',code:'ACCT 201',name:'مبادئ المحاسبة المالية',hrs:3},{id:'MGT324',code:'MGT 324',name:'ريادة الأعمال وإدارة الأعمال الصغيرة',hrs:3}]},
       {level:10,courses:[{id:'IS400',code:'IS 400',name:'التدريب التعاوني',hrs:6}]}
-    ]
-  },
-  {
-    id:'coe', name:'هندسة الحاسب', icon:'⚙️',
-    levels:[
+    ]},
+    {id:'coe', name:'هندسة الحاسب', icon:'⚙️', levels:[
       {level:1,courses:[{id:'coe_CS163',code:'CS 163',name:'تراكيب متقطعة',hrs:3},{id:'coe_PHYS103',code:'PHYS 103',name:'الفيزياء (1)',hrs:4},{id:'coe_GS101',code:'GS 101',name:'دراسات إسلامية: العقيدة والعبادة',hrs:2},{id:'coe_ENG101',code:'ENG 101',name:'مهارات اللغة الإنجليزية (1)',hrs:4},{id:'coe_MATH105',code:'MATH 105',name:'تفاضل وتكامل (1)',hrs:3}]},
       {level:2,courses:[{id:'coe_CS112',code:'CS 112',name:'برمجة (1)',hrs:4},{id:'PHYS104',code:'PHYS 104',name:'فيزياء (2)',hrs:4},{id:'coe_MATH106',code:'MATH 106',name:'تفاضل وتكامل (2)',hrs:3},{id:'coe_GS104',code:'GS 104',name:'دراسات إسلامية: القيم والأخلاق',hrs:2},{id:'coe_ENG102',code:'ENG 102',name:'مهارات اللغة الإنجليزية (2)',hrs:4}]},
       {level:3,courses:[{id:'coe_MATH243',code:'MATH 243',name:'جبر خطي (1)',hrs:3},{id:'coe_ENGL103',code:'ENGL 103',name:'مهارات الكتابة',hrs:3},{id:'coe_FE1',code:'FE 1',name:'مقرر اختياري حر',hrs:2},{id:'coe_CS113',code:'CS 113',name:'برمجة (2)',hrs:4},{id:'COE113_coe',code:'COE 113',name:'تصميم المنطق الرقمي',hrs:4},{id:'coe_GS111',code:'GS 111',name:'مهارات اللغة العربية (1)',hrs:2}]},
@@ -653,11 +554,8 @@ const SPECS = [
       {level:8,courses:[{id:'COE398',code:'COE 398',name:'مشروع التخرج (1)',hrs:2},{id:'COE358',code:'COE 358',name:'معالجة الإشارات الرقمية',hrs:4},{id:'COE368',code:'COE 368',name:'أمن الحاسب والشبكات',hrs:4},{id:'COE1e',code:'COE 1',name:'مقرر اختياري برنامج (1)',hrs:3},{id:'PHYS246',code:'PHYS 246',name:'البصريات',hrs:3}]},
       {level:9,courses:[{id:'COE499',code:'COE 499',name:'مشروع التخرج (2)',hrs:3},{id:'COE2e',code:'COE 2',name:'مقرر اختياري برنامج (2)',hrs:3},{id:'COE3e',code:'COE 3',name:'مقرر اختياري برنامج (3)',hrs:3},{id:'COE439',code:'COE 439',name:'الشبكات المعرفة بالبرمجيات',hrs:3},{id:'coe_IS377',code:'IS 377',name:'الابتكار وريادة الأعمال في الحوسبة',hrs:2},{id:'coe_IS275',code:'IS 275',name:'الحوسبة وأخلاقيات المهنة والمجتمع',hrs:2}]},
       {level:10,courses:[{id:'COE490',code:'COE 490',name:'التدريب التعاوني',hrs:6}]}
-    ]
-  },
-  {
-    id:'cyb', name:'الأمن السيبراني', icon:'🔐',
-    levels:[
+    ]},
+    {id:'cyb', name:'الأمن السيبراني', icon:'🔐', levels:[
       {level:1,courses:[{id:'cyb_GS101',code:'GS 101',name:'دراسات إسلامية: العقيدة والعبادة',hrs:2},{id:'cyb_ENG101',code:'ENG 101',name:'مهارات اللغة الإنجليزية (1)',hrs:4},{id:'cyb_MATH105',code:'MATH 105',name:'تفاضل وتكامل (1)',hrs:3},{id:'cyb_PHYS103',code:'PHYS 103',name:'الفيزياء (1)',hrs:4},{id:'cyb_CS111',code:'CS 111',name:'أساسيات البرمجة',hrs:4}]},
       {level:2,courses:[{id:'cyb_ENG102',code:'ENG 102',name:'مهارات اللغة الإنجليزية (2)',hrs:4},{id:'cyb_GS104',code:'GS 104',name:'دراسات إسلامية: القيم والأخلاق',hrs:2},{id:'cyb_MATH106',code:'MATH 106',name:'تفاضل وتكامل (2)',hrs:3},{id:'cyb_CS112',code:'CS 112',name:'برمجة (1)',hrs:4},{id:'cyb_STAT103',code:'STAT 103',name:'مبادئ الاحتمالات والإحصاء',hrs:3}]},
       {level:3,courses:[{id:'cyb_GS111',code:'GS 111',name:'مهارات اللغة العربية (1)',hrs:2},{id:'CYB151',code:'CYB 151',name:'مكونات أنظمة تكنولوجيا المعلومات',hrs:3},{id:'cyb_IS275',code:'IS 275',name:'الحوسبة وأخلاقيات المهنة والمجتمع',hrs:2},{id:'cyb_CS113',code:'CS 113',name:'برمجة (2)',hrs:4},{id:'cyb_CS163',code:'CS 163',name:'تراكيب متقطعة',hrs:3},{id:'cyb_ENGL103',code:'ENGL 103',name:'مهارات الكتابة',hrs:3}]},
@@ -668,11 +566,8 @@ const SPECS = [
       {level:8,courses:[{id:'CYB388',code:'CYB 388',name:'مشروع التخرج (1)',hrs:2},{id:'CYB2e',code:'CYB 2',name:'مقرر اختياري برنامج (2)',hrs:3},{id:'CYB1e',code:'CYB 1',name:'مقرر اختياري برنامج (1)',hrs:3},{id:'CYB384',code:'CYB 384',name:'إدارة المخاطر الأمنية',hrs:3},{id:'CYB382',code:'CYB 382',name:'أمن أنظمة التشغيل',hrs:3},{id:'CYB386',code:'CYB 386',name:'التعلم الآلي في الأمن السيبراني',hrs:3}]},
       {level:9,courses:[{id:'CYB3e',code:'CYB 3',name:'مقرر اختياري برنامج (3)',hrs:3},{id:'CYB4e',code:'CYB 4',name:'مقرر اختياري برنامج (4)',hrs:3},{id:'cyb_IS377',code:'IS 377',name:'الابتكار وريادة الأعمال في مجال الحوسبة',hrs:2},{id:'CYB431',code:'CYB 431',name:'تحليل الجرائم السيبرانية',hrs:3},{id:'CYB479',code:'CYB 479',name:'مشروع التخرج (2)',hrs:3}]},
       {level:10,courses:[{id:'CYB486',code:'CYB 486',name:'التدريب الميداني',hrs:6}]}
-    ]
-  },
-  {
-    id:'ds', name:'علم البيانات وتحليلها', icon:'📊',
-    levels:[
+    ]},
+    {id:'ds', name:'علم البيانات وتحليلها', icon:'📊', levels:[
       {level:1,courses:[{id:'ds_CS111',code:'CS 111',name:'أساسيات البرمجة',hrs:4},{id:'ds_MATH105',code:'MATH 105',name:'تفاضل وتكامل (1)',hrs:3},{id:'ds_GS101',code:'GS 101',name:'دراسات إسلامية: العقيدة والعبادة',hrs:2},{id:'ds_ENG101',code:'ENG 101',name:'مهارات اللغة الإنجليزية (1)',hrs:4},{id:'ds_PHYS103',code:'PHYS 103',name:'الفيزياء (1)',hrs:4}]},
       {level:2,courses:[{id:'ds_STAT103',code:'STAT 103',name:'مبادئ الاحتمالات والإحصاء',hrs:3},{id:'ds_ENV101',code:'ENV 101',name:'مقدمة في العلوم البيئية',hrs:3},{id:'ds_ENG102',code:'ENG 102',name:'مهارات اللغة الإنجليزية (2)',hrs:4},{id:'ds_GS104',code:'GS 104',name:'دراسات إسلامية: القيم والأخلاق',hrs:2},{id:'ds_CS112',code:'CS 112',name:'برمجة (1)',hrs:4},{id:'ds_CS163',code:'CS 163',name:'تراكيب متقطعة',hrs:3}]},
       {level:3,courses:[{id:'ds_GS111',code:'GS 111',name:'مهارات اللغة العربية (1)',hrs:2},{id:'ds_ENGL103',code:'ENGL 103',name:'مهارات الكتابة',hrs:3},{id:'ds_MATH106',code:'MATH 106',name:'تفاضل وتكامل (2)',hrs:3},{id:'ds_CS113',code:'CS 113',name:'برمجة (2)',hrs:4},{id:'DS113',code:'DS 113',name:'مقدمة في علوم البيانات',hrs:3}]},
@@ -683,10 +578,9 @@ const SPECS = [
       {level:8,courses:[{id:'MATH471',code:'MATH 471',name:'التحسين والنمذجة للحوسبة',hrs:3},{id:'DS348',code:'DS 348',name:'الاستكشاف والتحليل المرئي للبيانات',hrs:3},{id:'DS398',code:'DS 398',name:'مشروع التخرج (1)',hrs:2},{id:'DS358',code:'DS 358',name:'تطوير الويب لعلوم البيانات',hrs:3},{id:'DS338',code:'DS 338',name:'خصوصية البيانات والحوكمة والإشراف',hrs:3},{id:'DS1e',code:'DS 1',name:'مقرر اختياري برنامج (1)',hrs:3}]},
       {level:9,courses:[{id:'ds_FE1',code:'FE 1',name:'مقرر اختياري حر',hrs:2},{id:'DS499',code:'DS 499',name:'مشروع التخرج (2)',hrs:3},{id:'DS459',code:'DS 459',name:'استرجاع البيانات',hrs:3},{id:'DS429',code:'DS 429',name:'مستودع البيانات',hrs:3},{id:'DS3e',code:'DS 3',name:'مقرر اختياري برنامج (3)',hrs:3},{id:'DS2e',code:'DS 2',name:'مقرر اختياري برنامج (2)',hrs:3}]},
       {level:10,courses:[{id:'DS498',code:'DS 498',name:'التدريب التعاوني',hrs:6}]}
-    ]
-  }
+    ]}
+  ]}
 ];
-
 
 let student = JSON.parse(localStorage.getItem('tu_pro_st')) || {name:'', spec:null};
 let planData = JSON.parse(localStorage.getItem('tu_pro_plan')) || null;
@@ -746,342 +640,4 @@ function selectSpec(id) {
   student.spec = id;
   saveSt();
   currentSpec = spec;
-  if(!planData || planData.specId !== id) {
-    planData = {specId: id, levels: JSON.parse(JSON.stringify(spec.levels))};
-    savePlan();
-  }
-  currentPlan = planData;
-  document.getElementById('s-spec').style.display='none';
-  document.getElementById('s-app').classList.add('active');
-  document.getElementById('s-app').style.display='block';
-  initApp();
-}
-
-function loadApp() {
-  let spec = null;
-  SPECS.forEach(c=>c.entries.forEach(s=>{if(s.id===student.spec) spec=s}));
-  currentSpec = spec;
-  if(!planData || planData.specId !== student.spec) {
-    planData = {specId: student.spec, levels: JSON.parse(JSON.stringify(spec.levels))};
-    savePlan();
-  }
-  currentPlan = planData;
-  document.getElementById('s-info').style.display='none';
-  document.getElementById('s-spec').style.display='none';
-  document.getElementById('s-app').classList.add('active');
-  document.getElementById('s-app').style.display='block';
-  initApp();
-}
-
-function initApp() {
-  document.getElementById('nav-spec-pill').innerText = currentSpec.name + ' ‹';
-  if(student.name) document.getElementById('set-name').value = student.name;
-  renderHome();
-  renderPlan();
-  renderGoals();
-  renderSchedule();
-  renderAchievements();
-}
-
-function changeSpec() {
-  if(confirm('هل تريد تغيير التخصص؟ سيتم مسح الدرجات الحالية.')) {
-    localStorage.removeItem('tu_pro_plan');
-    planData = null;
-    document.getElementById('s-app').style.display='none';
-    document.getElementById('s-spec').style.display='block';
-    renderSpecs();
-  }
-}
-
-function goTab(id, btn) {
-  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('on'));
-  document.querySelectorAll('.tab-item').forEach(b=>b.classList.remove('on'));
-  document.getElementById('p-'+id).classList.add('on');
-  btn.classList.add('on');
-  if(id==='chart') renderCharts();
-  if(id==='home') renderHome();
-  if(id==='countdown') updateCountdown();
-}
-
-function renderHome() {
-  document.getElementById('home-name').textContent = student.name || 'الطالب';
-  document.getElementById('home-avatar').textContent = (student.name||'ج')[0];
-  
-  let totH=0, doneH=0, totC=0, doneC=0, gradeDist={A:0,B:0,C:0,D:0,F:0};
-  currentPlan.levels.forEach(lv=>{
-    lv.courses.forEach(c=>{
-      if(!c.deleted){
-        totH+=c.hrs; totC++;
-        if(c.grade && c.grade!=='none') {
-          doneH+=c.hrs; doneC++;
-          if(c.grade.startsWith('A')) gradeDist.A++;
-          else if(c.grade.startsWith('B')) gradeDist.B++;
-          else if(c.grade.startsWith('C')) gradeDist.C++;
-          else if(c.grade.startsWith('D')) gradeDist.D++;
-          else if(c.grade==='F') gradeDist.F++;
-        }
-      }
-    });
-  });
-  
-  document.getElementById('home-crs-done').textContent = doneC;
-  document.getElementById('s-hrs').textContent = doneH;
-  document.getElementById('s-crs').textContent = doneC;
-  document.getElementById('s-rem').textContent = totH-doneH;
-  document.getElementById('prog-total').textContent = totH;
-  
-  let pct = totH>0 ? Math.round((doneH/totH)*100) : 0;
-  document.getElementById('prog-pct').textContent = pct+'%';
-  document.getElementById('prog-fill').style.width = pct+'%';
-  
-  let gpa = calcTotalGPA();
-  document.getElementById('home-gpa-val').textContent = gpa.toFixed(2);
-  document.getElementById('nav-gpa').textContent = gpa.toFixed(2);
-  document.getElementById('ring-gpa').textContent = gpa.toFixed(2);
-  
-  let ringOff = 408.41 - (408.41 * (gpa/5));
-  document.getElementById('ring-fg').style.strokeDashoffset = ringOff;
-  
-  let b = gpa>=4.5?'ممتاز':gpa>=3.5?'جيد جداً':gpa>=2.5?'جيد':gpa>=2?'مقبول':'ضعيف';
-  document.getElementById('ring-badge').innerHTML = `<span class="grade-pill">${b}</span>`;
-
-  const ctx = document.getElementById('ch-home-dist').getContext('2d');
-  if(homeDistChart) homeDistChart.destroy();
-  homeDistChart = new Chart(ctx, {
-    type:'bar',
-    data:{
-      labels:['ممتاز (A)', 'جيد جداً (B)', 'جيد (C)', 'مقبول (D)', 'راسب (F)'],
-      datasets:[{data:[gradeDist.A, gradeDist.B, gradeDist.C, gradeDist.D, gradeDist.F], backgroundColor:['#2ed47a','#4f7ef5','#f5c030','#f5823a','#f5504a'], borderRadius:6}]
-    },
-    options:{indexAxis:'y', plugins:{legend:{display:false}}, scales:{x:{grid:{color:'rgba(30,37,64,0.5)'}, ticks:{color:'#7a82a8'}}, y:{grid:{display:false}, ticks:{color:'#7a82a8', font:{family:'IBM Plex Sans Arabic'}}}}}
-  });
-}
-
-function renderPlan() {
-  let q = (document.getElementById('srch-box')?.value||'').toLowerCase();
-  let h = '';
-  currentPlan.levels.forEach(lv => {
-    let lvH=0, lvD=0, lvPts=0;
-    lv.courses.forEach(c=>{
-      if(!c.deleted && c.grade && c.grade!=='none'){
-        lvH+=c.hrs; lvPts+=gradePoints(c.grade)*c.hrs; lvD++;
-      }
-    });
-    let lvG = lvH>0?(lvPts/lvH):0;
-    let show = filter==='all' || (filter==='done'&&lvD>0) || (filter==='pending'&&lvD===0) || filter==='del';
-    if(!show) return;
-
-    let cs = '';
-    lv.courses.forEach(c=>{
-      if(filter==='del' && !c.deleted) return;
-      if(filter==='done' && (!c.grade || c.grade==='none' || c.deleted)) return;
-      if(filter==='pending' && (c.grade && c.grade!=='none')) return;
-      if(q && !c.name.toLowerCase().includes(q) && !c.code.toLowerCase().includes(q)) return;
-      
-      cs += `<div class="c-row ${c.deleted?'del-row':''} ${c.grade&&c.grade!=='none'&&!c.deleted?'done':''}">
-        <div class="c-info"><div class="c-name">${c.name}</div><span class="c-code">${c.code}</span></div>
-        <input class="c-hrs-inp" type="number" min="1" max="6" value="${c.hrs}" onchange="updHrs(${lv.level},'${c.id||c.code}',this.value)" ${c.deleted?'disabled':''}>
-        <div class="c-right">
-          ${c.deleted?`<button class="btn-restore" onclick="restoreC(${lv.level},'${c.id||c.code}')">↺</button>`:`
-          <select class="g-sel" onchange="updGrade(${lv.level},'${c.id||c.code}',this.value)">
-            <option value="none" ${!c.grade||c.grade==='none'?'selected':''}>-</option>
-            <option value="A+" ${c.grade==='A+'?'selected':''}>A+</option>
-            <option value="A" ${c.grade==='A'?'selected':''}>A</option>
-            <option value="B+" ${c.grade==='B+'?'selected':''}>B+</option>
-            <option value="B" ${c.grade==='B'?'selected':''}>B</option>
-            <option value="C+" ${c.grade==='C+'?'selected':''}>C+</option>
-            <option value="C" ${c.grade==='C'?'selected':''}>C</option>
-            <option value="D+" ${c.grade==='D+'?'selected':''}>D+</option>
-            <option value="D" ${c.grade==='D'?'selected':''}>D</option>
-            <option value="F" ${c.grade==='F'?'selected':''}>F</option>
-          </select>
-          <button class="btn-del" onclick="delC(${lv.level},'${c.id||c.code}')">🗑</button>`}
-        </div>
-      </div>`;
-    });
-    
-    if(!cs && q) return;
-    h += `<div class="lv-block">
-      <div class="lv-hdr" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
-        <div class="lv-left"><div class="lv-num">${lv.level}</div><div><div class="lv-title">المستوى ${lv.level}</div><div class="lv-meta">${lv.courses.length} مواد</div></div></div>
-        <div class="lv-gpa-badge ${lvG>0?'has':''}">${lvG>0?lvG.toFixed(2):'—'}</div>
-      </div>
-      <div>${cs}
-        <div class="add-row">
-          <input class="add-inp" placeholder="رمز المادة" id="nc-code-${lv.level}">
-          <input class="add-inp" placeholder="اسم المادة" id="nc-name-${lv.level}">
-          <input class="add-inp" type="number" placeholder="ساعات" id="nc-hrs-${lv.level}" min="1" max="6" style="width:60px">
-          <button class="btn-add-c" onclick="addC(${lv.level})">+ أضف</button>
-        </div>
-      </div>
-    </div>`;
-  });
-  document.getElementById('plan-cnt').innerHTML = h;
-}
-
-function updGrade(lv, id, v) { let c=findC(lv,id); if(c){c.grade=v; savePlan(); renderPlan(); renderHome();} }
-function updHrs(lv, id, v) { let c=findC(lv,id); if(c){c.hrs=parseInt(v)||1; savePlan(); renderPlan(); renderHome();} }
-function delC(lv, id) { let c=findC(lv,id); if(c){c.deleted=true; savePlan(); renderPlan(); renderHome();} }
-function restoreC(lv, id) { let c=findC(lv,id); if(c){c.deleted=false; savePlan(); renderPlan(); renderHome();} }
-function addC(lv) {
-  let code=document.getElementById('nc-code-'+lv).value.trim();
-  let name=document.getElementById('nc-name-'+lv).value.trim();
-  let hrs=parseInt(document.getElementById('nc-hrs-'+lv).value)||3;
-  if(!name) return toast('أدخل اسم المادة');
-  currentPlan.levels.find(l=>l.level===lv).courses.push({id:code||Date.now(),code,name,hrs,grade:'none'});
-  savePlan(); renderPlan();
-}
-function findC(lv, id) { return currentPlan.levels.find(l=>l.level===lv)?.courses.find(c=>(c.id||c.code)===id); }
-
-function gradePoints(g) { return {'A+':5,'A':4.75,'B+':4.5,'B':4,'C+':3.5,'C':3,'D+':2.5,'D':2,'F':1}[g]||0; }
-function calcTotalGPA() {
-  let pts=0, hrs=0;
-  currentPlan.levels.forEach(l=>l.courses.forEach(c=>{
-    if(!c.deleted && c.grade && c.grade!=='none') { pts+=gradePoints(c.grade)*c.hrs; hrs+=c.hrs; }
-  }));
-  return hrs>0?pts/hrs:0;
-}
-
-function renderCharts() {
-  let labels=[], gpaD=[], hrsD=[];
-  currentPlan.levels.forEach(lv=>{
-    let h=0,p=0; lv.courses.forEach(c=>{ if(!c.deleted&&c.grade&&c.grade!=='none'){h+=c.hrs;p+=gradePoints(c.grade)*c.hrs;}});
-    labels.push('م'+lv.level); gpaD.push(h>0?p/h:0); hrsD.push(h);
-  });
-  if(charts.gpa) charts.gpa.destroy();
-  charts.gpa=new Chart(document.getElementById('ch-gpa'),{type:'line',data:{labels,datasets:[{label:'GPA',data:gpaD,borderColor:'#4f7ef5',backgroundColor:'rgba(79,126,245,.1)',fill:true,tension:.4}]},options:{scales:{y:{min:0,max:5}},plugins:{legend:{display:false}}}});
-  if(charts.hrs) charts.hrs.destroy();
-  charts.hrs=new Chart(document.getElementById('ch-hrs'),{type:'bar',data:{labels,datasets:[{label:'ساعات',data:hrsD,backgroundColor:'#7b5bf5',borderRadius:6}]},options:{plugins:{legend:{display:false}}}});
-  let dist={A:0,B:0,C:0,D:0,F:0};
-  currentPlan.levels.forEach(l=>l.courses.forEach(c=>{if(!c.deleted&&c.grade&&c.grade!=='none'){if(c.grade.startsWith('A'))dist.A++;else if(c.grade.startsWith('B'))dist.B++;else if(c.grade.startsWith('C'))dist.C++;else if(c.grade.startsWith('D'))dist.D++;else if(c.grade==='F')dist.F++;}}));
-  if(charts.pie) charts.pie.destroy();
-  charts.pie=new Chart(document.getElementById('ch-pie'),{type:'doughnut',data:{labels:['A','B','C','D','F'],datasets:[{data:[dist.A,dist.B,dist.C,dist.D,dist.F],backgroundColor:['#2ed47a','#4f7ef5','#f5c030','#f5823a','#f5504a']}]},options:{plugins:{legend:{position:'bottom',labels:{color:'#7a82a8'}}}}});
-}
-
-function pomoToggle() { pomoRunning ? pausePomo() : startPomo(); }
-function startPomo() { pomoRunning=true; document.getElementById('pm-playbtn').textContent='⏸ إيقاف'; runPomo(); }
-function pausePomo() { pomoRunning=false; document.getElementById('pm-playbtn').textContent='▶ استمرار'; clearTimeout(pomoInterval); }
-function runPomo() { if(!pomoRunning)return; if(pomoTime<=0){toast('انتهى الوقت!');pomoReset();return;} pomoTime--; updPomoUI(); pomoInterval=setTimeout(runPomo,1000); }
-function pomoReset() { pomoRunning=false; clearTimeout(pomoInterval); pomoTime=25*60; document.getElementById('pm-playbtn').textContent='▶ ابدأ'; updPomoUI(); }
-function setPomoMode(m,l) { pomoTime=m*60; pomoReset(); document.getElementById('pm-phase').textContent=l; }
-function updPomoUI() { let m=Math.floor(pomoTime/60), s=pomoTime%60; document.getElementById('pm-time').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`; let off=502.65-(502.65*(pomoTime/(25*60))); document.getElementById('pm-ring').style.strokeDashoffset=off; }
-
-function calcTarget() {
-  let cur=parseFloat(document.getElementById('t-cur').value), ch=parseFloat(document.getElementById('t-hrs').value), goal=parseFloat(document.getElementById('t-goal').value), rem=parseFloat(document.getElementById('t-rem').value);
-  if(isNaN(cur)||isNaN(ch)||isNaN(goal)||isNaN(rem)||ch===0) return;
-  let req=(goal*ch+goal*rem-cur*ch)/rem;
-  document.getElementById('t-result').style.display='block';
-  document.getElementById('t-num').textContent=req>5?'غير ممكن':req.toFixed(2);
-  document.getElementById('t-lbl').textContent=req>5?'المعدل المطلوب أعلى من 5':'المعدل المطلوب في الساعات المتبقية';
-}
-
-function addGoal() { let t=document.getElementById('goal-inp').value.trim(); if(!t)return; goalsData.push({text:t,done:false}); document.getElementById('goal-inp').value=''; saveGoals(); renderGoals(); }
-function toggleGoal(i) { goalsData[i].done=!goalsData[i].done; saveGoals(); renderGoals(); }
-function delGoal(i) { goalsData.splice(i,1); saveGoals(); renderGoals(); }
-function renderGoals() {
-  let h=''; goalsData.forEach((g,i)=>{ h+=`<div class="goal-item ${g.done?'done-goal':''}"><div class="goal-check ${g.done?'checked':''}" onclick="toggleGoal(${i})">${g.done?'✓':''}</div><div class="goal-text">${g.text}</div><button class="btn-del-goal" onclick="delGoal(${i})">✕</button></div>`; });
-  document.getElementById('goals-list').innerHTML=h||'<div style="text-align:center;color:var(--t3);font-size:.8rem">لا توجد أهداف بعد</div>';
-}
-
-function renderSchedule() {
-  let h='<div class="schedule-grid">';
-  h+=`<div class="sch-header"></div>`;
-  DAYS.forEach(d=>h+=`<div class="sch-header">${d}</div>`);
-  TIMES.forEach((t,ti)=>{
-    h+=`<div class="sch-time">${t}</div>`;
-    DAYS.forEach((d,di)=>{
-      let key=`${di}-${ti}`;
-      let cls=scheduleData[key]?`has-class`:'';
-      let bg=scheduleData[key]?`background:${scheduleData[key].color||'#4f7ef5'};`:'';
-      let txt=scheduleData[key]?scheduleData[key].name:'';
-      h+=`<div class="sch-cell ${cls}" style="${bg}" onclick="openSchModal(${di},${ti})">${txt}</div>`;
-    });
-  });
-  h+='</div>';
-  document.getElementById('schedule-grid-wrap').innerHTML=h;
-}
-function openSchModal(d,t) {
-  let key=`${d}-${t}`;
-  let ex=scheduleData[key];
-  document.getElementById('sch-m-name').value=ex?ex.name:'';
-  document.getElementById('sch-m-place').value=ex?ex.place:'';
-  document.getElementById('sch-m-day').value=d;
-  document.getElementById('sch-m-slot').value=t;
-  document.getElementById('btn-del-sch').style.display=ex?'block':'none';
-  document.querySelectorAll('.color-opt').forEach(c=>c.classList.remove('sel'));
-  if(ex) document.querySelector(`.color-opt[data-color="${ex.color}"]`)?.classList.add('sel');
-  else document.querySelector('.color-opt').classList.add('sel');
-  document.getElementById('sch-modal').classList.add('open');
-}
-function closeSchModal() { document.getElementById('sch-modal').classList.remove('open'); }
-function selectColor(el) { document.querySelectorAll('.color-opt').forEach(c=>c.classList.remove('sel')); el.classList.add('sel'); }
-function saveSchCell() {
-  let d=document.getElementById('sch-m-day').value, t=document.getElementById('sch-m-slot').value;
-  let name=document.getElementById('sch-m-name').value.trim();
-  if(!name) return toast('أدخل اسم المادة');
-  let color=document.querySelector('.color-opt.sel')?.dataset.color||'#4f7ef5';
-  scheduleData[`${d}-${t}`]={name,place:document.getElementById('sch-m-place').value.trim(),color};
-  saveSch(); renderSchedule(); closeSchModal();
-}
-function deleteSchCell() {
-  let d=document.getElementById('sch-m-day').value, t=document.getElementById('sch-m-slot').value;
-  delete scheduleData[`${d}-${t}`]; saveSch(); renderSchedule(); closeSchModal();
-}
-
-function renderAchievements() {
-  let gpa=calcTotalGPA(), totH=0, doneC=0;
-  currentPlan.levels.forEach(l=>l.courses.forEach(c=>{if(!c.deleted){totH+=c.hrs; if(c.grade&&c.grade!=='none')doneC++;}}));
-  let achs=[
-    {icon:'🚀',name:'الانطلاقة',desc:'أدخل أول درجة',unlocked:doneC>0},
-    {icon:'⚡',name:'رائع',desc:'معدل فوق 4.00',unlocked:gpa>=4&&doneC>0},
-    {icon:'🌟',name:'متميز',desc:'معدل فوق 4.50',unlocked:gpa>=4.5&&doneC>0},
-    {icon:'🎯',name:'نصف الطريق',desc:'أكمل 50% من المواد',unlocked:doneC>=totH/15},
-    {icon:'🏆',name:'القمة',desc:'معدل 5.00 كامل',unlocked:gpa>=5&&doneC>0},
-    {icon:'📅',name:'منظم',desc:'أضف حصة في الجدول',unlocked:Object.keys(scheduleData).length>0}
-  ];
-  let u=achs.filter(a=>a.unlocked).length;
-  document.getElementById('ach-count').textContent=u;
-  document.getElementById('ach-total').textContent=achs.length;
-  let h=''; achs.forEach(a=>{
-    h+=`<div class="ach-card ${a.unlocked?'unlocked':''}"><span class="ach-icon">${a.icon}</span><div class="ach-name">${a.name}</div><div class="ach-desc">${a.desc}</div>${a.unlocked?'<span class="ach-unlocked-tag">محقق</span>':'<span class="ach-locked-tag">مقفل</span>'}</div>`;
-  });
-  document.getElementById('ach-grid').innerHTML=h;
-}
-
-function updateCountdown() {
-  let d=document.getElementById('grad-date-inp').value;
-  if(!d) return;
-  let diff=new Date(d)-new Date();
-  if(diff<0) return;
-  let days=Math.floor(diff/86400000), hrs=Math.floor((diff%86400000)/3600000), mins=Math.floor((diff%3600000)/60000), secs=Math.floor((diff%60000)/1000);
-  document.getElementById('cd-days').textContent=days;
-  document.getElementById('cd-hrs').textContent=hrs;
-  document.getElementById('cd-mins').textContent=mins;
-  document.getElementById('cd-secs').textContent=secs;
-}
-
-function saveSettings() { student.name=document.getElementById('set-name').value.trim(); saveSt(); renderHome(); }
-function resetAll() { if(confirm('هل أنت متأكد؟')){localStorage.clear();location.reload();} }
-
-function setF(f,btn) { filter=f; document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on')); btn.classList.add('on'); renderPlan(); }
-
-function saveSt() { localStorage.setItem('tu_pro_st', JSON.stringify(student)); }
-function savePlan() { localStorage.setItem('tu_pro_plan', JSON.stringify(planData)); }
-function saveGoals() { localStorage.setItem('tu_pro_goals', JSON.stringify(goalsData)); }
-function saveSch() { localStorage.setItem('tu_pro_sch', JSON.stringify(scheduleData)); }
-function saveGrades() { savePlan(); toast('تم الحفظ بنجاح ✅'); }
-
-function toast(msg) {
-  let t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),2000);
-}
-
-// Update countdown every second
-setInterval(() => {
-  if(document.getElementById('p-countdown').classList.contains('on')) {
-    updateCountdown();
-  }
-}, 1000);
-</script>
-</body>
-</html>
+  if(!planData
