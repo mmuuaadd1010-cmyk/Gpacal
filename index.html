@@ -407,6 +407,11 @@ select.mini-inp{appearance:none;-webkit-appearance:none;background-image:linear-
 /* print */
 @media print{.app-nav,.tab-rail,.btn-prim,.btn-ghost,.result-nav,.gen-pickbar,.ambient{display:none!important}body{background:#fff!important}}
 
+/* --- file import: full-sections toggle + seat tag --- */
+.ff-toggle{display:flex;align-items:center;gap:9px;font-size:.78rem;font-weight:700;color:var(--t2);background:var(--bg);border:1px solid var(--bor);border-radius:11px;padding:11px 13px;cursor:pointer;margin-bottom:6px}
+.ff-toggle input{width:18px;height:18px;accent-color:var(--a1);cursor:pointer}
+.ff-pseat{margin-inline-start:auto;font-size:.66rem;color:var(--a2);font-family:'Space Grotesk',monospace;white-space:nowrap}
+
 </style>
 </head>
 <body>
@@ -1480,6 +1485,133 @@ function genMode(m){
 /* extend enhanceGenUI to also build the file import UI */
 if(typeof enhanceGenUI==='function'){var _enhPrev=enhanceGenUI;enhanceGenUI=function(){try{_enhPrev();}catch(e){}try{buildFileImportUI();}catch(e){}};}
 try{enhanceGenUI();}catch(e){}
+
+
+/* ======================================================
+   COLLEGE FILE IMPORT v2 \u2014 seats, closed/full filter, Set fix
+====================================================== */
+var FF_FULL=false; /* include full sections (\u0627\u0644\u0634\u0639\u0628 \u0627\u0644\u0645\u0645\u062a\u0644\u0626\u0629) */
+function parseCollegeFile(text){
+  const out=[];let doc;try{doc=new DOMParser().parseFromString(text,'text/html');}catch(e){return out;}
+  const DAYC=[[4,2],[3,3],[2,4],[1,5],[0,6]];
+  const trs=doc.querySelectorAll('tr');
+  trs.forEach(function(tr){
+    const tds=[].slice.call(tr.querySelectorAll('td,th')).map(function(td){return (td.textContent||'').replace(/\s+/g,' ').trim();});
+    if(tds.length<14)return;
+    const num=(tds[10]||'').trim(),code=(tds[11]||'').trim(),sec=(tds[8]||'').trim();
+    if(!/^\d+$/.test(num))return;
+    if(!/^[A-Za-z]{2,6}$/.test(code))return;
+    const reg=parseInt((tds[0]||'').replace(/[^0-9]/g,''),10);
+    const cap=parseInt((tds[1]||'').replace(/[^0-9]/g,''),10);
+    const meets=[];
+    DAYC.forEach(function(p){const v=tds[p[1]]||'';const m=v.match(/(\d{1,2}[:.]\d{2})\s*-\s*(\d{1,2}[:.]\d{2})/);if(m){const f=parseTime(m[1]),t=parseTime(m[2]);if(f!=null&&t!=null&&t>f)meets.push({days:[p[0]],from:f,to:t});}});
+    out.push({code:code.toUpperCase(),num:num,name:(tds[9]||'').trim(),sec:sec,instr:(tds[7]||'').trim(),meets:meets,reg:isNaN(reg)?null:reg,cap:isNaN(cap)?null:cap});
+  });
+  return out;
+}
+function ffIsClosed(s){return s.cap===0;}
+function ffIsFull(s){return s.cap!=null&&s.reg!=null&&s.cap>0&&s.reg>=s.cap;}
+function ffEligible(s){
+  if(!s.meets||!s.meets.length)return false; /* no time -> not schedulable */
+  if(ffIsClosed(s))return false;            /* closed (size 0) -> always excluded */
+  if(!FF_FULL&&ffIsFull(s))return false;    /* full -> excluded unless toggle on */
+  return true;
+}
+function buildFileImportUI(){
+  if(!document.getElementById('p-gen'))return;
+  const tabs=document.querySelector('#p-gen .gen-tabs');
+  if(tabs&&!document.getElementById('gt-file')){
+    const b=document.createElement('button');b.className='gen-tab';b.id='gt-file';b.textContent='\ud83d\udcc4 \u0645\u0644\u0641 \u0627\u0644\u0643\u0644\u064a\u0629';b.onclick=function(){genMode('file');};tabs.appendChild(b);
+  }
+  const anchor=document.getElementById('gen-paste-box');
+  if(anchor&&!document.getElementById('gen-file-box')){
+    const box=document.createElement('div');box.id='gen-file-box';box.style.display='none';
+    box.innerHTML='<div class="fmt-box">\ud83d\udce5 \u0627\u0631\u0641\u0639 \u0645\u0644\u0641 <b>\u00ab\u0634\u0639\u0628 \u0627\u0644\u0645\u0642\u0631\u0631\u0627\u062a\u00bb</b> \u0627\u0644\u0630\u064a \u062a\u0646\u0632\u0651\u0644\u0647 \u0645\u0646 \u0646\u0638\u0627\u0645 \u0627\u0644\u062c\u0627\u0645\u0639\u0629 (HTML)\u060c \u062b\u0645 \u0627\u062e\u062a\u0631 <b>\u0631\u0645\u0632 \u0627\u0644\u0645\u0627\u062f\u0629</b> \u0648<b>\u0631\u0642\u0645\u0647\u0627</b> \u0648<b>\u0627\u0644\u0634\u0639\u0628\u0629</b>. \u062a\u064f\u0633\u062a\u0628\u0639\u062f \u0627\u0644\u0634\u0639\u0628 \u0627\u0644\u0645\u0642\u0641\u0644\u0629 (\u062d\u062c\u0645 0) \u062a\u0644\u0642\u0627\u0626\u064a\u0627\u064b.</div>'
+      +'<input type="file" id="ff-input" accept=".html,.htm,text/html" style="display:none">'
+      +'<button class="btn-prim" id="ff-upload">\ud83d\udcc2 \u0627\u0631\u0641\u0639 \u0645\u0644\u0641 \u0627\u0644\u0634\u0639\u0628 (HTML)</button>'
+      +'<div id="ff-status" class="mini-lbl" style="margin:12px 0"></div>'
+      +'<div id="ff-picker" style="display:none">'
+        +'<label class="ff-toggle"><input type="checkbox" id="ff-fulltgl" onchange="ffToggleFull()"> \u062a\u0636\u0645\u064a\u0646 \u0627\u0644\u0634\u0639\u0628 \u0627\u0644\u0645\u0645\u062a\u0644\u0626\u0629 (\u0627\u0644\u0645\u0633\u062c\u0651\u0644 = \u0627\u0644\u0633\u0639\u0629)</label>'
+        +'<div class="ff-grid">'
+          +'<div class="ff-field"><label class="mini-lbl">\u0631\u0645\u0632 \u0627\u0644\u0645\u0627\u062f\u0629</label><select class="mini-inp" id="ff-code" onchange="ffOnCode()"></select></div>'
+          +'<div class="ff-field"><label class="mini-lbl">\u0631\u0642\u0645 \u0627\u0644\u0645\u0627\u062f\u0629</label><select class="mini-inp" id="ff-num" onchange="ffOnNum()"></select></div>'
+          +'<div class="ff-field"><label class="mini-lbl">\u0627\u0644\u0634\u0639\u0628\u0629</label><select class="mini-inp" id="ff-sec" onchange="ffPreview()"></select></div>'
+          +'<button class="btn-prim" id="ff-add" onclick="ffAdd()">\u2795 \u0625\u0636\u0627\u0641\u0629</button>'
+        +'</div>'
+        +'<div id="ff-name" class="ff-name"></div>'
+        +'<div id="ff-preview" class="ff-preview"></div>'
+      +'</div>';
+    anchor.insertAdjacentElement('afterend',box);
+    document.getElementById('ff-upload').onclick=function(){document.getElementById('ff-input').click();};
+    document.getElementById('ff-input').onchange=ffFileChosen;
+  }
+}
+function ffFileChosen(e){
+  const f=e.target.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=function(){
+    try{
+      FILESECS=parseCollegeFile(r.result);
+      const st=document.getElementById('ff-status');
+      if(!FILESECS.length){st.innerHTML='\u26a0\ufe0f \u0644\u0645 \u0623\u062c\u062f \u0634\u0639\u0628\u0627\u064b \u0641\u064a \u0627\u0644\u0645\u0644\u0641 \u2014 \u062a\u0623\u0643\u062f \u0623\u0646\u0647 \u0645\u0644\u0641 \u00ab\u0634\u0639\u0628 \u0627\u0644\u0645\u0642\u0631\u0631\u0627\u062a\u00bb HTML';document.getElementById('ff-picker').style.display='none';return;}
+      const closed=FILESECS.filter(ffIsClosed).length;
+      const elig=FILESECS.filter(ffEligible).length;
+      const nc=new Set(FILESECS.filter(ffEligible).map(function(s){return s.code;})).size;
+      st.innerHTML='\u2705 \u0642\u0631\u0623\u062a <b>'+FILESECS.length+'</b> \u0634\u0639\u0628\u0629 \u00b7 \u0645\u062a\u0627\u062d\u0629 <b>'+elig+'</b> \u0644\u0640 <b>'+nc+'</b> \u0645\u0627\u062f\u0629 \u00b7 \u0645\u0633\u062a\u062b\u0646\u0627\u0629 <b>'+closed+'</b> \u0645\u0642\u0641\u0644\u0629 (\u062d\u062c\u0645 0)';
+      ffFillCodes();
+      document.getElementById('ff-picker').style.display='block';
+    }catch(err){document.getElementById('ff-status').textContent='\u062a\u0639\u0630\u0651\u0631 \u0642\u0631\u0627\u0621\u0629 \u0627\u0644\u0645\u0644\u0641';}
+  };
+  r.readAsText(f);
+}
+function ffToggleFull(){var cb=document.getElementById('ff-fulltgl');FF_FULL=!!(cb&&cb.checked);if(FILESECS.length){var st=document.getElementById('ff-status');var elig=FILESECS.filter(ffEligible).length;var nc=new Set(FILESECS.filter(ffEligible).map(function(s){return s.code;})).size;var closed=FILESECS.filter(ffIsClosed).length;if(st)st.innerHTML='\u2705 \u0642\u0631\u0623\u062a <b>'+FILESECS.length+'</b> \u0634\u0639\u0628\u0629 \u00b7 \u0645\u062a\u0627\u062d\u0629 \u0627\u0644\u0622\u0646 <b>'+elig+'</b> \u0644\u0640 <b>'+nc+'</b> \u0645\u0627\u062f\u0629 \u00b7 \u0645\u0633\u062a\u062b\u0646\u0627\u0629 <b>'+closed+'</b> \u0645\u0642\u0641\u0644\u0629';}ffFillCodes();}
+function ffFillCodes(){
+  const sel=document.getElementById('ff-code');if(!sel)return;
+  const codes=Array.from(new Set(FILESECS.filter(ffEligible).map(function(s){return s.code;}))).sort();
+  const prev=sel.value;
+  sel.innerHTML=codes.map(function(c){return '<option>'+c+'</option>';}).join('');
+  if(codes.indexOf(prev)>=0)sel.value=prev;
+  ffOnCode();
+}
+function ffOnCode(){
+  const sel=document.getElementById('ff-code');if(!sel)return;const code=sel.value;
+  const nums=Array.from(new Set(FILESECS.filter(function(s){return s.code===code&&ffEligible(s);}).map(function(s){return s.num;}))).sort(function(a,b){return (+a)-(+b);});
+  const ns=document.getElementById('ff-num');const prev=ns.value;
+  ns.innerHTML=nums.map(function(n){return '<option>'+n+'</option>';}).join('');
+  if(nums.indexOf(prev)>=0)ns.value=prev;
+  ffOnNum();
+}
+function ffSeat(s){if(s.cap==null)return '';return ' ['+(s.reg!=null?s.reg:'?')+'/'+s.cap+(ffIsFull(s)?' \u0645\u0645\u062a\u0644\u0626\u0629':'')+']';}
+function ffOnNum(){
+  const code=document.getElementById('ff-code').value,num=document.getElementById('ff-num').value;
+  const secs=FILESECS.filter(function(s){return s.code===code&&s.num===num&&ffEligible(s);});
+  const ss=document.getElementById('ff-sec');
+  ss.innerHTML='<option value="__ALL__">\u0627\u0644\u0643\u0644 ('+secs.length+' \u0634\u0639\u0628\u0629)</option>'+secs.map(function(s){return '<option value="'+s.sec+'">'+s.sec+(s.instr?' \u2014 '+s.instr:'')+ffSeat(s)+'</option>';}).join('');
+  ffPreview();
+}
+function ffPreview(){
+  const host=document.getElementById('ff-preview');if(!host)return;
+  const code=document.getElementById('ff-code').value,num=document.getElementById('ff-num').value,secv=document.getElementById('ff-sec').value;
+  let pool=FILESECS.filter(function(s){return s.code===code&&s.num===num&&ffEligible(s);});
+  if(secv&&secv!=='__ALL__')pool=pool.filter(function(s){return s.sec===secv;});
+  const nameEl=document.getElementById('ff-name');if(nameEl)nameEl.textContent=pool.length?pool[0].name:'';
+  const DN=['\u0627\u0644\u0623\u062d\u062f','\u0627\u0644\u0627\u062b\u0646\u064a\u0646','\u0627\u0644\u062b\u0644\u0627\u062b\u0627\u0621','\u0627\u0644\u0623\u0631\u0628\u0639\u0627\u0621','\u0627\u0644\u062e\u0645\u064a\u0633'];
+  host.innerHTML=pool.slice(0,40).map(function(s){return '<div class="ff-prow"><span class="ff-psec">'+s.sec+'</span><span class="ff-pdays">'+s.meets.map(function(m){return DN[m.days[0]]+' '+m2t(m.from)+'-'+m2t(m.to);}).join(' \u00b7 ')+'</span><span class="ff-pseat">'+ffSeat(s)+'</span></div>';}).join('');
+}
+function ffAdd(){
+  const code=document.getElementById('ff-code').value,num=document.getElementById('ff-num').value,secv=document.getElementById('ff-sec').value;
+  let pool=FILESECS.filter(function(s){return s.code===code&&s.num===num&&ffEligible(s);});
+  if(secv&&secv!=='__ALL__')pool=pool.filter(function(s){return s.sec===secv;});
+  if(!pool.length)return toast('\u0644\u0627 \u062a\u0648\u062c\u062f \u0634\u0639\u0628 \u0645\u062a\u0627\u062d\u0629 (\u063a\u064a\u0631 \u0645\u0642\u0641\u0644\u0629) \u0644\u0647\u0630\u0647 \u0627\u0644\u0645\u0627\u062f\u0629');
+  const key=code+' '+num;
+  let course=genData.courses.find(function(c){return c.code===key;});
+  if(!course){course={code:key,name:pool[0].name||key,sections:[],on:true};genData.courses.push(course);}
+  let added=0;
+  pool.forEach(function(s){if(!course.sections.find(function(x){return x.num===s.sec;})){course.sections.push({num:s.sec,meets:s.meets});added++;}});
+  saveGen();renderGenCourses();
+  if(typeof buildOffdayPicker==='function')try{buildOffdayPicker();}catch(e){}
+  toast(added?('\u062a\u0645\u062a \u0625\u0636\u0627\u0641\u0629 '+key+' ('+added+' \u0634\u0639\u0628\u0629) \u2705'):('\u0643\u0644 \u0634\u0639\u0628 '+key+' \u0645\u0636\u0627\u0641\u0629 \u0645\u0633\u0628\u0642\u0627\u064b'));
+}
 
 </script>
 </body>
