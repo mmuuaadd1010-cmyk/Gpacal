@@ -321,8 +321,8 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
 
 /* generator inputs */
 .gen-intro{font-size:.78rem;color:var(--t2);line-height:1.7;margin-bottom:14px}
-.gen-tabs{display:flex;gap:8px;margin-bottom:14px}
-.gen-tab{flex:1;background:var(--bg);border:1px solid var(--bor);border-radius:11px;color:var(--t2);font-family:inherit;font-size:.82rem;font-weight:700;padding:10px;cursor:pointer;transition:all .18s}
+.gen-tabs{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.gen-tab{flex:1;min-width:120px;background:var(--bg);border:1px solid var(--bor);border-radius:11px;color:var(--t2);font-family:inherit;font-size:.82rem;font-weight:700;padding:10px;cursor:pointer;transition:all .18s}
 .gen-tab.on{background:var(--grad);color:#fff;border-color:transparent}
 .mini-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .mini-inp{background:var(--bg);border:1px solid var(--bor);border-radius:10px;color:var(--t);font-family:inherit;font-size:.86rem;padding:10px 12px;outline:none}
@@ -363,6 +363,46 @@ body{font-family:'IBM Plex Sans Arabic',sans-serif;background:var(--bg);color:va
 /* --- onboarding shake feedback --- */
 @keyframes shakeX{10%,90%{transform:translateX(-2px)}20%,80%{transform:translateX(4px)}30%,50%,70%{transform:translateX(-7px)}40%,60%{transform:translateX(7px)}}
 .field-inp.shake{animation:shakeX .5s cubic-bezier(.36,.07,.19,.97) both;border-color:var(--r)!important;box-shadow:0 0 0 3px rgba(245,80,74,.18)!important}
+
+/* --- college file import picker --- */
+.ff-grid{display:grid;grid-template-columns:1fr 1fr 1.4fr auto;gap:10px;align-items:end;margin:14px 0 6px}
+.ff-field{display:flex;flex-direction:column;gap:5px}
+.ff-field .mini-lbl{font-size:.7rem;color:var(--t2);font-weight:700}
+.ff-field .mini-inp{width:100%}
+.ff-grid .btn-prim{white-space:nowrap;padding:11px 16px}
+.ff-name{font-size:.86rem;font-weight:700;color:var(--a1);margin:8px 0 4px}
+.ff-preview{display:flex;flex-direction:column;gap:6px;max-height:230px;overflow:auto;margin-bottom:6px}
+.ff-prow{display:flex;align-items:center;gap:12px;background:var(--s2);border:1px solid var(--bor);border-radius:10px;padding:8px 12px}
+.ff-psec{font-size:.74rem;font-weight:800;color:var(--a3);font-family:'Space Grotesk',monospace;flex-shrink:0;min-width:42px}
+.ff-pdays{font-size:.72rem;color:var(--t2);line-height:1.5}
+select.mini-inp{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--t2) 50%),linear-gradient(135deg,var(--t2) 50%,transparent 50%);background-position:calc(0% + 14px) center,calc(0% + 19px) center;background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-inline-start:34px;cursor:pointer}
+@media(max-width:560px){.ff-grid{grid-template-columns:1fr 1fr;gap:9px}.ff-grid .btn-prim{grid-column:1/-1}}
+
+/* --- modals (were missing -> rendered inline at bottom) --- */
+.modal{display:none;position:fixed;inset:0;z-index:1000;background:rgba(5,7,15,.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px}
+.modal.open{display:flex;animation:modalFade .2s ease}
+@keyframes modalFade{from{opacity:0}to{opacity:1}}
+.modal-box{width:100%;max-width:380px;max-height:88vh;overflow:auto;background:var(--s2,#11151f);border:1px solid var(--bor);border-radius:20px;padding:22px;box-shadow:0 24px 70px rgba(0,0,0,.55);animation:modalPop .22s cubic-bezier(.34,1.56,.64,1)}
+@keyframes modalPop{from{transform:translateY(14px) scale(.96);opacity:0}to{transform:none;opacity:1}}
+.modal-title{font-size:1.05rem;font-weight:800;color:var(--t);margin-bottom:16px}
+.modal-field{margin-bottom:14px}
+.modal-field>label{display:block;font-size:.74rem;font-weight:700;color:var(--t2);margin-bottom:6px}
+.modal-inp{width:100%;background:var(--bg);border:1px solid var(--bor);border-radius:11px;color:var(--t);font-family:inherit;font-size:.9rem;padding:11px 13px;outline:none}
+.modal-inp:focus{border-color:var(--a1)}
+.modal-inp:disabled{opacity:.6}
+.color-row{display:flex;gap:10px;flex-wrap:wrap}
+.color-opt{width:30px;height:30px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:all .15s}
+.color-opt:hover{transform:scale(1.12)}
+.color-opt.sel{border-color:#fff;box-shadow:0 0 0 2px var(--a1)}
+.day-picker{display:flex;gap:7px;flex-wrap:wrap}
+.modal-btns{display:flex;gap:9px;justify-content:flex-end;margin-top:20px}
+.btn-modal-cancel{background:var(--bg);border:1px solid var(--bor);border-radius:11px;color:var(--t2);font-family:inherit;font-size:.84rem;font-weight:700;padding:10px 16px;cursor:pointer;transition:all .18s}
+.btn-modal-cancel:hover{color:var(--t);border-color:var(--t3)}
+.btn-modal-save{background:var(--grad);border:none;border-radius:11px;color:#fff;font-family:inherit;font-size:.84rem;font-weight:800;padding:10px 18px;cursor:pointer;transition:all .18s}
+.btn-modal-save:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.btn-modal-del{background:rgba(245,80,74,.15);border:1px solid rgba(245,80,74,.4);border-radius:11px;color:var(--r,#f5504a);font-family:inherit;font-size:.9rem;font-weight:700;padding:10px 14px;cursor:pointer}
+.btn-modal-del:hover{background:rgba(245,80,74,.28)}
+.mini-inp.time{padding:9px 11px}
 
 /* print */
 @media print{.app-nav,.tab-rail,.btn-prim,.btn-ghost,.result-nav,.gen-pickbar,.ambient{display:none!important}body{background:#fff!important}}
@@ -1318,6 +1358,128 @@ function enhanceGenUI(){
 }
 try{enhanceGenUI();}catch(e){}
 if(window.addEventListener)window.addEventListener('load',function(){try{enhanceGenUI();}catch(e){}});
+
+
+/* ======================================================
+   COLLEGE FILE IMPORT (tamminy-style picker)
+====================================================== */
+let FILESECS=[];
+function parseCollegeFile(text){
+  const out=[];
+  let doc;try{doc=new DOMParser().parseFromString(text,'text/html');}catch(e){return out;}
+  const DAYC=[[4,2],[3,3],[2,4],[1,5],[0,6]];/* [dayIndex, cellIndex] */
+  const trs=doc.querySelectorAll('tr');
+  trs.forEach(tr=>{
+    const tds=[].slice.call(tr.querySelectorAll('td,th')).map(td=>(td.textContent||'').replace(/\s+/g,' ').trim());
+    if(tds.length<14)return;
+    const num=(tds[10]||'').trim(),code=(tds[11]||'').trim(),sec=(tds[8]||'').trim();
+    if(!/^\d+$/.test(num))return;
+    if(!/^[A-Za-z]{2,6}$/.test(code))return;
+    const meets=[];
+    DAYC.forEach(function(pair){
+      const v=tds[pair[1]]||'';
+      const m=v.match(/(\d{1,2}[:.]\d{2})\s*-\s*(\d{1,2}[:.]\d{2})/);
+      if(m){const f=parseTime(m[1]),t=parseTime(m[2]);if(f!=null&&t!=null&&t>f)meets.push({days:[pair[0]],from:f,to:t});}
+    });
+    if(!meets.length)return;
+    out.push({code:code.toUpperCase(),num:num,name:(tds[9]||'').trim(),sec:sec,instr:(tds[7]||'').trim(),meets:meets});
+  });
+  return out;
+}
+function buildFileImportUI(){
+  if(!document.getElementById('p-gen'))return;
+  const tabs=document.querySelector('#p-gen .gen-tabs');
+  if(tabs&&!document.getElementById('gt-file')){
+    const b=document.createElement('button');b.className='gen-tab';b.id='gt-file';b.textContent='\ud83d\udcc4 \u0645\u0644\u0641 \u0627\u0644\u0643\u0644\u064a\u0629';b.onclick=function(){genMode('file');};tabs.appendChild(b);
+  }
+  const anchor=document.getElementById('gen-paste-box');
+  if(anchor&&!document.getElementById('gen-file-box')){
+    const box=document.createElement('div');box.id='gen-file-box';box.style.display='none';
+    box.innerHTML='<div class="fmt-box">\ud83d\udce5 \u0627\u0631\u0641\u0639 \u0645\u0644\u0641 <b>\u00ab\u0634\u0639\u0628 \u0627\u0644\u0645\u0642\u0631\u0631\u0627\u062a\u00bb</b> \u0627\u0644\u0630\u064a \u062a\u0646\u0632\u0651\u0644\u0647 \u0645\u0646 \u0646\u0638\u0627\u0645 \u0627\u0644\u062c\u0627\u0645\u0639\u0629 (\u0635\u064a\u063a\u0629 HTML)\u060c \u062b\u0645 \u0627\u062e\u062a\u0631 <b>\u0631\u0645\u0632 \u0627\u0644\u0645\u0627\u062f\u0629</b> \u0648<b>\u0631\u0642\u0645\u0647\u0627</b> \u0648<b>\u0627\u0644\u0634\u0639\u0628\u0629</b> \u0648\u0623\u0636\u0641\u0647\u0627. \u0628\u0639\u0636 \u0627\u0644\u0634\u0639\u0628 \u0642\u062f \u0644\u0627 \u062a\u0643\u0648\u0646 \u0636\u0645\u0646 \u0643\u0644\u064a\u062a\u0643\u060c \u0644\u0630\u0644\u0643 \u062a\u062e\u062a\u0627\u0631\u0647\u0627 \u0628\u0646\u0641\u0633\u0643.</div>'
+      +'<input type="file" id="ff-input" accept=".html,.htm,text/html" style="display:none">'
+      +'<button class="btn-prim" id="ff-upload">\ud83d\udcc2 \u0627\u0631\u0641\u0639 \u0645\u0644\u0641 \u0627\u0644\u0634\u0639\u0628 (HTML)</button>'
+      +'<div id="ff-status" class="mini-lbl" style="margin:12px 0"></div>'
+      +'<div id="ff-picker" style="display:none">'
+        +'<div class="ff-grid">'
+          +'<div class="ff-field"><label class="mini-lbl">\u0631\u0645\u0632 \u0627\u0644\u0645\u0627\u062f\u0629</label><select class="mini-inp" id="ff-code" onchange="ffOnCode()"></select></div>'
+          +'<div class="ff-field"><label class="mini-lbl">\u0631\u0642\u0645 \u0627\u0644\u0645\u0627\u062f\u0629</label><select class="mini-inp" id="ff-num" onchange="ffOnNum()"></select></div>'
+          +'<div class="ff-field"><label class="mini-lbl">\u0627\u0644\u0634\u0639\u0628\u0629</label><select class="mini-inp" id="ff-sec" onchange="ffPreview()"></select></div>'
+          +'<button class="btn-prim" id="ff-add" onclick="ffAdd()">\u2795 \u0625\u0636\u0627\u0641\u0629</button>'
+        +'</div>'
+        +'<div id="ff-name" class="ff-name"></div>'
+        +'<div id="ff-preview" class="ff-preview"></div>'
+      +'</div>';
+    anchor.insertAdjacentElement('afterend',box);
+    document.getElementById('ff-upload').onclick=function(){document.getElementById('ff-input').click();};
+    document.getElementById('ff-input').onchange=ffFileChosen;
+  }
+}
+function ffFileChosen(e){
+  const f=e.target.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=function(){
+    try{
+      FILESECS=parseCollegeFile(r.result);
+      const st=document.getElementById('ff-status');
+      if(!FILESECS.length){st.innerHTML='\u26a0\ufe0f \u0644\u0645 \u0623\u062c\u062f \u0634\u0639\u0628\u0627\u064b \u0641\u064a \u0627\u0644\u0645\u0644\u0641 \u2014 \u062a\u0623\u0643\u062f \u0623\u0646\u0647 \u0645\u0644\u0641 \u00ab\u0634\u0639\u0628 \u0627\u0644\u0645\u0642\u0631\u0631\u0627\u062a\u00bb \u0628\u0635\u064a\u063a\u0629 HTML';document.getElementById('ff-picker').style.display='none';return;}
+      const nc=new Set(FILESECS.map(function(s){return s.code;})).size;
+      st.innerHTML='\u2705 \u062a\u0645 \u062a\u062d\u0645\u064a\u0644 <b>'+FILESECS.length+'</b> \u0634\u0639\u0628\u0629 \u0644\u0640 <b>'+nc+'</b> \u0645\u0627\u062f\u0629';
+      ffFillCodes();
+      document.getElementById('ff-picker').style.display='block';
+    }catch(err){document.getElementById('ff-status').textContent='\u062a\u0639\u0630\u0651\u0631 \u0642\u0631\u0627\u0621\u0629 \u0627\u0644\u0645\u0644\u0641';}
+  };
+  r.readAsText(f);
+}
+function ffFillCodes(){
+  const codes=[].concat.apply([],[new Set(FILESECS.map(function(s){return s.code;}))].map(function(s){return [].slice.call(s);})).sort();
+  document.getElementById('ff-code').innerHTML=codes.map(function(c){return '<option>'+c+'</option>';}).join('');
+  ffOnCode();
+}
+function ffOnCode(){
+  const code=document.getElementById('ff-code').value;
+  const nums=[].slice.call(new Set(FILESECS.filter(function(s){return s.code===code;}).map(function(s){return s.num;}))).sort(function(a,b){return (+a)-(+b);});
+  document.getElementById('ff-num').innerHTML=nums.map(function(n){return '<option>'+n+'</option>';}).join('');
+  ffOnNum();
+}
+function ffOnNum(){
+  const code=document.getElementById('ff-code').value,num=document.getElementById('ff-num').value;
+  const secs=FILESECS.filter(function(s){return s.code===code&&s.num===num;});
+  document.getElementById('ff-sec').innerHTML='<option value="__ALL__">\u0627\u0644\u0643\u0644 ('+secs.length+' \u0634\u0639\u0628\u0629)</option>'+secs.map(function(s){return '<option value="'+s.sec+'">'+s.sec+(s.instr?' \u2014 '+s.instr:'')+'</option>';}).join('');
+  ffPreview();
+}
+function ffPreview(){
+  const host=document.getElementById('ff-preview');if(!host)return;
+  const code=document.getElementById('ff-code').value,num=document.getElementById('ff-num').value,secv=document.getElementById('ff-sec').value;
+  let pool=FILESECS.filter(function(s){return s.code===code&&s.num===num;});
+  if(secv&&secv!=='__ALL__')pool=pool.filter(function(s){return s.sec===secv;});
+  const nameEl=document.getElementById('ff-name');if(nameEl)nameEl.textContent=pool.length?pool[0].name:'';
+  const DN=['\u0627\u0644\u0623\u062d\u062f','\u0627\u0644\u0627\u062b\u0646\u064a\u0646','\u0627\u0644\u062b\u0644\u0627\u062b\u0627\u0621','\u0627\u0644\u0623\u0631\u0628\u0639\u0627\u0621','\u0627\u0644\u062e\u0645\u064a\u0633'];
+  host.innerHTML=pool.slice(0,40).map(function(s){return '<div class="ff-prow"><span class="ff-psec">'+s.sec+'</span><span class="ff-pdays">'+s.meets.map(function(m){return DN[m.days[0]]+' '+m2t(m.from)+'-'+m2t(m.to);}).join(' \u00b7 ')+'</span></div>';}).join('');
+}
+function ffAdd(){
+  const code=document.getElementById('ff-code').value,num=document.getElementById('ff-num').value,secv=document.getElementById('ff-sec').value;
+  let pool=FILESECS.filter(function(s){return s.code===code&&s.num===num;});
+  if(secv&&secv!=='__ALL__')pool=pool.filter(function(s){return s.sec===secv;});
+  if(!pool.length)return toast('\u0644\u0627 \u062a\u0648\u062c\u062f \u0634\u0639\u0628 \u0645\u0637\u0627\u0628\u0642\u0629');
+  const key=code+' '+num;
+  let course=genData.courses.find(function(c){return c.code===key;});
+  if(!course){course={code:key,name:pool[0].name||key,sections:[],on:true};genData.courses.push(course);}
+  let added=0;
+  pool.forEach(function(s){if(!course.sections.find(function(x){return x.num===s.sec;})){course.sections.push({num:s.sec,meets:s.meets});added++;}});
+  saveGen();renderGenCourses();
+  if(typeof buildOffdayPicker==='function')try{buildOffdayPicker();}catch(e){}
+  toast(added?('\u062a\u0645\u062a \u0625\u0636\u0627\u0641\u0629 '+key+' ('+added+' \u0634\u0639\u0628\u0629) \u2705'):('\u0643\u0644 \u0634\u0639\u0628 '+key+' \u0645\u0636\u0627\u0641\u0629 \u0645\u0633\u0628\u0642\u0627\u064b'));
+}
+/* redefine genMode to support the new file mode */
+function genMode(m){
+  const tabMap={manual:'gt-manual',paste:'gt-paste',file:'gt-file'};
+  const boxMap={manual:'gen-manual',paste:'gen-paste-box',file:'gen-file-box'};
+  Object.keys(tabMap).forEach(function(k){const b=document.getElementById(tabMap[k]);if(b)b.classList.toggle('on',k===m);});
+  Object.keys(boxMap).forEach(function(k){const el=document.getElementById(boxMap[k]);if(el)el.style.display=(k===m)?'block':'none';});
+}
+/* extend enhanceGenUI to also build the file import UI */
+if(typeof enhanceGenUI==='function'){var _enhPrev=enhanceGenUI;enhanceGenUI=function(){try{_enhPrev();}catch(e){}try{buildFileImportUI();}catch(e){}};}
+try{enhanceGenUI();}catch(e){}
 
 </script>
 </body>
