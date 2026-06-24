@@ -3,177 +3,237 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<meta name="theme-color" content="#6d28d9">
-<title>Speak With Us PRO MAX — تعلّم الإنجليزي</title>
+<meta name="theme-color" content="#a8432a">
+<title>Speak With Us — أكاديمية الإنجليزية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#070b18;--bg-soft:#0d1426;--surface:#121b30;--surface-2:#18233d;--surface-3:#1f2c49;
-  --line:rgba(148,163,184,.14);--line-strong:rgba(148,163,184,.28);
-  --text:#eef2fb;--muted:#94a3c4;--faint:#64748b;
-  --brand:#7c3aed;--brand-2:#22d3ee;--brand-3:#f472b6;
-  --good:#22c55e;--good-bg:rgba(34,197,94,.14);--bad:#ef4444;--bad-bg:rgba(239,68,68,.14);--gold:#fbbf24;
-  --shadow:0 18px 50px -12px rgba(0,0,0,.55);--radius:22px;
+  --paper:#f4eee1;--paper-2:#ece3d2;--card:#fffcf5;--card-2:#f7f0e2;--card-3:#f0e7d6;
+  --ink:#221d16;--ink-2:#534c41;--muted:#8d8473;--faint:#a89e8b;
+  --line:rgba(34,29,22,.14);--line-2:rgba(34,29,22,.30);
+  --accent:#a8432a;--accent-2:#933a24;--accent-soft:rgba(168,67,42,.10);
+  --jade:#1f5e54;--gold:#b5862f;
+  --good:#2f7d4f;--good-bg:rgba(47,125,79,.13);--bad:#b23b3b;--bad-bg:rgba(178,59,59,.12);
+  --shadow:0 24px 60px -30px rgba(70,48,20,.45);--shadow-sm:0 10px 26px -18px rgba(70,48,20,.5);
+  --r:16px;--r-lg:22px;
+  --serif:'Fraunces',Georgia,'Times New Roman',serif;
+  --sans:'Tajawal','Segoe UI',Tahoma,system-ui,sans-serif;
 }
-[data-theme="light"]{
-  --bg:#eef1f8;--bg-soft:#e6ebf5;--surface:#ffffff;--surface-2:#f4f7fc;--surface-3:#eaf0f9;
-  --line:rgba(15,23,42,.08);--line-strong:rgba(15,23,42,.16);
-  --text:#0f172a;--muted:#52617d;--faint:#8a97ad;--shadow:0 18px 50px -16px rgba(30,41,99,.25);
+[data-theme="dark"]{
+  --paper:#14120d;--paper-2:#1a1610;--card:#1e1a13;--card-2:#241f17;--card-3:#2b251b;
+  --ink:#f1e9d7;--ink-2:#c7bda6;--muted:#9a8f78;--faint:#6f6553;
+  --line:rgba(241,233,215,.12);--line-2:rgba(241,233,215,.24);
+  --accent:#dc7d57;--accent-2:#e8916e;--accent-soft:rgba(220,125,87,.14);
+  --jade:#62a899;--gold:#d8a949;
+  --good:#5db97e;--good-bg:rgba(93,185,126,.14);--bad:#e07070;--bad-bg:rgba(224,112,112,.14);
+  --shadow:0 28px 70px -32px rgba(0,0,0,.75);--shadow-sm:0 12px 30px -20px rgba(0,0,0,.8);
 }
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;font-family:'Segoe UI',Tahoma,system-ui,-apple-system,sans-serif}
-body{min-height:100vh;color:var(--text);transition:background .4s,color .3s;
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);min-height:100vh;color:var(--ink);background:var(--paper);transition:background .45s,color .3s;line-height:1.6;position:relative}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
   background:
-    radial-gradient(1100px 560px at 88% -8%,rgba(124,58,237,.30),transparent 60%),
-    radial-gradient(900px 520px at -5% 5%,rgba(34,211,238,.20),transparent 55%),
-    radial-gradient(700px 600px at 50% 110%,rgba(244,114,182,.14),transparent 60%),
-    var(--bg);
-}
-.app{max-width:860px;margin:0 auto;padding:10px 16px 110px;min-height:100vh}
+    radial-gradient(900px 500px at 92% -10%,var(--accent-soft),transparent 60%),
+    radial-gradient(700px 480px at -8% 8%,rgba(31,94,84,.07),transparent 60%);}
+body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+.app{position:relative;z-index:1;max-width:840px;margin:0 auto;padding:6px 18px 120px;min-height:100vh}
+
 /* Header */
-header{position:sticky;top:0;z-index:30;display:flex;justify-content:space-between;align-items:center;gap:10px;
-  padding:12px 14px;margin:8px 0 6px;border-radius:18px;border:1px solid var(--line);
-  background:color-mix(in srgb,var(--surface) 72%,transparent);backdrop-filter:blur(16px);box-shadow:var(--shadow)}
-.brand{display:flex;align-items:center;gap:10px;min-width:0}
-.brand .mark{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;font-size:1.25rem;
-  background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:0 8px 22px rgba(124,58,237,.45);flex:none}
-.brand .name{font-weight:900;font-size:1.02rem;line-height:1.1;letter-spacing:.2px;
-  background:linear-gradient(90deg,#fff,#c7d2fe);-webkit-background-clip:text;background-clip:text;color:transparent}
-[data-theme="light"] .brand .name{background:linear-gradient(90deg,#5b21b6,#0e7490);-webkit-background-clip:text;background-clip:text;color:transparent}
-.brand .handle{font-size:.7rem;color:var(--muted);text-decoration:none}
-.hstats{display:flex;gap:7px;align-items:center}
-.chip{display:flex;align-items:center;gap:5px;background:var(--surface-2);border:1px solid var(--line);
-  padding:7px 11px;border-radius:999px;font-size:.82rem;font-weight:800;white-space:nowrap}
-.chip small{color:var(--muted);font-weight:700}
-.iconbtn{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--surface-2);
-  color:var(--text);font-size:1.05rem;cursor:pointer;transition:.2s;flex:none}
-.iconbtn:hover{transform:translateY(-2px);border-color:var(--line-strong)}
-/* Cards & layout */
-.card{background:linear-gradient(180deg,var(--surface),var(--surface-2));border:1px solid var(--line);
-  border-radius:var(--radius);padding:22px;margin:14px 0;box-shadow:var(--shadow);animation:rise .45s cubic-bezier(.2,.8,.2,1)}
+header{position:sticky;top:0;z-index:30;display:flex;justify-content:space-between;align-items:center;gap:12px;
+  padding:14px 4px 13px;margin-bottom:10px;border-bottom:1px solid var(--line);
+  background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px)}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand .mark{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;flex:none;
+  font-family:var(--serif);font-weight:900;font-size:1.4rem;color:var(--paper);background:var(--ink);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),3px 3px 0 var(--accent)}
+[data-theme="dark"] .brand .mark{color:var(--ink);background:var(--paper-2);box-shadow:inset 0 0 0 1px var(--line-2),3px 3px 0 var(--accent)}
+.brand .name{font-family:var(--serif);font-weight:900;font-size:1.18rem;line-height:1.05;letter-spacing:.2px}
+.brand .name i{font-style:italic;color:var(--accent);font-weight:500}
+.brand .handle{font-size:.72rem;color:var(--muted);text-decoration:none;letter-spacing:.3px}
+.brand .handle:hover{color:var(--accent)}
+.hstats{display:flex;gap:8px;align-items:center}
+.chip{display:flex;align-items:center;gap:5px;background:var(--card);border:1px solid var(--line);
+  padding:7px 12px;border-radius:999px;font-size:.82rem;font-weight:700;white-space:nowrap;box-shadow:var(--shadow-sm)}
+.chip small{color:var(--muted);font-weight:500}
+.iconbtn{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:var(--card);
+  color:var(--ink);font-size:1.05rem;cursor:pointer;transition:.18s;flex:none;box-shadow:var(--shadow-sm)}
+.iconbtn:hover{transform:translateY(-2px);border-color:var(--line-2)}
+
+/* Eyebrow / section label */
+.eyebrow{display:flex;align-items:center;gap:10px;font-size:.72rem;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.eyebrow::before{content:"";width:26px;height:1.5px;background:var(--accent);display:block}
+.eyebrow .no{font-family:var(--serif);font-style:italic;font-size:.9rem;letter-spacing:0;color:var(--muted)}
+
+/* Cards */
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:24px;margin:16px 0;
+  box-shadow:var(--shadow);animation:rise .5s cubic-bezier(.2,.8,.2,1)}
 @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.card.flush{padding:0;overflow:hidden}
 .center{text-align:center}.muted{color:var(--muted)}.faint{color:var(--faint)}
-h1,h2,h3{line-height:1.25}h2{font-size:1.32rem;margin-bottom:6px}h3{font-size:1.05rem}
-.lead{color:var(--muted);font-size:.96rem;line-height:1.7;margin-top:6px}
+h1,h2,h3{font-family:var(--serif);line-height:1.18;font-weight:900;letter-spacing:.2px}
+h2{font-size:1.55rem;margin-bottom:6px}h3{font-size:1.12rem;font-weight:600}
+.lead{color:var(--ink-2);font-size:.98rem;line-height:1.75;margin-top:8px}
 .hidden{display:none!important}
-.grid{display:grid;gap:12px}
-.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}
+.grid{display:grid;gap:14px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}
 @media(max-width:560px){.g3{grid-template-columns:repeat(2,1fr)}}
 .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+hr.rule{border:none;border-top:1px solid var(--line);margin:18px 0}
+
 /* Buttons */
-.btn{appearance:none;border:none;cursor:pointer;font-weight:800;font-size:1rem;color:#fff;
-  padding:14px 22px;border-radius:14px;background:linear-gradient(90deg,var(--brand),var(--brand-2));
-  box-shadow:0 10px 26px -8px rgba(124,58,237,.7);transition:.2s;display:inline-flex;align-items:center;gap:8px;justify-content:center}
-.btn:hover{transform:translateY(-2px);box-shadow:0 16px 34px -8px rgba(124,58,237,.8)}
-.btn:active{transform:translateY(0)}
+.btn{font-family:var(--sans);appearance:none;border:1px solid var(--ink);cursor:pointer;font-weight:700;font-size:1rem;
+  color:var(--paper);background:var(--ink);padding:14px 24px;border-radius:13px;transition:.18s;
+  display:inline-flex;align-items:center;gap:8px;justify-content:center;box-shadow:3px 3px 0 var(--accent)}
+.btn:hover{transform:translate(-1px,-2px);box-shadow:4px 5px 0 var(--accent)}
+.btn:active{transform:translate(1px,1px);box-shadow:1px 1px 0 var(--accent)}
 .btn.full{width:100%}
-.btn.sec{background:var(--surface-3);color:var(--text);box-shadow:none;border:1px solid var(--line-strong)}
-.btn.sec:hover{border-color:var(--brand)}
-.btn.gold{background:linear-gradient(90deg,#f59e0b,var(--gold));box-shadow:0 10px 26px -8px rgba(251,191,36,.7);color:#3b2700}
-.btn.sm{padding:9px 14px;font-size:.85rem;border-radius:11px}
+.btn.sec{background:transparent;color:var(--ink);border-color:var(--line-2);box-shadow:none}
+.btn.sec:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.btn.accent{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:3px 3px 0 var(--ink)}
+[data-theme="dark"] .btn.accent{color:#1a140f}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:#3a2a05;box-shadow:3px 3px 0 var(--ink)}
+.btn.sm{padding:9px 15px;font-size:.86rem;border-radius:10px;box-shadow:2px 2px 0 var(--accent)}
+.btn.sm.sec{box-shadow:none}
+
 /* Hero */
-.hero{position:relative;overflow:hidden}
-.hero .blob{position:absolute;inset:auto -40px -60px auto;width:240px;height:240px;border-radius:50%;
-  background:radial-gradient(circle,rgba(124,58,237,.5),transparent 70%);filter:blur(8px);pointer-events:none}
-.hero h2{font-size:1.7rem;background:linear-gradient(90deg,var(--brand-2),var(--brand-3));-webkit-background-clip:text;background-clip:text;color:transparent}
-.pills{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;margin:14px 0}
-.pill{font-size:.76rem;font-weight:800;padding:6px 12px;border-radius:999px;background:var(--surface-3);border:1px solid var(--line);color:var(--muted)}
-/* Progress */
-.bar{height:12px;border-radius:999px;background:var(--surface-3);overflow:hidden;margin:12px 0}
-.bar>i{display:block;height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,var(--brand),var(--brand-2));transition:width .6s cubic-bezier(.2,.8,.2,1)}
-.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:6px}
-.kpi{background:var(--surface-2);border:1px solid var(--line);border-radius:16px;padding:14px;text-align:center}
-.kpi .num{font-size:1.5rem;font-weight:900}.kpi .lbl{font-size:.74rem;color:var(--muted);margin-top:2px}
+.hero{position:relative;overflow:hidden;background:var(--card);
+  background-image:linear-gradient(135deg,transparent 60%,var(--accent-soft));}
+.hero .seal{position:absolute;top:18px;inset-inline-end:22px;font-family:var(--serif);font-style:italic;
+  font-size:.78rem;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:5px 13px}
+.hero h2{font-size:2.05rem;line-height:1.12}
+.hero h2 em{font-style:italic;color:var(--accent)}
+.pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:16px 0}
+.pill{font-size:.76rem;font-weight:700;padding:6px 13px;border-radius:999px;background:var(--card-2);
+  border:1px solid var(--line);color:var(--ink-2)}
+
+/* Phrase of day */
+.phrase{display:flex;align-items:flex-start;gap:14px;background:var(--card-2);border:1px solid var(--line);
+  border-inline-start:3px solid var(--accent);border-radius:var(--r);padding:16px 18px;margin:16px 0}
+.phrase .q{font-family:var(--serif);font-size:2rem;line-height:1;color:var(--accent);flex:none}
+.phrase .en{font-family:var(--serif);font-style:italic;direction:ltr;text-align:left;font-size:1.12rem;color:var(--ink)}
+.phrase .ar{color:var(--muted);font-size:.9rem;margin-top:3px}
+
+/* Progress ring + kpis */
+.dashtop{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.ring{position:relative;width:104px;height:104px;border-radius:50%;flex:none;
+  background:conic-gradient(var(--accent) 0%,var(--line) 0);display:grid;place-items:center}
+.ring::before{content:"";position:absolute;inset:9px;border-radius:50%;background:var(--card)}
+.ring .pct{position:relative;font-family:var(--serif);font-weight:900;font-size:1.5rem}
+.ring .pl{position:relative;font-size:.62rem;color:var(--muted);margin-top:-2px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;flex:1;min-width:240px}
+.kpi{background:var(--card-2);border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center}
+.kpi .num{font-family:var(--serif);font-size:1.6rem;font-weight:900}
+.kpi .lbl{font-size:.72rem;color:var(--muted);margin-top:2px}
+.bar{height:8px;border-radius:999px;background:var(--card-3);overflow:hidden;margin:14px 0}
+.bar>i{display:block;height:100%;width:0;border-radius:999px;background:var(--accent);transition:width .6s cubic-bezier(.2,.8,.2,1)}
+
 /* Level picker */
-.lvls{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.lvls{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 @media(max-width:560px){.lvls{grid-template-columns:repeat(2,1fr)}}
-.lvl{cursor:pointer;border-radius:18px;padding:18px 12px;text-align:center;border:1.5px solid var(--line);
-  background:var(--surface-2);transition:.2s;position:relative;overflow:hidden}
-.lvl:hover{transform:translateY(-3px);border-color:var(--brand)}
-.lvl .code{font-size:1.7rem;font-weight:900}
-.lvl .nm{font-size:.78rem;color:var(--muted);margin-top:3px}
-.lvl .dot{position:absolute;top:10px;inset-inline-start:10px;width:10px;height:10px;border-radius:50%}
-.lvl.green .code{color:#34d399}.lvl.green .dot{background:#34d399}
-.lvl.yellow .code{color:#fbbf24}.lvl.yellow .dot{background:#fbbf24}
-.lvl.red .code{color:#f87171}.lvl.red .dot{background:#f87171}
-.lvl.all{grid-column:1/-1;background:linear-gradient(135deg,rgba(124,58,237,.18),rgba(34,211,238,.14));border-color:var(--brand)}
-.lvl.all .code{font-size:1.3rem;color:var(--text)}
-/* Options / quiz */
-.word-en{font-size:2.4rem;font-weight:900;direction:ltr;letter-spacing:.4px;line-height:1.2}
-.word-ar{font-size:1.45rem;color:var(--brand-2);font-weight:800;margin-top:6px}
-.opt{display:block;width:100%;text-align:start;background:var(--surface-2);border:1.5px solid var(--line);color:var(--text);
-  padding:15px 16px;border-radius:14px;margin:9px 0;cursor:pointer;font-size:1.05rem;transition:.15s;font-weight:600}
-.opt:hover{border-color:var(--brand);transform:translateX(-3px)}
-.opt.correct{background:var(--good-bg);border-color:var(--good);color:var(--text)}
-.opt.wrong{background:var(--bad-bg);border-color:var(--bad);color:var(--text)}
+.lvl{cursor:pointer;border-radius:16px;padding:20px 12px 18px;text-align:center;border:1px solid var(--line);
+  background:var(--card-2);transition:.18s;position:relative;overflow:hidden}
+.lvl::after{content:"";position:absolute;top:0;inset-inline-start:0;width:100%;height:3px;background:var(--c,var(--accent));transform:scaleX(0);transform-origin:inline-start;transition:.25s}
+.lvl:hover{transform:translateY(-3px);box-shadow:var(--shadow-sm)}
+.lvl:hover::after{transform:scaleX(1)}
+.lvl .code{font-family:var(--serif);font-size:1.8rem;font-weight:900;color:var(--c,var(--ink))}
+.lvl .nm{font-size:.76rem;color:var(--muted);margin-top:4px}
+.lvl.green{--c:var(--jade)}.lvl.yellow{--c:var(--gold)}.lvl.red{--c:var(--accent)}
+.lvl.all{grid-column:1/-1;background:var(--ink);color:var(--paper);border-color:var(--ink)}
+[data-theme="dark"] .lvl.all{background:var(--card-3);color:var(--ink)}
+.lvl.all .code{font-size:1.25rem;color:inherit}.lvl.all .nm{color:inherit;opacity:.7}
+
+/* Word / quiz */
+.word-en{font-family:var(--serif);font-size:2.7rem;font-weight:900;direction:ltr;line-height:1.15;letter-spacing:.3px}
+.word-ar{font-size:1.4rem;color:var(--jade);font-weight:700;margin-top:6px}
+.opt{font-family:var(--sans);display:block;width:100%;text-align:start;background:var(--card-2);border:1px solid var(--line);
+  color:var(--ink);padding:15px 17px;border-radius:13px;margin:9px 0;cursor:pointer;font-size:1.05rem;transition:.15s;font-weight:500}
+.opt:hover{border-color:var(--accent);transform:translateX(-3px)}
+.opt.correct{background:var(--good-bg);border-color:var(--good)}
+.opt.wrong{background:var(--bad-bg);border-color:var(--bad)}
 .opt:disabled{cursor:default}
-.qhead{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:4px}
-/* Flashcard */
-.flash{perspective:1400px;height:280px;cursor:pointer;margin:14px 0}
+.qhead{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px}
+.qhead .muted{font-size:.84rem}
+
+/* Flashcard - notecard look */
+.flash{perspective:1500px;height:290px;cursor:pointer;margin:16px 0}
 .flash .inner{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d}
 .flash.flip .inner{transform:rotateY(180deg)}
-.flash .face{position:absolute;inset:0;backface-visibility:hidden;border-radius:20px;padding:18px;
+.flash .face{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;padding:22px;
   display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
-  background:linear-gradient(160deg,var(--surface-2),var(--surface));border:1.5px solid var(--brand)}
-.flash .back{transform:rotateY(180deg);overflow:auto}
-.exline{direction:ltr;color:var(--muted);font-style:italic;font-size:.95rem;margin-top:7px;line-height:1.5}
-.tag{font-size:.72rem;background:var(--surface-3);color:var(--brand-2);padding:4px 11px;border-radius:999px;margin-top:10px}
-/* List */
-input[type=text]{width:100%;padding:14px;border-radius:14px;border:1.5px solid var(--line-strong);
-  background:var(--surface-2);color:var(--text);font-size:1.02rem;margin:8px 0}
-input[type=text]:focus{outline:none;border-color:var(--brand)}
-.item{padding:14px;border:1px solid var(--line);border-radius:14px;margin:8px 0;background:var(--surface-2)}
+  background:var(--card-2);border:1px solid var(--line-2);box-shadow:var(--shadow-sm);
+  background-image:repeating-linear-gradient(transparent,transparent 33px,var(--line) 33px,var(--line) 34px)}
+.flash .face::before{content:"";position:absolute;top:0;bottom:0;inset-inline-start:34px;width:1px;background:rgba(168,67,42,.25)}
+.flash .back{transform:rotateY(180deg);overflow:auto;justify-content:flex-start;padding-top:26px}
+.exline{direction:ltr;text-align:left;color:var(--ink-2);font-family:var(--serif);font-style:italic;font-size:.96rem;margin-top:7px;line-height:1.55}
+.tag{font-family:var(--sans);font-size:.72rem;background:var(--card-3);color:var(--accent);padding:4px 12px;border-radius:999px;margin-top:12px;font-weight:700}
+
+/* Inputs / list */
+input[type=text]{font-family:var(--sans);width:100%;padding:14px 16px;border-radius:13px;border:1px solid var(--line-2);
+  background:var(--card-2);color:var(--ink);font-size:1.02rem;margin:8px 0}
+input[type=text]:focus{outline:none;border-color:var(--accent)}
+.item{padding:15px;border:1px solid var(--line);border-radius:13px;margin:9px 0;background:var(--card-2)}
 .item .top{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.item .en{font-weight:800;direction:ltr;font-size:1.08rem}
-.item .ar{color:var(--brand-2);font-weight:700;font-size:.95rem}
-.item .exs{margin-top:8px;display:flex;flex-direction:column;gap:4px}
-.item .lvltag{font-size:.66rem;color:var(--faint);border:1px solid var(--line);padding:2px 8px;border-radius:999px;font-weight:800}
+.item .en{font-family:var(--serif);font-weight:600;direction:ltr;font-size:1.12rem}
+.item .ar{color:var(--jade);font-weight:700;font-size:.95rem}
+.item .exs{margin-top:8px;display:flex;flex-direction:column;gap:3px}
+.item .lvltag{font-size:.66rem;color:var(--muted);border:1px solid var(--line);padding:2px 9px;border-radius:999px;font-weight:700}
+
 /* Badges */
-.medal{font-size:2.1rem;filter:grayscale(1);opacity:.35;transition:.3s}
+.medal{font-size:2.1rem;filter:grayscale(1);opacity:.32;transition:.3s}
 .medal.on{filter:none;opacity:1;animation:pop .45s ease}
-@keyframes pop{0%{transform:scale(.4)}70%{transform:scale(1.18)}100%{transform:scale(1)}}
+@keyframes pop{0%{transform:scale(.4)}70%{transform:scale(1.16)}100%{transform:scale(1)}}
+
 /* Spinner / toast */
-.spin{display:inline-block;width:16px;height:16px;border:2px solid var(--line-strong);border-top-color:var(--brand-2);border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle}
+.spin{display:inline-block;width:15px;height:15px;border:2px solid var(--line-2);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle}
 @keyframes spin{to{transform:rotate(360deg)}}
-.toast{position:fixed;left:50%;bottom:-80px;transform:translateX(-50%);z-index:99;
-  background:var(--surface);border:1px solid var(--brand);color:var(--text);padding:13px 22px;border-radius:14px;
-  font-weight:800;box-shadow:var(--shadow);transition:bottom .35s cubic-bezier(.2,.8,.2,1);max-width:90vw;text-align:center}
-.toast.show{bottom:96px}
+.toast{position:fixed;left:50%;bottom:-90px;transform:translateX(-50%);z-index:99;
+  background:var(--ink);color:var(--paper);border:1px solid var(--ink);padding:13px 24px;border-radius:13px;
+  font-weight:700;box-shadow:var(--shadow);transition:bottom .35s cubic-bezier(.2,.8,.2,1);max-width:90vw;text-align:center}
+[data-theme="dark"] .toast{background:var(--card-3);color:var(--ink)}
+.toast.show{bottom:100px}
+
 /* Bottom nav */
-.nav{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;z-index:40;width:min(560px,calc(100% - 24px));
-  display:flex;justify-content:space-around;gap:4px;padding:8px;border-radius:20px;border:1px solid var(--line);
-  background:color-mix(in srgb,var(--surface) 80%,transparent);backdrop-filter:blur(16px);box-shadow:var(--shadow)}
-.nav button{flex:1;background:none;border:none;color:var(--muted);cursor:pointer;padding:8px 4px;border-radius:13px;
-  font-size:.68rem;font-weight:800;display:flex;flex-direction:column;align-items:center;gap:3px;transition:.2s}
-.nav button .ic{font-size:1.25rem}
-.nav button.active{color:var(--text);background:var(--surface-3)}
+.nav{position:fixed;left:50%;transform:translateX(-50%);bottom:16px;z-index:40;width:min(540px,calc(100% - 28px));
+  display:flex;justify-content:space-around;gap:4px;padding:7px;border-radius:18px;border:1px solid var(--line);
+  background:color-mix(in srgb,var(--card) 92%,transparent);backdrop-filter:blur(14px);box-shadow:var(--shadow)}
+.nav button{font-family:var(--sans);flex:1;background:none;border:none;color:var(--muted);cursor:pointer;padding:8px 4px;border-radius:12px;
+  font-size:.66rem;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:3px;transition:.18s}
+.nav button .ic{font-size:1.2rem}
+.nav button.active{color:var(--accent);background:var(--accent-soft)}
 .nav.hidden{display:none!important}
-footer{text-align:center;color:var(--muted);padding:22px 0 6px;font-size:.82rem}
-footer a{color:var(--brand-2);text-decoration:none;font-weight:800}
+footer{text-align:center;color:var(--muted);padding:26px 0 8px;font-size:.82rem;border-top:1px solid var(--line);margin-top:24px}
+footer .fname{font-family:var(--serif);font-weight:900;color:var(--ink)}
+footer a{color:var(--accent);text-decoration:none;font-weight:700}
 </style>
 </head>
-<body data-theme="dark">
+<body data-theme="light">
 <div class="app">
   <header>
     <div class="brand">
-      <div class="mark">🚀</div>
+      <div class="mark">S</div>
       <div>
-        <div class="name">Speak With Us PRO MAX</div>
-        <a class="handle" href="https://twitter.com/chambertu" target="_blank">🐦 by @chambertu</a>
+        <div class="name">Speak <i>with</i> Us</div>
+        <a class="handle" href="https://x.com/onlychamber" target="_blank">— أكاديمية الإنجليزية · @onlychamber</a>
       </div>
     </div>
     <div class="hstats">
       <span class="chip">🔥 <span id="streak">0</span></span>
-      <span class="chip">⭐ <span id="points">0</span></span>
+      <span class="chip">✶ <span id="points">0</span></span>
       <span class="chip" id="lvlBadge"><small>—</small></span>
-      <button class="iconbtn" id="theme" title="الوضع">🌙</button>
+      <button class="iconbtn" id="theme" title="الوضع">☾</button>
     </div>
   </header>
 
   <!-- الرئيسية -->
   <section id="home">
-    <div class="card hero center">
-      <div class="blob"></div>
-      <h2>رحلتك لإتقان الإنجليزي تبدأ هنا 🎯</h2>
-      <p class="lead">سوّينا لك منهج متكامل: حدّد مستواك باختبار ذكي، وبعدها كلمات على قدّك بالضبط مع أمثلة لكل كلمة، وكلمات لا نهائية متى ما تبي. التزم يومياً وبتلاحظ فرق واضح خلال شهر إلى شهرين.</p>
+    <div class="card hero">
+      <span class="seal">منهج متكامل · A1 → C2</span>
+      <div class="eyebrow"><span class="no">٠٠</span> ابدأ من هنا</div>
+      <h2>تعلّم الإنجليزية بأسلوب <em>يليق فيك</em>.</h2>
+      <p class="lead">مو مجرد تطبيق كلمات. هذا منهج مرتّب بعناية: نحدّد مستواك باختبار دقيق، نعطيك كلمات على قدّك بالضبط مع أمثلة حيّة لكل كلمة، ونفتح لك قاموساً لا نهائياً متى ما احتجته. التزم يومياً بدقائق بسيطة، وبتلاحظ فرقاً حقيقياً خلال شهر إلى شهرين.</p>
       <div class="pills">
         <span class="pill">📝 أمثلة لكل كلمة</span>
         <span class="pill">🧠 تكرار متباعد</span>
@@ -181,77 +241,93 @@ footer a{color:var(--brand-2);text-decoration:none;font-weight:800}
         <span class="pill">♾️ مترجم لا نهائي</span>
       </div>
       <div class="row">
-        <button class="btn" onclick="startTest()">🧭 ابدأ اختبار تحديد المستوى</button>
+        <button class="btn" onclick="startTest()">ابدأ اختبار تحديد المستوى ←</button>
         <button class="btn sec" onclick="goPicker()">اختر مستواك يدوياً</button>
       </div>
+    </div>
+    <div class="grid g3">
+      <div class="card center" style="margin:0"><div style="font-family:var(--serif);font-size:1.9rem;font-weight:900;color:var(--accent)">٦</div><p class="muted" style="font-size:.82rem;margin-top:4px">مستويات عالمية متدرّجة</p></div>
+      <div class="card center" style="margin:0"><div style="font-family:var(--serif);font-size:1.9rem;font-weight:900;color:var(--jade)">∞</div><p class="muted" style="font-size:.82rem;margin-top:4px">كلمات بلا حدود مع الترجمة</p></div>
+      <div class="card center" style="margin:0"><div style="font-family:var(--serif);font-size:1.9rem;font-weight:900;color:var(--gold)">٥</div><p class="muted" style="font-size:.82rem;margin-top:4px">طرق تعلّم في مكان واحد</p></div>
     </div>
   </section>
 
   <!-- اختيار المستوى -->
   <section id="picker" class="hidden">
     <div class="card">
-      <h2 class="center">🗂️ اختر مستواك</h2>
-      <p class="lead center">تقدر تختار أي مستوى مباشرة، أو تختار الوضع العام عشان تتعلّم من كل المستويات مع بعض.</p>
-      <div class="lvls" id="lvlGrid" style="margin-top:14px"></div>
+      <div class="eyebrow"><span class="no">٠١</span> تحديد المستوى</div>
+      <h2>اختر نقطة انطلاقك</h2>
+      <p class="lead">تقدر تختار أي مستوى مباشرة لو تعرف وين أنت، أو تختار <strong>الوضع العام</strong> عشان تتعلّم من كل المستويات مع بعض في رحلة واحدة.</p>
+      <div class="lvls" id="lvlGrid" style="margin-top:16px"></div>
     </div>
   </section>
 
   <!-- اختبار -->
   <section id="test" class="hidden">
     <div class="card">
+      <div class="eyebrow"><span class="no">◷</span> اختبار التحديد</div>
       <div class="bar"><i id="testBar"></i></div>
       <div class="qhead"><span class="muted" id="testCount"></span><button class="iconbtn" onclick="speakCur('test')">🔊</button></div>
-      <h3 class="center muted">وش معنى هالكلمة؟</h3>
+      <h3 class="center muted" style="font-weight:400">وش معنى هالكلمة؟</h3>
       <div class="center word-en" id="testWord"></div>
-      <div id="testOptions" style="margin-top:16px"></div>
+      <div id="testOptions" style="margin-top:18px"></div>
     </div>
   </section>
 
   <!-- نتيجة الاختبار -->
   <section id="result" class="hidden">
     <div class="card center">
-      <div style="font-size:3.2rem">🎉</div>
+      <div style="font-family:var(--serif);font-size:3rem;color:var(--accent)">✶</div>
       <h2 id="resultTitle"></h2>
       <p class="lead" id="resultText"></p>
       <div class="bar"><i id="resultBar"></i></div>
-      <button class="btn" onclick="goDash()">يلا نبدأ التعلّم 🚀</button>
+      <button class="btn accent" onclick="goDash()">يلا نبدأ التعلّم ←</button>
     </div>
   </section>
 
   <!-- لوحة التحكم -->
   <section id="dash" class="hidden">
     <div class="card">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+      <div class="eyebrow"><span class="no">✦</span> لوحتك</div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:14px">
         <h2 id="dashLevel"></h2>
         <button class="btn sec sm" onclick="goPicker()">تغيير المستوى</button>
       </div>
-      <div class="bar"><i id="dashBar"></i></div>
-      <div class="kpis">
-        <div class="kpi"><div class="num" id="kKnown">0</div><div class="lbl">كلمات حفظتها</div></div>
-        <div class="kpi"><div class="num" id="kTotal">0</div><div class="lbl">كلمات المستوى</div></div>
-        <div class="kpi"><div class="num" id="kDue">0</div><div class="lbl">للمراجعة اليوم</div></div>
+      <div class="dashtop">
+        <div class="ring" id="ring"><span class="pct" id="ringPct">0%</span><span class="pl">إنجاز</span></div>
+        <div class="kpis">
+          <div class="kpi"><div class="num" id="kKnown">0</div><div class="lbl">كلمات حفظتها</div></div>
+          <div class="kpi"><div class="num" id="kTotal">0</div><div class="lbl">كلمات المستوى</div></div>
+          <div class="kpi"><div class="num" id="kDue">0</div><div class="lbl">للمراجعة اليوم</div></div>
+        </div>
+      </div>
+      <div class="phrase">
+        <span class="q">&ldquo;</span>
+        <div><div class="en" id="phraseEn"></div><div class="ar" id="phraseAr"></div></div>
       </div>
     </div>
-    <div class="card" style="background:linear-gradient(135deg,rgba(245,158,11,.16),rgba(251,191,36,.10))">
-      <h2>🎯 التحدّي اليومي</h2>
-      <p class="lead">٧ أسئلة سريعة كل يوم تثبّت سلسلتك 🔥 وتعطيك نقاط مضاعفة.</p>
-      <button class="btn gold full" onclick="startQuiz('daily')">ابدأ تحدّي اليوم</button>
+    <div class="card" style="border-inline-start:3px solid var(--gold)">
+      <div class="eyebrow" style="color:var(--gold)"><span class="no">🔥</span> التحدّي اليومي</div>
+      <h2>سبع كلمات تثبّت سلسلتك</h2>
+      <p class="lead">دقيقتان كل يوم تحافظ على عادتك وتمنحك نقاطاً مضاعفة. الانتظام أهم من الكمية.</p>
+      <button class="btn gold full" style="margin-top:8px" onclick="startQuiz('daily')">ابدأ تحدّي اليوم</button>
     </div>
     <div class="grid g2">
-      <div class="card center"><div style="font-size:2rem">🃏</div><h3>بطاقات الحفظ</h3><p class="faint" style="font-size:.8rem;margin:6px 0">كلمة + أمثلتها</p><button class="btn sm full" onclick="startFlash()">افتح</button></div>
-      <div class="card center"><div style="font-size:2rem">🧪</div><h3>اختبار تدريبي</h3><p class="faint" style="font-size:.8rem;margin:6px 0">١٠ أسئلة</p><button class="btn sm full" onclick="startQuiz('practice')">افتح</button></div>
-      <div class="card center"><div style="font-size:2rem">🔁</div><h3>مراجعة ذكية</h3><p class="faint" style="font-size:.8rem;margin:6px 0">الكلمات الصعبة</p><button class="btn sm full" onclick="startQuiz('review')">افتح</button></div>
-      <div class="card center"><div style="font-size:2rem">🎤</div><h3>قيّم نطقك</h3><p class="faint" style="font-size:.8rem;margin:6px 0">يسمع ويقيّم</p><button class="btn sm full" onclick="startSpeak()">افتح</button></div>
+      <div class="card center" style="margin:0"><div style="font-size:1.8rem">🃏</div><h3>بطاقات الحفظ</h3><p class="faint" style="font-size:.8rem;margin:6px 0">كلمة + أمثلتها</p><button class="btn sm full" onclick="startFlash()">افتح</button></div>
+      <div class="card center" style="margin:0"><div style="font-size:1.8rem">🧪</div><h3>اختبار تدريبي</h3><p class="faint" style="font-size:.8rem;margin:6px 0">عشرة أسئلة</p><button class="btn sm full" onclick="startQuiz('practice')">افتح</button></div>
+      <div class="card center" style="margin:0"><div style="font-size:1.8rem">🔁</div><h3>مراجعة ذكية</h3><p class="faint" style="font-size:.8rem;margin:6px 0">الكلمات الصعبة</p><button class="btn sm full" onclick="startQuiz('review')">افتح</button></div>
+      <div class="card center" style="margin:0"><div style="font-size:1.8rem">🎤</div><h3>قيّم نطقك</h3><p class="faint" style="font-size:.8rem;margin:6px 0">يسمع ويقيّم</p><button class="btn sm full" onclick="startSpeak()">افتح</button></div>
     </div>
   </section>
 
   <!-- بطاقات -->
   <section id="flash" class="hidden">
-    <div class="card center">
+    <div class="card">
+      <div class="eyebrow"><span class="no">٠٢</span> بطاقات الحفظ</div>
       <div class="qhead"><span class="muted" id="flashCount"></span><span class="lvltag" id="flashLvl"></span></div>
       <div class="flash" id="flashcard" onclick="this.classList.toggle('flip')">
         <div class="inner">
-          <div class="face"><div class="word-en" id="flEn"></div><span class="tag">اضغط للقلب 🔄</span></div>
+          <div class="face"><div class="word-en" id="flEn"></div><span class="tag">اضغط للقلب ⟲</span></div>
           <div class="face back"><div class="word-ar" id="flAr"></div><div id="flEx" style="margin-top:6px"></div></div>
         </div>
       </div>
@@ -267,11 +343,12 @@ footer a{color:var(--brand-2);text-decoration:none;font-weight:800}
   <!-- اختبار/تحدّي/مراجعة -->
   <section id="quiz" class="hidden">
     <div class="card">
+      <div class="eyebrow"><span class="no">◆</span> اختبار</div>
       <div class="bar"><i id="qBar"></i></div>
       <div class="qhead"><span class="muted" id="qCount"></span><button class="iconbtn" onclick="speakCur('quiz')">🔊</button></div>
-      <h3 class="center muted">اختر الترجمة الصحيحة</h3>
+      <h3 class="center muted" style="font-weight:400">اختر الترجمة الصحيحة</h3>
       <div class="center word-en" id="qWord"></div>
-      <div id="qOptions" style="margin-top:14px"></div>
+      <div id="qOptions" style="margin-top:16px"></div>
       <button class="btn sec sm full" style="margin-top:12px" onclick="goDash()">إنهاء</button>
     </div>
   </section>
@@ -279,26 +356,26 @@ footer a{color:var(--brand-2);text-decoration:none;font-weight:800}
   <!-- قيّم نطقك -->
   <section id="speak" class="hidden">
     <div class="card center">
+      <div class="eyebrow" style="justify-content:center"><span class="no">٠٣</span> النطق</div>
       <h2>🎤 قيّم نطقك</h2>
       <p class="muted" id="spCount"></p>
-      <div class="word-en" id="spWord" style="margin:10px 0"></div>
+      <div class="word-en" id="spWord" style="margin:12px 0"></div>
       <div class="row">
         <button class="btn sec" onclick="speakCur('speak')">🔊 اسمعها</button>
-        <button class="btn" id="spRec" onclick="recordSpeech()">🎙️ انطقها</button>
+        <button class="btn accent" id="spRec" onclick="recordSpeech()">🎙️ انطقها</button>
       </div>
-      <p id="spResult" style="margin-top:14px;font-weight:800;min-height:24px"></p>
-      <div class="row">
-        <button class="btn sec sm" onclick="spMove()">كلمة ثانية →</button>
-      </div>
-      <p class="faint" style="font-size:.76rem;margin-top:10px">ملاحظة: يحتاج متصفح يدعم التعرّف الصوتي (Chrome مفضّل) وإذن المايك.</p>
+      <p id="spResult" style="margin-top:16px;font-weight:700;min-height:24px"></p>
+      <button class="btn sec sm" onclick="spMove()">كلمة ثانية →</button>
+      <p class="faint" style="font-size:.76rem;margin-top:12px">ملاحظة: يحتاج متصفّحاً يدعم التعرّف الصوتي (Chrome مفضّل) وإذن المايك.</p>
     </div>
   </section>
 
   <!-- المترجم اللانهائي -->
   <section id="translator" class="hidden">
     <div class="card">
-      <h2>♾️ المترجم اللانهائي</h2>
-      <p class="lead">اكتب أي كلمة إنجليزية وتطلع لك ترجمتها فوراً، ونحفظها لك في قائمتك تلقائياً (يحتاج إنترنت للكلمات الجديدة).</p>
+      <div class="eyebrow"><span class="no">∞</span> المترجم اللانهائي</div>
+      <h2>أي كلمة… بترجمتها فوراً</h2>
+      <p class="lead">اكتب أي كلمة إنجليزية وتطلع لك ترجمتها في لحظتها، ونحفظها لك في قائمتك تلقائياً ليكبر قاموسك معك (يحتاج إنترنت للكلمات الجديدة).</p>
       <input type="text" id="trInput" placeholder="اكتب كلمة... مثل: knowledge" onkeydown="if(event.key==='Enter')doTranslate()">
       <button class="btn full" onclick="doTranslate()">ترجم 🔍</button>
       <div id="trResult" style="margin-top:16px"></div>
@@ -308,7 +385,8 @@ footer a{color:var(--brand-2);text-decoration:none;font-weight:800}
   <!-- القائمة العامة -->
   <section id="listView" class="hidden">
     <div class="card">
-      <h2 id="listTitle">📚 كل الكلمات</h2>
+      <div class="eyebrow"><span class="no">٠٤</span> القاموس</div>
+      <h2 id="listTitle">كل الكلمات</h2>
       <input type="text" id="search" placeholder="ابحث عن كلمة بالإنجليزي أو العربي..." oninput="renderList()">
       <div id="listBox"></div>
     </div>
@@ -317,25 +395,26 @@ footer a{color:var(--brand-2);text-decoration:none;font-weight:800}
   <!-- الشارات -->
   <section id="badges" class="hidden">
     <div class="card">
+      <div class="eyebrow"><span class="no">★</span> الإنجازات</div>
       <h2>🏅 إنجازاتي</h2>
-      <div class="grid g3" id="badgeGrid" style="margin-top:12px"></div>
+      <div class="grid g3" id="badgeGrid" style="margin-top:14px"></div>
     </div>
   </section>
 
   <footer>
-    صُنع بحب 💜 — <strong>Speak With Us PRO MAX</strong><br>
-    تابعني على تويتر <a href="https://twitter.com/chambertu" target="_blank">@chambertu</a>
+    صُنع بحبّ وعناية — <span class="fname">Speak with Us</span><br>
+    تابعني على إكس <a href="https://x.com/onlychamber" target="_blank">@onlychamber</a>
   </footer>
 </div>
 
 <!-- شريط التنقّل -->
 <nav class="nav hidden" id="nav">
-  <button data-go="dash" onclick="goDash()"><span class="ic">🏠</span>الرئيسية</button>
+  <button data-go="dash" onclick="goDash()"><span class="ic">⌂</span>الرئيسية</button>
   <button data-go="flash" onclick="startFlash()"><span class="ic">🃏</span>بطاقات</button>
   <button data-go="quiz" onclick="startQuiz('practice')"><span class="ic">🧪</span>اختبار</button>
-  <button data-go="translator" onclick="openTranslator()"><span class="ic">♾️</span>ترجمة</button>
+  <button data-go="translator" onclick="openTranslator()"><span class="ic">∞</span>ترجمة</button>
   <button data-go="listView" onclick="showList()"><span class="ic">📚</span>الكلمات</button>
-  <button data-go="badges" onclick="showBadges()"><span class="ic">🏅</span>إنجازات</button>
+  <button data-go="badges" onclick="showBadges()"><span class="ic">★</span>إنجازات</button>
 </nav>
 
 <script>
@@ -539,19 +618,30 @@ C2:[
 
 /* ====== مئات الكلمات الإضافية (تُترجم تلقائياً عند فتحها) ====== */
 var EXTRA={
-A1:"man,woman,boy,girl,child,baby,mother,father,brother,sister,dog,cat,bird,fish,tree,flower,sun,moon,star,sky,sea,river,book,pen,door,window,table,chair,bed,room,kitchen,city,street,car,bus,train,plane,road,red,blue,green,black,white,one,two,three,four,five,head,hand,foot,eye,ear,mouth,nose,milk,bread,rice,apple,banana,tea,coffee,sugar,salt,morning,evening,week,month,year,hour,minute,run,walk,jump,sit,stand,open,close,give,take,read,write,play,sing,help,call,look,find,make,new,old,young,fast,slow,here,there,this,that,who,what,when,where,why,how",
-A2:"airport,hotel,ticket,luggage,passport,map,beach,mountain,forest,desert,village,market,shop,price,wallet,coin,credit,doctor,nurse,hospital,medicine,headache,fever,exercise,gym,sport,team,player,match,score,music,movie,actor,artist,paint,photo,camera,internet,website,email,message,letter,office,manager,worker,salary,meeting,project,plan,report,success,fail,lucky,brave,kind,polite,rude,quiet,noisy,clean,dirty,empty,full,heavy,light,strong,weak,dry,wet,safe,danger,careful,quick,modern,ancient,famous,popular,boring,exciting,delicious,weekend,holiday,birthday,gift,party,neighbor,language,culture,history,future,past",
-B1:"environment,pollution,climate,energy,economy,industry,government,society,culture,tradition,education,research,science,technology,software,hardware,network,database,system,process,method,result,evidence,analysis,solution,decision,opinion,attitude,confidence,motivation,creativity,leadership,teamwork,communication,negotiation,agreement,contract,budget,profit,investment,marketing,advertising,brand,competition,growth,progress,development,improvement,advantage,disadvantage,benefit,risk,impact,responsibility,achievement,career,skill,deadline,feedback,priority,resource,balance,routine,habit,journey,memory,emotion,relationship",
-B2:"hypothesis,assumption,perspective,framework,criteria,phenomenon,correlation,variable,statistics,probability,efficiency,productivity,sustainability,innovation,infrastructure,regulation,legislation,policy,democracy,diversity,equality,justice,liberty,welfare,prosperity,recession,inflation,revenue,expenditure,liability,asset,equity,merger,acquisition,collaboration,coordination,implementation,evaluation,assessment,measurement,prediction,interpretation,comprehension,perception,cognition,intuition,reasoning,judgment,consensus,compromise,transparency,accountability,credibility,resilience,adaptation,bias,empathy,ambition,discipline",
-C1:"paradigm,discrepancy,nuance,scrutiny,threshold,endeavor,deteriorate,constitute,undermine,elaborate,perceive,comprehend,redundant,scarce,tedious,vivid,candid,eloquent,rigorous,intricate,robust,compelling,profound,subtle,resilient,meticulous,versatile,prevalent,inherent,feasible,abundant,mitigate,anticipate,acknowledge,facilitate,contemplate,perseverance,integrity,pragmatic,diverse,significant,sufficient,appropriate,comprehensive,inevitable,ambiguous,reluctant,diligent,sustain,coherent,concise,advocate,emphasize,scrutinize,articulate,prudent,viable",
-C2:"serendipity,nonchalant,obsequious,perspicacious,grandiloquent,pusillanimous,sycophantic,iconoclast,maelstrom,obstreperous,parsimonious,quixotic,recondite,sanctimonious,taciturn,umbrage,vituperative,winsome,bombastic,circumlocution,demagogue,fastidious,garrulous,hegemony,impecunious,jingoism,laconic,mellifluous,nefarious,obfuscation,panacea,quagmire,rancorous,soliloquy,trenchant,unctuous,verbose,wanton,zenith,acrimony,bellicose,cajole,denigrate,effervescent,fortuitous,germane,harangue,impervious,juggernaut,lugubrious,mercurial,nebulous,ostracize,pellucid"
+A1:"man,woman,boy,girl,child,baby,mother,father,brother,sister,dog,cat,bird,fish,horse,cow,tree,flower,grass,sun,moon,star,sky,cloud,rain,snow,wind,sea,river,lake,book,pen,pencil,paper,door,window,wall,floor,table,chair,bed,sofa,room,kitchen,bathroom,house,city,town,village,street,car,bus,train,plane,bike,boat,road,bridge,red,blue,green,yellow,black,white,brown,pink,one,two,three,four,five,six,seven,eight,nine,ten,head,hair,hand,arm,leg,foot,eye,ear,mouth,nose,teeth,milk,bread,rice,meat,egg,apple,banana,orange,grape,tea,coffee,sugar,salt,morning,noon,evening,week,month,year,hour,minute,second,run,walk,jump,sit,stand,sleep,wake,open,close,give,take,read,write,draw,play,sing,dance,help,call,look,see,find,make,buy,new,old,young,fast,slow,easy,hard,here,there,this,that,who,what,when,where,why,how,boy,man",
+A2:"airport,hotel,ticket,luggage,passport,map,beach,mountain,hill,forest,desert,island,village,market,shop,mall,price,wallet,coin,credit,cash,doctor,nurse,dentist,hospital,clinic,medicine,headache,fever,cough,exercise,gym,sport,team,player,coach,match,score,goal,music,song,movie,actor,artist,paint,photo,camera,internet,website,email,message,letter,phone,office,manager,worker,salary,meeting,project,plan,report,success,failure,lucky,brave,kind,polite,rude,quiet,noisy,clean,dirty,empty,full,heavy,light,strong,weak,dry,wet,safe,danger,careful,quick,modern,ancient,famous,popular,boring,exciting,delicious,weekend,holiday,birthday,gift,party,guest,neighbor,language,culture,history,nature,weather,season,spring,summer,autumn,winter",
+B1:"environment,pollution,climate,energy,economy,industry,government,society,community,tradition,education,research,science,technology,software,hardware,network,database,system,process,method,result,evidence,analysis,solution,decision,opinion,attitude,confidence,motivation,creativity,leadership,teamwork,communication,negotiation,agreement,contract,budget,profit,loss,investment,marketing,advertising,brand,competition,growth,progress,development,improvement,advantage,disadvantage,benefit,risk,impact,responsibility,achievement,career,skill,deadline,feedback,priority,resource,balance,routine,habit,journey,memory,emotion,relationship,argument,conclusion,purpose,attempt,obstacle,ability,judgment,attention,curiosity",
+B2:"hypothesis,assumption,perspective,framework,criteria,phenomenon,correlation,variable,statistics,probability,efficiency,productivity,sustainability,innovation,infrastructure,regulation,legislation,policy,democracy,diversity,equality,justice,liberty,welfare,prosperity,recession,inflation,revenue,expenditure,liability,asset,equity,merger,acquisition,collaboration,coordination,implementation,evaluation,assessment,measurement,prediction,interpretation,comprehension,perception,cognition,intuition,reasoning,judgment,consensus,compromise,transparency,accountability,credibility,resilience,adaptation,bias,empathy,ambition,discipline,integrity,tolerance,prejudice,paradox,dilemma,threshold,momentum,leverage",
+C1:"paradigm,discrepancy,nuance,scrutiny,threshold,endeavor,deteriorate,constitute,undermine,elaborate,perceive,comprehend,redundant,scarce,tedious,vivid,candid,eloquent,rigorous,intricate,robust,compelling,profound,subtle,resilient,meticulous,versatile,prevalent,inherent,feasible,abundant,mitigate,anticipate,acknowledge,facilitate,contemplate,perseverance,integrity,pragmatic,diverse,significant,sufficient,appropriate,comprehensive,inevitable,ambiguous,reluctant,diligent,sustain,coherent,concise,advocate,emphasize,scrutinize,articulate,prudent,viable,intrinsic,explicit,implicit,arbitrary,ostensibly,notwithstanding,cumulative,inherent,negligible,formidable",
+C2:"serendipity,nonchalant,obsequious,perspicacious,grandiloquent,pusillanimous,sycophantic,iconoclast,maelstrom,obstreperous,parsimonious,quixotic,recondite,sanctimonious,taciturn,umbrage,vituperative,winsome,bombastic,circumlocution,demagogue,fastidious,garrulous,hegemony,impecunious,jingoism,laconic,mellifluous,nefarious,obfuscation,panacea,quagmire,rancorous,soliloquy,trenchant,unctuous,verbose,wanton,zenith,acrimony,bellicose,cajole,denigrate,effervescent,fortuitous,germane,harangue,impervious,juggernaut,lugubrious,mercurial,nebulous,ostracize,pellucid,querulous,reticent,salient,truncate,ubiquity,vacillate"
 };
 
 var LEVELS=["A1","A2","B1","B2","C1","C2"];
 var LVLNAME={A1:"A1 مبتدئ",A2:"A2 أساسي",B1:"B1 متوسط",B2:"B2 فوق المتوسط",C1:"C1 متقدّم",C2:"C2 إتقان"};
 var LVLCOLOR={A1:"green",A2:"green",B1:"yellow",B2:"yellow",C1:"red",C2:"red"};
 
-/* بناء قائمة الكلمات لكل مستوى (أساسية + إضافية بدون ترجمة بعد) */
+/* جُمل اليوم */
+var PHRASES=[
+ {en:"Small steps every day beat big leaps once a year.",ar:"خطوات صغيرة كل يوم أفضل من قفزة كبيرة مرة بالسنة."},
+ {en:"You do not have to be perfect, just consistent.",ar:"ما تحتاج تكون مثالياً، بس مستمراً."},
+ {en:"Every word you learn is a new door.",ar:"كل كلمة تتعلّمها هي باب جديد."},
+ {en:"Mistakes are proof that you are trying.",ar:"الأخطاء دليل إنك تحاول."},
+ {en:"Speak a little today, speak fluently tomorrow.",ar:"تكلّم قليلاً اليوم، وتكلّم بطلاقة غداً."},
+ {en:"Progress, not perfection.",ar:"التقدّم، لا الكمال."},
+ {en:"The expert was once a beginner.",ar:"الخبير كان يوماً مبتدئاً."}
+];
+
+/* بناء قائمة الكلمات لكل مستوى */
 var WORDS={};
 LEVELS.forEach(function(L){
   WORDS[L]=CORE[L].map(function(w){return {en:w.en,ar:w.ar,ex:w.ex,lvl:L};});
@@ -566,10 +656,10 @@ function activeWords(){return state.level==="ALL"?allWords():WORDS[state.level];
 function activeName(){return state.level==="ALL"?"عام (كل المستويات)":LVLNAME[state.level];}
 
 /* ====== الحالة ====== */
-var state=JSON.parse(localStorage.getItem("swspmax")||"{}");
+var state=JSON.parse(localStorage.getItem("swsstudio")||"{}");
 state.points=state.points||0;state.streak=state.streak||0;state.level=state.level||null;
 state.known=state.known||{};state.lastDay=state.lastDay||"";state.srs=state.srs||{};state.badges=state.badges||{};state.custom=state.custom||[];
-function save(){localStorage.setItem("swspmax",JSON.stringify(state));render();}
+function save(){localStorage.setItem("swsstudio",JSON.stringify(state));render();}
 function render(){
   document.getElementById("points").textContent=state.points;
   document.getElementById("streak").textContent=state.streak;
@@ -588,24 +678,24 @@ function speak(t){try{var u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rat
 function toast(msg){var t=document.createElement("div");t.className="toast";t.textContent=msg;document.body.appendChild(t);setTimeout(function(){t.classList.add("show");},30);setTimeout(function(){t.classList.remove("show");setTimeout(function(){t.remove();},350);},2400);}
 
 /* ====== الترجمة الذكية (لا نهائية) عبر MyMemory API + تخزين محلي ====== */
-var trCache=JSON.parse(localStorage.getItem("swspmax_tr")||"{}");
-function translate(en){return new Promise(function(res){var key=en.toLowerCase();if(trCache[key]){res(trCache[key]);return;}fetch("https://api.mymemory.translated.net/get?q="+encodeURIComponent(en)+"&langpair=en|ar").then(function(r){return r.json();}).then(function(d){var t=(d&&d.responseData&&d.responseData.translatedText)||"";trCache[key]=t;localStorage.setItem("swspmax_tr",JSON.stringify(trCache));res(t);}).catch(function(){res("");});});}
+var trCache=JSON.parse(localStorage.getItem("swsstudio_tr")||"{}");
+function translate(en){return new Promise(function(res){var key=en.toLowerCase();if(trCache[key]){res(trCache[key]);return;}fetch("https://api.mymemory.translated.net/get?q="+encodeURIComponent(en)+"&langpair=en|ar").then(function(r){return r.json();}).then(function(d){var t=(d&&d.responseData&&d.responseData.translatedText)||"";trCache[key]=t;localStorage.setItem("swsstudio_tr",JSON.stringify(trCache));res(t);}).catch(function(){res("");});});}
 function ensureAr(w,cb){if(w.ar){cb(w.ar);return;}translate(w.en).then(function(t){w.ar=t||"(تعذّرت الترجمة - تأكد من الإنترنت)";cb(w.ar);});}
 
 /* ====== الوضع الليلي ====== */
-document.getElementById("theme").onclick=function(){var b=document.body;var nx=b.getAttribute("data-theme")==="dark"?"light":"dark";b.setAttribute("data-theme",nx);this.textContent=nx==="dark"?"🌙":"☀️";localStorage.setItem("swspmax_theme",nx);};
-(function(){var t=localStorage.getItem("swspmax_theme")||"dark";document.body.setAttribute("data-theme",t);document.getElementById("theme").textContent=t==="dark"?"🌙":"☀️";})();
+document.getElementById("theme").onclick=function(){var b=document.body;var nx=b.getAttribute("data-theme")==="dark"?"light":"dark";b.setAttribute("data-theme",nx);this.textContent=nx==="dark"?"☾":"☀";localStorage.setItem("swsstudio_theme",nx);};
+(function(){var t=localStorage.getItem("swsstudio_theme")||"light";document.body.setAttribute("data-theme",t);document.getElementById("theme").textContent=t==="dark"?"☾":"☀";})();
 
 /* ====== منتقي المستوى ====== */
 function goPicker(){var g=document.getElementById("lvlGrid");g.innerHTML="";
   LEVELS.forEach(function(L){var d=document.createElement("div");d.className="lvl "+LVLCOLOR[L];d.onclick=function(){setLevel(L);};
-    d.innerHTML="<span class='dot'></span><div class='code'>"+L+"</div><div class='nm'>"+LVLNAME[L].replace(/^[A-C0-9]+ /,"")+"</div>";g.appendChild(d);});
+    d.innerHTML="<div class='code'>"+L+"</div><div class='nm'>"+LVLNAME[L].replace(/^[A-C0-9]+ /,"")+"</div>";g.appendChild(d);});
   var all=document.createElement("div");all.className="lvl all";all.onclick=function(){setLevel("ALL");};
-  all.innerHTML="<div class='code'>🌐 الوضع العام — كل المستويات</div><div class='nm'>تعلّم من كل القاموس دفعة وحدة</div>";g.appendChild(all);
+  all.innerHTML="<div class='code'>الوضع العام — كل المستويات</div><div class='nm'>تعلّم من كل القاموس دفعة وحدة</div>";g.appendChild(all);
   show("picker");}
 function setLevel(l){state.level=l;save();goDash();}
 
-/* ====== اختبار تحديد المستوى الذكي (١٨ سؤال، خوارزمية دقيقة) ====== */
+/* ====== اختبار تحديد المستوى الذكي ====== */
 var testQs=[],testIdx=0,perCorrect={},perTotal={};
 function startTest(){
   testQs=[];perCorrect={};perTotal={};
@@ -632,13 +722,12 @@ function renderTest(){var q=testQs[testIdx];curWord=q.w;
 function nextTest(){testIdx++;if(testIdx>=testQs.length)finishTest();else renderTest();}
 function finishTest(){
   var totalCorrect=0,total=0;LEVELS.forEach(function(L){totalCorrect+=(perCorrect[L]||0);total+=(perTotal[L]||0);});
-  /* المستوى = أعلى مستوى متتالٍ حقّق فيه ٦٠٪ أو أكثر */
   var lvl="A1";
   for(var i=0;i<LEVELS.length;i++){var L=LEVELS[i];var acc=perTotal[L]?(perCorrect[L]||0)/perTotal[L]:0;if(acc>=0.6){lvl=L;}else{break;}}
   state.level=lvl;save();
   document.getElementById("resultTitle").textContent="نتيجتك: "+totalCorrect+"/"+total;
   document.getElementById("resultBar").style.width=(total?totalCorrect/total*100:0)+"%";
-  document.getElementById("resultText").textContent="مستواك المقدّر: "+LVLNAME[lvl]+". حسبنا النتيجة من أدائك في كل مستوى عشان تطلع دقيقة. بنبدأ معك من هنا بكلمات على قدّك 👌 وتقدر تغيّر المستوى وقت ما تبي.";
+  document.getElementById("resultText").textContent="مستواك المقدّر: "+LVLNAME[lvl]+". حسبنا النتيجة من أدائك في كل مستوى عشان تطلع دقيقة. بنبدأ معك من هنا بكلمات على قدّك، وتقدر تغيّر المستوى وقت ما تبي.";
   show("result");
 }
 
@@ -646,21 +735,24 @@ function finishTest(){
 function goDash(){if(!state.level){show("home");return;}
   var words=activeWords();
   var knownCount=words.filter(function(w){return state.known[wkey(w)];}).length;
+  var pct=words.length?Math.round(knownCount/words.length*100):0;
   document.getElementById("dashLevel").textContent="المستوى: "+activeName();
-  document.getElementById("dashBar").style.width=(words.length?knownCount/words.length*100:0)+"%";
   document.getElementById("kKnown").textContent=knownCount;
   document.getElementById("kTotal").textContent=words.length;
   document.getElementById("kDue").textContent=dueWords().length;
+  var ring=document.getElementById("ring");ring.style.background="conic-gradient(var(--accent) "+pct+"%,var(--line) 0)";
+  document.getElementById("ringPct").textContent=pct+"%";
+  var p=PHRASES[(new Date().getDate())%PHRASES.length];
+  document.getElementById("phraseEn").textContent=p.en;document.getElementById("phraseAr").textContent=p.ar;
   show("dash");}
-function backHome(){show("home");}
 
 /* ====== التكرار المتباعد (SRS) ====== */
 function wkey(w){return (w.lvl||state.level)+":"+w.en;}
 function scheduleSrs(w,correct){var k=wkey(w);var it=state.srs[k]||{box:0};it.box=correct?Math.min(it.box+1,5):0;var days=[0,1,2,4,7,15][it.box];it.due=Date.now()+days*86400000;state.srs[k]=it;}
 function dueWords(){var now=Date.now();return activeWords().filter(function(w){var it=state.srs[wkey(w)];return it&&it.due&&it.due<=now;});}
 
-/* ====== أداة عرض الأمثلة ====== */
-function exHtml(w){if(!w.ex||!w.ex.length)return "";return w.ex.map(function(e){return '<div class="exline">• '+e+'</div>';}).join("");}
+/* ====== أمثلة ====== */
+function exHtml(w){if(!w.ex||!w.ex.length)return "";return w.ex.map(function(e){return '<div class="exline">— '+e+'</div>';}).join("");}
 
 var curWord=null;
 function speakCur(screen){if(curWord)speak(curWord.en);}
@@ -688,7 +780,7 @@ function prepQuiz(){if(qIdx>=qList.length){finishQuiz();return;}qCurrent=qList[q
 function renderQuiz(){var others=shuffle(allCore().filter(function(x){return x.ar&&x.ar!==qCurrent.ar;})).slice(0,3);
   var opts=shuffle([qCurrent.ar].concat(others.map(function(o){return o.ar;})));
   document.getElementById("qWord").textContent=qCurrent.en;
-  document.getElementById("qCount").textContent="سؤال "+(qIdx+1)+" من "+qList.length+(qMode==="daily"?" • تحدّي يومي 🔥":"");
+  document.getElementById("qCount").textContent="سؤال "+(qIdx+1)+" من "+qList.length+(qMode==="daily"?" · تحدّي يومي 🔥":"");
   document.getElementById("qBar").style.width=(qIdx/qList.length*100)+"%";
   var box=document.getElementById("qOptions");box.innerHTML="";
   opts.forEach(function(o){var b=document.createElement("button");b.className="opt";b.textContent=o;
@@ -711,19 +803,19 @@ function recordSpeech(){var SR=window.SpeechRecognition||window.webkitSpeechReco
 /* ====== المترجم اللانهائي ====== */
 function openTranslator(){show("translator");document.getElementById("trInput").focus();}
 function doTranslate(){var v=(document.getElementById("trInput").value||"").trim();if(!v)return;var box=document.getElementById("trResult");box.innerHTML='<span class="spin"></span> جارٍ الترجمة...';
-  translate(v).then(function(t){box.innerHTML="";var c=document.createElement("div");c.className="card center";
+  translate(v).then(function(t){box.innerHTML="";var c=document.createElement("div");c.className="card center";c.style.margin="0";
     var en=document.createElement("div");en.className="word-en";en.textContent=v;
     var ar=document.createElement("div");ar.className="word-ar";ar.textContent=t||"تعذّرت الترجمة";
-    var row=document.createElement("div");row.className="row";row.style.marginTop="10px";
+    var row=document.createElement("div");row.className="row";row.style.marginTop="12px";
     var sp=document.createElement("button");sp.className="iconbtn";sp.textContent="🔊";sp.onclick=function(){speak(v);};
-    var sv=document.createElement("button");sv.className="btn sm";sv.textContent="احفظها في قائمتي ⭐";sv.onclick=function(){saveCustom(v,t||"");};
+    var sv=document.createElement("button");sv.className="btn sm";sv.textContent="احفظها في قائمتي ✶";sv.onclick=function(){saveCustom(v,t||"");};
     row.appendChild(sp);row.appendChild(sv);c.appendChild(en);c.appendChild(ar);c.appendChild(row);box.appendChild(c);});}
-function saveCustom(en,ar){state.custom.push({en:en,ar:ar,ex:null,lvl:"custom"});addPoints(2);save();toast("تم حفظ الكلمة في قائمتك ⭐");}
+function saveCustom(en,ar){state.custom.push({en:en,ar:ar,ex:null,lvl:"custom"});addPoints(2);save();toast("تم حفظ الكلمة في قائمتك ✶");}
 
 /* ====== القائمة العامة ====== */
 function showList(){show("listView");document.getElementById("search").value="";renderList();}
 function renderList(){var term=(document.getElementById("search").value||"").toLowerCase();var box=document.getElementById("listBox");box.innerHTML="";
-  document.getElementById("listTitle").textContent="📚 كلمات: "+activeName();
+  document.getElementById("listTitle").textContent="كلمات: "+activeName();
   var all=activeWords().concat(state.custom);
   var filtered=all.filter(function(w){return w.en.toLowerCase().indexOf(term)>=0||(w.ar&&w.ar.indexOf(term)>=0);});
   filtered.slice(0,400).forEach(function(w){var d=document.createElement("div");d.className="item";
@@ -756,8 +848,8 @@ var BADGES=[
  {id:"custom10",icon:"♾️",name:"ترجمت ١٠ كلمات",test:function(){return state.custom.length>=10;}},
  {id:"custom50",icon:"🌐",name:"ترجمت ٥٠ كلمة",test:function(){return state.custom.length>=50;}}
 ];
-function checkBadges(){BADGES.forEach(function(b){if(!state.badges[b.id]&&b.test()){state.badges[b.id]=1;toast("🏅 فتحت شارة: "+b.name);}});}
-function showBadges(){var g=document.getElementById("badgeGrid");g.innerHTML="";BADGES.forEach(function(b){var on=state.badges[b.id];var d=document.createElement("div");d.className="card center";d.style.margin="0";d.innerHTML='<div class="medal '+(on?"on":"")+'">'+b.icon+'</div><div style="font-size:.8rem;font-weight:800;margin-top:6px">'+b.name+'</div><div class="faint" style="font-size:.72rem">'+(on?"مفتوحة ✓":"مقفلة")+'</div>';g.appendChild(d);});show("badges");}
+function checkBadges(){BADGES.forEach(function(b){if(!state.badges[b.id]&&b.test()){state.badges[b.id]=1;toast("✶ فتحت شارة: "+b.name);}});}
+function showBadges(){var g=document.getElementById("badgeGrid");g.innerHTML="";BADGES.forEach(function(b){var on=state.badges[b.id];var d=document.createElement("div");d.className="card center";d.style.margin="0";d.innerHTML='<div class="medal '+(on?"on":"")+'">'+b.icon+'</div><div style="font-size:.8rem;font-weight:700;margin-top:6px">'+b.name+'</div><div class="faint" style="font-size:.72rem">'+(on?"مفتوحة ✓":"مقفلة")+'</div>';g.appendChild(d);});show("badges");}
 
 /* ====== البداية ====== */
 render();checkBadges();
