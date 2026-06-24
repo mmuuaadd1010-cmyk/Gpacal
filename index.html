@@ -1,289 +1,342 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Speak With Us | تعلّم الإنجليزي معنا</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7c3aed">
+<title>Speak With Us PRO – تعلّم الإنجليزي</title>
 <style>
-  :root{
-    --bg1:#0f172a; --bg2:#1e293b; --card:#ffffff; --accent:#7c3aed;
-    --accent2:#06b6d4; --text:#0f172a; --muted:#64748b; --good:#22c55e; --bad:#ef4444;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Tahoma,sans-serif}
-  body{
-    min-height:100vh;color:var(--text);
-    background:linear-gradient(135deg,var(--bg1),var(--bg2));
-    background-attachment:fixed;
-  }
-  body.light{--bg1:#e0f2fe;--bg2:#fae8ff;color:#0f172a}
-  header{text-align:center;padding:30px 16px 10px;color:#fff}
-  header h1{font-size:2.2rem;background:linear-gradient(90deg,#a78bfa,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent}
-  header p{color:#cbd5e1;margin-top:6px}
-  body.light header h1{filter:none}
-  body.light header p{color:#475569}
-  .topbar{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:14px}
-  .btn{cursor:pointer;border:none;border-radius:14px;padding:10px 18px;font-size:.95rem;font-weight:600;transition:.2s;color:#fff;background:linear-gradient(90deg,var(--accent),var(--accent2))}
-  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(124,58,237,.4)}
-  .btn.ghost{background:rgba(255,255,255,.15);backdrop-filter:blur(6px)}
-  .stats{display:flex;justify-content:center;gap:24px;color:#fff;margin:8px;flex-wrap:wrap}
-  .stat{text-align:center}
-  .stat b{font-size:1.6rem;display:block;color:#22d3ee}
-  .progress{max-width:520px;margin:10px auto;height:12px;background:rgba(255,255,255,.2);border-radius:99px;overflow:hidden}
-  .progress > div{height:100%;width:0;background:linear-gradient(90deg,#22c55e,#06b6d4);transition:.4s}
-  main{max-width:640px;margin:0 auto;padding:16px}
-  /* Flashcard */
-  .scene{perspective:1200px;margin:18px auto;max-width:460px;height:280px}
-  .flashcard{position:relative;width:100%;height:100%;cursor:pointer;transition:transform .6s;transform-style:preserve-3d}
-  .flashcard.flip{transform:rotateY(180deg)}
-  .face{position:absolute;inset:0;backface-visibility:hidden;border-radius:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;box-shadow:0 20px 50px rgba(0,0,0,.35);background:var(--card)}
-  .face .word{font-size:2.4rem;font-weight:800;color:var(--accent)}
-  .face .ipa{color:var(--muted);margin-top:8px;font-size:1.1rem}
-  .face .cat{position:absolute;top:16px;right:16px;background:#ede9fe;color:#7c3aed;padding:4px 12px;border-radius:99px;font-size:.75rem;font-weight:700}
-  .back{transform:rotateY(180deg);background:linear-gradient(135deg,#7c3aed,#06b6d4);color:#fff}
-  .back .word{color:#fff;font-size:2.2rem}
-  .back .ex{margin-top:14px;font-style:italic;opacity:.9;text-align:center}
-  .controls{display:flex;justify-content:center;gap:10px;margin:16px;flex-wrap:wrap}
-  .speak{background:#fff;color:#7c3aed;border:none;border-radius:50%;width:54px;height:54px;font-size:1.4rem;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.2)}
-  .speak:hover{transform:scale(1.1)}
-  /* Quiz */
-  .quiz{display:none;background:var(--card);border-radius:24px;padding:26px;box-shadow:0 20px 50px rgba(0,0,0,.35)}
-  .quiz h2{color:var(--accent);margin-bottom:6px}
-  .quiz .q{font-size:1.8rem;font-weight:800;margin:14px 0;text-align:center}
-  .options{display:grid;gap:12px}
-  .opt{padding:14px;border-radius:14px;border:2px solid #e2e8f0;background:#f8fafc;cursor:pointer;font-size:1.05rem;text-align:center;transition:.15s}
-  .opt:hover{border-color:var(--accent)}
-  .opt.correct{background:#dcfce7;border-color:var(--good)}
-  .opt.wrong{background:#fee2e2;border-color:var(--bad)}
-  /* Daily challenge */
-  .daily{max-width:640px;margin:18px auto;background:linear-gradient(90deg,#f59e0b,#ef4444);color:#fff;border-radius:18px;padding:16px 20px;text-align:center;font-weight:600}
-  footer{text-align:center;color:#cbd5e1;padding:26px}
-  footer a{color:#22d3ee;text-decoration:none;font-weight:700}
-  body.light footer{color:#475569}
-  .twitter{display:inline-flex;align-items:center;gap:8px;margin-top:8px;background:#1da1f2;color:#fff;padding:10px 18px;border-radius:99px;text-decoration:none;font-weight:700}
+:root{--bg:#0b1020;--bg2:#0f172a;--card:#161f38;--card2:#1e293b;--accent:#7c3aed;--accent2:#22d3ee;--accent3:#f472b6;--text:#f1f5f9;--muted:#93a4c0;--good:#22c55e;--bad:#ef4444;--gold:#fbbf24}
+[data-theme="light"]{--bg:#eef2f9;--bg2:#e2e8f5;--card:#ffffff;--card2:#f1f5fb;--text:#0f172a;--muted:#5b6b86}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Tahoma,system-ui,sans-serif;-webkit-tap-highlight-color:transparent}
+body{background:radial-gradient(1200px 600px at 80% -10%,rgba(124,58,237,.25),transparent),radial-gradient(900px 500px at 0% 0%,rgba(34,211,238,.18),transparent),var(--bg);color:var(--text);transition:.3s;min-height:100vh}
+.container{max-width:820px;margin:0 auto;padding:16px 16px 60px}
+header{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:14px 0;flex-wrap:wrap;position:sticky;top:0;z-index:20;backdrop-filter:blur(10px)}
+.brand{display:flex;align-items:center;gap:8px}
+.logo{font-size:1.4rem;font-weight:900;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3));-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:.5px}
+.handle{font-size:.72rem;color:var(--muted);text-decoration:none;display:block}
+.stats{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.badge{background:var(--card);padding:6px 12px;border-radius:999px;font-size:.82rem;font-weight:800;border:1px solid rgba(148,163,184,.15)}
+.icon-btn{background:var(--card);border:1px solid rgba(148,163,184,.15);color:var(--text);width:42px;height:42px;border-radius:50%;cursor:pointer;font-size:1.1rem;transition:.2s}
+.icon-btn:hover{transform:scale(1.08)}
+.card{background:linear-gradient(180deg,var(--card),var(--card2));border-radius:20px;padding:24px;margin:14px 0;box-shadow:0 12px 40px rgba(0,0,0,.25);border:1px solid rgba(148,163,184,.12);animation:rise .4s ease}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.btn{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;border:none;padding:13px 22px;border-radius:14px;font-size:1rem;font-weight:800;cursor:pointer;transition:.2s;box-shadow:0 6px 18px rgba(124,58,237,.35)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(124,58,237,.5)}
+.btn:active{transform:translateY(0)}
+.btn.sec{background:transparent;color:var(--text);border:1px solid var(--muted);box-shadow:none}
+.btn.gold{background:linear-gradient(90deg,#f59e0b,var(--gold));box-shadow:0 6px 18px rgba(251,191,36,.35)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px}
+.progress{height:12px;background:rgba(148,163,184,.22);border-radius:999px;overflow:hidden;margin:12px 0}
+.progress>div{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0;transition:.5s;border-radius:999px}
+.hidden{display:none}.center{text-align:center}
+.word-en{font-size:2.3rem;font-weight:900;direction:ltr;letter-spacing:.5px}
+.word-ar{font-size:1.5rem;color:var(--accent2);margin-top:8px;font-weight:800}
+.example{color:var(--muted);direction:ltr;margin-top:10px;font-style:italic}
+.option{display:block;width:100%;text-align:right;background:var(--card2);border:1px solid rgba(148,163,184,.2);color:var(--text);padding:15px;border-radius:14px;margin:9px 0;cursor:pointer;font-size:1.05rem;direction:rtl;transition:.15s}
+.option:hover{border-color:var(--accent);transform:translateX(-3px)}
+.option.correct{background:var(--good);color:#fff;border-color:var(--good)}
+.option.wrong{background:var(--bad);color:#fff;border-color:var(--bad)}
+.flashcard{perspective:1200px;height:250px;cursor:pointer;margin:12px 0}
+.flash-inner{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flashcard.flip .flash-inner{transform:rotateY(180deg)}
+.flash-face{position:absolute;width:100%;height:100%;backface-visibility:hidden;display:flex;flex-direction:column;justify-content:center;align-items:center;border-radius:20px;background:linear-gradient(160deg,var(--card2),var(--card));border:2px solid var(--accent);padding:14px}
+.flash-back{transform:rotateY(180deg)}
+.row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.tag{font-size:.72rem;background:rgba(124,58,237,.25);color:var(--accent2);padding:3px 10px;border-radius:999px}
+input[type=text]{width:100%;padding:14px;border-radius:14px;border:1px solid var(--muted);background:var(--card2);color:var(--text);font-size:1.05rem;margin:10px 0}
+.list-item{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:13px;border-bottom:1px solid rgba(148,163,184,.15)}
+.list-en{font-weight:800;direction:ltr}
+.lvlcard{cursor:pointer;text-align:center;padding:18px}
+.lvlcard:hover{border-color:var(--accent)}
+.lvlcard .big{font-size:1.6rem;font-weight:900}
+.medal{font-size:2rem;opacity:.3}
+.medal.on{opacity:1;animation:pop .4s ease}
+@keyframes pop{0%{transform:scale(.4)}70%{transform:scale(1.2)}100%{transform:scale(1)}}
+footer{text-align:center;color:var(--muted);padding:28px 0;font-size:.85rem}
+a{color:var(--accent2);text-decoration:none}
+h2{margin-bottom:6px}.muted{color:var(--muted)}
+.pill{display:inline-block;padding:4px 12px;border-radius:999px;background:var(--card2);font-size:.8rem;font-weight:800;margin:3px}
+.spinner{display:inline-block;width:16px;height:16px;border:2px solid var(--muted);border-top-color:var(--accent2);border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--card);color:var(--text);padding:12px 20px;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.4);font-weight:700;z-index:99;opacity:0;transition:.3s;border:1px solid var(--accent)}
+.toast.show{opacity:1;bottom:32px}
+.tabbar{display:flex;justify-content:space-around;gap:6px;margin-top:8px}
+.tabbar button{flex:1;background:var(--card2);border:1px solid rgba(148,163,184,.15);color:var(--text);padding:10px 4px;border-radius:12px;cursor:pointer;font-size:.78rem;font-weight:700}
 </style>
 </head>
-<body>
-<header>
-  <h1>🚀 Speak With Us</h1>
-  <p>تعلّم الإنجليزي معنا — كلمات وعبارات للتحدّث والحفظ</p>
-</header>
-
-<div class="daily" id="daily">🔥 تحدّي اليوم: احفظ 5 كلمات جديدة وانطقها بصوت عالٍ!</div>
-
-<div class="stats">
-  <div class="stat"><b id="score">0</b><span>نقاطك 🏆</span></div>
-  <div class="stat"><b id="learned">0</b><span>كلمات راجعتها 📚</span></div>
-  <div class="stat"><b id="streak">1</b><span>أيام متتالية 🔥</span></div>
-</div>
-<div class="progress"><div id="bar"></div></div>
-
-<div class="topbar">
-  <button class="btn" onclick="showCards()">🃏 وضع البطاقات</button>
-  <button class="btn ghost" onclick="startQuiz()">🎯 وضع الاختبار</button>
-  <button class="btn ghost" onclick="toggleTheme()">🌙 / ☀️</button>
-</div>
-
-<main>
-  <!-- Flashcards -->
-  <section id="cardsSection">
-    <div class="scene">
-      <div class="flashcard" id="flashcard" onclick="flipCard()">
-        <div class="face front">
-          <span class="cat" id="cat"></span>
-          <div class="word" id="frontWord">Hello</div>
-          <div class="ipa" id="ipa">/həˈloʊ/</div>
-          <small style="margin-top:18px;color:#94a3b8">اضغط البطاقة لرؤية المعنى</small>
-        </div>
-        <div class="face back">
-          <div class="word" id="backWord">مرحباً</div>
-          <div class="ex" id="example">Hello, how are you?</div>
-        </div>
+<body data-theme="dark">
+<div class="container">
+  <header>
+    <div class="brand">
+      <div>
+        <div class="logo">🚀 Speak With Us PRO</div>
+        <a class="handle" href="https://twitter.com/chambertu" target="_blank">🐦 by @chambertu</a>
       </div>
     </div>
-    <div class="controls">
-      <button class="btn ghost" onclick="prevCard()">⬅️ السابق</button>
-      <button class="speak" onclick="speakWord()">🔊</button>
-      <button class="btn" onclick="knownCard()">✅ حفظتها (+10)</button>
-      <button class="btn ghost" onclick="nextCard()">التالي ➡️</button>
+    <div class="stats">
+      <span class="badge">🔥 <span id="streak">0</span></span>
+      <span class="badge">⭐ <span id="points">0</span></span>
+      <span class="badge" id="lvlBadge">—</span>
+      <button class="icon-btn" id="theme" title="الوضع الليلي">🌙</button>
+    </div>
+  </header>
+
+  <!-- الرئيسية -->
+  <section id="home" class="card center">
+    <h2>أهلاً فيك في رحلتك لإتقان الإنجليزي 🎯</h2>
+    <p class="muted">أول خطوة: استبيان بسيط جداً يحدد مستواك على النظام العالمي (A1 إلى C2)، وبعدها نعطيك كلمات على قدّك بالضبط — وكلمات لا نهائية متى ما تبي.</p>
+    <div class="row">
+      <button class="btn" onclick="startTest()">🧭 ابدأ استبيان تحديد المستوى</button>
+      <button class="btn sec" onclick="toggle('levelPicker')">تخطّى واختر مستوى يدوياً</button>
+    </div>
+    <div id="levelPicker" class="hidden" style="margin-top:16px">
+      <div class="grid3" id="pickerGrid"></div>
     </div>
   </section>
 
-  <!-- Quiz -->
-  <section class="quiz" id="quiz">
-    <h2>🎯 اختبار سريع</h2>
-    <p style="color:#64748b">اختر الترجمة الصحيحة للكلمة:</p>
-    <div class="q" id="quizWord"></div>
-    <div class="options" id="options"></div>
+  <!-- اختبار المستوى -->
+  <section id="test" class="card hidden">
+    <div class="progress"><div id="testBar"></div></div>
+    <p class="muted" id="testCount"></p>
+    <h2 class="center">وش معنى هالكلمة؟ <button class="icon-btn" onclick="speakTest()">🔊</button></h2>
+    <div class="center word-en" id="testWord"></div>
+    <div id="testOptions" style="margin-top:16px"></div>
   </section>
-</main>
 
-<footer>
-  <p>صُنع بحب لمتعلّمي الإنجليزي 💜</p>
-  <a class="twitter" href="https://twitter.com/chambertu" target="_blank" rel="noopener">🐦 تابعني على تويتر @chambertu</a>
-</footer>
+  <!-- النتيجة -->
+  <section id="result" class="card center hidden">
+    <div style="font-size:3rem">🎉</div>
+    <h2 id="resultTitle"></h2>
+    <p class="muted" id="resultText"></p>
+    <button class="btn" onclick="goDash()">يلا نبدأ التعلّم 🚀</button>
+  </section>
+
+  <!-- لوحة التحكم -->
+  <section id="dash" class="hidden">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <h2 id="dashLevel"></h2>
+        <button class="btn sec" onclick="backHome()">تغيير المستوى</button>
+      </div>
+      <p class="muted" id="dashStats"></p>
+      <div class="progress"><div id="dashBar"></div></div>
+      <div id="dueBox" class="muted" style="margin-top:6px"></div>
+    </div>
+    <div class="card">
+      <h2>🎯 التحدّي اليومي</h2>
+      <p class="muted">٧ أسئلة سريعة كل يوم تثبّت السلسلة 🔥 وتعطيك نقاط مضاعفة.</p>
+      <button class="btn gold" onclick="startQuiz('daily')">ابدأ تحدّي اليوم</button>
+    </div>
+    <div class="grid">
+      <div class="card center"><div style="font-size:2rem">🃏</div><p>بطاقات الحفظ</p><button class="btn" onclick="startFlash()">افتح</button></div>
+      <div class="card center"><div style="font-size:2rem">🧠</div><p>اختبار تدريبي</p><button class="btn" onclick="startQuiz('practice')">افتح</button></div>
+      <div class="card center"><div style="font-size:2rem">🔁</div><p>مراجعة ذكية</p><button class="btn" onclick="startQuiz('review')">افتح</button></div>
+      <div class="card center"><div style="font-size:2rem">🎤</div><p>قيّم نطقك</p><button class="btn" onclick="startSpeak()">افتح</button></div>
+      <div class="card center"><div style="font-size:2rem">♾️</div><p>مترجم لا نهائي</p><button class="btn" onclick="show('translator')">افتح</button></div>
+      <div class="card center"><div style="font-size:2rem">📚</div><p>كل الكلمات</p><button class="btn" onclick="showList()">افتح</button></div>
+      <div class="card center"><div style="font-size:2rem">🏅</div><p>إنجازاتي</p><button class="btn" onclick="showBadges()">افتح</button></div>
+    </div>
+  </section>
+
+  <!-- بطاقات -->
+  <section id="flash" class="card center hidden">
+    <p class="muted" id="flashCount"></p>
+    <div class="flashcard" id="flashcard" onclick="this.classList.toggle('flip')">
+      <div class="flash-inner">
+        <div class="flash-face"><div class="word-en" id="flEn"></div><span class="tag">اضغط للقلب</span></div>
+        <div class="flash-face flash-back"><div class="word-ar" id="flAr"></div><div class="example" id="flEx"></div></div>
+      </div>
+    </div>
+    <div class="row">
+      <button class="icon-btn" onclick="speakCur(event)">🔊</button>
+      <button class="btn sec" onclick="flMove(-1)">السابق</button>
+      <button class="btn" onclick="flKnown()">أعرفها ✓</button>
+      <button class="btn sec" onclick="flMove(1)">التالي</button>
+    </div>
+    <button class="btn sec" style="margin-top:14px" onclick="goDash()">رجوع</button>
+  </section>
+
+  <!-- اختبار/تحدّي/مراجعة -->
+  <section id="quiz" class="card hidden">
+    <div class="progress"><div id="qBar"></div></div>
+    <p class="muted" id="qCount"></p>
+    <h2 class="center">اختر الترجمة الصحيحة</h2>
+    <div class="center word-en" id="qWord"></div>
+    <div class="center"><button class="icon-btn" onclick="speak(qCurrent.en)">🔊</button></div>
+    <div id="qOptions" style="margin-top:14px"></div>
+    <button class="btn sec" style="margin-top:12px" onclick="goDash()">إنهاء</button>
+  </section>
+
+  <!-- قيّم نطقك -->
+  <section id="speak" class="card center hidden">
+    <h2>🎤 قيّم نطقك</h2>
+    <p class="muted" id="spCount"></p>
+    <div class="word-en" id="spWord"></div>
+    <div class="row">
+      <button class="icon-btn" onclick="speak(spCurrent.en)">🔊 اسمعها</button>
+      <button class="btn" id="spRec" onclick="recordSpeech()">🎙️ انطقها</button>
+    </div>
+    <p id="spResult" style="margin-top:14px;font-weight:800"></p>
+    <div class="row">
+      <button class="btn sec" onclick="spMove(1)">كلمة ثانية</button>
+      <button class="btn sec" onclick="goDash()">رجوع</button>
+    </div>
+    <p class="muted" style="font-size:.78rem;margin-top:10px">ملاحظة: تقييم النطق يحتاج متصفح يدعم التعرّف الصوتي (Chrome مفضّل) وإذن المايك.</p>
+  </section>
+
+  <!-- المترجم اللانهائي -->
+  <section id="translator" class="card hidden">
+    <h2>♾️ المترجم اللانهائي</h2>
+    <p class="muted">اكتب أي كلمة إنجليزية وتطلع لك ترجمتها فوراً، ونحفظها لك في قائمتك تلقائياً (تحتاج إنترنت للكلمات الجديدة).</p>
+    <input type="text" id="trInput" placeholder="اكتب كلمة... مثل: knowledge" onkeydown="if(event.key==='Enter')doTranslate()">
+    <button class="btn" onclick="doTranslate()">ترجم 🔍</button>
+    <div id="trResult" style="margin-top:16px"></div>
+    <button class="btn sec" style="margin-top:12px" onclick="goDash()">رجوع</button>
+  </section>
+
+  <!-- القائمة -->
+  <section id="listView" class="card hidden">
+    <h2>📚 كل كلمات مستواك</h2>
+    <input type="text" id="search" placeholder="ابحث عن كلمة..." oninput="renderList()">
+    <div id="listBox"></div>
+    <button class="btn sec" style="margin-top:12px" onclick="goDash()">رجوع</button>
+  </section>
+
+  <!-- الشارات -->
+  <section id="badges" class="card hidden">
+    <h2>🏅 إنجازاتي</h2>
+    <div class="grid3" id="badgeGrid" style="margin-top:12px"></div>
+    <button class="btn sec" style="margin-top:12px" onclick="goDash()">رجوع</button>
+  </section>
+
+  <footer>
+    صُنع بحب 💜 — <strong>Speak With Us PRO</strong><br>
+    تابعني على تويتر <a href="https://twitter.com/chambertu" target="_blank">@chambertu</a>
+  </footer>
+</div>
 
 <script>
-/* ===== قاعدة بيانات الكلمات (للتحدّث اليومي) ===== */
-const WORDS = [
-  {en:"Hello",ipa:"/həˈloʊ/",ar:"مرحباً",ex:"Hello, how are you?",cat:"Greetings"},
-  {en:"Goodbye",ipa:"/ˌɡʊdˈbaɪ/",ar:"مع السلامة",ex:"Goodbye, see you later!",cat:"Greetings"},
-  {en:"Please",ipa:"/pliːz/",ar:"من فضلك",ex:"Please help me.",cat:"Polite"},
-  {en:"Thank you",ipa:"/ˈθæŋk juː/",ar:"شكراً لك",ex:"Thank you so much!",cat:"Polite"},
-  {en:"Sorry",ipa:"/ˈsɒri/",ar:"آسف",ex:"I am sorry for being late.",cat:"Polite"},
-  {en:"Excuse me",ipa:"/ɪkˈskjuːz miː/",ar:"عذراً",ex:"Excuse me, where is the station?",cat:"Polite"},
-  {en:"Yes",ipa:"/jes/",ar:"نعم",ex:"Yes, I agree.",cat:"Basic"},
-  {en:"No",ipa:"/noʊ/",ar:"لا",ex:"No, thank you.",cat:"Basic"},
-  {en:"Maybe",ipa:"/ˈmeɪbi/",ar:"ربما",ex:"Maybe tomorrow.",cat:"Basic"},
-  {en:"Help",ipa:"/help/",ar:"مساعدة",ex:"Can you help me?",cat:"Basic"},
-  {en:"Friend",ipa:"/frend/",ar:"صديق",ex:"She is my best friend.",cat:"People"},
-  {en:"Family",ipa:"/ˈfæməli/",ar:"عائلة",ex:"I love my family.",cat:"People"},
-  {en:"Work",ipa:"/wɜːrk/",ar:"عمل",ex:"I go to work at 8.",cat:"Daily"},
-  {en:"Home",ipa:"/hoʊm/",ar:"منزل",ex:"I am going home now.",cat:"Daily"},
-  {en:"Food",ipa:"/fuːd/",ar:"طعام",ex:"This food is delicious.",cat:"Daily"},
-  {en:"Water",ipa:"/ˈwɔːtər/",ar:"ماء",ex:"I need some water.",cat:"Daily"},
-  {en:"Time",ipa:"/taɪm/",ar:"وقت",ex:"What time is it?",cat:"Daily"},
-  {en:"Today",ipa:"/təˈdeɪ/",ar:"اليوم",ex:"Today is a great day.",cat:"Time"},
-  {en:"Tomorrow",ipa:"/təˈmɒroʊ/",ar:"غداً",ex:"See you tomorrow.",cat:"Time"},
-  {en:"Yesterday",ipa:"/ˈjestərdeɪ/",ar:"أمس",ex:"I called you yesterday.",cat:"Time"},
-  {en:"Now",ipa:"/naʊ/",ar:"الآن",ex:"Let us go now.",cat:"Time"},
-  {en:"Happy",ipa:"/ˈhæpi/",ar:"سعيد",ex:"I am so happy today.",cat:"Feelings"},
-  {en:"Sad",ipa:"/sæd/",ar:"حزين",ex:"Do not be sad.",cat:"Feelings"},
-  {en:"Tired",ipa:"/ˈtaɪərd/",ar:"متعب",ex:"I am very tired.",cat:"Feelings"},
-  {en:"Hungry",ipa:"/ˈhʌŋɡri/",ar:"جائع",ex:"I am hungry, let us eat.",cat:"Feelings"},
-  {en:"Beautiful",ipa:"/ˈbjuːtɪfl/",ar:"جميل",ex:"What a beautiful view!",cat:"Adjectives"},
-  {en:"Big",ipa:"/bɪɡ/",ar:"كبير",ex:"That is a big house.",cat:"Adjectives"},
-  {en:"Small",ipa:"/smɔːl/",ar:"صغير",ex:"I have a small car.",cat:"Adjectives"},
-  {en:"Good",ipa:"/ɡʊd/",ar:"جيد",ex:"This is a good idea.",cat:"Adjectives"},
-  {en:"Bad",ipa:"/bæd/",ar:"سيء",ex:"The weather is bad.",cat:"Adjectives"},
-  {en:"Fast",ipa:"/fæst/",ar:"سريع",ex:"He runs fast.",cat:"Adjectives"},
-  {en:"Slow",ipa:"/sloʊ/",ar:"بطيء",ex:"Please drive slow.",cat:"Adjectives"},
-  {en:"Easy",ipa:"/ˈiːzi/",ar:"سهل",ex:"This test is easy.",cat:"Adjectives"},
-  {en:"Hard",ipa:"/hɑːrd/",ar:"صعب",ex:"It was a hard day.",cat:"Adjectives"},
-  {en:"Money",ipa:"/ˈmʌni/",ar:"مال",ex:"I need to save money.",cat:"Daily"},
-  {en:"Buy",ipa:"/baɪ/",ar:"يشتري",ex:"I want to buy a book.",cat:"Verbs"},
-  {en:"Sell",ipa:"/sel/",ar:"يبيع",ex:"They sell fresh fruit.",cat:"Verbs"},
-  {en:"Go",ipa:"/ɡoʊ/",ar:"يذهب",ex:"Let us go to the park.",cat:"Verbs"},
-  {en:"Come",ipa:"/kʌm/",ar:"يأتي",ex:"Come here, please.",cat:"Verbs"},
-  {en:"Eat",ipa:"/iːt/",ar:"يأكل",ex:"We eat dinner at 7.",cat:"Verbs"},
-  {en:"Drink",ipa:"/drɪŋk/",ar:"يشرب",ex:"I drink coffee every morning.",cat:"Verbs"},
-  {en:"Speak",ipa:"/spiːk/",ar:"يتحدّث",ex:"I want to speak English well.",cat:"Verbs"},
-  {en:"Listen",ipa:"/ˈlɪsn/",ar:"يستمع",ex:"Listen to me carefully.",cat:"Verbs"},
-  {en:"Read",ipa:"/riːd/",ar:"يقرأ",ex:"I read every night.",cat:"Verbs"},
-  {en:"Write",ipa:"/raɪt/",ar:"يكتب",ex:"Write your name here.",cat:"Verbs"},
-  {en:"Understand",ipa:"/ˌʌndərˈstænd/",ar:"يفهم",ex:"Do you understand me?",cat:"Verbs"},
-  {en:"Know",ipa:"/noʊ/",ar:"يعرف",ex:"I know the answer.",cat:"Verbs"},
-  {en:"Think",ipa:"/θɪŋk/",ar:"يفكر",ex:"I think you are right.",cat:"Verbs"},
-  {en:"Want",ipa:"/wɒnt/",ar:"يريد",ex:"I want to learn more.",cat:"Verbs"},
-  {en:"Need",ipa:"/niːd/",ar:"يحتاج",ex:"I need your help.",cat:"Verbs"},
-  {en:"Love",ipa:"/lʌv/",ar:"يحب",ex:"I love learning languages.",cat:"Verbs"},
-  {en:"Like",ipa:"/laɪk/",ar:"يعجب",ex:"I like this song.",cat:"Verbs"},
-  {en:"Question",ipa:"/ˈkwestʃən/",ar:"سؤال",ex:"I have a question.",cat:"School"},
-  {en:"Answer",ipa:"/ˈænsər/",ar:"إجابة",ex:"What is the answer?",cat:"School"},
-  {en:"Word",ipa:"/wɜːrd/",ar:"كلمة",ex:"Learn one new word daily.",cat:"School"},
-  {en:"Sentence",ipa:"/ˈsentəns/",ar:"جملة",ex:"Make a sentence with it.",cat:"School"},
-  {en:"Practice",ipa:"/ˈpræktɪs/",ar:"تدرّب",ex:"Practice makes perfect.",cat:"School"},
-  {en:"Morning",ipa:"/ˈmɔːrnɪŋ/",ar:"صباح",ex:"Good morning!",cat:"Time"},
-  {en:"Night",ipa:"/naɪt/",ar:"ليل",ex:"Good night, sleep well.",cat:"Time"},
-  {en:"School",ipa:"/skuːl/",ar:"مدرسة",ex:"The kids go to school.",cat:"Places"},
-  {en:"Street",ipa:"/striːt/",ar:"شارع",ex:"Cross the street carefully.",cat:"Places"},
-  {en:"City",ipa:"/ˈsɪti/",ar:"مدينة",ex:"I live in a big city.",cat:"Places"},
-  {en:"Country",ipa:"/ˈkʌntri/",ar:"دولة",ex:"Which country are you from?",cat:"Places"},
-  {en:"Weather",ipa:"/ˈweðər/",ar:"طقس",ex:"The weather is nice today.",cat:"Daily"},
-  {en:"Phone",ipa:"/foʊn/",ar:"هاتف",ex:"Where is my phone?",cat:"Daily"},
-  {en:"Car",ipa:"/kɑːr/",ar:"سيارة",ex:"My car is fast.",cat:"Daily"},
-  {en:"Book",ipa:"/bʊk/",ar:"كتاب",ex:"This book is interesting.",cat:"Daily"},
-  {en:"Music",ipa:"/ˈmjuːzɪk/",ar:"موسيقى",ex:"I love this music.",cat:"Daily"},
-  {en:"Welcome",ipa:"/ˈwelkəm/",ar:"أهلاً وسهلاً",ex:"Welcome to our home!",cat:"Greetings"},
-  {en:"Nice to meet you",ipa:"/naɪs tə miːt juː/",ar:"سعيد بلقائك",ex:"Nice to meet you, John.",cat:"Greetings"},
-  {en:"How are you?",ipa:"/haʊ ɑːr juː/",ar:"كيف حالك؟",ex:"Hi! How are you?",cat:"Phrases"},
-  {en:"I am fine",ipa:"/aɪ æm faɪn/",ar:"أنا بخير",ex:"I am fine, thanks.",cat:"Phrases"},
-  {en:"What is your name?",ipa:"/wɒt ɪz jɔːr neɪm/",ar:"ما اسمك؟",ex:"Hello, what is your name?",cat:"Phrases"},
-  {en:"See you later",ipa:"/siː juː ˈleɪtər/",ar:"أراك لاحقاً",ex:"Bye, see you later!",cat:"Phrases"},
-  {en:"I do not understand",ipa:"/aɪ duː nɒt ˌʌndərˈstænd/",ar:"لا أفهم",ex:"Sorry, I do not understand.",cat:"Phrases"},
-  {en:"Can you repeat?",ipa:"/kæn juː rɪˈpiːt/",ar:"هل يمكنك التكرار؟",ex:"Can you repeat that, please?",cat:"Phrases"},
-  {en:"How much?",ipa:"/haʊ mʌtʃ/",ar:"كم السعر؟",ex:"How much is this?",cat:"Phrases"},
-  {en:"Where is...?",ipa:"/wer ɪz/",ar:"أين...؟",ex:"Where is the bathroom?",cat:"Phrases"},
-  {en:"Of course",ipa:"/əv kɔːrs/",ar:"بالطبع",ex:"Of course, I can help.",cat:"Phrases"},
-  {en:"No problem",ipa:"/noʊ ˈprɒbləm/",ar:"لا مشكلة",ex:"No problem at all!",cat:"Phrases"}
-];
+/* ===================================================================
+   الكلمات الأساسية (مع جمل أمثلة) — مصنّفة على ٦ مستويات عالمية A1–C2
+   عدّل/أضف هنا بسهولة. والكلمات الإضافية تحت (EXTRA) تُترجم تلقائياً.
+=================================================================== */
+var CORE={
+A1:[{en:"Hello",ar:"مرحباً",ex:"Hello, how are you?"},{en:"Goodbye",ar:"مع السلامة",ex:"Goodbye, see you tomorrow."},{en:"Yes",ar:"نعم",ex:"Yes, I agree."},{en:"No",ar:"لا",ex:"No, thank you."},{en:"Please",ar:"من فضلك",ex:"Please sit down."},{en:"Thank you",ar:"شكراً",ex:"Thank you very much."},{en:"Sorry",ar:"آسف",ex:"Sorry, I am late."},{en:"Water",ar:"ماء",ex:"I drink water every day."},{en:"Food",ar:"طعام",ex:"The food is delicious."},{en:"Home",ar:"منزل",ex:"I am going home."},{en:"Work",ar:"عمل",ex:"I go to work at eight."},{en:"Friend",ar:"صديق",ex:"He is my best friend."},{en:"Family",ar:"عائلة",ex:"I love my family."},{en:"Day",ar:"يوم",ex:"Have a nice day."},{en:"Night",ar:"ليل",ex:"Good night."},{en:"Today",ar:"اليوم",ex:"Today is Monday."},{en:"Now",ar:"الآن",ex:"I am busy now."},{en:"Time",ar:"وقت",ex:"What time is it?"},{en:"Money",ar:"مال",ex:"I need some money."},{en:"Name",ar:"اسم",ex:"What is your name?"},{en:"Eat",ar:"يأكل",ex:"I eat breakfast at home."},{en:"Drink",ar:"يشرب",ex:"I drink coffee."},{en:"Go",ar:"يذهب",ex:"Let us go now."},{en:"Big",ar:"كبير",ex:"This is a big house."},{en:"Small",ar:"صغير",ex:"I have a small dog."},{en:"Good",ar:"جيد",ex:"This is a good idea."},{en:"Happy",ar:"سعيد",ex:"I am very happy."},{en:"Hot",ar:"حار",ex:"The tea is hot."},{en:"Cold",ar:"بارد",ex:"It is cold today."},{en:"School",ar:"مدرسة",ex:"My school is near."}],
+A2:[{en:"Weather",ar:"طقس",ex:"The weather is nice today."},{en:"Travel",ar:"يسافر/سفر",ex:"I love to travel."},{en:"Buy",ar:"يشتري",ex:"I want to buy a gift."},{en:"Sell",ar:"يبيع",ex:"They sell fresh fruit."},{en:"Learn",ar:"يتعلّم",ex:"I learn English every day."},{en:"Teach",ar:"يُعلّم",ex:"She teaches math."},{en:"Begin",ar:"يبدأ",ex:"The film begins at eight."},{en:"Finish",ar:"يُنهي",ex:"I finish work at five."},{en:"Remember",ar:"يتذكّر",ex:"I remember your name."},{en:"Forget",ar:"ينسى",ex:"Do not forget your keys."},{en:"Enough",ar:"كافٍ",ex:"That is enough, thanks."},{en:"Together",ar:"معاً",ex:"We work together."},{en:"Always",ar:"دائماً",ex:"She is always kind."},{en:"Sometimes",ar:"أحياناً",ex:"I sometimes walk to work."},{en:"Never",ar:"أبداً",ex:"I never give up."},{en:"Early",ar:"مبكّر",ex:"I wake up early."},{en:"Late",ar:"متأخّر",ex:"Do not be late."},{en:"Cheap",ar:"رخيص",ex:"This shirt is cheap."},{en:"Expensive",ar:"غالي",ex:"That car is expensive."},{en:"Healthy",ar:"صحّي",ex:"Eat healthy food."},{en:"Tired",ar:"متعب",ex:"I am very tired today."},{en:"Busy",ar:"مشغول",ex:"He is busy right now."},{en:"Ready",ar:"جاهز",ex:"Are you ready to go?"},{en:"Different",ar:"مختلف",ex:"This is a different plan."},{en:"Important",ar:"مهم",ex:"This is an important day."},{en:"Question",ar:"سؤال",ex:"I have a question."},{en:"Answer",ar:"جواب/يجيب",ex:"Please answer me."},{en:"Problem",ar:"مشكلة",ex:"We have a small problem."},{en:"Idea",ar:"فكرة",ex:"That is a great idea."},{en:"Future",ar:"مستقبل",ex:"Plan for the future."}],
+B1:[{en:"Improve",ar:"يحسّن",ex:"I want to improve my English."},{en:"Decide",ar:"يقرّر",ex:"We need to decide today."},{en:"Suggest",ar:"يقترح",ex:"I suggest a different plan."},{en:"Explain",ar:"يشرح",ex:"Can you explain this?"},{en:"Compare",ar:"يقارن",ex:"Let us compare the prices."},{en:"Available",ar:"متاح",ex:"Is this seat available?"},{en:"Experience",ar:"خبرة",ex:"She has great experience."},{en:"Opportunity",ar:"فرصة",ex:"This is a good opportunity."},{en:"Schedule",ar:"جدول",ex:"My schedule is full."},{en:"Customer",ar:"عميل",ex:"The customer is happy."},{en:"Quality",ar:"جودة",ex:"We focus on quality."},{en:"Increase",ar:"يزيد",ex:"Prices increase every year."},{en:"Provide",ar:"يوفّر",ex:"We provide free support."},{en:"Require",ar:"يتطلّب",ex:"This job requires patience."},{en:"Manage",ar:"يدير",ex:"She manages a team."},{en:"Develop",ar:"يطوّر",ex:"We develop new apps."},{en:"Achieve",ar:"يحقّق",ex:"You can achieve your goals."},{en:"Avoid",ar:"يتجنّب",ex:"Avoid junk food."},{en:"Consider",ar:"يأخذ بالاعتبار",ex:"Please consider my offer."},{en:"Discuss",ar:"يناقش",ex:"Let us discuss the plan."},{en:"Expect",ar:"يتوقّع",ex:"I expect good results."},{en:"Solve",ar:"يحل",ex:"We solved the problem."},{en:"Realize",ar:"يدرك",ex:"I realized my mistake."},{en:"Confident",ar:"واثق",ex:"Be confident in yourself."},{en:"Honest",ar:"صادق",ex:"He is an honest person."},{en:"Patient",ar:"صبور",ex:"You must be patient."},{en:"Reason",ar:"سبب",ex:"What is the reason?"},{en:"Goal",ar:"هدف",ex:"Set a clear goal."},{en:"Knowledge",ar:"معرفة",ex:"Knowledge is power."},{en:"Effort",ar:"جهد",ex:"Make more effort."}],
+B2:[{en:"Although",ar:"مع أنّ",ex:"Although it was hard, I tried."},{en:"Behavior",ar:"سلوك",ex:"His behavior was kind."},{en:"Approach",ar:"نهج/يقترب",ex:"A smart approach."},{en:"Benefit",ar:"فائدة",ex:"Exercise has many benefits."},{en:"Challenge",ar:"تحدٍّ",ex:"It was a real challenge."},{en:"Determine",ar:"يحدّد",ex:"We must determine the cause."},{en:"Establish",ar:"يؤسّس",ex:"They established a company."},{en:"Maintain",ar:"يحافظ على",ex:"Maintain a healthy diet."},{en:"Obtain",ar:"يحصل على",ex:"You can obtain a permit."},{en:"Reveal",ar:"يكشف",ex:"The study revealed the truth."},{en:"Significant",ar:"مهم/جوهري",ex:"A significant change."},{en:"Sufficient",ar:"كافٍ",ex:"We have sufficient time."},{en:"Tend",ar:"يميل إلى",ex:"Prices tend to rise."},{en:"Estimate",ar:"يقدّر",ex:"We estimate the cost."},{en:"Indicate",ar:"يشير إلى",ex:"The data indicates growth."},{en:"Demonstrate",ar:"يوضّح/يبرهن",ex:"Let me demonstrate this."},{en:"Generate",ar:"يولّد",ex:"The plant generates power."},{en:"Implement",ar:"ينفّذ",ex:"We implemented the plan."},{en:"Reliable",ar:"موثوق",ex:"A reliable source."},{en:"Flexible",ar:"مرن",ex:"My schedule is flexible."},{en:"Efficient",ar:"كفؤ/فعّال",ex:"An efficient method."},{en:"Accurate",ar:"دقيق",ex:"An accurate report."},{en:"Appropriate",ar:"مناسب",ex:"Wear appropriate clothes."},{en:"Consequence",ar:"نتيجة/عاقبة",ex:"Face the consequences."},{en:"Despite",ar:"رغم",ex:"Despite the rain, we went."},{en:"However",ar:"لكن/مع ذلك",ex:"However, I disagree."},{en:"Therefore",ar:"لذلك",ex:"It rained; therefore we stayed."},{en:"Recognize",ar:"يتعرّف على",ex:"I recognize your face."},{en:"Strategy",ar:"استراتيجية",ex:"A clear strategy."},{en:"Influence",ar:"تأثير/يؤثّر",ex:"He has great influence."}],
+C1:[{en:"Comprehensive",ar:"شامل",ex:"A comprehensive report."},{en:"Inevitable",ar:"حتمي",ex:"Change is inevitable."},{en:"Ambiguous",ar:"غامض",ex:"The answer was ambiguous."},{en:"Reluctant",ar:"متردّد",ex:"He was reluctant to leave."},{en:"Diligent",ar:"مجتهد",ex:"She is a diligent worker."},{en:"Resilient",ar:"قادر على التعافي",ex:"A resilient economy."},{en:"Profound",ar:"عميق",ex:"A profound impact."},{en:"Subtle",ar:"دقيق/خفي",ex:"A subtle difference."},{en:"Versatile",ar:"متعدد الاستخدامات",ex:"A versatile tool."},{en:"Meticulous",ar:"دقيق جداً",ex:"Meticulous planning."},{en:"Plausible",ar:"معقول",ex:"A plausible excuse."},{en:"Coherent",ar:"متماسك",ex:"A coherent argument."},{en:"Concise",ar:"موجز",ex:"Keep it concise."},{en:"Inherent",ar:"متأصّل",ex:"An inherent risk."},{en:"Prevalent",ar:"سائد",ex:"A prevalent belief."},{en:"Feasible",ar:"قابل للتنفيذ",ex:"Is this plan feasible?"},{en:"Abundant",ar:"وفير",ex:"Abundant resources."},{en:"Mitigate",ar:"يخفّف",ex:"Mitigate the risk."},{en:"Advocate",ar:"يدافع عن",ex:"She advocates for change."},{en:"Anticipate",ar:"يتوقّع/يستبق",ex:"We anticipate delays."},{en:"Emphasize",ar:"يؤكّد على",ex:"I must emphasize this."},{en:"Acknowledge",ar:"يعترف بـ",ex:"He acknowledged the error."},{en:"Facilitate",ar:"يسهّل",ex:"Tools that facilitate work."},{en:"Pursue",ar:"يسعى وراء",ex:"Pursue your dreams."},{en:"Contemplate",ar:"يتأمّل",ex:"I contemplated my future."},{en:"Integrity",ar:"نزاهة",ex:"A person of integrity."},{en:"Perseverance",ar:"مثابرة",ex:"Success needs perseverance."},{en:"Pragmatic",ar:"عملي/واقعي",ex:"A pragmatic approach."},{en:"Diverse",ar:"متنوّع",ex:"A diverse team."},{en:"Sustain",ar:"يديم",ex:"Sustain the effort."}],
+C2:[{en:"Ubiquitous",ar:"موجود في كل مكان",ex:"Smartphones are ubiquitous."},{en:"Ephemeral",ar:"زائل/عابر",ex:"Fame can be ephemeral."},{en:"Quintessential",ar:"النموذج الأمثل",ex:"The quintessential hero."},{en:"Pernicious",ar:"مؤذٍ/خبيث",ex:"A pernicious habit."},{en:"Surreptitious",ar:"خِفية/متستّر",ex:"A surreptitious glance."},{en:"Magnanimous",ar:"كريم/شهم",ex:"A magnanimous gesture."},{en:"Obfuscate",ar:"يُعمّي/يُشوّش",ex:"Do not obfuscate the facts."},{en:"Juxtapose",ar:"يضع جنباً إلى جنب",ex:"Juxtapose the two ideas."},{en:"Idiosyncratic",ar:"خاص بالفرد/مميّز",ex:"An idiosyncratic style."},{en:"Cacophony",ar:"نشاز/جلبة",ex:"A cacophony of sounds."},{en:"Sycophant",ar:"متملّق",ex:"He is a mere sycophant."},{en:"Esoteric",ar:"باطني/مقصور على فئة",ex:"An esoteric subject."},{en:"Pragmatism",ar:"البراغماتية",ex:"Pragmatism over idealism."},{en:"Vicarious",ar:"بالنيابة/غير مباشر",ex:"Vicarious pleasure."},{en:"Insidious",ar:"ماكر/متسلّل",ex:"An insidious disease."},{en:"Ostensible",ar:"ظاهري",ex:"The ostensible reason."},{en:"Inexorable",ar:"لا يرحم/حتمي",ex:"The inexorable march of time."},{en:"Equivocal",ar:"مبهم/مزدوج المعنى",ex:"An equivocal reply."},{en:"Perfunctory",ar:"روتيني/فاتر",ex:"A perfunctory nod."},{en:"Recalcitrant",ar:"عنيد/متمرّد",ex:"A recalcitrant child."},{en:"Sanguine",ar:"متفائل",ex:"A sanguine outlook."},{en:"Truculent",ar:"عدائي/شرس",ex:"A truculent tone."},{en:"Wary",ar:"حَذِر",ex:"Be wary of scams."},{en:"Zealous",ar:"متحمّس/غيور",ex:"A zealous supporter."},{en:"Astute",ar:"فطن/ذكي",ex:"An astute investor."},{en:"Candor",ar:"صراحة",ex:"I admire her candor."},{en:"Deference",ar:"احترام/إذعان",ex:"Out of deference to elders."},{en:"Eloquence",ar:"بلاغة",ex:"He spoke with eloquence."},{en:"Fortitude",ar:"جَلَد/قوة احتمال",ex:"She showed great fortitude."},{en:"Gregarious",ar:"اجتماعي/أنيس",ex:"A gregarious person."}]
+};
 
-let idx=0, score=0, learned=0;
-const seen=new Set();
+/* ====== مئات الكلمات الإضافية (تُترجم تلقائياً عند فتحها) ====== */
+var EXTRA={
+A1:"man,woman,boy,girl,child,baby,mother,father,brother,sister,dog,cat,bird,fish,tree,flower,sun,moon,star,sky,sea,river,book,pen,door,window,table,chair,bed,room,kitchen,city,street,car,bus,train,plane,road,red,blue,green,black,white,one,two,three,four,five,head,hand,foot,eye,ear,mouth,nose,milk,bread,rice,apple,banana,tea,coffee,sugar,salt,morning,evening,week,month,year,hour,minute,run,walk,jump,sit,stand,open,close,give,take,read,write,play,sing,love,like,help,call,look,find,make",
+A2:"airport,hotel,ticket,luggage,passport,map,beach,mountain,forest,desert,village,market,shop,price,cheaper,wallet,coin,credit,doctor,nurse,hospital,medicine,headache,fever,exercise,gym,sport,team,player,match,goal,score,music,movie,actor,artist,paint,photo,camera,internet,website,email,message,letter,office,manager,worker,salary,meeting,project,plan,report,success,fail,lucky,brave,kind,polite,rude,quiet,noisy,clean,dirty,empty,full,heavy,light,strong,weak,dry,wet,safe,danger,careful,quick,slow,modern,ancient,famous,popular,boring,exciting,delicious",
+B1:"environment,pollution,climate,energy,economy,industry,government,society,culture,tradition,education,research,science,technology,software,hardware,network,database,system,process,method,result,evidence,analysis,solution,decision,opinion,attitude,confidence,motivation,creativity,leadership,teamwork,communication,negotiation,agreement,contract,budget,profit,investment,marketing,advertising,brand,competition,strategy,growth,progress,development,improvement,challenge,opportunity,advantage,disadvantage,benefit,risk,impact,influence,responsibility,achievement",
+B2:"hypothesis,assumption,perspective,framework,criteria,phenomenon,correlation,variable,statistics,probability,efficiency,productivity,sustainability,innovation,infrastructure,regulation,legislation,policy,democracy,diversity,equality,justice,liberty,welfare,prosperity,recession,inflation,revenue,expenditure,liability,asset,equity,merger,acquisition,collaboration,coordination,implementation,evaluation,assessment,measurement,prediction,interpretation,comprehension,perception,cognition,intuition,reasoning,judgment,consensus,compromise",
+C1:"paradigm,discrepancy,nuance,scrutiny,threshold,endeavor,advocate,deteriorate,constitute,undermine,elaborate,perceive,comprehend,redundant,scarce,tedious,coherent,plausible,profound,subtle,resilient,meticulous,versatile,prevalent,inherent,feasible,abundant,mitigate,anticipate,emphasize,acknowledge,facilitate,contemplate,perseverance,integrity,pragmatic,eloquent,candid,vivid,ambiguous,reluctant,diligent,concise,comprehensive,inevitable,sustain,diverse,significant,sufficient,appropriate",
+C2:"serendipity,nonchalant,obsequious,perspicacious,grandiloquent,pusillanimous,sycophantic,iconoclast,maelstrom,obstreperous,parsimonious,quixotic,recondite,sanctimonious,taciturn,umbrage,vituperative,winsome,bombastic,circumlocution,demagogue,ephemeralness,fastidious,garrulous,hegemony,impecunious,jingoism,laconic,mellifluous,nefarious,obfuscation,panacea,quagmire,rancorous,soliloquy,trenchant,unctuous,verbose,wanton,zenith,acrimony,bellicose,cajole,denigrate,effervescent,fortuitous,germane,harangue,impervious,juggernaut"
+};
 
-function $(id){return document.getElementById(id)}
+var LEVELS=["A1","A2","B1","B2","C1","C2"];
+var LVLNAME={A1:"A1 مبتدئ 🟢",A2:"A2 أساسي 🟢",B1:"B1 متوسط 🟡",B2:"B2 فوق المتوسط 🟡",C1:"C1 متقدّم 🔴",C2:"C2 إتقان 🟣"};
 
-function render(){
-  const w=WORDS[idx];
-  $('frontWord').textContent=w.en;
-  $('ipa').textContent=w.ipa;
-  $('cat').textContent=w.cat;
-  $('backWord').textContent=w.ar;
-  $('example').textContent=w.ex;
-  $('flashcard').classList.remove('flip');
-  if(!seen.has(idx)){seen.add(idx);learned=seen.size;$('learned').textContent=learned;}
-  $('bar').style.width=(seen.size/WORDS.length*100)+'%';
-}
-function flipCard(){$('flashcard').classList.toggle('flip')}
-function nextCard(){idx=(idx+1)%WORDS.length;render()}
-function prevCard(){idx=(idx-1+WORDS.length)%WORDS.length;render()}
-function knownCard(){score+=10;$('score').textContent=score;nextCard()}
-function speakWord(){
-  const w=WORDS[idx];
-  if('speechSynthesis' in window){
-    const u=new SpeechSynthesisUtterance(w.en);
-    u.lang='en-US';u.rate=.9;
-    speechSynthesis.cancel();speechSynthesis.speak(u);
-  }else{alert('متصفحك لا يدعم النطق الصوتي')}
-}
-
-/* ===== الوضع الليلي ===== */
-function toggleTheme(){document.body.classList.toggle('light')}
-
-/* ===== التبديل بين الأوضاع ===== */
-function showCards(){$('quiz').style.display='none';$('cardsSection').style.display='block'}
-
-/* ===== الاختبار ===== */
-function startQuiz(){
-  $('cardsSection').style.display='none';
-  $('quiz').style.display='block';
-  newQuestion();
-}
-function newQuestion(){
-  const correct=WORDS[Math.floor(Math.random()*WORDS.length)];
-  $('quizWord').textContent=correct.en;
-  const opts=[correct];
-  while(opts.length<4){
-    const r=WORDS[Math.floor(Math.random()*WORDS.length)];
-    if(!opts.includes(r))opts.push(r);
-  }
-  opts.sort(()=>Math.random()-.5);
-  const box=$('options');box.innerHTML='';
-  opts.forEach(o=>{
-    const d=document.createElement('div');
-    d.className='opt';d.textContent=o.ar;
-    d.onclick=()=>{
-      if(o===correct){d.classList.add('correct');score+=15;$('score').textContent=score;setTimeout(newQuestion,800);}
-      else{d.classList.add('wrong');}
-    };
-    box.appendChild(d);
+/* بناء قائمة الكلمات لكل مستوى (الأساسية + الإضافية بدون ترجمة بعد) */
+var WORDS={};
+LEVELS.forEach(function(L){
+  WORDS[L]=CORE[L].slice();
+  (EXTRA[L]||"").split(",").forEach(function(s){
+    var en=s.trim(); if(!en) return;
+    WORDS[L].push({en:en.charAt(0).toUpperCase()+en.slice(1),ar:null,ex:null});
   });
-}
+});
+function allCore(){var a=[];LEVELS.forEach(function(L){a=a.concat(CORE[L]);});return a;}
 
-/* ===== سلسلة الأيام (Streak) ===== */
-(function(){
-  const today=new Date().toDateString();
-  const last=localStorage.getItem('lastDay');
-  let streak=parseInt(localStorage.getItem('streak')||'1');
-  if(last!==today){
-    const y=new Date(Date.now()-864e5).toDateString();
-    streak=(last===y)?streak+1:1;
-    localStorage.setItem('streak',streak);
-    localStorage.setItem('lastDay',today);
-  }
-  $('streak').textContent=streak;
-})();
+/* ====== الحالة ====== */
+var state=JSON.parse(localStorage.getItem("swsp")||"{}");
+state.points=state.points||0;state.streak=state.streak||0;state.level=state.level||null;
+state.known=state.known||{};state.lastDay=state.lastDay||"";state.srs=state.srs||{};state.badges=state.badges||{};state.custom=state.custom||[];
+function save(){localStorage.setItem("swsp",JSON.stringify(state));render();}
+function render(){document.getElementById("points").textContent=state.points;document.getElementById("streak").textContent=state.streak;document.getElementById("lvlBadge").textContent=state.level?LVLNAME[state.level]:"—";}
+function show(id){["home","test","result","dash","flash","quiz","speak","translator","listView","badges"].forEach(function(s){document.getElementById(s).classList.add("hidden");});document.getElementById(id).classList.remove("hidden");window.scrollTo(0,0);}
+function toggle(id){document.getElementById(id).classList.toggle("hidden");}
+function addPoints(n){state.points+=n;checkBadges();save();}
+function shuffle(a){return a.slice().sort(function(){return Math.random()-0.5;});}
+function speak(t){try{var u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=.9;speechSynthesis.cancel();speechSynthesis.speak(u);}catch(e){}}
+function toast(msg){var t=document.createElement("div");t.className="toast";t.textContent=msg;document.body.appendChild(t);setTimeout(function(){t.classList.add("show");},30);setTimeout(function(){t.classList.remove("show");setTimeout(function(){t.remove();},300);},2200);}
 
-render();
+/* ====== الترجمة الذكية (لا نهائية) عبر MyMemory API + تخزين محلي ====== */
+var trCache=JSON.parse(localStorage.getItem("swsp_tr")||"{}");
+function translate(en){return new Promise(function(res){var key=en.toLowerCase();if(trCache[key]){res(trCache[key]);return;}fetch("https://api.mymemory.translated.net/get?q="+encodeURIComponent(en)+"&langpair=en|ar").then(function(r){return r.json();}).then(function(d){var t=(d&&d.responseData&&d.responseData.translatedText)||"";trCache[key]=t;localStorage.setItem("swsp_tr",JSON.stringify(trCache));res(t);}).catch(function(){res("");});});}
+function ensureAr(w,cb){if(w.ar){cb(w.ar);return;}translate(w.en).then(function(t){w.ar=t||"(تعذّرت الترجمة - تأكد من الإنترنت)";cb(w.ar);});}
+
+/* ====== الوضع الليلي ====== */
+document.getElementById("theme").onclick=function(){var b=document.body;var nx=b.getAttribute("data-theme")==="dark"?"light":"dark";b.setAttribute("data-theme",nx);this.textContent=nx==="dark"?"🌙":"☀️";localStorage.setItem("swsp_theme",nx);};
+(function(){var t=localStorage.getItem("swsp_theme")||"dark";document.body.setAttribute("data-theme",t);document.getElementById("theme").textContent=t==="dark"?"🌙":"☀️";})();
+
+/* ====== منتقي المستوى اليدوي ====== */
+(function(){var g=document.getElementById("pickerGrid");LEVELS.forEach(function(L){var d=document.createElement("div");d.className="card lvlcard";d.onclick=function(){setLevel(L);};d.innerHTML="<div class='big'>"+L+"</div><div class='muted'>"+LVLNAME[L].replace(/^[A-C0-9]+ /,"")+"</div>";g.appendChild(d);});})();
+
+/* ====== استبيان تحديد المستوى (بسيط: ٦ أسئلة، سؤال لكل مستوى) ====== */
+var testQs=[],testIdx=0,testScore=0,testCorrectMax=0;
+function startTest(){testQs=LEVELS.map(function(L){var w=CORE[L][Math.floor(Math.random()*CORE[L].length)];var others=shuffle(allCore().filter(function(x){return x.ar!==w.ar;})).slice(0,3);return{w:w,lvl:L,options:shuffle([w.ar].concat(others.map(function(o){return o.ar;})))};});testIdx=0;testScore=0;testCorrectMax=0;show("test");renderTest();}
+function renderTest(){var q=testQs[testIdx];document.getElementById("testWord").textContent=q.w.en;document.getElementById("testCount").textContent="سؤال "+(testIdx+1)+" من "+testQs.length+" • مستوى "+q.lvl;document.getElementById("testBar").style.width=(testIdx/testQs.length*100)+"%";var box=document.getElementById("testOptions");box.innerHTML="";q.options.forEach(function(opt){var b=document.createElement("button");b.className="option";b.textContent=opt;b.onclick=function(){var ok=opt===q.w.ar;if(ok){testScore++;var idx=LEVELS.indexOf(q.lvl);if(idx>testCorrectMax)testCorrectMax=idx;}b.classList.add(ok?"correct":"wrong");box.querySelectorAll("button").forEach(function(x){x.disabled=true;});setTimeout(nextTest,550);};box.appendChild(b);});speak(q.w.en);}
+function speakTest(){speak(testQs[testIdx].w.en);}
+function nextTest(){testIdx++;if(testIdx>=testQs.length)finishTest();else renderTest();}
+function finishTest(){var lvl=LEVELS[testScore>=1?testCorrectMax:0];state.level=lvl;save();document.getElementById("resultTitle").textContent="نتيجتك: "+testScore+"/"+testQs.length;document.getElementById("resultText").textContent="مستواك المقدّر: "+LVLNAME[lvl]+". رح نبدأ معك من هنا بكلمات على قدّك بالضبط 👌";show("result");}
+
+function setLevel(l){state.level=l;save();goDash();}
+function backHome(){show("home");}
+
+/* ====== لوحة التحكم ====== */
+function goDash(){if(!state.level){show("home");return;}var words=WORDS[state.level];var knownCount=Object.keys(state.known).filter(function(k){return k.indexOf(state.level+":")===0;}).length;document.getElementById("dashLevel").textContent="المستوى: "+LVLNAME[state.level];document.getElementById("dashStats").textContent="حفظت "+knownCount+" من "+words.length+" كلمة في هذا المستوى";document.getElementById("dashBar").style.width=(words.length?knownCount/words.length*100:0)+"%";var due=dueWords().length;document.getElementById("dueBox").textContent=due?("🔁 عندك "+due+" كلمة جاهزة للمراجعة الذكية اليوم"):"🔁 ما في كلمات تحتاج مراجعة الحين — أحسنت!";show("dash");}
+
+/* ====== التكرار المتباعد (SRS) ====== */
+function srsKey(w){return state.level+":"+w.en;}
+function scheduleSrs(w,correct){var k=srsKey(w);var it=state.srs[k]||{box:0};it.box=correct?Math.min(it.box+1,5):0;var days=[0,1,2,4,7,15][it.box];it.due=Date.now()+days*86400000;state.srs[k]=it;}
+function dueWords(){var now=Date.now();return WORDS[state.level].filter(function(w){var it=state.srs[state.level+":"+w.en];return it&&it.due&&it.due<=now;});}
+
+/* ====== بطاقات ====== */
+var flIdx=0;
+function startFlash(){flIdx=0;show("flash");renderFlash();}
+function renderFlash(){var w=WORDS[state.level][flIdx];document.getElementById("flashcard").classList.remove("flip");document.getElementById("flEn").textContent=w.en;document.getElementById("flEx").textContent=w.ex||"";document.getElementById("flashCount").textContent="بطاقة "+(flIdx+1)+" من "+WORDS[state.level].length;var arEl=document.getElementById("flAr");if(w.ar){arEl.textContent=w.ar;}else{arEl.innerHTML='<span class="spinner"></span>';ensureAr(w,function(t){arEl.textContent=t;});}}
+function flMove(d){var len=WORDS[state.level].length;flIdx=(flIdx+d+len)%len;renderFlash();}
+function flKnown(){var w=WORDS[state.level][flIdx];var key=srsKey(w);if(!state.known[key]){state.known[key]=1;addPoints(5);}scheduleSrs(w,true);save();flMove(1);}
+function speakCur(e){e.stopPropagation();speak(WORDS[state.level][flIdx].en);}
+
+/* ====== اختبار / تحدّي / مراجعة ====== */
+var qList=[],qIdx=0,qCurrent={},qMode="practice",qScore=0;
+function startQuiz(mode){qMode=mode;var pool;if(mode==="review"){pool=dueWords();if(pool.length<4)pool=shuffle(WORDS[state.level]).slice(0,10);}else{pool=shuffle(WORDS[state.level]);}qList=pool.slice(0,mode==="daily"?7:10);qIdx=0;qScore=0;show("quiz");prepQuiz();}
+function prepQuiz(){if(qIdx>=qList.length){finishQuiz();return;}qCurrent=qList[qIdx];ensureAr(qCurrent,function(){renderQuiz();});}
+function renderQuiz(){var others=shuffle(allCore().filter(function(x){return x.ar&&x.ar!==qCurrent.ar;})).slice(0,3);var opts=shuffle([qCurrent.ar].concat(others.map(function(o){return o.ar;})));document.getElementById("qWord").textContent=qCurrent.en;document.getElementById("qCount").textContent="سؤال "+(qIdx+1)+" من "+qList.length;document.getElementById("qBar").style.width=(qIdx/qList.length*100)+"%";var box=document.getElementById("qOptions");box.innerHTML="";opts.forEach(function(o){var b=document.createElement("button");b.className="option";b.textContent=o;b.onclick=function(){var ok=o===qCurrent.ar;b.classList.add(ok?"correct":"wrong");if(ok){qScore++;addPoints(qMode==="daily"?4:2);}scheduleSrs(qCurrent,ok);save();box.querySelectorAll("button").forEach(function(x){x.disabled=true;});setTimeout(function(){qIdx++;prepQuiz();},650);};box.appendChild(b);});speak(qCurrent.en);}
+function finishQuiz(){if(qMode==="daily"){var today=new Date().toDateString();if(state.lastDay!==today){var y=new Date(Date.now()-86400000).toDateString();state.streak=(state.lastDay===y)?state.streak+1:1;state.lastDay=today;addPoints(20);}}save();toast("خلصت! نتيجتك "+qScore+"/"+qList.length+(qMode==="daily"?" 🔥 تم تثبيت التحدّي":""));goDash();}
+
+/* ====== قيّم نطقك ====== */
+var spList=[],spIdx=0,spCurrent={};
+function startSpeak(){spList=shuffle(WORDS[state.level]);spIdx=0;show("speak");renderSpeak();}
+function renderSpeak(){spCurrent=spList[spIdx];document.getElementById("spWord").textContent=spCurrent.en;document.getElementById("spResult").textContent="";document.getElementById("spCount").textContent="كلمة "+(spIdx+1)+" من "+spList.length;}
+function spMove(){spIdx=(spIdx+1)%spList.length;renderSpeak();}
+function recordSpeech(){var SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){document.getElementById("spResult").textContent="متصفحك لا يدعم التعرّف الصوتي. جرّب Chrome.";return;}var rec=new SR();rec.lang="en-US";rec.maxAlternatives=3;document.getElementById("spResult").innerHTML='<span class="spinner"></span> يستمع...';rec.start();rec.onresult=function(e){var said="";for(var i=0;i<e.results[0].length;i++){if(e.results[0][i].transcript.toLowerCase().trim()===spCurrent.en.toLowerCase()){said=spCurrent.en;break;}said=e.results[0][0].transcript;}var ok=said.toLowerCase().trim()===spCurrent.en.toLowerCase();document.getElementById("spResult").innerHTML=ok?("✅ ممتاز! نطقك صحيح: <b>"+said+"</b>"):("❌ سمعتك تقول: <b>"+said+"</b> — جرّب مرة ثانية");if(ok)addPoints(6);};rec.onerror=function(){document.getElementById("spResult").textContent="ما قدرت أسمع. تأكد من إذن المايك.";};}
+
+/* ====== المترجم اللانهائي ====== */
+function doTranslate(){var v=(document.getElementById("trInput").value||"").trim();if(!v)return;var box=document.getElementById("trResult");box.innerHTML='<span class="spinner"></span> جارٍ الترجمة...';translate(v).then(function(t){box.innerHTML='<div class="card center"><div class="word-en">'+v+'</div><div class="word-ar">'+(t||"تعذّرت الترجمة")+'</div><div class="row"><button class="icon-btn" onclick="speak(\''+v.replace(/'/g,"")+'\')">🔊</button><button class="btn" onclick="saveCustom(\''+v.replace(/'/g,"")+'\',\''+(t||"").replace(/'/g,"")+'\')">احفظها في قائمتي ⭐</button></div></div>';});}
+function saveCustom(en,ar){state.custom.push({en:en,ar:ar,ex:null});addPoints(2);save();toast("تم حفظ الكلمة في قائمتك ⭐");}
+
+/* ====== القائمة ====== */
+function showList(){show("listView");document.getElementById("search").value="";renderList();}
+function renderList(){var term=(document.getElementById("search").value||"").toLowerCase();var box=document.getElementById("listBox");box.innerHTML="";var all=WORDS[state.level].concat(state.custom);all.filter(function(w){return w.en.toLowerCase().indexOf(term)>=0||(w.ar&&w.ar.indexOf(term)>=0);}).forEach(function(w){var d=document.createElement("div");d.className="list-item";var arTxt=w.ar||"...";d.innerHTML='<div><div class="list-en">'+w.en+'</div><div class="muted" data-en="'+w.en+'">'+arTxt+'</div></div>';var b=document.createElement("button");b.className="icon-btn";b.textContent="🔊";b.onclick=function(){speak(w.en);};d.appendChild(b);box.appendChild(d);if(!w.ar){ensureAr(w,function(t){var el=d.querySelector(".muted");if(el)el.textContent=t;});}});}
+
+/* ====== الشارات ====== */
+var BADGES=[{id:"first",icon:"🌱",name:"أول خطوة",test:function(){return state.points>=5;}},{id:"w50",icon:"📚",name:"٥٠ نقطة",test:function(){return state.points>=50;}},{id:"w200",icon:"🎓",name:"٢٠٠ نقطة",test:function(){return state.points>=200;}},{id:"w500",icon:"👑",name:"٥٠٠ نقطة",test:function(){return state.points>=500;}},{id:"streak3",icon:"🔥",name:"سلسلة ٣ أيام",test:function(){return state.streak>=3;}},{id:"streak7",icon:"⚡",name:"سلسلة ٧ أيام",test:function(){return state.streak>=7;}},{id:"known50",icon:"🧠",name:"حفظت ٥٠ كلمة",test:function(){return Object.keys(state.known).length>=50;}},{id:"custom10",icon:"♾️",name:"ترجمت ١٠ كلمات",test:function(){return state.custom.length>=10;}}];
+function checkBadges(){BADGES.forEach(function(b){if(!state.badges[b.id]&&b.test()){state.badges[b.id]=1;toast("🏅 فتحت شارة: "+b.name);}});}
+function showBadges(){var g=document.getElementById("badgeGrid");g.innerHTML="";BADGES.forEach(function(b){var on=state.badges[b.id];var d=document.createElement("div");d.className="card center";d.innerHTML='<div class="medal '+(on?"on":"")+'">'+b.icon+'</div><div style="font-size:.8rem;font-weight:700;margin-top:6px">'+b.name+'</div><div class="muted" style="font-size:.72rem">'+(on?"مفتوحة ✓":"مقفلة")+'</div>';g.appendChild(d);});show("badges");}
+
+/* ====== البداية ====== */
+render();checkBadges();
+if(state.level)goDash();else show("home");
 </script>
 </body>
 </html>
